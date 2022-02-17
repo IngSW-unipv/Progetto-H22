@@ -9,6 +9,7 @@ module com.nosuchmethod.aerospin {
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
+    requires java.persistence;
 
     opens model to javafx.fxml;
     exports model;
