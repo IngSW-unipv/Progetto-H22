@@ -4,19 +4,19 @@
 <?import javafx.scene.layout.*?>
 
 <AnchorPane prefHeight="480.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SLoginController">
-   <children>
-      <Button layoutX="699.0" layoutY="43.0" mnemonicParsing="false" onAction="#goToHome" text="HOME" />
-      <ToolBar layoutY="440.0" prefHeight="40.0" prefWidth="800.0">
-        <items>
-          <Button mnemonicParsing="false" onAction="#goToSearch" text="RICERCA" />
-            <ToggleButton mnemonicParsing="false" mouseTransparent="true" pickOnBounds="false" selected="true" text="ACCEDI" />
-        </items>
-      </ToolBar>
-      <TextField cacheShape="false" layoutX="166.0" layoutY="98.0" />
-      <PasswordField layoutX="166.0" layoutY="143.0" />
-      <Label layoutX="81.0" layoutY="102.0" text="Indirizzo email" />
-      <Label layoutX="81.0" layoutY="147.0" prefHeight="17.0" prefWidth="77.0" text="Password" />
-      <Button layoutX="102.0" layoutY="240.0" mnemonicParsing="false" prefHeight="73.0" prefWidth="181.0" text="ACCEDI" />
-      <Button layoutX="476.0" layoutY="240.0" mnemonicParsing="false" prefHeight="73.0" prefWidth="181.0" text="REGISTRA" />
-   </children>
+    <children>
+        <Button layoutX="699.0" layoutY="43.0" mnemonicParsing="false" onAction="#goToHome" text="HOME" />
+        <ToolBar layoutY="440.0" prefHeight="40.0" prefWidth="800.0">
+            <items>
+                <Button mnemonicParsing="false" onAction="#goToSearch" text="RICERCA" />
+                <ToggleButton mnemonicParsing="false" mouseTransparent="true" pickOnBounds="false" selected="true" text="ACCEDI" />
+            </items>
+        </ToolBar>
+        <TextField cacheShape="false" layoutX="166.0" layoutY="98.0" />
+        <PasswordField layoutX="166.0" layoutY="143.0" />
+        <Label layoutX="81.0" layoutY="102.0" text="Indirizzo email" />
+        <Label layoutX="81.0" layoutY="147.0" prefHeight="17.0" prefWidth="77.0" text="Password" />
+        <Button layoutX="102.0" layoutY="240.0" mnemonicParsing="false" prefHeight="73.0" prefWidth="181.0" text="ACCEDI" />
+        <Button layoutX="476.0" layoutY="240.0" mnemonicParsing="false" prefHeight="73.0" prefWidth="181.0" text="REGISTRA" />
+    </children>
 </AnchorPane>

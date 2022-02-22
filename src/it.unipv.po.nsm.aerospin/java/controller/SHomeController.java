@@ -1,12 +1,13 @@
 package controller;
 
-import java.net.URL;
-import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import view.*;
+import view.MainApplication;
+import view.ScreensController;
 
+import java.net.URL;
+import java.util.ResourceBundle;
 
 public class SHomeController implements Initializable, IControlledScreen {
 
@@ -29,4 +30,5 @@ public class SHomeController implements Initializable, IControlledScreen {
     private void goToLogin(ActionEvent event){
         myController.setScreen(MainApplication.screen3ID);
     }
+
 }

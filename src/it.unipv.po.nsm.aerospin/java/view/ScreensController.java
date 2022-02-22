@@ -14,7 +14,6 @@ import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
 import controller.IControlledScreen;
 
-
 public class ScreensController  extends StackPane {
     //Contiene gli screen da mostrare
 
