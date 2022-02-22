@@ -8,7 +8,7 @@ import javafx.fxml.Initializable;
 import view.*;
 
 
-public class SHomeController implements Initializable, IControlledScreen {
+public class SLoginController implements Initializable, IControlledScreen {
 
     ScreensController myController;
     @Override
@@ -21,12 +21,12 @@ public class SHomeController implements Initializable, IControlledScreen {
     }
 
     @FXML
-    private void goToSearch(ActionEvent event){
-        myController.setScreen(MainApplication.screen2ID);
+    private void goToHome(ActionEvent event){
+        myController.setScreen(MainApplication.screen1ID);
     }
 
     @FXML
-    private void goToLogin(ActionEvent event){
-        myController.setScreen(MainApplication.screen3ID);
+    private void goToSearch(ActionEvent event){
+        myController.setScreen(MainApplication.screen2ID);
     }
 }

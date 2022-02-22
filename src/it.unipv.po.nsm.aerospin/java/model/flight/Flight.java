@@ -2,6 +2,7 @@ package model.flight;
 
 import model.flight.aircraft.Aircraft;
 import model.flight.route.Route;
+
 import java.time.LocalDateTime;
 
 public class Flight {
