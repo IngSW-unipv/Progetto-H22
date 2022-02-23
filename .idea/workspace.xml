@@ -4,14 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1915805d-1a7a-4f83-a54f-9e53500a530f" name="Changes" comment="Rimosso module-info.java">
+    <list default="true" id="1915805d-1a7a-4f83-a54f-9e53500a530f" name="Changes" comment="Aggiunta delle query necessarie per airport&#10;Implementazione cache di livello 2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Progetto-H22.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Progetto-H22.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/hibernate.cfg.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/persistence/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/persistence/Test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/persistence/entity/Airport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/persistence/entity/Airport.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/persistence/entity/Airports.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/persistence/dao/AirportDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/persistence/dao/AirportDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/persistence/entity/Routes.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,8 +22,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="Interface" />
         <option value="FxmlFile" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -101,6 +101,7 @@
       <recent name="" />
     </key>
     <key name="ImportMappingsDialog.RecentPackages">
+      <recent name="model.persistence.entity" />
       <recent name="" />
     </key>
   </component>
@@ -132,6 +133,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="PdfTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="PdfTest" />
+      <module name="Progetto-H22" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="model.persistence.Test" />
       <module name="Progetto-H22" />
@@ -149,10 +157,12 @@
       <item itemvalue="Application.MainView" />
       <item itemvalue="Application.MainApplication" />
       <item itemvalue="Application.Test" />
+      <item itemvalue="Application.PdfTest" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Test" />
+        <item itemvalue="Application.PdfTest" />
         <item itemvalue="Application.MainApplication" />
         <item itemvalue="Application.MainView" />
       </list>
@@ -175,7 +185,7 @@
       <workItem from="1645204154636" duration="645000" />
       <workItem from="1645552348809" duration="1040000" />
       <workItem from="1645601217330" duration="6961000" />
-      <workItem from="1645615462965" duration="359000" />
+      <workItem from="1645615462965" duration="7091000" />
     </task>
     <task id="LOCAL-00001" summary="Prova">
       <created>1645112352115</created>
@@ -198,7 +208,14 @@
       <option name="project" value="LOCAL" />
       <updated>1645544326438</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Aggiunta delle query necessarie per airport&#10;Implementazione cache di livello 2">
+      <created>1645616158541</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1645616158541</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -218,6 +235,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Prova" />
     <MESSAGE value="Rimosso module-info.java" />
-    <option name="LAST_COMMIT_MESSAGE" value="Rimosso module-info.java" />
+    <MESSAGE value="Aggiunta delle query necessarie per airport&#10;Implementazione cache di livello 2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Aggiunta delle query necessarie per airport&#10;Implementazione cache di livello 2" />
   </component>
 </project>

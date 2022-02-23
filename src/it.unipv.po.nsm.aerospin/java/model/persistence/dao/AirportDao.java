@@ -32,7 +32,7 @@ public class AirportDao implements AirportDaoInterface{
     public List<Airport> findByName(String name) {
         String hql = "from Airport a where a.airportName like :name ";
         Query query = conn.getCurrentSession().createQuery(hql);
-        query.setParameter("name",name + "%");
+        query.setParameter("name","%" + name + "%");
         //query.setCacheable(true);
         List<Airport> airports = query.list();
         return   airports;
