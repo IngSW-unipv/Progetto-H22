@@ -1,8 +1,13 @@
 package model.persistence.entity;
 
 import javax.persistence.*;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 @Entity
+@Table(name = "airport", schema = "Airports")
+@Cacheable
+@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class Airport {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
@@ -202,5 +207,21 @@ public class Airport {
         result = 31 * result + (typeA != null ? typeA.hashCode() : 0);
         result = 31 * result + (sourceA != null ? sourceA.hashCode() : 0);
         return result;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Airport{" +
+                "airportdId=" + airportdId +
+                ", airportName='" + airportName + '\'' +
+                ", city='" + city + '\'' +
+                ", country='" + country + '\'' +
+                ", iata='" + iata + '\'' +
+                ", icao='" + icao + '\'' +
+                ", latitude=" + latitude +
+                ", longitude=" + longitude +
+                ", altitude=" + altitude +
+                ", timezone=" + timezone +"}";
     }
 }
