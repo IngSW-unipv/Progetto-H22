@@ -72,7 +72,6 @@ public class ScreensController  extends StackPane {
                             }
                         }, new KeyValue(opacity, 0.0)));
                 fade.play();
-
             } else {
                 setOpacity(0.0);
                 getChildren().add(screens.get(name));       //primo screen, semplicemente carica
@@ -87,6 +86,7 @@ public class ScreensController  extends StackPane {
             return false;
         }
     }
+
     //Rimuovo lo screen con un determinato nome dallo Stack
     public boolean unloadScreen(String name) {
         if (screens.remove(name) == null) {

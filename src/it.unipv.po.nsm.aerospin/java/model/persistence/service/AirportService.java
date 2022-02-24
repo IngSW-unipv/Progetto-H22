@@ -14,9 +14,6 @@ public class AirportService {
         airportDao = new AirportDao();
     }
 
-
-
-
     public List<Airport> findByIcao(String id) {
         airportDao.getConn().openCurrentSession();
         List<Airport> airports = airportDao.findByIcao(id);
@@ -44,8 +41,6 @@ public class AirportService {
         airportDao.getConn().closeCurrentSession();
         return airports;
     }
-
-
 
     public List<Airport> findAll() {
         airportDao.getConn().openCurrentSession();

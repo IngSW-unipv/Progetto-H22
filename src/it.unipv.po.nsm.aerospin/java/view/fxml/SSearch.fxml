@@ -5,33 +5,31 @@
 
 <AnchorPane prefHeight="480.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SSearchController">
     <children>
+        <ComboBox fx:id="cb1" layoutX="69.0" layoutY="90.0" prefWidth="150.0" promptText="Partenza" />
+        <ComboBox fx:id="cb2" layoutX="69.0" layoutY="198.0" prefWidth="150.0" promptText="Destinazione" />
+        <RadioButton fx:id="ar" layoutX="385.0" layoutY="94.0" mnemonicParsing="false" text="Andata e Ritorno" />
+        <RadioButton fx:id="oneway" layoutX="531.0" layoutY="94.0" mnemonicParsing="false" text="Solo Andata" />
+        <DatePicker fx:id="date1" layoutX="377.0" layoutY="155.0" promptText="Scegli la data" />
+        <DatePicker fx:id="date2" layoutX="574.0" layoutY="155.0" promptText="Scegli la data" />
+        <SplitMenuButton layoutX="466.0" layoutY="228.0" mnemonicParsing="false" text="SplitMenuButton">
+            <items>
+                <MenuItem mnemonicParsing="false" text="Action 1" />
+                <MenuItem mnemonicParsing="false" text="Action 2" />
+            </items>
+        </SplitMenuButton>
+        <Button fx:id="cerca" layoutX="302.0" layoutY="337.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="195.0" text="CERCA" />
         <ToolBar layoutY="440.0" prefHeight="40.0" prefWidth="800.0">
             <items>
                 <ToggleButton mnemonicParsing="false" mouseTransparent="true" pickOnBounds="false" selected="true" text="RICERCA" />
                 <Button mnemonicParsing="false" onAction="#goToLogin" text="ACCEDI" />
             </items>
         </ToolBar>
-        <DatePicker layoutX="353.0" layoutY="138.0" />
-        <DatePicker layoutX="574.0" layoutY="138.0" />
-        <RadioButton layoutX="43.0" layoutY="232.0" mnemonicParsing="false" selected="true" text="Andata e Ritorno">
-            <toggleGroup>
-                <ToggleGroup fx:id="AR" />
-            </toggleGroup></RadioButton>
-        <RadioButton layoutX="176.0" layoutY="232.0" mnemonicParsing="false" text="Solo Andata" toggleGroup="$AR" />
         <Button layoutX="740.0" layoutY="4.0" mnemonicParsing="false" onAction="#goToHome" text="HOME" />
-        <Label layoutX="353.0" layoutY="121.0" text="Partenza" />
-        <Label layoutX="574.0" layoutY="121.0" text="Ritorno" />
-        <Button layoutX="302.0" layoutY="337.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="195.0" text="CERCA" />
-        <ComboBox layoutX="43.0" layoutY="90.0" prefWidth="150.0" />
-        <ComboBox layoutX="43.0" layoutY="159.0" prefWidth="150.0" />
-        <Label layoutX="43.0" layoutY="73.0" text="Da" />
-        <Label layoutX="44.0" layoutY="142.0" text="A" />
-        <Label layoutX="440.0" layoutY="202.0" text="Passeggeri" />
-        <SplitMenuButton layoutX="440.0" layoutY="220.0" mnemonicParsing="false" text="SplitMenuButton">
-            <items>
-                <MenuItem mnemonicParsing="false" text="Action 1" />
-                <MenuItem mnemonicParsing="false" text="Action 2" />
-            </items>
-        </SplitMenuButton>
+        <Label layoutX="377.0" layoutY="135.0" text="Partenza" />
+        <Label layoutX="574.0" layoutY="135.0" text="Ritorno" />
+        <Label layoutX="70.0" layoutY="73.0" text="Da" />
+        <Label layoutX="74.0" layoutY="181.0" text="A" />
+        <Label layoutX="469.0" layoutY="211.0" text="Passeggeri" />
+      <Separator layoutX="299.0" layoutY="61.0" orientation="VERTICAL" prefHeight="200.0" />
     </children>
 </AnchorPane>
