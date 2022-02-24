@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="480.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SAccountController">
+   <children>
+      <TabPane layoutX="68.0" layoutY="75.0" prefHeight="440.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <tabs>
+          <Tab text="Prenotazioni" />
+          <Tab text="Account" />
+        </tabs>
+      </TabPane>
+      <ToolBar layoutY="440.0" prefHeight="40.0" prefWidth="800.0">
+        <items>
+          <Button mnemonicParsing="false" text="RICERCA" />
+            <Button mnemonicParsing="false" text="ACCEDI" />
+        </items>
+      </ToolBar>
+      <Button layoutX="740.0" layoutY="4.0" mnemonicParsing="false" text="Button" />
+   </children>
+</AnchorPane>

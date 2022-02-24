@@ -9,7 +9,7 @@ import view.ScreensController;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class SLoginController implements Initializable, IControlledScreen {
+public class SAccountController implements Initializable, IControlledScreen {
 
     ScreensController myController;
     @Override
@@ -31,8 +31,8 @@ public class SLoginController implements Initializable, IControlledScreen {
         myController.setScreen(MainApplication.search);
     }
 
-    @FXML
+/*    @FXML
     private void goToAccount(ActionEvent event){
         myController.setScreen(MainApplication.account);
-    }
+    }*/
 }

@@ -8,23 +8,29 @@ import javafx.scene.image.Image;
 
 public class MainApplication extends Application {
 
-    public static String screen1ID = "main";
+    public static String home = "home";
     public static String screen1File = "fxml/SHome.fxml";
-    public static String screen2ID = "screen2";
+    public static String search = "search";
     public static String screen2File = "fxml/SSearch.fxml";
-    public static String screen3ID = "screen3";
+    public static String login = "login";
     public static String screen3File = "fxml/SLogin.fxml";
-
+    public static String account = "accountC";
+    public static String screen4File = "fxml/SAccount.fxml";
+    public static String manage = "management";
+    public static String screen5File = "fxml/SManage.fxml";
 
     @Override
     public void start(Stage stage) {
 
         ScreensController mainContainer = new ScreensController();
-        mainContainer.loadScreen(MainApplication.screen1ID, MainApplication.screen1File);
-        mainContainer.loadScreen(MainApplication.screen2ID, MainApplication.screen2File);
-        mainContainer.loadScreen(MainApplication.screen3ID, MainApplication.screen3File);
+        mainContainer.loadScreen(MainApplication.home, MainApplication.screen1File);
+        mainContainer.loadScreen(MainApplication.search, MainApplication.screen2File);
+        mainContainer.loadScreen(MainApplication.login, MainApplication.screen3File);
+        mainContainer.loadScreen(MainApplication.account, MainApplication.screen4File);
+        mainContainer.loadScreen(MainApplication.manage, MainApplication.screen5File);
 
-        mainContainer.setScreen(MainApplication.screen1ID);
+
+        mainContainer.setScreen(MainApplication.home);
 
         Group root = new Group();
         root.getChildren().addAll(mainContainer);

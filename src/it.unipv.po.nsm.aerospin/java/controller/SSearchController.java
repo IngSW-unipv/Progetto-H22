@@ -23,11 +23,11 @@ public class SSearchController implements Initializable, IControlledScreen {
 
     @FXML
     private void goToHome(ActionEvent event){
-        myController.setScreen(MainApplication.screen1ID);
+        myController.setScreen(MainApplication.home);
     }
 
     @FXML
     private void goToLogin(ActionEvent event){
-        myController.setScreen(MainApplication.screen3ID);
+        myController.setScreen(MainApplication.login);
     }
 }

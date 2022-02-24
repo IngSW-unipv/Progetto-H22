@@ -16,7 +16,7 @@
         <PasswordField layoutX="166.0" layoutY="143.0" />
         <Label layoutX="81.0" layoutY="102.0" text="Indirizzo email" />
         <Label layoutX="81.0" layoutY="147.0" prefHeight="17.0" prefWidth="77.0" text="Password" />
-        <Button layoutX="102.0" layoutY="240.0" mnemonicParsing="false" prefHeight="73.0" prefWidth="181.0" text="ACCEDI" />
+        <Button layoutX="102.0" layoutY="240.0" mnemonicParsing="false" onAction="#goToAccount" prefHeight="73.0" prefWidth="181.0" text="ACCEDI" />
         <Button layoutX="476.0" layoutY="240.0" mnemonicParsing="false" prefHeight="73.0" prefWidth="181.0" text="REGISTRA" />
     </children>
 </AnchorPane>

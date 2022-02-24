@@ -8,7 +8,7 @@
         <ToolBar layoutY="440.0" prefHeight="40.0" prefWidth="800.0">
             <items>
                 <ToggleButton mnemonicParsing="false" mouseTransparent="true" pickOnBounds="false" selected="true" text="RICERCA" />
-                <Button mnemonicParsing="false" onAction="#goToLogin" text="PROFILO" />
+                <Button mnemonicParsing="false" onAction="#goToLogin" text="ACCEDI" />
             </items>
         </ToolBar>
         <DatePicker layoutX="353.0" layoutY="138.0" />
@@ -18,7 +18,7 @@
                 <ToggleGroup fx:id="AR" />
             </toggleGroup></RadioButton>
         <RadioButton layoutX="176.0" layoutY="232.0" mnemonicParsing="false" text="Solo Andata" toggleGroup="$AR" />
-        <Button layoutX="706.0" layoutY="36.0" mnemonicParsing="false" onAction="#goToHome" text="HOME" />
+        <Button layoutX="740.0" layoutY="4.0" mnemonicParsing="false" onAction="#goToHome" text="HOME" />
         <Label layoutX="353.0" layoutY="121.0" text="Partenza" />
         <Label layoutX="574.0" layoutY="121.0" text="Ritorno" />
         <Button layoutX="302.0" layoutY="337.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="195.0" text="CERCA" />

@@ -23,12 +23,12 @@ public class SHomeController implements Initializable, IControlledScreen {
 
     @FXML
     private void goToSearch(ActionEvent event){
-        myController.setScreen(MainApplication.screen2ID);
+        myController.setScreen(MainApplication.search);
     }
 
     @FXML
     private void goToLogin(ActionEvent event){
-        myController.setScreen(MainApplication.screen3ID);
+        myController.setScreen(MainApplication.login);
     }
 
 }
