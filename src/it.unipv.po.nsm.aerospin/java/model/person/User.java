@@ -1,27 +1,25 @@
 package model.person;
 
-public class User {
-    private String email;
-    private String pwd;
+public class User extends AbPerson{
+
 
     public User(String email, String pwd) {
-        this.email = email;
-        this.pwd = pwd;
+        super(email, pwd);
     }
 
-    public String getEmail() {
-        return email;
+    @Override
+    public void Create() {
+
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    @Override
+    public void Edit() {
+
     }
 
-    public String getPwd() {
-        return pwd;
+    @Override
+    public void Delete() {
+
     }
 
-    public void setPwd(String pwd) {
-        this.pwd = pwd;
-    }
 }
