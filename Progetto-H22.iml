@@ -62,6 +62,12 @@
     <orderEntry type="library" name="Maven: net.sf.ehcache:ehcache:2.10.3" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.7" level="project" />
     <orderEntry type="library" name="Maven: org.hibernate:hibernate-ehcache:5.6.1.Final" level="project" />
-    <orderEntry type="library" name="Maven: com.itextpdf:itextpdf:5.5.13.2" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.pdfbox:pdfbox:2.0.25" level="project" />
+    <orderEntry type="library" name="Maven: commons-logging:commons-logging:1.2" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.pdfbox:fontbox:2.0.25" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.pdfbox:preflight:2.0.25" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.pdfbox:xmpbox:2.0.25" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.pdfbox:pdfbox-tools:2.0.25" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.pdfbox:pdfbox-debugger:2.0.25" level="project" />
   </component>
 </module>

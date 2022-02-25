@@ -212,16 +212,15 @@ public class Airport {
 
     @Override
     public String toString() {
-        return "Airport{" +
-                "airportdId=" + airportdId +
-                ", airportName='" + airportName + '\'' +
-                ", city='" + city + '\'' +
-                ", country='" + country + '\'' +
-                ", iata='" + iata + '\'' +
-                ", icao='" + icao + '\'' +
-                ", latitude=" + latitude +
-                ", longitude=" + longitude +
-                ", altitude=" + altitude +
-                ", timezone=" + timezone +"}";
+        return  " |AirportID=" + airportdId +
+                "| Airport Name = " + airportName +
+                "| City = " + city  +
+                "| Country = " + country +
+                "| IATA = " + iata  +
+                "| ICAO = " + icao +
+                "| Latitude = " + latitude +
+                "| Longitude = " + longitude +
+                "| Altitude = " + altitude +
+                "| Timezone = " + timezone + "|" ;
     }
 }

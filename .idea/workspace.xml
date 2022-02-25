@@ -4,12 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1915805d-1a7a-4f83-a54f-9e53500a530f" name="Changes" comment="GUI Screen Structure e Modifica Icona Software">
+    <list default="true" id="1915805d-1a7a-4f83-a54f-9e53500a530f" name="Changes" comment="Aggiunta possibilita di generare file pdf per i biglietti di volo">
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_itextpdf_itextpdf_5_5_13_2.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/controller/SSearchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/controller/SSearchController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/persistence/service/AirportService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/persistence/service/AirportService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/view/ScreensController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/view/ScreensController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/view/fxml/SSearch.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/view/fxml/SSearch.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Progetto-H22.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Progetto-H22.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/PdfTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/persistence/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/persistence/Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/persistence/entity/Airport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/persistence/entity/Airport.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,6 +93,7 @@
       <recent name="C:\Users\dmorano\IdeaProjects\Aerospin\src\it.unipv.po.nsm.aerospin\resources\img" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\hamza\Desktop\Progetto-H22\src\it.unipv.po.nsm.aerospin\resources\GeneratedPDF" />
       <recent name="C:\Users\dmorano\IdeaProjects\Aerospin\src\it.unipv.po.nsm.aerospin\resources" />
       <recent name="C:\Users\dmorano\IdeaProjects\Aerospin\src\it.unipv.po.nsm.aerospin\java\view\fxml" />
       <recent name="C:\Users\dmorano\IdeaProjects\Aerospin\src\it.unipv.po.nsm.aerospin\java\view" />
@@ -103,7 +106,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.MainApplication">
+  <component name="RunManager" selected="Application.PDFTest">
     <configuration name="MainApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="view.MainApplication" />
       <module name="Progetto-H22" />
@@ -124,6 +127,19 @@
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PDFTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="model.persistence.PDFTest" />
+      <module name="Progetto-H22" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="model.persistence.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -156,9 +172,11 @@
       <item itemvalue="Application.MainApplication" />
       <item itemvalue="Application.Test" />
       <item itemvalue="Application.PdfTest" />
+      <item itemvalue="Application.PDFTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.PDFTest" />
         <item itemvalue="Application.MainApplication" />
         <item itemvalue="Application.Test" />
         <item itemvalue="Application.PdfTest" />
