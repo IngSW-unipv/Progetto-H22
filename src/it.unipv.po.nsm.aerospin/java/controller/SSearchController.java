@@ -9,6 +9,8 @@ import javafx.scene.control.*;
 import javafx.scene.control.skin.ComboBoxListViewSkin;
 import javafx.scene.input.KeyCode;
 import javafx.util.Callback;
+import model.persistence.service.AirportService;
+import model.persistence.service.BookService;
 import view.MainApplication;
 import view.ScreensController;
 
@@ -57,15 +59,18 @@ public class SSearchController implements Initializable, IControlledScreen {
             "Zzz"
     );
 
+    AirportService airportService = new AirportService();
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        List<String> strings = new ArrayList<>();
-//        strings = AirportService.findAll();
-        strings.add("Test1");
-        strings.add("Test2");
-        cb1.setItems(options);
-        cb2.setItems(options);
+        List<String> strings = airportService.findByParam("airportName");
+//        cb1.setItems(options);
+//        cb2.setItems(options);
+        cb1.setItems(FXCollections.observableArrayList(strings));
+        cb2.setItems(FXCollections.observableArrayList(strings));
+
+
         //gestire cb1 == cb2!!!!
 
         selectOptionOnKey(cb1, options);
