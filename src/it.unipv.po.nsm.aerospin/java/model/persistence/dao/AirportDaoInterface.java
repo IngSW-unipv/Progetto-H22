@@ -7,10 +7,10 @@ import java.util.List;
 
 public interface AirportDaoInterface {
 
-    public List<Airport> findByName(String name);
-    public List<Airport> findByIcao(String icao);
-    public List<Airport> findByIata(String iata);
-    public List<Airport> findByCity(String city);
-    public List<Airport> findAll();
+     List<Airport> findByName(String name);
+     List<Airport> findByIcao(String icao);
+     List<Airport> findByIata(String iata);
+     List<Airport> findByCity(String city);
+     List<Airport> findAll();
 
 }
