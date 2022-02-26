@@ -65,7 +65,7 @@ public class Ticket {
         contentStream.drawImage(pdImage, 50, 50);
         System.out.println("Image inserted");
         contentStream.close();
-        document.save("src/it.unipv.po.nsm.aerospin/resources/GeneratedPDF/" + name + surname + " pass" + ".pdf");
+        document.save("src/it.unipv.po.nsm.aerospin/resources/GeneratedPDF/" + name +""+ surname + " pass" + ".pdf");
         document.close();
 
     }

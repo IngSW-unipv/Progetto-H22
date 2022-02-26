@@ -5,9 +5,7 @@
 <hibernate-configuration>
     <session-factory>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-        <property name="connection.username">root</property>
-        <property name="connection.password">kbeoqsm7</property>
-        <property name="connection.url">jdbc:mysql://localhost:3306/airports</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306</property>
         <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
         <property name="hibernate.show_sql">true</property>
         <property name="hibernate.cache.use_second_level_cache">true</property>
@@ -17,6 +15,9 @@
         <mapping class="model.persistence.entity.Airport"/>
         <mapping class="model.persistence.entity.Book"/>
         <mapping class="model.persistence.entity.Route"/>
+        <mapping class="model.persistence.entity.Employee"/>
+        <mapping class="model.persistence.entity.Passenger"/>
+        <mapping class="model.persistence.entity.User"/>
         <!-- <property name="connection.username"/> -->
         <!-- <property name="connection.password"/> -->
 
