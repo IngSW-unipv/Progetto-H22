@@ -29,6 +29,16 @@ public class AirportDao implements AirportDaoInterface{
     }
 
 
+    @Override
+    public List<String> findByParam(String param) {
+        String hql = "select " + param + " from Airport" ;
+        Query query = conn.getCurrentSession().createQuery(hql);
+        //query.setParameter(1,param );
+        //query.setCacheable(true);
+        List<String> airports = query.list();
+        return   airports;
+    }
+
 
     @Override
     public List<Airport> findByName(String name) {
@@ -68,7 +78,6 @@ public class AirportDao implements AirportDaoInterface{
         List<Airport> airports = query.list();
         return   airports;
     }
-
 
 
 

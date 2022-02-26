@@ -69,5 +69,6 @@
     <orderEntry type="library" name="Maven: org.apache.pdfbox:xmpbox:2.0.25" level="project" />
     <orderEntry type="library" name="Maven: org.apache.pdfbox:pdfbox-tools:2.0.25" level="project" />
     <orderEntry type="library" name="Maven: org.apache.pdfbox:pdfbox-debugger:2.0.25" level="project" />
+    <orderEntry type="library" name="Maven: com.google.zxing:core:3.3.2" level="project" />
   </component>
 </module>

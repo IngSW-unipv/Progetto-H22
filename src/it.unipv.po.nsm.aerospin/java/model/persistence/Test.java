@@ -21,8 +21,8 @@ public class Test {
 
         AirportService airportService = new AirportService();
 
-        List<Airport> airports = (List<Airport>) airportService.findByCity("Valencia");
-        for (Airport a : airports) {
+        List<String> airports = airportService.findByParam("airportName");
+        for (String a : airports) {
             System.out.println(a);
         }
 

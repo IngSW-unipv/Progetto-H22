@@ -20,6 +20,12 @@ public class AirportService {
         airportDao.getConn().closeCurrentSession();
         return airports;
     }
+    public List<String> findByParam(String id) {
+        airportDao.getConn().openCurrentSession();
+        List<String> airports = airportDao.findByParam(id);
+        airportDao.getConn().closeCurrentSession();
+        return airports;
+    }
 
     public List<Airport> findByIata(String iata) {
         airportDao.getConn().openCurrentSession();
