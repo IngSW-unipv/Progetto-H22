@@ -2,25 +2,12 @@ package model.person;
 
 public class User implements IAccess{
 
+    private String email;
+    private String pwd;
 
     public User(String email, String pwd) {
         this.email = email;
         this.pwd = pwd;
-    }
-
-    @Override
-    public void Create() {
-
-    }
-
-    @Override
-    public void Edit() {
-
-    }
-
-    @Override
-    public void Delete() {
-
     }
 
     @Override

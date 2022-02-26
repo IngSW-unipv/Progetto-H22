@@ -1,6 +1,5 @@
 package model.person.employee;
 
-
 import model.person.IAccess;
 
 import java.util.Date;

@@ -1,8 +1,10 @@
 package model.person.employee;
 
+import model.person.AbPerson;
 import java.util.Date;
 
-public class Employee {
+public class Employee extends AbPerson {
+
     private String ID;
     private Date hiringDate;
     private double salary;

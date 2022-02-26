@@ -1,9 +1,9 @@
 package model.booking.passenger;
 
 
+import model.person.AbPerson;
 
-
-public class Passenger{
+public class Passenger extends AbPerson {
 
     int id;
     ClassType classType;
@@ -35,9 +35,9 @@ public class Passenger{
 
     }
 
-    public Passenger(int id, String nome, String cognome, short eta) {
-        super(nome, cognome);
-        this.eta = eta;
+    public Passenger(int id, String name, String surname, short age) {
+        super(name, surname);
+        this.age = age;
         this.id = id;
         setAgeGroup(age);
     }

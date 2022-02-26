@@ -1,17 +1,11 @@
 package model.person.employee;
 
-public class Maintenance {
-    private String ruolo;
+import java.util.Date;
 
-    public Maintenance(String ruolo) {
-        this.ruolo = ruolo;
+public class Maintenance extends Employee{
+
+    public Maintenance(String ID, String name, String surname, Date hiringDate, double salary) {
+        super(ID, name, surname, hiringDate, salary);
     }
 
-    public String getRuolo() {
-        return ruolo;
-    }
-
-    public void setRuolo(String ruolo) {
-        this.ruolo = ruolo;
-    }
 }
