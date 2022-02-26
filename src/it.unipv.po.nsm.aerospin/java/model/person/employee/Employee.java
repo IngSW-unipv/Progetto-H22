@@ -4,13 +4,14 @@ import java.util.Date;
 
 public class Employee {
     private String ID;
-    private Date dataAssunzione;
-    private double Stipendio;
+    private Date hiringDate;
+    private double salary;
 
-    public Employee(String ID, Date dataAssunzione, double stipendio) {
+    public Employee(String ID, String name, String surname, Date hiringDate, double salary) {
+        super(name, surname);
         this.ID = ID;
-        this.dataAssunzione = dataAssunzione;
-        Stipendio = stipendio;
+        this.hiringDate = hiringDate;
+        this.salary = salary;
     }
 
     public String getID() {
@@ -21,19 +22,19 @@ public class Employee {
         this.ID = ID;
     }
 
-    public Date getDataAssunzione() {
-        return dataAssunzione;
+    public Date getHiringDate() {
+        return hiringDate;
     }
 
-    public void setDataAssunzione(Date dataAssunzione) {
-        this.dataAssunzione = dataAssunzione;
+    public void setHiringDate(Date hiringDate) {
+        this.hiringDate = hiringDate;
     }
 
-    public double getStipendio() {
-        return Stipendio;
+    public double getSalary() {
+        return salary;
     }
 
-    public void setStipendio(double stipendio) {
-        Stipendio = stipendio;
+    public void setSalary(double salary) {
+        this.salary = salary;
     }
 }

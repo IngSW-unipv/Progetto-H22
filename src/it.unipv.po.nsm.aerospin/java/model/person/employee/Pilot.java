@@ -6,6 +6,8 @@ public class Pilot {
     private double oreVolo;
     private Date licExp;
 
+
+
     public Pilot(double oreVolo, Date licExp) {
         this.oreVolo = oreVolo;
         this.licExp = licExp;

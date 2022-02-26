@@ -1,50 +1,27 @@
 package model.person;
 
-public abstract class AbPerson implements IAccess {
-    private String nome;
-    private String cognome;
-    private String email;
-    private String pwd;
+public abstract class AbPerson {
+    private String name;
+    private String surname;
 
-    public AbPerson(String email, String pwd) {
-        this.email = email;
-        this.pwd = pwd;
+    public AbPerson(String name, String surname) {
+        this.name = name;
+        this.surname = surname;
     }
 
-
-    public String getEmail() {
-        return email;
+    public String getName() {
+        return name;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getPwd() {
-        return pwd;
+    public String getSurname() {
+        return surname;
     }
 
-    public void setPwd(String pwd) {
-        this.pwd = pwd;
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getCognome() {
-        return cognome;
-    }
-
-    public void setCognome(String cognome) {
-        this.cognome = cognome;
-    }
-
-    public abstract void Create();
-    public abstract void Edit();
-    public abstract void Delete();
 }

@@ -8,7 +8,7 @@ public class Passenger{
     int id;
     ClassType classType;
     AgeGroup ageGroup;
-    short eta;
+    short age;
 
     public int getId() {
         return id;
@@ -39,6 +39,6 @@ public class Passenger{
         super(nome, cognome);
         this.eta = eta;
         this.id = id;
-        setAgeGroup(eta);
+        setAgeGroup(age);
     }
 }
