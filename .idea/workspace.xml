@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1915805d-1a7a-4f83-a54f-9e53500a530f" name="Changes" comment="Show Airports in Search ComboBox">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/controller/SSearchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/controller/SSearchController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/view/fxml/SSearch.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/view/fxml/SSearch.fxml" afterDir="false" />
+    <list default="true" id="1915805d-1a7a-4f83-a54f-9e53500a530f" name="Changes" comment="Fining Search Screen with Controller">
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <list id="c2811ffa-3085-4fce-837e-74078819ff54" name="Changes by Hamza" comment="Changes by Hamza" />
     <option name="SHOW_DIALOG" value="false" />
@@ -219,7 +217,7 @@
       <workItem from="1645867065915" duration="2604000" />
       <workItem from="1645870292758" duration="618000" />
       <workItem from="1645899486220" duration="1136000" />
-      <workItem from="1645912032163" duration="1569000" />
+      <workItem from="1645912032163" duration="1911000" />
     </task>
     <task id="LOCAL-00001" summary="Prova">
       <created>1645112352115</created>
@@ -284,7 +282,14 @@
       <option name="project" value="LOCAL" />
       <updated>1645899097851</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Fining Search Screen with Controller">
+      <created>1645913907406</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1645913907406</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -319,9 +324,10 @@
     <MESSAGE value="Aggiunta delle query necessarie per airport&#10;Implementazione cache di livello 2" />
     <MESSAGE value="GUI Screen Structure e Modifica Icona Software" />
     <MESSAGE value="Aggiunta possibilita di generare file pdf per i biglietti di volo" />
-    <MESSAGE value="Show Airports in Search ComboBox" />
     <MESSAGE value="Changes by Hamza" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changes by Hamza" />
+    <MESSAGE value="Show Airports in Search ComboBox" />
+    <MESSAGE value="Fining Search Screen with Controller" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fining Search Screen with Controller" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Progetto_H22$MainApplication.ic" NAME="MainApplication Coverage Results" MODIFIED="1645740929671" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
