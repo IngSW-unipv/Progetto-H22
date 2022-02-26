@@ -7,16 +7,13 @@
     <children>
         <ComboBox fx:id="cb1" layoutX="69.0" layoutY="90.0" prefWidth="150.0" promptText="Partenza" />
         <ComboBox fx:id="cb2" layoutX="69.0" layoutY="198.0" prefWidth="150.0" promptText="Destinazione" />
-        <RadioButton fx:id="ar" layoutX="385.0" layoutY="94.0" mnemonicParsing="false" text="Andata e Ritorno" />
-        <RadioButton fx:id="oneway" layoutX="531.0" layoutY="94.0" mnemonicParsing="false" text="Solo Andata" />
+        <RadioButton fx:id="ar" layoutX="385.0" layoutY="94.0" mnemonicParsing="false" selected="true" text="Andata e Ritorno">
+         <toggleGroup>
+            <ToggleGroup fx:id="group" />
+         </toggleGroup></RadioButton>
+        <RadioButton fx:id="oneway" layoutX="531.0" layoutY="94.0" mnemonicParsing="false" text="Solo Andata" toggleGroup="$group" />
         <DatePicker fx:id="date1" layoutX="377.0" layoutY="155.0" promptText="Scegli la data" />
         <DatePicker fx:id="date2" layoutX="574.0" layoutY="155.0" promptText="Scegli la data" />
-        <SplitMenuButton layoutX="466.0" layoutY="228.0" mnemonicParsing="false" text="SplitMenuButton">
-            <items>
-                <MenuItem mnemonicParsing="false" text="Action 1" />
-                <MenuItem mnemonicParsing="false" text="Action 2" />
-            </items>
-        </SplitMenuButton>
         <Button fx:id="cerca" layoutX="302.0" layoutY="337.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="195.0" text="CERCA" />
         <ToolBar layoutY="440.0" prefHeight="40.0" prefWidth="800.0">
             <items>
@@ -29,7 +26,7 @@
         <Label layoutX="574.0" layoutY="135.0" text="Ritorno" />
         <Label layoutX="70.0" layoutY="73.0" text="Da" />
         <Label layoutX="74.0" layoutY="181.0" text="A" />
-        <Label layoutX="469.0" layoutY="211.0" text="Passeggeri" />
       <Separator layoutX="299.0" layoutY="61.0" orientation="VERTICAL" prefHeight="200.0" />
+      <Label layoutX="305.0" layoutY="320.0" prefHeight="17.0" prefWidth="195.0" />
     </children>
 </AnchorPane>
