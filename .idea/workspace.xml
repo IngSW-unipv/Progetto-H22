@@ -4,27 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1915805d-1a7a-4f83-a54f-9e53500a530f" name="Changes" comment="Aggiunta possibilita di generare file pdf per i biglietti di volo">
+    <list default="true" id="1915805d-1a7a-4f83-a54f-9e53500a530f" name="Changes" comment="errore commmit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/controller/SSearchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/controller/SSearchController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/booking/passenger/Passenger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/booking/passenger/Passenger.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/person/AbPerson.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/person/AbPerson.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/person/PersonMain.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/person/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/person/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/person/employee/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/person/employee/Admin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/person/employee/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/person/employee/Employee.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/person/employee/Pilot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/person/employee/Pilot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/persistence/dao/AirportDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/persistence/dao/AirportDao.java" afterDir="false" />
     </list>
-    <list id="0eba508c-14d1-47d4-9dd6-059b1afd5c5a" name="Changes by dmorano" comment="">
-      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/booking/passenger/Passenger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/booking/passenger/Passenger.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/person/IAccess.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/person/IAccess.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/person/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/person/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/person/employee/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/person/employee/Admin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/person/employee/CabinCrew.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/person/employee/CabinCrew.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/person/employee/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/person/employee/Employee.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/person/employee/Maintenance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/person/employee/Maintenance.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/person/employee/Pilot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/person/employee/Pilot.java" afterDir="false" />
+    <list id="c2811ffa-3085-4fce-837e-74078819ff54" name="Changes by Hamza" comment="">
+      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/persistence/dao/AirportDaoInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/persistence/dao/AirportDaoInterface.java" afterDir="false" />
     </list>
-    <list id="0d308870-dfe9-41f2-9478-50dc47a40ab5" name="Changes by matteo" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -86,60 +74,6 @@
       </map>
     </option>
   </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/person/employee/Pilot.java">
-      <ranges>
-        <range start1="4" end1="5" start2="4" end2="13" changelist="0eba508c-14d1-47d4-9dd6-059b1afd5c5a" />
-        <range start1="7" end1="7" start2="15" end2="17" changelist="1915805d-1a7a-4f83-a54f-9e53500a530f" />
-        <range start1="8" end1="12" start2="18" end2="22" changelist="0eba508c-14d1-47d4-9dd6-059b1afd5c5a" />
-        <range start1="28" end1="28" start2="38" end2="39" changelist="0eba508c-14d1-47d4-9dd6-059b1afd5c5a" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/person/employee/Admin.java">
-      <ranges>
-        <range start1="1" end1="2" start2="1" end2="1" changelist="0eba508c-14d1-47d4-9dd6-059b1afd5c5a" />
-        <range start1="3" end1="4" start2="2" end2="3" changelist="1915805d-1a7a-4f83-a54f-9e53500a530f" />
-        <range start1="5" end1="6" start2="4" end2="5" changelist="1915805d-1a7a-4f83-a54f-9e53500a530f" />
-        <range start1="7" end1="7" start2="6" end2="7" changelist="1915805d-1a7a-4f83-a54f-9e53500a530f" />
-        <range start1="8" end1="10" start2="8" end2="15" changelist="1915805d-1a7a-4f83-a54f-9e53500a530f" />
-        <range start1="13" end1="15" start2="18" end2="20" changelist="1915805d-1a7a-4f83-a54f-9e53500a530f" />
-        <range start1="18" end1="20" start2="23" end2="25" changelist="1915805d-1a7a-4f83-a54f-9e53500a530f" />
-        <range start1="23" end1="25" start2="28" end2="30" changelist="1915805d-1a7a-4f83-a54f-9e53500a530f" />
-        <range start1="27" end1="27" start2="32" end2="36" changelist="1915805d-1a7a-4f83-a54f-9e53500a530f" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/person/User.java">
-      <ranges>
-        <range start1="2" end1="3" start2="2" end2="3" changelist="1915805d-1a7a-4f83-a54f-9e53500a530f" />
-        <range start1="4" end1="4" start2="4" end2="6" changelist="0eba508c-14d1-47d4-9dd6-059b1afd5c5a" />
-        <range start1="6" end1="7" start2="8" end2="10" changelist="1915805d-1a7a-4f83-a54f-9e53500a530f" />
-        <range start1="8" end1="23" start2="11" end2="11" changelist="0eba508c-14d1-47d4-9dd6-059b1afd5c5a" />
-        <range start1="24" end1="24" start2="12" end2="31" changelist="1915805d-1a7a-4f83-a54f-9e53500a530f" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/booking/passenger/Passenger.java">
-      <ranges>
-        <range start1="3" end1="3" start2="3" end2="4" changelist="0eba508c-14d1-47d4-9dd6-059b1afd5c5a" />
-        <range start1="4" end1="6" start2="5" end2="6" changelist="0eba508c-14d1-47d4-9dd6-059b1afd5c5a" />
-        <range start1="10" end1="11" start2="10" end2="11" changelist="1915805d-1a7a-4f83-a54f-9e53500a530f" />
-        <range start1="37" end1="40" start2="37" end2="40" changelist="0eba508c-14d1-47d4-9dd6-059b1afd5c5a" />
-        <range start1="41" end1="42" start2="41" end2="42" changelist="1915805d-1a7a-4f83-a54f-9e53500a530f" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/person/employee/Employee.java">
-      <ranges>
-        <range start1="2" end1="2" start2="2" end2="3" changelist="0eba508c-14d1-47d4-9dd6-059b1afd5c5a" />
-        <range start1="4" end1="5" start2="5" end2="7" changelist="0eba508c-14d1-47d4-9dd6-059b1afd5c5a" />
-        <range start1="6" end1="8" start2="8" end2="10" changelist="1915805d-1a7a-4f83-a54f-9e53500a530f" />
-        <range start1="9" end1="10" start2="11" end2="13" changelist="1915805d-1a7a-4f83-a54f-9e53500a530f" />
-        <range start1="11" end1="13" start2="14" end2="16" changelist="1915805d-1a7a-4f83-a54f-9e53500a530f" />
-        <range start1="23" end1="25" start2="26" end2="28" changelist="1915805d-1a7a-4f83-a54f-9e53500a530f" />
-        <range start1="27" end1="29" start2="30" end2="32" changelist="1915805d-1a7a-4f83-a54f-9e53500a530f" />
-        <range start1="31" end1="33" start2="34" end2="36" changelist="1915805d-1a7a-4f83-a54f-9e53500a530f" />
-        <range start1="35" end1="37" start2="38" end2="40" changelist="1915805d-1a7a-4f83-a54f-9e53500a530f" />
-      </ranges>
-    </file>
-  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -157,6 +91,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="codeWithMe.voiceChat.enabledByDefault" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/resources/img" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -184,7 +119,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.PDFTest">
+  <component name="RunManager" selected="Application.MainApplication">
     <configuration name="MainApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="view.MainApplication" />
       <module name="Progetto-H22" />
@@ -254,8 +189,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.PDFTest" />
         <item itemvalue="Application.MainApplication" />
+        <item itemvalue="Application.PDFTest" />
         <item itemvalue="Application.Test" />
         <item itemvalue="Application.PdfTest" />
         <item itemvalue="Application.MainView" />

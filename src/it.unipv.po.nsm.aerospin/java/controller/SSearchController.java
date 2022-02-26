@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.util.Callback;
+import model.persistence.service.AirportService;
 import view.MainApplication;
 import view.ScreensController;
 
@@ -45,6 +46,7 @@ public class SSearchController implements Initializable, IControlledScreen {
     public void initialize(URL url, ResourceBundle rb) {
 
         List<String> strings = new ArrayList<>();
+//        strings = AirportService.findAll();
         strings.add("Test1");
         strings.add("Test2");
         cb1.setItems((FXCollections.observableArrayList(strings)));

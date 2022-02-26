@@ -1,6 +1,5 @@
 package model.booking.passenger;
 
-
 import model.person.AbPerson;
 
 public class Passenger extends AbPerson {

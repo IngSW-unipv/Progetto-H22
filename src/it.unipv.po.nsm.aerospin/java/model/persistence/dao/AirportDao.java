@@ -28,6 +28,8 @@ public class AirportDao implements AirportDaoInterface{
         return airports;
     }
 
+
+
     @Override
     public List<Airport> findByName(String name) {
         String hql = "from Airport a where a.airportName like :name ";
@@ -66,6 +68,8 @@ public class AirportDao implements AirportDaoInterface{
         List<Airport> airports = query.list();
         return   airports;
     }
+
+
 
 
 }
