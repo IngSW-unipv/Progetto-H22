@@ -5,15 +5,16 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
-import javafx.util.Callback;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.RadioButton;
 import model.persistence.service.AirportService;
 import util.ControllerMethods;
-import view.*;
+import view.MainApplication;
+import view.ScreensController;
 
 import java.net.URL;
-import java.time.LocalDate;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class SSearchController implements Initializable, IControlledScreen {

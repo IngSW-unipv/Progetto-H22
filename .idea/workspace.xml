@@ -4,14 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1915805d-1a7a-4f83-a54f-9e53500a530f" name="Changes" comment="Add Email generator and associated modules">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/javax_mail_1_4_7.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Progetto-H22.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Progetto-H22.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+    <list default="true" id="1915805d-1a7a-4f83-a54f-9e53500a530f" name="Changes" comment="Email Generator working, add methods:&#10;Create package util with useful methods for Controller">
       <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/controller/SSearchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/controller/SSearchController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/booking/SendAttachmentInEmail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/booking/TicketMail.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/booking/TestTicket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/booking/TestTicket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/Aerospin.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/util/ControllerMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/util/ControllerMethods.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -233,7 +229,7 @@
       <workItem from="1645912032163" duration="1911000" />
       <workItem from="1645918826899" duration="162000" />
       <workItem from="1645948752279" duration="1015000" />
-      <workItem from="1645949878006" duration="4515000" />
+      <workItem from="1645949878006" duration="5548000" />
     </task>
     <task id="LOCAL-00001" summary="Prova">
       <created>1645112352115</created>
@@ -312,7 +308,14 @@
       <option name="project" value="LOCAL" />
       <updated>1645915406727</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Email Generator working, add methods:&#10;Create package util with useful methods for Controller">
+      <created>1645954500682</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1645954500682</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -351,7 +354,8 @@
     <MESSAGE value="Show Airports in Search ComboBox" />
     <MESSAGE value="Fining Search Screen with Controller" />
     <MESSAGE value="Generazione dei biglietti di volo completata.&#10;Aggiunta del codice QR al biglietto." />
-    <option name="LAST_COMMIT_MESSAGE" value="Generazione dei biglietti di volo completata.&#10;Aggiunta del codice QR al biglietto." />
+    <MESSAGE value="Email Generator working, add methods:&#10;Create package util with useful methods for Controller" />
+    <option name="LAST_COMMIT_MESSAGE" value="Email Generator working, add methods:&#10;Create package util with useful methods for Controller" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Progetto_H22$MainApplication.ic" NAME="MainApplication Coverage Results" MODIFIED="1645740929671" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

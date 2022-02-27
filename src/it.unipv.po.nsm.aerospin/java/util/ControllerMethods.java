@@ -10,7 +10,7 @@ import java.util.List;
 
 public class ControllerMethods {
 
-    private static final int maxMonth = 4;
+//    metodo goToScreen!!!
 
     /*  Quando premo una lettera mentre uso un ComboBox
      *  questo metodo seleziona e sposta il cursore sul primo item
@@ -40,6 +40,9 @@ public class ControllerMethods {
             }
         });
     }
+
+
+    private static final int maxMonth = 4;
 
     // Mantengo le date selezionabili tra Oggi e prossimi 4 Mesi
     public Callback<DatePicker, DateCell> dateRange() {
