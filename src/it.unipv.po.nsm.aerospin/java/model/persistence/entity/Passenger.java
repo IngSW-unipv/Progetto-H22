@@ -6,7 +6,7 @@ import javax.persistence.*;
 public class Passenger {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "id")
+    @Column(name = "id")//tnumber
     private int id;
     @Basic
     @Column(name = "name")
@@ -16,12 +16,12 @@ public class Passenger {
     private String surname;
     @Basic
     @Column(name = "age")
-    private short age;
+    private short age;//datadinascitaaa
     @Basic
     @Column(name = "classType")
     private String classType;
     @Basic
-    @Column(name = "flightNumber")
+    @Column(name = "flightNumber")//cambia in ID
     private String flightNumber;
 
     public int getId() {

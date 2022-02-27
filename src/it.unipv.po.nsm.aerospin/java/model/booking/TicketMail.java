@@ -8,7 +8,7 @@ package model.booking;
 public class TicketMail {
 
     private static final String from = "h22aerospin@gmail.com";     // Sender's email ID
-    private static final String username = "h22aerospin@gmail.com";
+    private static final String username = from;
     private static final String password = "kbeoqsm7";
     private static final String host = "smtp.gmail.com";            // We are sending through smtp.gmail.com
     private static final String subject = "Il tuo Biglietto";
