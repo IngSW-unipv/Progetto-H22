@@ -4,24 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1915805d-1a7a-4f83-a54f-9e53500a530f" name="Changes" comment="Small Fixes">
+    <list default="true" id="1915805d-1a7a-4f83-a54f-9e53500a530f" name="Changes" comment="Aggiunte altre entità">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/controller/SAccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/controller/AccountController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/controller/SHomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/controller/HomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/controller/SLoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/controller/SManageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/controller/ManageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/controller/SSearchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/controller/SearchController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/view/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/view/MainApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/view/fxml/SAccount.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/view/fxml/Account.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/view/fxml/SCrew.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/view/fxml/Crew.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/view/fxml/SFlight.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/view/fxml/Flight.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/view/fxml/SHome.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/view/fxml/Home.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/view/fxml/SLogin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/view/fxml/Login.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/view/fxml/SManage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/view/fxml/Manage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/view/fxml/SPlane.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/view/fxml/Plane.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/view/fxml/SRoute.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/view/fxml/Route.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/view/fxml/SSearch.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/view/fxml/Search.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/booking/TestTicket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/booking/TestTicket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/booking/Ticket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/booking/Ticket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/booking/TicketMail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/booking/TicketMail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/resources/GeneratedPDF/Boarding Pass Hamza.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/resources/GeneratedQr/qr.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/resources/GeneratedQr/qr.png" afterDir="false" />
     </list>
+    <list id="c2811ffa-3085-4fce-837e-74078819ff54" name="Changes by Hamza" comment="Changes by Hamza" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -129,7 +120,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.MainApplication">
+  <component name="RunManager" selected="Application.TestTicket">
     <configuration name="MainApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="view.MainApplication" />
       <module name="Progetto-H22" />
@@ -205,8 +196,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.MainApplication" />
         <item itemvalue="Application.TestTicket" />
+        <item itemvalue="Application.MainApplication" />
         <item itemvalue="Application.TicketMail" />
         <item itemvalue="Application.PDFTest" />
         <item itemvalue="Application.Test" />

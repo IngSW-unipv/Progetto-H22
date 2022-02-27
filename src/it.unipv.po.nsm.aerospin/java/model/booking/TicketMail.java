@@ -14,7 +14,7 @@ public class TicketMail {
     private static final String subject = "Il tuo Biglietto";
     private static final String text = "Grazie per l'acquisto effettuato! In allegato puoi trovare il tuo Biglietto da stampare";
 
-    public void send(String to) {
+    public void send(String to, String filePath) {
 
         Properties props = new Properties();
 
@@ -60,8 +60,8 @@ public class TicketMail {
 
             // Part two is attachment
             messageBodyPart = new MimeBodyPart();
-            String filePath = "src/it.unipv.po.nsm.aerospin/resources/GeneratedPDF/BoardingPassTemplate.pdf";
-            String fileName = "BoardingPassTemplate.pdf";
+
+            String fileName = "Boarding Pass.pdf";
             DataSource source = new FileDataSource(filePath);
             messageBodyPart.setDataHandler(new DataHandler(source));
             messageBodyPart.setFileName(fileName);

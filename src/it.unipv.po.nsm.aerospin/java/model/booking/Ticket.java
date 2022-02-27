@@ -19,6 +19,7 @@ public class Ticket {
     private String flightNumber;
     private String date;
     private String time;
+    private String path = "src/it.unipv.po.nsm.aerospin/resources/GeneratedPDF/Boarding Pass.pdf";
 
     public Ticket(String name, String surname, String departure, String arrival, String flightNumber, String date, String time) {
         this.name = name;
@@ -32,6 +33,7 @@ public class Ticket {
 
     public void generateTicket() throws IOException, WriterException {
         File file = new File("src/it.unipv.po.nsm.aerospin/resources/GeneratedPDF/BoardingPassTemplate.pdf");
+
         PDDocument document =  PDDocument.load(file);
         PDPage page = document.getPage(0);
         PDFont font = PDType0Font.load(document, new File("src/it.unipv.po.nsm.aerospin/resources/fonts/Roboto-Thin.ttf"));
@@ -65,9 +67,14 @@ public class Ticket {
         contentStream.drawImage(pdImage, 50, 50);
         System.out.println("Image inserted");
         contentStream.close();
-        document.save("src/it.unipv.po.nsm.aerospin/resources/GeneratedPDF/" + name +""+ surname + " pass" + ".pdf");
+        document.save(path);
         document.close();
 
+    }
+
+
+    public String getPath(){
+        return path;
     }
 
 
