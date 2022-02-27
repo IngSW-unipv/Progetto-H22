@@ -4,11 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1915805d-1a7a-4f83-a54f-9e53500a530f" name="Changes" comment="Generazione dei biglietti di volo completata.&#10;Aggiunta del codice QR al biglietto.">
+    <list default="true" id="1915805d-1a7a-4f83-a54f-9e53500a530f" name="Changes" comment="Add Email generator and associated modules">
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/javax_mail_1_4_7.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/booking/Ticket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/booking/Ticket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Progetto-H22.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Progetto-H22.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/controller/SSearchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/controller/SSearchController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/booking/SendAttachmentInEmail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/booking/TicketMail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/booking/TestTicket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/booking/TestTicket.java" afterDir="false" />
     </list>
-    <list id="c2811ffa-3085-4fce-837e-74078819ff54" name="Changes by Hamza" comment="Changes by Hamza" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -87,11 +91,12 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/resources/img" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/javax.mail-1.4.7.jar" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.1541638" />
     <property name="project.structure.side.proportion" value="0.41856676" />
@@ -115,7 +120,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.TestTicket">
+  <component name="RunManager" selected="Application.MainApplication">
     <configuration name="MainApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="view.MainApplication" />
       <module name="Progetto-H22" />
@@ -139,13 +144,6 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PdfTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="PdfTest" />
-      <module name="Progetto-H22" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -176,20 +174,33 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TicketMail" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="model.booking.TicketMail" />
+      <module name="Progetto-H22" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="model.booking.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Application.MainApplication" />
       <item itemvalue="Application.Test" />
-      <item itemvalue="Application.PdfTest" />
       <item itemvalue="Application.PDFTest" />
       <item itemvalue="Application.TestTicket" />
+      <item itemvalue="Application.TicketMail" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.TestTicket" />
         <item itemvalue="Application.MainApplication" />
+        <item itemvalue="Application.TestTicket" />
+        <item itemvalue="Application.TicketMail" />
         <item itemvalue="Application.PDFTest" />
         <item itemvalue="Application.Test" />
-        <item itemvalue="Application.PdfTest" />
       </list>
     </recent_temporary>
   </component>
@@ -220,6 +231,9 @@
       <workItem from="1645870292758" duration="618000" />
       <workItem from="1645899486220" duration="1136000" />
       <workItem from="1645912032163" duration="1911000" />
+      <workItem from="1645918826899" duration="162000" />
+      <workItem from="1645948752279" duration="1015000" />
+      <workItem from="1645949878006" duration="4515000" />
     </task>
     <task id="LOCAL-00001" summary="Prova">
       <created>1645112352115</created>
