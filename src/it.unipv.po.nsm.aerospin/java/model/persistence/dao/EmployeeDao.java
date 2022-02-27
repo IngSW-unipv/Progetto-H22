@@ -1,4 +1,70 @@
 package model.persistence.dao;
 
-public class EmployeeDao {
+import model.persistence.Connection;
+import model.persistence.entity.Aircraft;
+import model.persistence.entity.Employee;
+import org.hibernate.query.Query;
+
+import java.util.List;
+
+public class EmployeeDao implements EmployeeDaoInterface {
+
+    private Connection conn;
+
+    public EmployeeDao() {
+        this.conn = new Connection();
+    }
+    public Connection getConn() {
+        return conn;
+    }
+
+    public void setConn(Connection conn){
+        this.conn = conn;
+    }
+
+    @Override
+    public List<Employee> findAll() {
+        List<Employee> employees = (List<Employee>) conn.getCurrentSession().createQuery("from Employee ").list();
+        return  employees;
+    }
+
+    @Override
+    public List<Employee> findById(int id) {
+        String hql = "from Employee a where a.id = :id";
+        Query query = conn.getCurrentSession().createQuery(hql);
+        query.setParameter("id",id);
+        //query.setCacheable(true);
+        List<Employee> employees = query.list();
+        return   employees;
+    }
+
+    @Override
+    public List<Employee> findByName(String name) {
+        String hql = "from Employee a where a.name like :name ";
+        Query query = conn.getCurrentSession().createQuery(hql);
+        query.setParameter("name","%" + name + "%");
+        //query.setCacheable(true);
+        List<Employee> employees = query.list();
+        return employees;
+    }
+
+    @Override
+    public List<Employee> findBySurname(String surname) {
+        String hql = "from Employee a where a.name like :surname ";
+        Query query = conn.getCurrentSession().createQuery(hql);
+        query.setParameter("surname","%" + surname + "%");
+        //query.setCacheable(true);
+        List<Employee> employees = query.list();
+        return employees;
+    }
+
+    @Override
+    public List<Employee> findByRole(String role) {
+        String hql = "from Employee a where a.role = :role";
+        Query query = conn.getCurrentSession().createQuery(hql);
+        query.setParameter("role",role);
+        //query.setCacheable(true);
+        List<Employee> employees = query.list();
+        return employees;
+    }
 }

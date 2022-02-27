@@ -1,4 +1,5 @@
 package model.persistence.dao;
 
-public class UserDao {
+public class UserDao implements UserDaoInterface{
+
 }
