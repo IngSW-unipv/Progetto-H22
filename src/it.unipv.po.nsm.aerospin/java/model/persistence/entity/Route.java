@@ -21,9 +21,6 @@ public class Route {
     @Column(name = "price")
     private Double price;
     @Basic
-    @Column(name = "aircraft")
-    private String aircraft;
-    @Basic
     @Column(name = "costIndex")
     private Integer costIndex;
 
@@ -67,14 +64,6 @@ public class Route {
         this.price = price;
     }
 
-    public String getAircraft() {
-        return aircraft;
-    }
-
-    public void setAircraft(String aircraft) {
-        this.aircraft = aircraft;
-    }
-
     public Integer getCostIndex() {
         return costIndex;
     }
@@ -95,7 +84,6 @@ public class Route {
         if (arrival != null ? !arrival.equals(route.arrival) : route.arrival != null) return false;
         if (waypoints != null ? !waypoints.equals(route.waypoints) : route.waypoints != null) return false;
         if (price != null ? !price.equals(route.price) : route.price != null) return false;
-        if (aircraft != null ? !aircraft.equals(route.aircraft) : route.aircraft != null) return false;
         if (costIndex != null ? !costIndex.equals(route.costIndex) : route.costIndex != null) return false;
 
         return true;
@@ -108,7 +96,6 @@ public class Route {
         result = 31 * result + (arrival != null ? arrival.hashCode() : 0);
         result = 31 * result + (waypoints != null ? waypoints.hashCode() : 0);
         result = 31 * result + (price != null ? price.hashCode() : 0);
-        result = 31 * result + (aircraft != null ? aircraft.hashCode() : 0);
         result = 31 * result + (costIndex != null ? costIndex.hashCode() : 0);
         return result;
     }
@@ -120,8 +107,7 @@ public class Route {
                 ", departure='" + departure + '\'' +
                 ", arrival='" + arrival + '\'' +
                 ", waypoints='" + waypoints + '\'' +
-                ", price=" + price +
-                ", aircraft='" + aircraft + '\'' +
+                ", price=" + price + '\'' +
                 ", costIndex=" + costIndex +
                 '}';
     }

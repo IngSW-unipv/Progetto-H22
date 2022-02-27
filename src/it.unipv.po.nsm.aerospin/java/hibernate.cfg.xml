@@ -18,6 +18,9 @@
         <mapping class="model.persistence.entity.Employee"/>
         <mapping class="model.persistence.entity.Passenger"/>
         <mapping class="model.persistence.entity.User"/>
+        <mapping class="model.persistence.entity.Aircraft"/>
+        <mapping class="model.persistence.entity.Crew"/>
+        <mapping class="model.persistence.entity.Flight"/>
         <!-- <property name="connection.username"/> -->
         <!-- <property name="connection.password"/> -->
 
