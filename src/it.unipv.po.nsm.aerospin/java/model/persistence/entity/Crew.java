@@ -6,7 +6,7 @@ import javax.persistence.*;
 public class Crew {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "id")
+    @Column(name = "id")//employeeID flightID role
     private int id;
     @Basic
     @Column(name = "captain")

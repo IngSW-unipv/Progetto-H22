@@ -21,7 +21,7 @@ public class Passenger {
     @Column(name = "classType")
     private String classType;
     @Basic
-    @Column(name = "flightNumber")//cambia in ID
+    @Column(name = "flightNumber")//cambia in flightID
     private String flightNumber;
 
     public int getId() {
