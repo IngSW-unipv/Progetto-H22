@@ -3,14 +3,14 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="480.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SHomeController">
+<AnchorPane prefHeight="480.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeController">
     <children>
         <BorderPane prefHeight="480.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <bottom>
                 <ToolBar prefHeight="40.0" prefWidth="800.0" BorderPane.alignment="CENTER">
                     <items>
                         <Button mnemonicParsing="false" onAction="#goToSearch" text="RICERCA" />
-                        <Button mnemonicParsing="false" onAction="#goToLogin" text="ACCEDI" />
+                        <Button mnemonicParsing="false" onAction="#goToLogin" text="PROFILO" />
                     </items>
                 </ToolBar>
             </bottom>

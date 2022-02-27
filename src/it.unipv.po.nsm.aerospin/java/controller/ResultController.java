@@ -9,7 +9,7 @@ import view.ScreensController;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class SLoginController implements Initializable, IControlledScreen {
+public class ResultController implements Initializable, IControlledScreen {
 
     ScreensController myController;
     @Override
@@ -22,17 +22,13 @@ public class SLoginController implements Initializable, IControlledScreen {
     }
 
     @FXML
-    private void goToHome(ActionEvent event){
-        myController.setScreen(MainApplication.home);
-    }
-
-    @FXML
     private void goToSearch(ActionEvent event){
         myController.setScreen(MainApplication.search);
     }
 
     @FXML
-    private void goToAccount(ActionEvent event){
-        myController.setScreen(MainApplication.account);
+    private void goToLogin(ActionEvent event){
+        myController.setScreen(MainApplication.login);
     }
+
 }

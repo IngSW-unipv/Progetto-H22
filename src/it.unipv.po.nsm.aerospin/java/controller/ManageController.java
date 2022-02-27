@@ -9,7 +9,7 @@ import view.ScreensController;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class SManageController implements Initializable, IControlledScreen {
+public class ManageController implements Initializable, IControlledScreen {
 
     ScreensController myController;
     @Override

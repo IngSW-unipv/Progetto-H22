@@ -9,15 +9,15 @@ import javafx.scene.image.Image;
 public class MainApplication extends Application {
 
     public static String home = "home";
-    public static String screen1File = "fxml/SHome.fxml";
+    public static String screen1File = "fxml/Home.fxml";
     public static String search = "search";
-    public static String screen2File = "fxml/SSearch.fxml";
+    public static String screen2File = "fxml/Search.fxml";
     public static String login = "login";
-    public static String screen3File = "fxml/SLogin.fxml";
+    public static String screen3File = "fxml/Login.fxml";
     public static String account = "accountC";
-    public static String screen4File = "fxml/SAccount.fxml";
+    public static String screen4File = "fxml/Account.fxml";
     public static String manage = "management";
-    public static String screen5File = "fxml/SManage.fxml";
+    public static String screen5File = "fxml/Manage.fxml";
 
     @Override
     public void start(Stage stage) {

@@ -17,7 +17,7 @@ import view.ScreensController;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class SSearchController implements Initializable, IControlledScreen {
+public class SearchController implements Initializable, IControlledScreen {
 
     @FXML
     private ComboBox<String> cb1;

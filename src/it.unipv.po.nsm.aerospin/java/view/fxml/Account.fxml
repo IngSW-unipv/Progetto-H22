@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="480.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SAccountController">
+<AnchorPane prefHeight="480.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AccountController">
    <children>
       <TabPane layoutX="68.0" layoutY="75.0" prefHeight="440.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <tabs>
@@ -14,9 +14,9 @@
       <ToolBar layoutY="440.0" prefHeight="40.0" prefWidth="800.0">
         <items>
           <Button mnemonicParsing="false" text="RICERCA" />
-            <Button mnemonicParsing="false" text="ACCEDI" />
+            <ToggleButton mnemonicParsing="false" mouseTransparent="true" pickOnBounds="false" selected="true" text="PROFILO" />
         </items>
       </ToolBar>
-      <Button layoutX="740.0" layoutY="4.0" mnemonicParsing="false" text="Button" />
+      <Button layoutX="735.0" layoutY="4.0" mnemonicParsing="false" text="HOME" />
    </children>
 </AnchorPane>

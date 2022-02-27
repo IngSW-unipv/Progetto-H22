@@ -3,13 +3,13 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="480.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SLoginController">
+<AnchorPane prefHeight="480.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
     <children>
-        <Button layoutX="699.0" layoutY="43.0" mnemonicParsing="false" onAction="#goToHome" text="HOME" />
+        <Button layoutX="735.0" layoutY="4.0" mnemonicParsing="false" onAction="#goToHome" text="HOME" />
         <ToolBar layoutY="440.0" prefHeight="40.0" prefWidth="800.0">
             <items>
                 <Button mnemonicParsing="false" onAction="#goToSearch" text="RICERCA" />
-                <ToggleButton mnemonicParsing="false" mouseTransparent="true" pickOnBounds="false" selected="true" text="ACCEDI" />
+                <ToggleButton mnemonicParsing="false" mouseTransparent="true" pickOnBounds="false" selected="true" text="PROFILO" />
             </items>
         </ToolBar>
         <TextField cacheShape="false" layoutX="166.0" layoutY="98.0" />
