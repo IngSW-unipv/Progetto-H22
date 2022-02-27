@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="480.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SCrewController">
+   <children>
+      <ListView layoutX="101.0" layoutY="106.0" prefHeight="281.0" prefWidth="249.0" />
+      <Button layoutX="374.0" layoutY="54.0" mnemonicParsing="false" text="ADD" />
+      <Button layoutX="568.0" layoutY="54.0" mnemonicParsing="false" text="REMOVE" />
+   </children>
+</AnchorPane>

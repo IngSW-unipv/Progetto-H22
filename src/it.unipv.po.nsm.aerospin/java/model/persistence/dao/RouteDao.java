@@ -2,7 +2,6 @@ package model.persistence.dao;
 
 import model.persistence.Connection;
 
-import model.persistence.entity.Book;
 import model.persistence.entity.Route;
 
 import java.util.List;

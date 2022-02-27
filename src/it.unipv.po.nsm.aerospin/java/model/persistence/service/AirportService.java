@@ -1,9 +1,7 @@
 package model.persistence.service;
 
 import model.persistence.dao.AirportDao;
-import model.persistence.dao.BookDao;
 import model.persistence.entity.Airport;
-import model.persistence.entity.Book;
 
 import java.util.List;
 
