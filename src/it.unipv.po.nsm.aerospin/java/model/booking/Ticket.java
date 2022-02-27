@@ -60,7 +60,7 @@ public class Ticket {
         contentStream.endText();
 
 
-        GenerateQRCode qr = new GenerateQRCode(flightNumber + name + surname);
+        GenerateQRCode qr = new GenerateQRCode(flightNumber+ "" + name + "" + surname);
         qr.generate();
 
         PDImageXObject pdImage = PDImageXObject.createFromFile("src/it.unipv.po.nsm.aerospin/resources/GeneratedQr/qr.png", document);
