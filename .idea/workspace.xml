@@ -4,12 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1915805d-1a7a-4f83-a54f-9e53500a530f" name="Changes" comment="Notes for Database">
+    <list default="true" id="1915805d-1a7a-4f83-a54f-9e53500a530f" name="Changes" comment="Add JFoenix">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Progetto-H22.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Progetto-H22.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/controller/AccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/controller/AccountController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/view/fxml/Account.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/view/fxml/Account.fxml" afterDir="false" />
     </list>
     <list id="c2811ffa-3085-4fce-837e-74078819ff54" name="Changes by Hamza" comment="Changes by Hamza" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,8 +17,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="FxmlFile" />
         <option value="Interface" />
+        <option value="FxmlFile" />
         <option value="Class" />
       </list>
     </option>
@@ -98,7 +94,7 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.1541638" />
-    <property name="project.structure.side.proportion" value="0.41856676" />
+    <property name="project.structure.side.proportion" value="0.23579545" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -121,6 +117,14 @@
     </key>
   </component>
   <component name="RunManager" selected="Application.MainApplication">
+    <configuration name="AerospinApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="AerospinApp" />
+      <module name="Progetto-H22" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Program Files\Java\javafx-sdk-17.0.2\lib&quot; --add-modules=javafx.controls" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="MainApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="view.MainApplication" />
       <module name="Progetto-H22" />
@@ -137,19 +141,6 @@
     </configuration>
     <configuration name="PDFTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="model.persistence.PDFTest" />
-      <module name="Progetto-H22" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="model.booking.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="model.persistence.Test" />
       <module name="Progetto-H22" />
       <extension name="coverage">
         <pattern>
@@ -189,18 +180,18 @@
     </configuration>
     <list>
       <item itemvalue="Application.MainApplication" />
-      <item itemvalue="Application.Test" />
       <item itemvalue="Application.PDFTest" />
       <item itemvalue="Application.TestTicket" />
       <item itemvalue="Application.TicketMail" />
+      <item itemvalue="Application.AerospinApp" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.MainApplication" />
+        <item itemvalue="Application.AerospinApp" />
         <item itemvalue="Application.TestTicket" />
         <item itemvalue="Application.TicketMail" />
         <item itemvalue="Application.PDFTest" />
-        <item itemvalue="Application.Test" />
       </list>
     </recent_temporary>
   </component>
@@ -239,6 +230,9 @@
       <workItem from="1645992020957" duration="318000" />
       <workItem from="1646024791979" duration="3204000" />
       <workItem from="1646028180080" duration="1104000" />
+      <workItem from="1646034925632" duration="16000" />
+      <workItem from="1646038988772" duration="2063000" />
+      <workItem from="1646055159185" duration="5397000" />
     </task>
     <task id="LOCAL-00001" summary="Prova">
       <created>1645112352115</created>
@@ -359,7 +353,14 @@
       <option name="project" value="LOCAL" />
       <updated>1646000958867</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Add JFoenix">
+      <created>1646034459413</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1646034459413</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -404,7 +405,8 @@
     <MESSAGE value="Add Screen Elements" />
     <MESSAGE value="Notes for Database" />
     <MESSAGE value="Coding remaining classes..." />
-    <option name="LAST_COMMIT_MESSAGE" value="Coding remaining classes..." />
+    <MESSAGE value="Add JFoenix" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add JFoenix" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Progetto_H22$MainApplication.ic" NAME="MainApplication Coverage Results" MODIFIED="1645740929671" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
