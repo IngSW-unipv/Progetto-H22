@@ -6,7 +6,7 @@ import javax.persistence.*;
 public class Crew {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "id")
+    @Column(name = "crewId")
     private int id;
     @Basic
     @Column(name = "employeeId")
@@ -59,5 +59,14 @@ public class Crew {
         result = 31 * result + (employeeId != null ? employeeId.hashCode() : 0);
         result = 31 * result + (role != null ? role.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Crew{" +
+                "id=" + id +
+                ", employeeId=" + employeeId +
+                ", role='" + role + '\'' +
+                '}';
     }
 }

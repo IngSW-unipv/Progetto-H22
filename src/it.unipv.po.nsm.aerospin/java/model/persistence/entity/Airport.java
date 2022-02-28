@@ -203,4 +203,18 @@ public class Airport {
         result = 31 * result + (sourceA != null ? sourceA.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "Airport{" +
+                "airportId=" + airportId +
+                ", airportName='" + airportName + '\'' +
+                ", city='" + city + '\'' +
+                ", country='" + country + '\'' +
+                ", iata='" + iata + '\'' +
+                ", icao='" + icao + '\'' +
+                ", latitude=" + latitude +
+                ", longitude=" + longitude +
+                ", timezone=" + timezone ;
+    }
 }

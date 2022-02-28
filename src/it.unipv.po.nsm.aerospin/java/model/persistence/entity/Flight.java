@@ -9,7 +9,7 @@ import java.util.Collection;
 public class Flight {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "id")
+    @Column(name = "FlightId")
     private int id;
     @Basic
     @Column(name = "flightNumber")
@@ -27,13 +27,9 @@ public class Flight {
     @Column(name = "scheduledTime")
     private Time scheduledTime;
     @Basic
-    @Column(name = "routeId")
+    @Column(name = "flightrouteId")
     private Integer routeId;
-    @OneToMany(mappedBy = "flightByFlightId")
-    private Collection<Crew> crewsById;
-    @ManyToOne
-    @JoinColumn(name = "aircraft", referencedColumnName = "tailNumber", nullable = false)
-    private Aircraft aircraftByAircraft;
+
 
     public int getId() {
         return id;
@@ -124,19 +120,16 @@ public class Flight {
         return result;
     }
 
-    public Collection<Crew> getCrewsById() {
-        return crewsById;
-    }
-
-    public void setCrewsById(Collection<Crew> crewsById) {
-        this.crewsById = crewsById;
-    }
-
-    public Aircraft getAircraftByAircraft() {
-        return aircraftByAircraft;
-    }
-
-    public void setAircraftByAircraft(Aircraft aircraftByAircraft) {
-        this.aircraftByAircraft = aircraftByAircraft;
+    @Override
+    public String toString() {
+        return "Flight{" +
+                "id=" + id +
+                ", flightNumber='" + flightNumber + '\'' +
+                ", aircraft=" + aircraft +
+                ", crew=" + crew +
+                ", scheduledDate=" + scheduledDate +
+                ", scheduledTime=" + scheduledTime +
+                ", routeId=" + routeId +
+                '}';
     }
 }

@@ -15,11 +15,6 @@ public class User {
     @Basic
     @Column(name = "admin")
     private Integer admin;
-    @OneToMany(mappedBy = "userByEmail")
-    private Collection<Passenger> passengersByEmail;
-    @ManyToOne
-    @JoinColumn(name = "admin", referencedColumnName = "id")
-    private Employee employeeByAdmin;
 
     public String getEmail() {
         return email;
@@ -67,19 +62,12 @@ public class User {
         return result;
     }
 
-    public Collection<Passenger> getPassengersByEmail() {
-        return passengersByEmail;
-    }
-
-    public void setPassengersByEmail(Collection<Passenger> passengersByEmail) {
-        this.passengersByEmail = passengersByEmail;
-    }
-
-    public Employee getEmployeeByAdmin() {
-        return employeeByAdmin;
-    }
-
-    public void setEmployeeByAdmin(Employee employeeByAdmin) {
-        this.employeeByAdmin = employeeByAdmin;
+    @Override
+    public String toString() {
+        return "User{" +
+                "email='" + email + '\'' +
+                ", pwd='" + pwd + '\'' +
+                ", admin=" + admin +
+                '}';
     }
 }

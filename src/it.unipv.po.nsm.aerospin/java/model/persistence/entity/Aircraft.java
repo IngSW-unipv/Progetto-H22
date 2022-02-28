@@ -115,4 +115,18 @@ public class Aircraft {
         result = 31 * result + (model != null ? model.hashCode() : 0);
         return result;
     }
+
+
+    @Override
+    public String toString() {
+        return "Aircraft{" +
+                "tailNumber=" + tailNumber +
+                ", manufacturer='" + manufacturer + '\'' +
+                ", maxRange=" + maxRange +
+                ", maxCapacity=" + maxCapacity +
+                ", seats=" + seats +
+                ", availability=" + availability +
+                ", model='" + model + '\'' +
+                '}';
+    }
 }

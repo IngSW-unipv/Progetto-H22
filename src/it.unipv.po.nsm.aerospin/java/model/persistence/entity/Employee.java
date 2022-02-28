@@ -8,7 +8,7 @@ import java.util.Collection;
 public class Employee {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "id")
+    @Column(name = "employeeId")
     private int id;
     @Basic
     @Column(name = "Name")
@@ -25,8 +25,6 @@ public class Employee {
     @Basic
     @Column(name = "salary")
     private Double salary;
-    @OneToMany(mappedBy = "employeeByEmployeeId")
-    private Collection<Crew> crewsById;
 
 
 
@@ -106,11 +104,15 @@ public class Employee {
         return result;
     }
 
-    public Collection<Crew> getCrewsById() {
-        return crewsById;
-    }
-
-    public void setCrewsById(Collection<Crew> crewsById) {
-        this.crewsById = crewsById;
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", role='" + role + '\'' +
+                ", hiringDate=" + hiringDate +
+                ", salary=" + salary +
+                '}';
     }
 }

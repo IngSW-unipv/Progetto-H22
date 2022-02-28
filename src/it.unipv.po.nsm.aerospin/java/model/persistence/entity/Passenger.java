@@ -7,7 +7,7 @@ import java.sql.Date;
 public class Passenger {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "id")
+    @Column(name = "passengerid")
     private int id;
     @Basic
     @Column(name = "name")
@@ -25,7 +25,7 @@ public class Passenger {
     @Column(name = "flightId")
     private String flightId;
     @Basic
-    @Column(name = "email")
+    @Column(name = "passengerEmail")
     private String email;
 
     public int getId() {
@@ -112,5 +112,18 @@ public class Passenger {
         result = 31 * result + (flightId != null ? flightId.hashCode() : 0);
         result = 31 * result + (email != null ? email.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Passenger{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", birthYear=" + birthYear +
+                ", classType='" + classType + '\'' +
+                ", flightId='" + flightId + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 }
