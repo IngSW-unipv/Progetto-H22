@@ -59,10 +59,33 @@ public class AircraftDao implements AircraftDaoInterface{
 
     @Override
     public List<Aircraft> findAvailable() {
-        String hql = "from Aircraft a where a.availability = true";
+        String hql = "from Aircraft a where a.availability = true ";
         Query query = conn.getCurrentSession().createQuery(hql);
         //query.setCacheable(true);
         List<Aircraft> aircrafts = query.list();
         return aircrafts;
+    }
+
+    @Override
+    public void persist(Aircraft entity) {
+        conn.getCurrentSession().save(entity);
+    }
+
+    @Override
+    public void update(Aircraft entity) {
+        conn.getCurrentSession().update(entity);
+    }
+
+    @Override
+    public void delete(Aircraft entity) {
+        conn.getCurrentSession().delete(entity);
+    }
+
+    @Override
+    public void deleteAll() {
+        List<Aircraft> entityList = findAll();
+        for (Aircraft entity : entityList) {
+            delete(entity);
+        }
     }
 }

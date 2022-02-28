@@ -22,7 +22,7 @@ public class Aircraft {
     private Integer seats;
     @Basic
     @Column(name = "availability")
-    private Byte availability;
+    private Boolean availability;
     @Basic
     @Column(name = "model")
     private String model;
@@ -67,11 +67,11 @@ public class Aircraft {
         this.seats = seats;
     }
 
-    public Byte getAvailability() {
+    public Boolean getAvailability() {
         return availability;
     }
 
-    public void setAvailability(Byte availability) {
+    public void setAvailability(Boolean availability) {
         this.availability = availability;
     }
 

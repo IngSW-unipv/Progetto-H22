@@ -1,6 +1,7 @@
 package model.persistence.service;
 
 import model.persistence.dao.RouteDao;
+import model.persistence.entity.Passenger;
 import model.persistence.entity.Route;
 
 import java.util.List;
@@ -39,5 +40,28 @@ public class RouteService {
         List<Route> routes = routeDao.findByArr(arr);
         routeDao.getConn().closeCurrentSession();
         return routes;
+    }
+
+    public void persist(Route route) {
+        routeDao.getConn().openCurrentSessionwithTransaction();
+        routeDao.persist(route);
+        routeDao.getConn().closeCurrentSessionwithTransaction();
+    }
+
+    public void update(Route route) {
+        routeDao.getConn().openCurrentSessionwithTransaction();
+        routeDao.update(route);
+        routeDao.getConn().closeCurrentSessionwithTransaction();
+    }
+
+    public void delete(Route route) {
+        routeDao.getConn().openCurrentSessionwithTransaction();
+        routeDao.delete(route);
+        routeDao.getConn().closeCurrentSessionwithTransaction();
+    }
+    public void deleteAll() {
+        routeDao.getConn().openCurrentSessionwithTransaction();
+        routeDao.deleteAll();
+        routeDao.getConn().closeCurrentSessionwithTransaction();
     }
 }

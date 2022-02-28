@@ -1,6 +1,7 @@
 package model.persistence.dao;
 
 import model.persistence.Connection;
+import model.persistence.entity.Passenger;
 import model.persistence.entity.Route;
 import org.hibernate.query.Query;
 
@@ -48,6 +49,29 @@ public class RouteDao implements RouteDaoInterface{
         //query.setCacheable(true);
         List<Route> routes = query.list();
         return routes;
+    }
+
+    @Override
+    public void persist(Route entity) {
+        conn.getCurrentSession().save(entity);
+    }
+
+    @Override
+    public void update(Route entity) {
+        conn.getCurrentSession().update(entity);
+    }
+
+    @Override
+    public void delete(Route entity) {
+        conn.getCurrentSession().delete(entity);
+    }
+
+    @Override
+    public void deleteAll() {
+        List<Route> entityList = findAll();
+        for (Route entity : entityList) {
+            delete(entity);
+        }
     }
 
     public Connection getConn() {

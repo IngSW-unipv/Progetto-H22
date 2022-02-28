@@ -1,6 +1,7 @@
 package model.persistence.dao;
 
 import model.persistence.Connection;
+import model.persistence.entity.Flight;
 import model.persistence.entity.Passenger;
 import org.hibernate.query.Query;
 
@@ -12,6 +13,14 @@ public class PassengerDao implements PassengerDaoInterface{
 
     public PassengerDao() {
         this.conn = new Connection();
+    }
+
+    public Connection getConn(){
+        return conn;
+    }
+
+    public void setConn(Connection conn){
+        this.conn = conn;
     }
 
     @Override
@@ -50,12 +59,27 @@ public class PassengerDao implements PassengerDaoInterface{
         return passengers;
     }
 
-    public Connection getConn() {
-        return conn;
+    @Override
+    public void persist(Passenger entity) {
+        conn.getCurrentSession().save(entity);
     }
 
-    public void setConn(Connection conn){
-        this.conn = conn;
+    @Override
+    public void update(Passenger entity) {
+        conn.getCurrentSession().update(entity);
+    }
+
+    @Override
+    public void delete(Passenger entity) {
+        conn.getCurrentSession().delete(entity);
+    }
+
+    @Override
+    public void deleteAll() {
+        List<Passenger> entityList = findAll();
+        for (Passenger entity : entityList) {
+            delete(entity);
+        }
     }
 
 

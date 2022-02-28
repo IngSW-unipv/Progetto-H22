@@ -2,6 +2,7 @@ package model.persistence.service;
 
 
 import model.persistence.dao.CrewDao;
+import model.persistence.entity.Airport;
 import model.persistence.entity.Crew;
 
 import java.util.List;
@@ -33,6 +34,29 @@ public class CrewService {
         List<Crew> crews = crewDao.findByCaptain(name);
         crewDao.getConn().closeCurrentSession();
         return crews;
+    }
+
+    public void persist(Crew crew) {
+        crewDao.getConn().openCurrentSessionwithTransaction();
+        crewDao.persist(crew);
+        crewDao.getConn().closeCurrentSessionwithTransaction();
+    }
+
+    public void update(Crew crew) {
+        crewDao.getConn().openCurrentSessionwithTransaction();
+        crewDao.update(crew);
+        crewDao.getConn().closeCurrentSessionwithTransaction();
+    }
+
+    public void delete(Crew crew) {
+        crewDao.getConn().openCurrentSessionwithTransaction();
+        crewDao.delete(crew);
+        crewDao.getConn().closeCurrentSessionwithTransaction();
+    }
+    public void deleteAll() {
+        crewDao.getConn().openCurrentSessionwithTransaction();
+        crewDao.deleteAll();
+        crewDao.getConn().closeCurrentSessionwithTransaction();
     }
 
 }

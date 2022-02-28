@@ -13,5 +13,9 @@ public interface AirportDaoInterface {
      List<Airport> findByIata(String iata);
      List<Airport> findByCity(String city);
      List<Airport> findAll();
+     public void persist(Airport entity);
+     public void update(Airport entity);
+     public void delete(Airport entity);
+     public void deleteAll();
 
 }

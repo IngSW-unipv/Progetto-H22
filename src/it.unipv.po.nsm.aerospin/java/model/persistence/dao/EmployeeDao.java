@@ -1,6 +1,7 @@
 package model.persistence.dao;
 
 import model.persistence.Connection;
+import model.persistence.entity.Crew;
 import model.persistence.entity.Employee;
 import org.hibernate.query.Query;
 
@@ -65,5 +66,29 @@ public class EmployeeDao implements EmployeeDaoInterface {
         //query.setCacheable(true);
         List<Employee> employees = query.list();
         return employees;
+    }
+
+    @Override
+    public void persist(Employee entity) {
+        conn.getCurrentSession().save(entity);
+    }
+
+    @Override
+    public void update(Employee entity) {
+        conn.getCurrentSession().update(entity);
+    }
+
+    @Override
+    public void delete(Employee entity) {
+        conn.getCurrentSession().delete(entity);
+    }
+
+    @Override
+    public void deleteAll() {
+        List<Employee> entityList = findAll();
+        for (Employee entity : entityList) {
+            delete(entity);
+        }
+
     }
 }

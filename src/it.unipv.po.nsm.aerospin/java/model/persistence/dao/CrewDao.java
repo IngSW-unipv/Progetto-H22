@@ -1,6 +1,7 @@
 package model.persistence.dao;
 
 import model.persistence.Connection;
+import model.persistence.entity.Airport;
 import model.persistence.entity.Crew;
 import org.hibernate.query.Query;
 
@@ -37,6 +38,29 @@ public class CrewDao implements CrewDaoInterface{
         //query.setCacheable(true);
         List<Crew> crews = query.list();
         return crews;
+    }
+
+    @Override
+    public void persist(Crew entity) {
+        conn.getCurrentSession().save(entity);
+    }
+
+    @Override
+    public void update(Crew entity) {
+        conn.getCurrentSession().update(entity);
+    }
+
+    @Override
+    public void delete(Crew entity) {
+        conn.getCurrentSession().delete(entity);
+    }
+
+    @Override
+    public void deleteAll() {
+        List<Crew> entityList = findAll();
+        for (Crew entity : entityList) {
+            delete(entity);
+        }
     }
 
     public Connection getConn() {

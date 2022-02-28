@@ -48,6 +48,31 @@ public class AircraftService {
         return aircrafts;
     }
 
+    public void persist(Aircraft aircraft) {
+        aircraftDao.getConn().openCurrentSessionwithTransaction();
+        aircraftDao.persist(aircraft);
+        aircraftDao.getConn().closeCurrentSessionwithTransaction();
+    }
+
+    public void update(Aircraft aircraft) {
+        aircraftDao.getConn().openCurrentSessionwithTransaction();
+        aircraftDao.update(aircraft);
+        aircraftDao.getConn().closeCurrentSessionwithTransaction();
+    }
+
+    public void delete(Aircraft aircraft) {
+        aircraftDao.getConn().openCurrentSessionwithTransaction();
+        aircraftDao.delete(aircraft);
+        aircraftDao.getConn().closeCurrentSessionwithTransaction();
+    }
+    public void deleteAll() {
+        aircraftDao.getConn().openCurrentSessionwithTransaction();
+        aircraftDao.deleteAll();
+        aircraftDao.getConn().closeCurrentSessionwithTransaction();
+    }
+
+
+
 
 
 

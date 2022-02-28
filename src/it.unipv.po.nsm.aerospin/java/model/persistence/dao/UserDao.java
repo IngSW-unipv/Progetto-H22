@@ -1,6 +1,7 @@
 package model.persistence.dao;
 
 import model.persistence.Connection;
+import model.persistence.entity.Route;
 import model.persistence.entity.User;
 import org.hibernate.query.Query;
 
@@ -28,6 +29,29 @@ public class UserDao implements UserDaoInterface{
         //query.setCacheable(true);
         List<User> users = query.list();
         return users;
+    }
+
+    @Override
+    public void persist(User entity) {
+        conn.getCurrentSession().save(entity);
+    }
+
+    @Override
+    public void update(User entity) {
+        conn.getCurrentSession().update(entity);
+    }
+
+    @Override
+    public void delete(User entity) {
+        conn.getCurrentSession().delete(entity);
+    }
+
+    @Override
+    public void deleteAll() {
+        List<User> entityList = findAll();
+        for (User entity : entityList) {
+            delete(entity);
+        }
     }
 
     public Connection getConn() {

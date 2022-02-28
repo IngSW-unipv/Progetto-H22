@@ -1,6 +1,7 @@
 package model.persistence.dao;
 
 import model.persistence.Connection;
+import model.persistence.entity.Employee;
 import model.persistence.entity.Flight;
 import org.hibernate.query.Query;
 
@@ -48,5 +49,28 @@ public class FlightDao implements FlightDaoInterface{
         //query.setCacheable(true);
         List<Flight> flights = query.list();
         return flights;
+    }
+
+    @Override
+    public void persist(Flight entity) {
+        conn.getCurrentSession().save(entity);
+    }
+
+    @Override
+    public void update(Flight entity) {
+        conn.getCurrentSession().update(entity);
+    }
+
+    @Override
+    public void delete(Flight entity) {
+        conn.getCurrentSession().delete(entity);
+    }
+
+    @Override
+    public void deleteAll() {
+        List<Flight> entityList = findAll();
+        for (Flight entity : entityList) {
+            delete(entity);
+        }
     }
 }

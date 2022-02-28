@@ -11,4 +11,8 @@ public interface AircraftDaoInterface {
     List<Aircraft> findByModel(String model);
     List<Aircraft> findByTailNumber(int tailNumber);
     List<Aircraft> findAvailable();
+    public void persist(Aircraft entity);
+    public void update(Aircraft entity);
+    public void delete(Aircraft entity);
+    public void deleteAll();
 }

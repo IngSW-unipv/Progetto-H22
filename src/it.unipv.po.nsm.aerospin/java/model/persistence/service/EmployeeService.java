@@ -1,6 +1,7 @@
 package model.persistence.service;
 
 import model.persistence.dao.EmployeeDao;
+import model.persistence.entity.Crew;
 import model.persistence.entity.Employee;
 
 import java.util.List;
@@ -45,6 +46,29 @@ public class EmployeeService {
         List<Employee> employees = employeeDao.findByRole(role);
         employeeDao.getConn().closeCurrentSession();
         return employees;
+    }
+
+    public void persist(Employee employee) {
+        employeeDao.getConn().openCurrentSessionwithTransaction();
+        employeeDao.persist(employee);
+        employeeDao.getConn().closeCurrentSessionwithTransaction();
+    }
+
+    public void update(Employee employee) {
+        employeeDao.getConn().openCurrentSessionwithTransaction();
+        employeeDao.update(employee);
+        employeeDao.getConn().closeCurrentSessionwithTransaction();
+    }
+
+    public void delete(Employee employee) {
+        employeeDao.getConn().openCurrentSessionwithTransaction();
+        employeeDao.delete(employee);
+        employeeDao.getConn().closeCurrentSessionwithTransaction();
+    }
+    public void deleteAll() {
+        employeeDao.getConn().openCurrentSessionwithTransaction();
+        employeeDao.deleteAll();
+        employeeDao.getConn().closeCurrentSessionwithTransaction();
     }
 
 

@@ -2,6 +2,7 @@ package model.persistence.service;
 
 
 import model.persistence.dao.PassengerDao;
+import model.persistence.entity.Flight;
 import model.persistence.entity.Passenger;
 
 import java.util.List;
@@ -39,5 +40,29 @@ public class PassengerService {
         List<Passenger> passengers = passengerDao.findBySurname(surname);
         passengerDao.getConn().closeCurrentSession();
         return passengers;
+    }
+
+
+    public void persist(Passenger passenger) {
+        passengerDao.getConn().openCurrentSessionwithTransaction();
+        passengerDao.persist(passenger);
+        passengerDao.getConn().closeCurrentSessionwithTransaction();
+    }
+
+    public void update(Passenger passenger) {
+        passengerDao.getConn().openCurrentSessionwithTransaction();
+        passengerDao.update(passenger);
+        passengerDao.getConn().closeCurrentSessionwithTransaction();
+    }
+
+    public void delete(Passenger passenger) {
+        passengerDao.getConn().openCurrentSessionwithTransaction();
+        passengerDao.delete(passenger);
+        passengerDao.getConn().closeCurrentSessionwithTransaction();
+    }
+    public void deleteAll() {
+        passengerDao.getConn().openCurrentSessionwithTransaction();
+        passengerDao.deleteAll();
+        passengerDao.getConn().closeCurrentSessionwithTransaction();
     }
 }

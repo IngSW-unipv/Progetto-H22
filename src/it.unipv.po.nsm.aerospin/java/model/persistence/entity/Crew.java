@@ -3,20 +3,14 @@ package model.persistence.entity;
 import javax.persistence.*;
 
 @Entity
-@IdClass(CrewPK.class)
 public class Crew {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id")
     private int id;
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Id
+    @Basic
     @Column(name = "employeeId")
-    private int employeeId;
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Id
-    @Column(name = "flightId")
-    private int flightId;
+    private Integer employeeId;
     @Basic
     @Column(name = "role")
     private String role;
@@ -29,20 +23,12 @@ public class Crew {
         this.id = id;
     }
 
-    public int getEmployeeId() {
+    public Integer getEmployeeId() {
         return employeeId;
     }
 
-    public void setEmployeeId(int employeeId) {
+    public void setEmployeeId(Integer employeeId) {
         this.employeeId = employeeId;
-    }
-
-    public int getFlightId() {
-        return flightId;
-    }
-
-    public void setFlightId(int flightId) {
-        this.flightId = flightId;
     }
 
     public String getRole() {
@@ -61,8 +47,7 @@ public class Crew {
         Crew crew = (Crew) o;
 
         if (id != crew.id) return false;
-        if (employeeId != crew.employeeId) return false;
-        if (flightId != crew.flightId) return false;
+        if (employeeId != null ? !employeeId.equals(crew.employeeId) : crew.employeeId != null) return false;
         if (role != null ? !role.equals(crew.role) : crew.role != null) return false;
 
         return true;
@@ -71,8 +56,7 @@ public class Crew {
     @Override
     public int hashCode() {
         int result = id;
-        result = 31 * result + employeeId;
-        result = 31 * result + flightId;
+        result = 31 * result + (employeeId != null ? employeeId.hashCode() : 0);
         result = 31 * result + (role != null ? role.hashCode() : 0);
         return result;
     }
