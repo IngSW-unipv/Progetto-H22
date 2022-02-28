@@ -1,22 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="480.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
     <children>
-        <Button layoutX="735.0" layoutY="4.0" mnemonicParsing="false" onAction="#goToHome" text="HOME" />
-        <ToolBar layoutY="440.0" prefHeight="40.0" prefWidth="800.0">
-            <items>
-                <Button mnemonicParsing="false" onAction="#goToSearch" text="RICERCA" />
-                <ToggleButton mnemonicParsing="false" mouseTransparent="true" pickOnBounds="false" selected="true" text="PROFILO" />
-            </items>
-        </ToolBar>
-        <TextField cacheShape="false" layoutX="166.0" layoutY="98.0" />
-        <PasswordField layoutX="166.0" layoutY="143.0" />
-        <Label layoutX="81.0" layoutY="102.0" text="Indirizzo email" />
-        <Label layoutX="81.0" layoutY="147.0" prefHeight="17.0" prefWidth="77.0" text="Password" />
-        <Button layoutX="102.0" layoutY="240.0" mnemonicParsing="false" onAction="#goToAccount" prefHeight="73.0" prefWidth="181.0" text="ACCEDI" />
-        <Button layoutX="476.0" layoutY="240.0" mnemonicParsing="false" prefHeight="73.0" prefWidth="181.0" text="REGISTRA" />
+        <TextField cacheShape="false" layoutX="382.0" layoutY="230.0" />
+        <PasswordField layoutX="382.0" layoutY="275.0" />
+      <JFXButton layoutX="762.0" layoutY="182.0" onAction="#logAccount" text="LOGIN" />
+      <JFXButton layoutX="749.0" layoutY="315.0" text="REGISTRATI" />
+      <VBox prefHeight="600.0" prefWidth="120.0" spacing="10.0" style="-fx-background-color: #FBC02D;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <JFXButton onAction="#goToHome" prefHeight="45.0" prefWidth="100.0" text="HOME" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </JFXButton>
+            <JFXButton onAction="#goToSearch" prefHeight="45.0" prefWidth="100.0" text="RICERCA" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </JFXButton>
+            <JFXButton prefHeight="45.0" prefWidth="100.0" text="ACCEDI" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </JFXButton>
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </VBox>
+        <Label layoutX="297.0" layoutY="234.0" text="ID" />
+        <Label layoutX="297.0" layoutY="279.0" prefHeight="17.0" prefWidth="77.0" text="Password" />
+      <Label layoutX="774.0" layoutY="255.0" text="oppure" />
+      <Label layoutX="350.0" layoutY="411.0" prefHeight="17.0" prefWidth="318.0" />
     </children>
 </AnchorPane>

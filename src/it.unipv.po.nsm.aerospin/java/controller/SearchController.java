@@ -1,14 +1,12 @@
 package controller;
 
+import com.jfoenix.controls.JFXToggleButton;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.RadioButton;
+import javafx.scene.control.*;
 import model.persistence.service.AirportService;
 import util.ControllerMethods;
 import view.MainApplication;
@@ -96,5 +94,11 @@ public class SearchController implements Initializable, IControlledScreen {
     @FXML
     private void goToLogin(ActionEvent event){
         myController.setScreen(MainApplication.login);
+    }
+
+    @FXML
+    private void logout(ActionEvent event){
+        //cambia stato come non loggato
+        myController.setScreen(MainApplication.home);
     }
 }

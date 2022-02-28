@@ -32,7 +32,7 @@ public class LoginController implements Initializable, IControlledScreen {
     }
 
     @FXML
-    private void goToAccount(ActionEvent event){
-        myController.setScreen(MainApplication.account);
+    private void logAccount(ActionEvent event){
+        myController.setScreen(MainApplication.manage);
     }
 }

@@ -6,11 +6,11 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EmployeeController">
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CrewController">
    <children>
       <JFXListView layoutX="175.0" layoutY="54.0" prefHeight="452.0" prefWidth="325.0" />
       <JFXButton layoutX="553.0" layoutY="54.0" text="+" />
-      <JFXButton layoutX="578.0" layoutY="54.0" text="-" />
+      <JFXButton layoutX="589.0" layoutY="54.0" text="-" />
       <TextField layoutX="547.0" layoutY="173.0" />
       <TextField layoutX="754.0" layoutY="173.0" />
       <ChoiceBox layoutX="547.0" layoutY="255.0" prefWidth="150.0" />

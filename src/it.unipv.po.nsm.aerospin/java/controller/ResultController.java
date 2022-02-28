@@ -22,6 +22,11 @@ public class ResultController implements Initializable, IControlledScreen {
     }
 
     @FXML
+    private void goToHome(ActionEvent event){
+        myController.setScreen(MainApplication.home);
+    }
+
+    @FXML
     private void goToSearch(ActionEvent event){
         myController.setScreen(MainApplication.search);
     }
@@ -29,6 +34,12 @@ public class ResultController implements Initializable, IControlledScreen {
     @FXML
     private void goToLogin(ActionEvent event){
         myController.setScreen(MainApplication.login);
+    }
+
+    @FXML
+    private void logout(ActionEvent event){
+        //cambia stato come non loggato
+        myController.setScreen(MainApplication.home);
     }
 
 }

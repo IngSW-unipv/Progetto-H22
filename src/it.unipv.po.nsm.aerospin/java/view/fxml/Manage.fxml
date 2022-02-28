@@ -1,14 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="480.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ManageController">
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ManageController">
    <children>
-      <Button layoutX="734.0" layoutY="14.0" mnemonicParsing="false" text="HOME" />
-      <Button layoutX="139.0" layoutY="128.0" mnemonicParsing="false" text="EMPOYEE" />
-      <Button layoutX="139.0" layoutY="215.0" mnemonicParsing="false" text="ROUTE" />
-      <Button layoutX="523.0" layoutY="215.0" mnemonicParsing="false" text="FLIGHT" />
-      <Button layoutX="523.0" layoutY="128.0" mnemonicParsing="false" text="AIRCRAFT" />
+      <JFXButton layoutX="120.0" onAction="#goToEmployee" prefHeight="300.0" prefWidth="440.0" text="EMPLOYEE" AnchorPane.leftAnchor="120.0" AnchorPane.topAnchor="0.0" />
+      <JFXButton layoutX="140.0" layoutY="20.0" onAction="#goToAircraft" prefHeight="300.0" prefWidth="440.0" text="AIRCRAFT" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="120.0" />
+      <JFXButton layoutX="130.0" layoutY="10.0" onAction="#goToRoute" prefHeight="300.0" prefWidth="440.0" text="ROUTE" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      <VBox prefHeight="600.0" prefWidth="120.0" spacing="10.0" style="-fx-background-color: #FBC02D;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <JFXButton onAction="#goToHome" prefHeight="45.0" prefWidth="100.0" text="HOME" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </JFXButton>
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </VBox>
+      <HBox prefHeight="65.0" prefWidth="120.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
+         <children>
+            <JFXButton onAction="#logout" prefHeight="45.0" prefWidth="100.0" text="LOGOUT" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </JFXButton>
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </HBox>
+      <JFXButton layoutX="560.0" onAction="#goToCrew" prefHeight="300.0" prefWidth="440.0" text="CREW" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <JFXButton layoutX="410.0" layoutY="200.0" onAction="#goToFlight" prefHeight="200.0" prefWidth="300.0" text="FLIGHT" AnchorPane.bottomAnchor="200.0" AnchorPane.rightAnchor="290.0" />
    </children>
 </AnchorPane>

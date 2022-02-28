@@ -27,12 +27,34 @@ public class ManageController implements Initializable, IControlledScreen {
     }
 
     @FXML
-    private void goToSearch(ActionEvent event){
-        myController.setScreen(MainApplication.search);
+    private void goToEmployee(ActionEvent event){
+        myController.setScreen(MainApplication.employee);
     }
 
-/*    @FXML
-    private void goToAccount(ActionEvent event){
-        myController.setScreen(MainApplication.account);
-    }*/
+    @FXML
+    private void goToCrew(ActionEvent event){
+        myController.setScreen(MainApplication.crew);
+    }
+
+    @FXML
+    private void goToAircraft(ActionEvent event){
+        myController.setScreen(MainApplication.aircraft);
+    }
+
+    @FXML
+    private void goToRoute(ActionEvent event){
+        myController.setScreen(MainApplication.route);
+    }
+
+    @FXML
+    private void goToFlight(ActionEvent event){
+        myController.setScreen(MainApplication.flight);
+    }
+
+    @FXML
+    private void logout(ActionEvent event){
+        //cambia stato come non loggato
+        myController.setScreen(MainApplication.home);
+    }
+
 }

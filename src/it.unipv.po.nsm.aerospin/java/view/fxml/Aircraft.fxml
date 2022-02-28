@@ -1,41 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="480.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SPlaneController">
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AircraftController">
    <children>
-      <DialogPane layoutX="58.0" layoutY="61.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-          <expandableContent>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="320.0" />
-          </expandableContent>
-      </DialogPane>
-      <AnchorPane layoutX="163.0" layoutY="193.0" minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="320.0">
+      <JFXListView layoutX="175.0" layoutY="54.0" prefHeight="452.0" prefWidth="325.0" />
+      <JFXButton layoutX="553.0" layoutY="54.0" text="+" />
+      <JFXButton layoutX="578.0" layoutY="54.0" text="-" />
+      <ChoiceBox layoutX="536.0" layoutY="173.0" prefWidth="150.0" />
+      <TextField layoutX="754.0" layoutY="173.0" />
+      <TextField layoutX="537.0" layoutY="255.0" />
+      <TextField layoutX="754.0" layoutY="255.0" />
+      <JFXButton layoutX="671.0" layoutY="335.0" prefHeight="45.0" prefWidth="166.0" style="-fx-background-color: green;" text="CONFERMA" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </JFXButton>
+      <VBox layoutX="10.0" layoutY="10.0" prefHeight="600.0" prefWidth="120.0" spacing="10.0" style="-fx-background-color: #FBC02D;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Accordion layoutY="118.0">
-              <panes>
-                <TitledPane animated="false" text="untitled 1">
-                  <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                  </content>
-                </TitledPane>
-                <TitledPane animated="false" text="untitled 2">
-                  <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <children>
-                              <AnchorPane layoutX="-243.0" layoutY="4.0" minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="320.0" />
-                           </children>
-                        </AnchorPane>
-                  </content>
-                </TitledPane>
-              </panes>
-            </Accordion>
-          <TitledPane animated="false" layoutX="102.0" layoutY="10.0" text="untitled 3">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-            </content>
-          </TitledPane>
+            <JFXButton onAction="#goToHome" prefHeight="45.0" prefWidth="100.0" text="HOME" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="20.0" layoutY="20.0" onAction="#goToManage" prefHeight="45.0" prefWidth="100.0" text="MANAGE" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </JFXButton>
          </children>
-      </AnchorPane>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </VBox>
+      <HBox prefHeight="65.0" prefWidth="120.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
+         <children>
+            <JFXButton onAction="#logout" prefHeight="45.0" prefWidth="100.0" text="LOGOUT" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </JFXButton>
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </HBox>
+      <Label layoutX="535.0" layoutY="156.0" text="Costruttore" />
+      <Label layoutX="754.0" layoutY="156.0" text="Modello" />
+      <Label layoutX="536.0" layoutY="238.0" text="DistanzaMassima" />
+      <Label layoutX="754.0" layoutY="238.0" text="Totale Posti" />
    </children>
 </AnchorPane>

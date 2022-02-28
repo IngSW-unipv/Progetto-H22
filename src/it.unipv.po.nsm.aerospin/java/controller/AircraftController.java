@@ -9,7 +9,7 @@ import view.ScreensController;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class HomeController implements Initializable, IControlledScreen {
+public class AircraftController implements Initializable, IControlledScreen {
 
     ScreensController myController;
     @Override
@@ -22,14 +22,15 @@ public class HomeController implements Initializable, IControlledScreen {
     }
 
     @FXML
-    private void goToSearch(ActionEvent event){
-        myController.setScreen(MainApplication.search);
+    private void goToHome(ActionEvent event){
+        myController.setScreen(MainApplication.home);
     }
 
     @FXML
-    private void goToLogin(ActionEvent event){
-        myController.setScreen(MainApplication.login);
+    private void goToManage(ActionEvent event){
+        myController.setScreen(MainApplication.manage);
     }
+
 
     @FXML
     private void logout(ActionEvent event){
