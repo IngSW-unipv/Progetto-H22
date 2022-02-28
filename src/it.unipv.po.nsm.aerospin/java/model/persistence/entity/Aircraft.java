@@ -1,5 +1,7 @@
 package model.persistence.entity;
 
+import model.flight.aircraft.Manufacturer;
+
 import javax.persistence.*;
 
 @Entity
@@ -14,9 +16,6 @@ public class Aircraft {
     @Basic
     @Column(name = "maxRange")
     private Double maxRange;
-    @Basic
-    @Column(name = "maxCapacity")
-    private Integer maxCapacity;
     @Basic
     @Column(name = "seats")
     private Integer seats;
@@ -43,20 +42,12 @@ public class Aircraft {
         this.manufacturer = manufacturer;
     }
 
-    public Double getMaxRange() {
+    public Double getMaxRange(double v) {
         return maxRange;
     }
 
     public void setMaxRange(Double maxRange) {
         this.maxRange = maxRange;
-    }
-
-    public Integer getMaxCapacity() {
-        return maxCapacity;
-    }
-
-    public void setMaxCapacity(Integer maxCapacity) {
-        this.maxCapacity = maxCapacity;
     }
 
     public Integer getSeats() {
@@ -94,8 +85,6 @@ public class Aircraft {
         if (manufacturer != null ? !manufacturer.equals(aircraft.manufacturer) : aircraft.manufacturer != null)
             return false;
         if (maxRange != null ? !maxRange.equals(aircraft.maxRange) : aircraft.maxRange != null) return false;
-        if (maxCapacity != null ? !maxCapacity.equals(aircraft.maxCapacity) : aircraft.maxCapacity != null)
-            return false;
         if (seats != null ? !seats.equals(aircraft.seats) : aircraft.seats != null) return false;
         if (availability != null ? !availability.equals(aircraft.availability) : aircraft.availability != null)
             return false;
@@ -109,7 +98,6 @@ public class Aircraft {
         int result = tailNumber;
         result = 31 * result + (manufacturer != null ? manufacturer.hashCode() : 0);
         result = 31 * result + (maxRange != null ? maxRange.hashCode() : 0);
-        result = 31 * result + (maxCapacity != null ? maxCapacity.hashCode() : 0);
         result = 31 * result + (seats != null ? seats.hashCode() : 0);
         result = 31 * result + (availability != null ? availability.hashCode() : 0);
         result = 31 * result + (model != null ? model.hashCode() : 0);
@@ -123,7 +111,6 @@ public class Aircraft {
                 "tailNumber=" + tailNumber +
                 ", manufacturer='" + manufacturer + '\'' +
                 ", maxRange=" + maxRange +
-                ", maxCapacity=" + maxCapacity +
                 ", seats=" + seats +
                 ", availability=" + availability +
                 ", model='" + model + '\'' +

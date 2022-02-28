@@ -26,7 +26,6 @@ public class Route {
         this.price = price;
         this.costIndex = costIndex;
         this.aircraft = aircraft;
-
         speed = costIndex*avgSpeed;
     }
 

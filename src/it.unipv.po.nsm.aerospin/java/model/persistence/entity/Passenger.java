@@ -23,7 +23,7 @@ public class Passenger {
     private String classType;
     @Basic
     @Column(name = "flightId")
-    private String flightId;
+    private int flightId;
     @Basic
     @Column(name = "passengerEmail")
     private String email;
@@ -68,11 +68,11 @@ public class Passenger {
         this.classType = classType;
     }
 
-    public String getFlightId() {
+    public int getFlightId() {
         return flightId;
     }
 
-    public void setFlightId(String flightId) {
+    public void setFlightId(int flightId) {
         this.flightId = flightId;
     }
 
@@ -96,7 +96,6 @@ public class Passenger {
         if (surname != null ? !surname.equals(passenger.surname) : passenger.surname != null) return false;
         if (birthYear != null ? !birthYear.equals(passenger.birthYear) : passenger.birthYear != null) return false;
         if (classType != null ? !classType.equals(passenger.classType) : passenger.classType != null) return false;
-        if (flightId != null ? !flightId.equals(passenger.flightId) : passenger.flightId != null) return false;
         if (email != null ? !email.equals(passenger.email) : passenger.email != null) return false;
 
         return true;
@@ -109,7 +108,6 @@ public class Passenger {
         result = 31 * result + (surname != null ? surname.hashCode() : 0);
         result = 31 * result + (birthYear != null ? birthYear.hashCode() : 0);
         result = 31 * result + (classType != null ? classType.hashCode() : 0);
-        result = 31 * result + (flightId != null ? flightId.hashCode() : 0);
         result = 31 * result + (email != null ? email.hashCode() : 0);
         return result;
     }

@@ -1,7 +1,6 @@
 package model.persistence.dao;
 
 import model.persistence.Connection;
-import model.persistence.entity.Aircraft;
 import model.persistence.entity.Airport;
 import org.hibernate.query.Query;
 
@@ -12,7 +11,7 @@ public class AirportDao implements AirportDaoInterface{
     private Connection conn;
 
     public AirportDao() {
-        this.conn = new Connection();
+        this.conn = Connection.getInstance();
     }
 
     public Connection getConn() {
@@ -72,16 +71,16 @@ public class AirportDao implements AirportDaoInterface{
         query.setParameter("name","%" + name + "%");
         //query.setCacheable(true);
         List<Airport> airports = query.list();
-        return   airports;
+        return airports;
     }
 
     public List<Airport> findByIcao(String icao) {
         String hql = "from Airport a where a.icao = :icao";
-        Query query = conn.getCurrentSession().createQuery(hql);
-        query.setParameter("icao",icao);
-        //query.setCacheable(true);
-        List<Airport> airports = query.list();
-        return   airports;
+        Query query = conn.getCurrentSession().createNativeQuery("select * from Airport where ICAO = " + "'"+icao+"'" ).addEntity(Airport.class);
+
+        //query.setParameter("icao",icao);
+        List<Airport> airport = (List<Airport>) query.list();
+        return airport;
     }
 
     @Override

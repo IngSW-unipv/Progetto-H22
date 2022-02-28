@@ -9,6 +9,7 @@ import org.hibernate.cfg.Configuration;
 public class Connection {
     private Session currentSession;
     private Transaction currentTransaction;
+    private static Connection instance = null;
 
     public Session openCurrentSession() {
         currentSession = getSessionFactory().openSession();
@@ -35,6 +36,13 @@ public class Connection {
         StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder().configure();
         SessionFactory sessionFactory = configuration.buildSessionFactory(builder.build());
         return sessionFactory;
+    }
+
+    public static Connection getInstance() {
+        if (instance == null) {
+            instance = new Connection();
+        }
+        return instance;
     }
 
     public void setCurrentSession(Session currentSession) {

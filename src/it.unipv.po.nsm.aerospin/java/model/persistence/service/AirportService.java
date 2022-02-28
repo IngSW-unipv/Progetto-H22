@@ -80,5 +80,9 @@ public class AirportService {
         airportDao.getConn().closeCurrentSessionwithTransaction();
     }
 
+    public AirportDao airportDao() {
+        return airportDao;
+    }
+
 
 }
