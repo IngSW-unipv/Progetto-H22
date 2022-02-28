@@ -3,6 +3,7 @@ package controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ListView;
 import view.MainApplication;
 import view.ScreensController;
 
@@ -10,6 +11,10 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class AccountController implements Initializable, IControlledScreen {
+
+    @FXML
+    private ListView lvMain;
+
 
     ScreensController myController;
     @Override
