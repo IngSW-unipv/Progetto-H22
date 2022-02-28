@@ -1,7 +1,6 @@
 package model.persistence.dao;
 
 
-import model.flight.aircraft.Manufacturer;
 import model.persistence.entity.Crew;
 
 import java.util.List;

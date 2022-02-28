@@ -1,7 +1,5 @@
 package model.persistence.dao;
 
-import model.flight.aircraft.Manufacturer;
-import model.persistence.entity.Aircraft;
 import model.persistence.entity.Employee;
 
 import java.util.List;

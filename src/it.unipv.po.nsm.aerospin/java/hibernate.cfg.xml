@@ -13,7 +13,6 @@
            <property name="hibernate.cache.use_query_cache">true</property>
 
         <mapping class="model.persistence.entity.Airport"/>
-        <mapping class="model.persistence.entity.Book"/>
         <mapping class="model.persistence.entity.Route"/>
         <mapping class="model.persistence.entity.Employee"/>
         <mapping class="model.persistence.entity.Passenger"/>

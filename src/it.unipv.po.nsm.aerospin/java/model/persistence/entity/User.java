@@ -1,6 +1,7 @@
 package model.persistence.entity;
 
 import javax.persistence.*;
+import java.util.Collection;
 
 @Entity
 public class User {
@@ -14,6 +15,11 @@ public class User {
     @Basic
     @Column(name = "admin")
     private Integer admin;
+    @OneToMany(mappedBy = "userByEmail")
+    private Collection<Passenger> passengersByEmail;
+    @ManyToOne
+    @JoinColumn(name = "admin", referencedColumnName = "id")
+    private Employee employeeByAdmin;
 
     public String getEmail() {
         return email;
@@ -59,5 +65,21 @@ public class User {
         result = 31 * result + (pwd != null ? pwd.hashCode() : 0);
         result = 31 * result + (admin != null ? admin.hashCode() : 0);
         return result;
+    }
+
+    public Collection<Passenger> getPassengersByEmail() {
+        return passengersByEmail;
+    }
+
+    public void setPassengersByEmail(Collection<Passenger> passengersByEmail) {
+        this.passengersByEmail = passengersByEmail;
+    }
+
+    public Employee getEmployeeByAdmin() {
+        return employeeByAdmin;
+    }
+
+    public void setEmployeeByAdmin(Employee employeeByAdmin) {
+        this.employeeByAdmin = employeeByAdmin;
     }
 }

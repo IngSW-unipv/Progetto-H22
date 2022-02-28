@@ -1,7 +1,6 @@
 package model.persistence.dao;
 
 import model.persistence.Connection;
-import model.persistence.entity.Aircraft;
 import model.persistence.entity.Flight;
 import org.hibernate.query.Query;
 

@@ -2,6 +2,7 @@ package model.persistence.dao;
 
 import model.flight.aircraft.Manufacturer;
 import model.persistence.entity.Aircraft;
+
 import java.util.List;
 
 public interface AircraftDaoInterface {

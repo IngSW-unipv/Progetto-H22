@@ -1,5 +1,6 @@
 package model.person.employee;
 
+import model.persistence.entity.Employee;
 import model.person.IAccess;
 
 import java.util.Date;
@@ -10,7 +11,6 @@ public class Admin extends Employee implements IAccess {
     public String pwd;
 
     public Admin(String email, String pwd, String ID, String name, String surname, Date hiringDate, double salary) {
-        super(ID, name, surname, hiringDate, salary);
         this.email = email;
         this.pwd = pwd;
     }

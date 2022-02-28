@@ -1,7 +1,7 @@
 package model.persistence.dao;
 
-import model.persistence.entity.Crew;
 import model.persistence.Connection;
+import model.persistence.entity.Crew;
 import org.hibernate.query.Query;
 
 import java.util.List;
@@ -31,7 +31,7 @@ public class CrewDao implements CrewDaoInterface{
 
     @Override
     public List<Crew> findByCaptain(String captainName) {
-        String hql = "from Crew a where a.captain like :name ";
+        String hql = "from Crew a where a.role like :name ";
         Query query = conn.getCurrentSession().createQuery(hql);
         query.setParameter("name","%" + captainName + "%");
         //query.setCacheable(true);

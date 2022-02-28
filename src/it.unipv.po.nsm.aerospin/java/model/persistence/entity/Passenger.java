@@ -1,12 +1,13 @@
 package model.persistence.entity;
 
 import javax.persistence.*;
+import java.sql.Date;
 
 @Entity
 public class Passenger {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "id")//tnumber
+    @Column(name = "id")
     private int id;
     @Basic
     @Column(name = "name")
@@ -15,14 +16,17 @@ public class Passenger {
     @Column(name = "surname")
     private String surname;
     @Basic
-    @Column(name = "age")
-    private short age;//datadinascitaaa
+    @Column(name = "birthYear")
+    private Date birthYear;
     @Basic
     @Column(name = "classType")
     private String classType;
     @Basic
-    @Column(name = "flightNumber")//cambia in flightID
-    private String flightNumber;
+    @Column(name = "flightId")
+    private String flightId;
+    @Basic
+    @Column(name = "email")
+    private String email;
 
     public int getId() {
         return id;
@@ -48,12 +52,12 @@ public class Passenger {
         this.surname = surname;
     }
 
-    public short getAge() {
-        return age;
+    public Date getBirthYear() {
+        return birthYear;
     }
 
-    public void setAge(short age) {
-        this.age = age;
+    public void setBirthYear(Date birthYear) {
+        this.birthYear = birthYear;
     }
 
     public String getClassType() {
@@ -64,12 +68,20 @@ public class Passenger {
         this.classType = classType;
     }
 
-    public String getFlightNumber() {
-        return flightNumber;
+    public String getFlightId() {
+        return flightId;
     }
 
-    public void setFlightNumber(String flightNumber) {
-        this.flightNumber = flightNumber;
+    public void setFlightId(String flightId) {
+        this.flightId = flightId;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     @Override
@@ -80,12 +92,12 @@ public class Passenger {
         Passenger passenger = (Passenger) o;
 
         if (id != passenger.id) return false;
-        if (age != passenger.age) return false;
         if (name != null ? !name.equals(passenger.name) : passenger.name != null) return false;
         if (surname != null ? !surname.equals(passenger.surname) : passenger.surname != null) return false;
+        if (birthYear != null ? !birthYear.equals(passenger.birthYear) : passenger.birthYear != null) return false;
         if (classType != null ? !classType.equals(passenger.classType) : passenger.classType != null) return false;
-        if (flightNumber != null ? !flightNumber.equals(passenger.flightNumber) : passenger.flightNumber != null)
-            return false;
+        if (flightId != null ? !flightId.equals(passenger.flightId) : passenger.flightId != null) return false;
+        if (email != null ? !email.equals(passenger.email) : passenger.email != null) return false;
 
         return true;
     }
@@ -95,9 +107,10 @@ public class Passenger {
         int result = id;
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (surname != null ? surname.hashCode() : 0);
-        result = 31 * result + (int) age;
+        result = 31 * result + (birthYear != null ? birthYear.hashCode() : 0);
         result = 31 * result + (classType != null ? classType.hashCode() : 0);
-        result = 31 * result + (flightNumber != null ? flightNumber.hashCode() : 0);
+        result = 31 * result + (flightId != null ? flightId.hashCode() : 0);
+        result = 31 * result + (email != null ? email.hashCode() : 0);
         return result;
     }
 }

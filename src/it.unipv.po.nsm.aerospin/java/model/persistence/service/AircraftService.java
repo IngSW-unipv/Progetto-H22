@@ -3,7 +3,6 @@ package model.persistence.service;
 import model.flight.aircraft.Manufacturer;
 import model.persistence.dao.AircraftDao;
 import model.persistence.entity.Aircraft;
-import model.persistence.entity.Airport;
 
 import java.util.List;
 

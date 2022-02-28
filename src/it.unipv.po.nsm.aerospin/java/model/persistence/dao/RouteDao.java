@@ -1,16 +1,53 @@
 package model.persistence.dao;
 
 import model.persistence.Connection;
-
 import model.persistence.entity.Route;
+import org.hibernate.query.Query;
 
 import java.util.List;
 
 public class RouteDao implements RouteDaoInterface{
+
     private Connection conn;
 
     public RouteDao() {
         this.conn = new Connection();
+    }
+
+    @Override
+    public List<Route> findAll() {
+        List<Route> routes = (List<Route>) conn.getCurrentSession().createQuery("from Route ").list();
+        return  routes;
+    }
+
+    @Override
+    public List<Route> findById(int id) {
+        String hql = "from Route a where a.id = :id";
+        Query query = conn.getCurrentSession().createQuery(hql);
+        query.setParameter("id",id);
+        //query.setCacheable(true);
+        List<Route> routes = query.list();
+        return routes;
+    }
+
+    @Override
+    public List<Route> findByDep(String dep) {
+        String hql = "from Route a where a.departure = :dep";
+        Query query = conn.getCurrentSession().createQuery(hql);
+        query.setParameter("dep",dep);
+        //query.setCacheable(true);
+        List<Route> routes = query.list();
+        return routes;
+    }
+
+    @Override
+    public List<Route> findByArr(String arr) {
+        String hql = "from Route a where a.departure = :arr";
+        Query query = conn.getCurrentSession().createQuery(hql);
+        query.setParameter("arr",arr);
+        //query.setCacheable(true);
+        List<Route> routes = query.list();
+        return routes;
     }
 
     public Connection getConn() {
@@ -19,36 +56,5 @@ public class RouteDao implements RouteDaoInterface{
 
     public void setConn(Connection conn){
         this.conn = conn;
-    }
-
-
-    @Override
-    public void persist(Route entity) {
-
-    }
-
-    @Override
-    public void update(Route entity) {
-
-    }
-
-    @Override
-    public Route findById(String id) {
-        return null;
-    }
-
-    @Override
-    public void delete(Route route) {
-
-    }
-
-    @Override
-    public List<Route> findAll() {
-        return null;
-    }
-
-    @Override
-    public void deleteAll() {
-
     }
 }

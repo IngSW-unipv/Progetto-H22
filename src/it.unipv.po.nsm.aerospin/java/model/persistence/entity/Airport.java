@@ -1,18 +1,13 @@
 package model.persistence.entity;
 
 import javax.persistence.*;
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 @Entity
-@Table(name = "airport", schema = "Airports")
-@Cacheable
-@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class Airport {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "AIRPORTD_ID")
-    private long airportdId;
+    @Column(name = "AIRPORT_ID")
+    private long airportId;
     @Basic
     @Column(name = "AIRPORT_NAME")
     private String airportName;
@@ -53,12 +48,12 @@ public class Airport {
     @Column(name = "SOURCE_A")
     private String sourceA;
 
-    public long getAirportdId() {
-        return airportdId;
+    public long getAirportId() {
+        return airportId;
     }
 
-    public void setAirportdId(long airportdId) {
-        this.airportdId = airportdId;
+    public void setAirportId(long airportId) {
+        this.airportId = airportId;
     }
 
     public String getAirportName() {
@@ -172,7 +167,7 @@ public class Airport {
 
         Airport airport = (Airport) o;
 
-        if (airportdId != airport.airportdId) return false;
+        if (airportId != airport.airportId) return false;
         if (airportName != null ? !airportName.equals(airport.airportName) : airport.airportName != null) return false;
         if (city != null ? !city.equals(airport.city) : airport.city != null) return false;
         if (country != null ? !country.equals(airport.country) : airport.country != null) return false;
@@ -192,7 +187,7 @@ public class Airport {
 
     @Override
     public int hashCode() {
-        int result = (int) (airportdId ^ (airportdId >>> 32));
+        int result = (int) (airportId ^ (airportId >>> 32));
         result = 31 * result + (airportName != null ? airportName.hashCode() : 0);
         result = 31 * result + (city != null ? city.hashCode() : 0);
         result = 31 * result + (country != null ? country.hashCode() : 0);
@@ -207,20 +202,5 @@ public class Airport {
         result = 31 * result + (typeA != null ? typeA.hashCode() : 0);
         result = 31 * result + (sourceA != null ? sourceA.hashCode() : 0);
         return result;
-    }
-
-
-    @Override
-    public String toString() {
-        return  " |AirportID=" + airportdId +
-                "| Airport Name = " + airportName +
-                "| City = " + city  +
-                "| Country = " + country +
-                "| IATA = " + iata  +
-                "| ICAO = " + icao +
-                "| Latitude = " + latitude +
-                "| Longitude = " + longitude +
-                "| Altitude = " + altitude +
-                "| Timezone = " + timezone + "|" ;
     }
 }

@@ -1,25 +1,24 @@
 package model.persistence.entity;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import java.io.Serializable;
 
-@Entity
-@IdClass(CrewPK.class)
-public class Crew {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Id
+public class CrewPK implements Serializable {
     @Column(name = "id")
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Id
     @Column(name = "employeeId")
-    private int employeeId;
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int employeeId;
     @Column(name = "flightId")
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int flightId;
-    @Basic
-    @Column(name = "role")
-    private String role;
 
     public int getId() {
         return id;
@@ -45,25 +44,16 @@ public class Crew {
         this.flightId = flightId;
     }
 
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Crew crew = (Crew) o;
+        CrewPK crewPK = (CrewPK) o;
 
-        if (id != crew.id) return false;
-        if (employeeId != crew.employeeId) return false;
-        if (flightId != crew.flightId) return false;
-        if (role != null ? !role.equals(crew.role) : crew.role != null) return false;
+        if (id != crewPK.id) return false;
+        if (employeeId != crewPK.employeeId) return false;
+        if (flightId != crewPK.flightId) return false;
 
         return true;
     }
@@ -73,7 +63,6 @@ public class Crew {
         int result = id;
         result = 31 * result + employeeId;
         result = 31 * result + flightId;
-        result = 31 * result + (role != null ? role.hashCode() : 0);
         return result;
     }
 }

@@ -1,7 +1,8 @@
 package model.flight.route;
 
-import model.flight.aircraft.Aircraft;
-import model.flight.route.airport.Airport;
+
+import model.persistence.entity.Aircraft;
+import model.persistence.entity.Airport;
 
 public class Route {
 
@@ -41,8 +42,8 @@ public class Route {
 
 
     public double getFlightTime(){
-        double depTimeZone = departure.getTimeZone();
-        double arrTimeZone = arrival.getTimeZone();
+        double depTimeZone = departure.getTimezone();
+        double arrTimeZone = arrival.getTimezone();
         double addedTime = arrTimeZone - depTimeZone;
         speed = avgSpeed*costIndex;
         double flightTime = (getDistance()/speed) + addedTime;

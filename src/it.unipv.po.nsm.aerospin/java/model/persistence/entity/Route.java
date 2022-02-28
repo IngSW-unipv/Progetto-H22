@@ -23,6 +23,8 @@ public class Route {
     @Basic
     @Column(name = "costIndex")
     private Integer costIndex;
+    @OneToOne(mappedBy = "routeById")
+    private Flight flightByRouteId;
 
     public int getRouteId() {
         return routeId;
@@ -100,15 +102,11 @@ public class Route {
         return result;
     }
 
-    @Override
-    public String toString() {
-        return "Route{" +
-                "routeId=" + routeId +
-                ", departure='" + departure + '\'' +
-                ", arrival='" + arrival + '\'' +
-                ", waypoints='" + waypoints + '\'' +
-                ", price=" + price + '\'' +
-                ", costIndex=" + costIndex +
-                '}';
+    public Flight getFlightByRouteId() {
+        return flightByRouteId;
+    }
+
+    public void setFlightByRouteId(Flight flightByRouteId) {
+        this.flightByRouteId = flightByRouteId;
     }
 }

@@ -1,10 +1,7 @@
 package model.persistence.dao;
 
-import model.flight.aircraft.Manufacturer;
-
 import model.persistence.entity.Flight;
 
-import java.sql.Time;
 import java.util.Date;
 import java.util.List;
 

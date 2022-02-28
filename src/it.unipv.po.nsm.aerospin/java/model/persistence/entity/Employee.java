@@ -25,8 +25,10 @@ public class Employee {
     @Basic
     @Column(name = "salary")
     private Double salary;
-    @OneToMany(mappedBy = "employeeByAdmin")
-    private Collection<User> usersById;
+    @OneToMany(mappedBy = "employeeByEmployeeId")
+    private Collection<Crew> crewsById;
+
+
 
     public int getId() {
         return id;
@@ -104,11 +106,11 @@ public class Employee {
         return result;
     }
 
-    public Collection<User> getUsersById() {
-        return usersById;
+    public Collection<Crew> getCrewsById() {
+        return crewsById;
     }
 
-    public void setUsersById(Collection<User> usersById) {
-        this.usersById = usersById;
+    public void setCrewsById(Collection<Crew> crewsById) {
+        this.crewsById = crewsById;
     }
 }
