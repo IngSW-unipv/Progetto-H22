@@ -1,6 +1,7 @@
 package model.booking.payment;
 
 import model.booking.Ticket;
+
 import java.util.Date;
 
 public class Payment implements IPayment{
@@ -39,7 +40,24 @@ public class Payment implements IPayment{
     }
 
     @Override
-    public void makePayment() {
+    public boolean checkCardNumber() {
+        int length = cardNumber.length();
+        return length == 16;
+    }
 
+    @Override
+    public boolean checkCardExp() {
+        try {
+            return cardExp.after(new Date(System.currentTimeMillis()));
+        }
+        catch (Exception e) {
+            throw new NullPointerException("Invalid date provided.");
+        }
+    }
+
+    @Override
+    public void makePayment() {
+        if(checkCardNumber() && checkCardExp())
+        System.out.println("Payment Successful. Thanks for your purchase!");
     }
 }
