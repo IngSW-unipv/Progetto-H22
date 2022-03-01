@@ -13,14 +13,27 @@ import javafx.scene.Parent;
 import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
 import controller.IControlledScreen;
+import util.Session;
 
 public class ScreensController  extends StackPane {
+
+
+    public Session session;
+
+    public Session getSession() {
+        return session;
+    }
+
+    public void setSession(Session session) {
+        this.session = session;
+    }
 
     //Contiene gli screen da mostrare
     private HashMap<String, Node> screens = new HashMap<>();
 
     public ScreensController() {
         super();
+        session = new Session();
     }
 
     //Aggiunge lo screen allo Stack

@@ -5,6 +5,7 @@ import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.Group;
 import javafx.scene.image.Image;
+import util.Session;
 
 public class MainApplication extends Application {
 
@@ -47,8 +48,6 @@ public class MainApplication extends Application {
         mainContainer.loadScreen(MainApplication.aircraft, MainApplication.screen9File);
         mainContainer.loadScreen(MainApplication.route, MainApplication.screen10File);
         mainContainer.loadScreen(MainApplication.flight, MainApplication.screen11File);
-
-
 
         mainContainer.setScreen(MainApplication.home);
 
