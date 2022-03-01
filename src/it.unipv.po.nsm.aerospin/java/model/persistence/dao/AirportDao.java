@@ -66,8 +66,7 @@ public class AirportDao implements AirportDaoInterface{
 
     @Override
     public List<Airport> findByName(String name) {
-        String hql = "from Airport a where a.airportName like :name ";
-        Query query = conn.getCurrentSession().createQuery(hql);
+        Query query = conn.getCurrentSession().createNativeQuery("select * from Airport where AIRPORT_NAME = :name order by AIRPORT_NAME asc" ).addEntity(Airport.class);
         query.setParameter("name","%" + name + "%");
         //query.setCacheable(true);
         List<Airport> airports = query.list();
@@ -75,9 +74,8 @@ public class AirportDao implements AirportDaoInterface{
     }
 
     public List<Airport> findByIcao(String icao) {
-        String hql = "from Airport a where a.icao = :icao";
-        Query query = conn.getCurrentSession().createNativeQuery("select * from Airport where ICAO = " + "'"+icao+"'" ).addEntity(Airport.class);
-
+        Query query = conn.getCurrentSession().createNativeQuery("select * from Airport where ICAO = :icao order by AIRPORT_NAME asc" ).addEntity(Airport.class);
+        query.setParameter("icao",icao);
         //query.setParameter("icao",icao);
         List<Airport> airport = (List<Airport>) query.list();
         return airport;

@@ -9,6 +9,8 @@ import java.util.List;
 public class Search {
 
 
+
+
     public List<String> getServedDepartures(){
         List<String> airportsNames =  new ArrayList<>();
         RouteService routeService = new RouteService();
@@ -19,10 +21,10 @@ public class Search {
         return airportsNames;
     }
 
-    public List<String> getServedArrivals(){
+    public List<String> getServedArrivals(String servedByDeparture){
         List<String> airportsNames =  new ArrayList<>();
         RouteService routeService = new RouteService();
-        List<Route> routes = routeService.findAll();
+        List<Route> routes = routeService.findByDep(servedByDeparture);
         for (int i = 0; i < routes.size(); i++) {
             airportsNames.add(routes.get(i).getArrivalName());
         }

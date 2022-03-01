@@ -6,11 +6,15 @@ public class TestSearch {
 
     public static void main(String[] args) {
         Search search = new Search();
-        List<String> servedDepartures = search.getServedDepartures();
+        List<String> servedDepartures = search.getServedArrivals("LICA");
         for (String s: servedDepartures) {
             System.out.printf(s);
         }
+
+        System.exit(0);
     }
+
+
 
 
 

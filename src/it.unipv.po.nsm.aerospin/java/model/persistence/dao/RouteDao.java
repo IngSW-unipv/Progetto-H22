@@ -33,7 +33,7 @@ public class RouteDao implements RouteDaoInterface{
 
     @Override
     public List<Route> findByDep(String dep) {
-        String hql = "from Route a where a.departure = :dep";
+        String hql = "from Route a where a.departure = :dep order by a.departure ASC";
         Query query = conn.getCurrentSession().createQuery(hql);
         query.setParameter("dep",dep);
         //query.setCacheable(true);
@@ -43,7 +43,7 @@ public class RouteDao implements RouteDaoInterface{
 
     @Override
     public List<Route> findByArr(String arr) {
-        String hql = "from Route a where a.departure = :arr";
+        String hql = "from Route a where a.departure = :arr order by a.departure ASC";
         Query query = conn.getCurrentSession().createQuery(hql);
         query.setParameter("arr",arr);
         //query.setCacheable(true);
