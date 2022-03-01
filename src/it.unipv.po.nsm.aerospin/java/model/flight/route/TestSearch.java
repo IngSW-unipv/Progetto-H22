@@ -6,7 +6,7 @@ public class TestSearch {
 
     public static void main(String[] args) {
         Search search = new Search();
-        List<String> servedDepartures = search.getServedArrivals("LICA");
+        List<String> servedDepartures = search.getServedDepartures();
         for (String s: servedDepartures) {
             System.out.printf(s);
         }

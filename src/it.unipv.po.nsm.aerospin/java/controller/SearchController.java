@@ -37,38 +37,20 @@ public class SearchController implements Initializable, IControlledScreen {
 
     ControllerMethods methods = new ControllerMethods();
     Search search = new Search();
-    private final ObservableList<String> options = FXCollections.observableArrayList(
-            "Aab",
-            "Aer",
-            "Aeq",
-            "Arx",
-            "Byad",
-            "Csca",
-            "Csee",
-            "Cfefe",
-            "Cead",
-            "Defea",
-            "Dqeqe",
-            "Fefaf",
-            "Gert",
-            "Wqad",
-            "Xsad",
-            "Zzz"
-    );
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
         List<String> strings1 = search.getServedDepartures();
-//        List<String> strings2 = search.getServedArrivals("LICA");
+        List<String> strings2 = search.getServedArrivals("LICA");
         cb1.setItems(FXCollections.observableArrayList(strings1));
-//        cb2.setItems(FXCollections.observableArrayList(strings2));
+        cb2.setItems(FXCollections.observableArrayList(strings2));
         //gestire cb1 == cb2!!!!
 
 //        cb1.setItems(options);
 //        cb2.setItems(options);
-        methods.selectOptionOnKey(cb1, options);
-//        methods.selectOptionOnKey(cb2, options);
+        methods.selectOptionOnKey(cb1, strings1);
+        methods.selectOptionOnKey(cb2, strings2);
 
         date1.setDayCellFactory(methods.dateRange());
         date2.setDayCellFactory(methods.dateRange());
