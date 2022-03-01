@@ -45,19 +45,23 @@ public class SearchController implements Initializable, IControlledScreen {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        strings1 = search.getServedDepartures();
-        cb1.setItems(FXCollections.observableArrayList(strings1));
-        methods.selectOptionOnKey(cb1, strings1);
 
-        date1.setDayCellFactory(methods.dateRange());
-        date2.setDayCellFactory(methods.dateRange());
-        //gestire date2 < date1!!!!
+        Thread SearchThread = new Thread(()->{
+            strings1 = search.getServedDepartures();
+            cb1.setItems(FXCollections.observableArrayList(strings1));
+            methods.selectOptionOnKey(cb1, strings1);
 
-
-        // Se seleziono Solo Andata non posso inserire Data Ritorno
-        date2.disableProperty().bind(oneway.selectedProperty());
+            date1.setDayCellFactory(methods.dateRange());
+            date2.setDayCellFactory(methods.dateRange());
+            //gestire date2 < date1!!!!
+            // Se seleziono Solo Andata non posso inserire Data Ritorno
+            date2.disableProperty().bind(oneway.selectedProperty());
 
 //      Gestire errori CERCA!!
+
+        });
+        SearchThread.start();
+
     }
 
     ScreensController myController;
@@ -68,9 +72,15 @@ public class SearchController implements Initializable, IControlledScreen {
 
     @FXML
     private void findArrivals (ActionEvent event){
-        strings2 = search.getServedArrivals(cb1.getSelectionModel().getSelectedItem());
-        cb2.setItems(FXCollections.observableArrayList(strings2));
-        methods.selectOptionOnKey(cb2, strings2);
+        Thread SearchThread = new Thread(()->{
+            strings2 = search.getServedArrivals(cb1.getSelectionModel().getSelectedItem());
+            cb2.setItems(FXCollections.observableArrayList(strings2));
+            methods.selectOptionOnKey(cb2, strings2);
+        });
+        SearchThread.start();
+
+
+
     }
 
 
@@ -90,3 +100,5 @@ public class SearchController implements Initializable, IControlledScreen {
         myController.setScreen(Factory.home);
     }
 }
+
+

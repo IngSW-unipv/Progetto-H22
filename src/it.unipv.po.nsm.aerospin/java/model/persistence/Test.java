@@ -79,23 +79,28 @@ public class Test {
         passengerService.persist(passenger);*/
 //////////////////////////////////////////TEST USER\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
+        System.out.println("ciaooooooooooooooo");
+        Thread t = new Thread(()->{
+            List<Route> routes = routeService.findByDepName("Lamezia");
+            Airport airport = new Airport();
+            System.out.println("ciao");
+            airport = airportService.findByName("Lamezia").get(0);
 
-        List<Route> routes = routeService.findByDepName("Lamezia");
-        Airport airport = new Airport();
-        airport = airportService.findByName("Lamezia").get(0);
+            List<String> s = new ArrayList<>();
 
-        List<String> s = new ArrayList<>();
+            for (int i = 0; i <routes.size() ; i++) {
+                s.add(routes.get(i).getArrivalName());
+            }
 
-        for (int i = 0; i <routes.size() ; i++) {
-            s.add(routes.get(i).getArrivalName());
-        }
+            for (String a:s) {
+                System.out.println(a);
+            }
+        });
 
-        for (String a:s) {
-            System.out.println(a);
-        }
+        t.start();
 
 
-        System.exit(0);
+        //System.exit(0);
 
 
     }

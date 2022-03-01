@@ -17,6 +17,7 @@ public class AirportService {
 
 
     public List<Airport> findByIcao(String id) {
+        Thread thread = new Thread(()->{});
         airportDao.getConn().openCurrentSession();
         List<Airport> airports = airportDao.findByIcao(id);
         airportDao.getConn().closeCurrentSession();

@@ -32,6 +32,9 @@ public class HomeController implements Initializable, IControlledScreen {
     public void initialize(URL url, ResourceBundle rb) {
        // System.out.println(factory.session.isLogged());
         //session = factory.getSession();
+
+
+
         jBtn.disableProperty().bind(new SimpleBooleanProperty(true));
        //System.out.println(session.isLogged());
 //        myController.getSession().isLogged();

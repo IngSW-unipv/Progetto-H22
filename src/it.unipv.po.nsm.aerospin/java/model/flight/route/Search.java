@@ -1,5 +1,6 @@
 package model.flight.route;
 
+import javafx.application.Platform;
 import model.persistence.entity.Airport;
 import model.persistence.service.AirportService;
 import model.persistence.service.RouteService;
@@ -16,6 +17,7 @@ public class Search {
     private RouteService routeService = new RouteService();
     private AirportService airportService = new AirportService();
     private Airport airport = new Airport();
+
 
 
     public List<String> getServedDepartures(){

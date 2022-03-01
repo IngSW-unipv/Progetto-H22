@@ -32,7 +32,6 @@ public class Factory {
     public ScreensController createContainer() {
 
         ScreensController mainContainer = new ScreensController();
-
         mainContainer.loadScreen(home, screen1File);
         mainContainer.loadScreen(search, screen2File);
         mainContainer.loadScreen(result, screen3File);
@@ -44,7 +43,6 @@ public class Factory {
         mainContainer.loadScreen(aircraft, screen9File);
         mainContainer.loadScreen(route, screen10File);
         mainContainer.loadScreen(flight, screen11File);
-
         mainContainer.setScreen(home);
 
         return mainContainer;

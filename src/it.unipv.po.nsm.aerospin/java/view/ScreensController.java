@@ -50,6 +50,7 @@ public class ScreensController  extends StackPane {
     //In caso positivo rimuovo lo screen attuale e carico il nuovo;
     //altrimenti carico direttamente lo screen.
     public boolean setScreen(final String name) {
+
         if (screens.get(name) != null) {   //screen caricato
             final DoubleProperty opacity = opacityProperty();
 
