@@ -8,7 +8,8 @@ import java.util.List;
 public interface RouteDaoInterface {
     List<Route> findAll();
     List<Route> findById(int id);
-    List<Route> findByDep(String dep);
+    List<Route> findByDepIcao(String dep);
+    List<Route> findByDepName(String dep);
     List<Route> findByArr(String arr);
     public void persist(Route entity);
     public void update(Route entity);

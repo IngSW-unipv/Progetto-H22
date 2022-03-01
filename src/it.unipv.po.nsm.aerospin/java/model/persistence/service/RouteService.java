@@ -28,9 +28,16 @@ public class RouteService {
         return routes;
     }
 
-    public List<Route> findByDep(String dep) {
+    public List<Route> findByDepIcao(String dep) {
         routeDao.getConn().openCurrentSession();
-        List<Route> routes = routeDao.findByDep(dep);
+        List<Route> routes = routeDao.findByDepIcao(dep);
+        routeDao.getConn().closeCurrentSession();
+        return routes;
+    }
+
+    public List<Route> findByDepName(String dep) {
+        routeDao.getConn().openCurrentSession();
+        List<Route> routes = routeDao.findByDepName(dep);
         routeDao.getConn().closeCurrentSession();
         return routes;
     }

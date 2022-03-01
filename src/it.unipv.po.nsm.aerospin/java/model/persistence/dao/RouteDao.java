@@ -4,6 +4,7 @@ import model.persistence.Connection;
 import model.persistence.entity.Airport;
 import model.persistence.entity.Passenger;
 import model.persistence.entity.Route;
+import model.persistence.service.AirportService;
 import org.hibernate.query.Query;
 
 import java.util.List;
@@ -33,10 +34,25 @@ public class RouteDao implements RouteDaoInterface{
     }
 
     @Override
-    public List<Route> findByDep(String dep) {
-        String hql = "from Route a where a.departure = :dep order by a.departure ASC";
+    public List<Route> findByDepIcao(String dep) {
+        String hql = "from Route a where a.departure = :dep";
         Query query = conn.getCurrentSession().createQuery(hql);
         query.setParameter("dep",dep);
+        //query.setCacheable(true);
+        List<Route> routes = query.list();
+        return routes;
+    }
+
+    @Override
+    public List<Route> findByDepName(String dep) {
+        AirportService airportService = new AirportService();
+        Airport airport = new Airport();
+        airport = airportService.findByName(dep).get(0);
+        String depIcao = airport.getIcao();
+
+        String hql = "from Route a where a.departure = :depIcao ";
+        Query query = conn.getCurrentSession().createQuery(hql);
+        query.setParameter("depIcao",depIcao);
         //query.setCacheable(true);
         List<Route> routes = query.list();
         return routes;

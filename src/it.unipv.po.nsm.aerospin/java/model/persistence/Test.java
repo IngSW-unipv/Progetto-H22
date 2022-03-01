@@ -8,6 +8,7 @@ import model.persistence.service.*;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Test {
@@ -30,11 +31,7 @@ public class Test {
         route.setPrice(350.00);
         routeService.persist(route);*/
 
-        List<Route> routes =  routeService.findAll();
 
-        for (Route r: routes ) {
-            System.out.println(r.toString());
-        }
 
 
 
@@ -82,6 +79,20 @@ public class Test {
         passengerService.persist(passenger);*/
 //////////////////////////////////////////TEST USER\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
+
+        List<Route> routes = routeService.findByDepName("Lamezia");
+        Airport airport = new Airport();
+        airport = airportService.findByName("Lamezia").get(0);
+
+        List<String> s = new ArrayList<>();
+
+        for (int i = 0; i <routes.size() ; i++) {
+            s.add(routes.get(i).getArrivalName());
+        }
+
+        for (String a:s) {
+            System.out.println(a);
+        }
 
 
         System.exit(0);

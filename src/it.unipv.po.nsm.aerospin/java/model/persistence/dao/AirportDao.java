@@ -66,7 +66,8 @@ public class AirportDao implements AirportDaoInterface{
 
     @Override
     public List<Airport> findByName(String name) {
-        Query query = conn.getCurrentSession().createNativeQuery("select * from Airport where AIRPORT_NAME = :name order by AIRPORT_NAME asc" ).addEntity(Airport.class);
+        String hql = "from Airport a where a.airportName like :name";
+        Query query = conn.getCurrentSession().createQuery(hql);
         query.setParameter("name","%" + name + "%");
         //query.setCacheable(true);
         List<Airport> airports = query.list();
