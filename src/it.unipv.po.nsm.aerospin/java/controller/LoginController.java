@@ -1,9 +1,10 @@
 package controller;
 
+import com.sun.scenario.effect.EffectHelper;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import view.MainApplication;
+import view.Factory;
 import view.ScreensController;
 
 import java.net.URL;
@@ -23,16 +24,16 @@ public class LoginController implements Initializable, IControlledScreen {
 
     @FXML
     private void goToHome(ActionEvent event){
-        myController.setScreen(MainApplication.home);
+        myController.setScreen(Factory.home);
     }
 
     @FXML
     private void goToSearch(ActionEvent event){
-        myController.setScreen(MainApplication.search);
+        myController.setScreen(Factory.search);
     }
 
     @FXML
     private void logAccount(ActionEvent event){
-        myController.setScreen(MainApplication.manage);
+        myController.setScreen(Factory.manage);
     }
 }

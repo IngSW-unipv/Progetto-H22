@@ -3,27 +3,27 @@ package view;
 public class Factory {
 
     public static String home = "home";
-    public static String screen1File = "src/it.unipv.po.nsm.aerospin/java/view/fxml/Home.fxml";
+    public static String screen1File = "fxml/Home.fxml";
     public static String search = "search";
-    public static String screen2File = "view/fxml/Search.fxml";
+    public static String screen2File = "fxml/Search.fxml";
     public static String result = "result";
-    public static String screen3File = "view/fxml/Result.fxml";
+    public static String screen3File = "fxml/Result.fxml";
     public static String login = "login";
-    public static String screen4File = "view/fxml/Login.fxml";
+    public static String screen4File = "fxml/Login.fxml";
     public static String account = "account";
-    public static String screen5File = "view/fxml/Account.fxml";
+    public static String screen5File = "fxml/Account.fxml";
     public static String manage = "manage";
-    public static String screen6File = "view/fxml/Manage.fxml";
+    public static String screen6File = "fxml/Manage.fxml";
     public static String employee = "employee";
-    public static String screen7File = "view/fxml/Employee.fxml";
+    public static String screen7File = "fxml/Employee.fxml";
     public static String crew = "crew";
-    public static String screen8File = "view/fxml/Crew.fxml";
+    public static String screen8File = "fxml/Crew.fxml";
     public static String aircraft = "aircraft";
-    public static String screen9File = "view/fxml/Aircraft.fxml";
+    public static String screen9File = "fxml/Aircraft.fxml";
     public static String route = "route";
-    public static String screen10File = "view/fxml/Route.fxml";
+    public static String screen10File = "fxml/Route.fxml";
     public static String flight = "flight";
-    public static String screen11File = "view/fxml/Flight.fxml";
+    public static String screen11File = "fxml/Flight.fxml";
 
 //    private Application mainApplication;
 

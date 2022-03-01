@@ -4,7 +4,7 @@ import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import view.MainApplication;
+import view.Factory;
 import view.ScreensController;
 
 import java.net.URL;
@@ -32,19 +32,19 @@ public class HomeController implements Initializable, IControlledScreen {
 
     @FXML
     private void goToSearch(ActionEvent event){
-        myController.setScreen(MainApplication.search);
+        myController.setScreen(Factory.search);
     }
 
     @FXML
     private void goToLogin(ActionEvent event){
-        myController.setScreen(MainApplication.login);
+        myController.setScreen(Factory.login);
     }
 
     @FXML
     private void logout(ActionEvent event){
         //cambia stato come non loggato
 //        session.setLogged(false);
-        myController.setScreen(MainApplication.home);
+        myController.setScreen(Factory.home);
     }
 
 }

@@ -1,6 +1,5 @@
 package controller;
 
-import com.jfoenix.controls.JFXToggleButton;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -8,9 +7,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import model.flight.route.Search;
-import model.persistence.service.AirportService;
 import util.ControllerMethods;
-import view.MainApplication;
+import view.Factory;
 import view.ScreensController;
 
 import java.net.URL;
@@ -62,15 +60,15 @@ public class SearchController implements Initializable, IControlledScreen {
     public void initialize(URL url, ResourceBundle rb) {
 
         List<String> strings1 = search.getServedDepartures();
-        List<String> strings2 = search.getServedArrivals("LICA");
+//        List<String> strings2 = search.getServedArrivals("LICA");
         cb1.setItems(FXCollections.observableArrayList(strings1));
-        cb2.setItems(FXCollections.observableArrayList(strings2));
+//        cb2.setItems(FXCollections.observableArrayList(strings2));
         //gestire cb1 == cb2!!!!
 
 //        cb1.setItems(options);
 //        cb2.setItems(options);
         methods.selectOptionOnKey(cb1, options);
-        methods.selectOptionOnKey(cb2, options);
+//        methods.selectOptionOnKey(cb2, options);
 
         date1.setDayCellFactory(methods.dateRange());
         date2.setDayCellFactory(methods.dateRange());
@@ -91,17 +89,17 @@ public class SearchController implements Initializable, IControlledScreen {
 
     @FXML
     private void goToHome(ActionEvent event){
-        myController.setScreen(MainApplication.home);
+        myController.setScreen(Factory.home);
     }
 
     @FXML
     private void goToLogin(ActionEvent event){
-        myController.setScreen(MainApplication.login);
+        myController.setScreen(Factory.login);
     }
 
     @FXML
     private void logout(ActionEvent event){
         //cambia stato come non loggato
-        myController.setScreen(MainApplication.home);
+        myController.setScreen(Factory.home);
     }
 }

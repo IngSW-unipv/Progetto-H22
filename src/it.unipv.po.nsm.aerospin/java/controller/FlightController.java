@@ -3,7 +3,7 @@ package controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import view.MainApplication;
+import view.Factory;
 import view.ScreensController;
 
 import java.net.URL;
@@ -23,18 +23,18 @@ public class FlightController implements Initializable, IControlledScreen {
 
     @FXML
     private void goToHome(ActionEvent event){
-        myController.setScreen(MainApplication.home);
+        myController.setScreen(Factory.home);
     }
 
     @FXML
     private void goToManage(ActionEvent event){
-        myController.setScreen(MainApplication.manage);
+        myController.setScreen(Factory.manage);
     }
 
     @FXML
     private void logout(ActionEvent event){
         //cambia stato come non loggato
-        myController.setScreen(MainApplication.home);
+        myController.setScreen(Factory.home);
     }
 
 }

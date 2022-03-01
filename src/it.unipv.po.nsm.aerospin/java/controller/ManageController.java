@@ -1,9 +1,10 @@
 package controller;
 
+import com.sun.scenario.effect.EffectHelper;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import view.MainApplication;
+import view.Factory;
 import view.ScreensController;
 
 import java.net.URL;
@@ -23,38 +24,38 @@ public class ManageController implements Initializable, IControlledScreen {
 
     @FXML
     private void goToHome(ActionEvent event){
-        myController.setScreen(MainApplication.home);
+        myController.setScreen(Factory.home);
     }
 
     @FXML
     private void goToEmployee(ActionEvent event){
-        myController.setScreen(MainApplication.employee);
+        myController.setScreen(Factory.employee);
     }
 
     @FXML
     private void goToCrew(ActionEvent event){
-        myController.setScreen(MainApplication.crew);
+        myController.setScreen(Factory.crew);
     }
 
     @FXML
     private void goToAircraft(ActionEvent event){
-        myController.setScreen(MainApplication.aircraft);
+        myController.setScreen(Factory.aircraft);
     }
 
     @FXML
     private void goToRoute(ActionEvent event){
-        myController.setScreen(MainApplication.route);
+        myController.setScreen(Factory.route);
     }
 
     @FXML
     private void goToFlight(ActionEvent event){
-        myController.setScreen(MainApplication.flight);
+        myController.setScreen(Factory.flight);
     }
 
     @FXML
     private void logout(ActionEvent event){
         //cambia stato come non loggato
-        myController.setScreen(MainApplication.home);
+        myController.setScreen(Factory.home);
     }
 
 }

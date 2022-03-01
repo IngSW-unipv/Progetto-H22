@@ -4,7 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
-import view.MainApplication;
+import view.Factory;
 import view.ScreensController;
 
 import java.net.URL;
@@ -28,12 +28,12 @@ public class AccountController implements Initializable, IControlledScreen {
 
     @FXML
     private void goToHome(ActionEvent event){
-        myController.setScreen(MainApplication.home);
+        myController.setScreen(Factory.home);
     }
 
     @FXML
     private void goToSearch(ActionEvent event){
-        myController.setScreen(MainApplication.search);
+        myController.setScreen(Factory.search);
     }
 
 /*    @FXML
