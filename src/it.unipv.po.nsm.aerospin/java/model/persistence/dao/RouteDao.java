@@ -17,7 +17,8 @@ public class RouteDao implements RouteDaoInterface{
 
     @Override
     public List<Route> findAll() {
-        List<Route> routes = (List<Route>) conn.getCurrentSession().createQuery("from Route ").list();
+        Query query = conn.getCurrentSession().createNativeQuery("select distinct * from Route order by departure asc ");
+        List<Route> routes = query.list();
         return  routes;
     }
 

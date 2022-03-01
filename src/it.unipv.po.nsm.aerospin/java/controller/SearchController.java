@@ -62,7 +62,7 @@ public class SearchController implements Initializable, IControlledScreen {
     public void initialize(URL url, ResourceBundle rb) {
 
         List<String> strings1 = search.getServedDepartures();
-        List<String> strings2 = search.getServedArrivals();
+        List<String> strings2 = search.getServedArrivals("LICA");
         cb1.setItems(FXCollections.observableArrayList(strings1));
         cb2.setItems(FXCollections.observableArrayList(strings2));
         //gestire cb1 == cb2!!!!
