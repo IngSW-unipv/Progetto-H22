@@ -1,5 +1,7 @@
 package model.persistence.entity;
 
+import model.persistence.service.AirportService;
+
 import javax.persistence.*;
 
 @Entity
@@ -23,6 +25,29 @@ public class Route {
     @Basic
     @Column(name = "costIndex")
     private Integer costIndex;
+
+
+
+
+
+    public String getDepartureName(){
+        String arrivalName;
+        String departureName;
+        AirportService airportService = new AirportService();
+        Airport airport = airportService.findByIcao(departure).get(0);
+        return airport.getAirportName();
+    }
+
+
+    public String getArrivalName(){
+        AirportService airportService = new AirportService();
+        Airport airport = airportService.findByIcao(arrival).get(0);
+        return airport.getAirportName();
+    }
+
+
+
+
 
 
     public int getRouteId() {

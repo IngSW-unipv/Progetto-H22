@@ -14,22 +14,30 @@ public class Test {
     public static void main(String[] args) {
 
 //////////////////////////////////////////TEST ROUTE\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-        /*AirportService airportService = new AirportService();
+        AirportService airportService = new AirportService();
         RouteService routeService = new RouteService();
         Route route = new Route();
-        String waypoints = "VAK8Q VAKON T484 LISKO T415 VIE L612 KAPPO L862 LUPAL " +
+        /*String waypoints = "VAK8Q VAKON T484 LISKO T415 VIE L612 KAPPO L862 LUPAL " +
                             "M872 LATAN UM872 KFN UM601 EVENO M601 " +
                             "BALMA UR655 CAK UN310 LATEB J222 " +
                             "BASEM R785 ZELAF TRF P559 PUSOT M322 DATOB DATO3C";
         Airport departure = airportService.findByIcao("LIMC").get(0);
         Airport arrival = airportService.findByIcao("OMDB").get(0);
         Airport alternate = airportService.findByIata("CAI").get(0);
-
         route.setDeparture(departure.getIcao());
         route.setArrival(arrival.getIcao());
         route.setWaypoints(waypoints);
         route.setPrice(350.00);
         routeService.persist(route);*/
+
+        List<Route> routes =  routeService.findAll();
+
+        for (Route r: routes ) {
+            System.out.println(r.toString());
+        }
+
+
+
 //////////////////////////////////////////TEST AIRCRAFT\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
         /*AircraftService aircraftService = new AircraftService();
         Aircraft aircraft = new Aircraft();

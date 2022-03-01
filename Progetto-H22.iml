@@ -4,7 +4,7 @@
     <facet type="hibernate" name="Hibernate">
       <configuration>
         <datasource-map>
-          <unit-entry name="hibernate.cfg.xml" value="8937d563-cd02-4b9c-a580-eca8b9b4ac72" />
+          <unit-entry name="hibernate.cfg.xml" value="544286b6-57a0-4eb2-b180-2601aaf946e7" />
         </datasource-map>
         <naming-strategy-map />
         <deploymentDescriptor name="hibernate.cfg.xml" url="file://$MODULE_DIR$/src/it.unipv.po.nsm.aerospin/java/hibernate.cfg.xml" />
@@ -75,5 +75,6 @@
     <orderEntry type="library" name="Maven: javax.mail:mailapi:1.4.3" level="project" />
     <orderEntry type="library" name="Maven: javax.activation:activation:1.1" level="project" />
     <orderEntry type="library" name="Maven: com.jfoenix:jfoenix:9.0.10" level="project" />
+    <orderEntry type="library" name="lib1" level="project" />
   </component>
 </module>
