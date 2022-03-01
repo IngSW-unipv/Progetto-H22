@@ -15,8 +15,7 @@ import java.util.ResourceBundle;
 public class HomeController implements Initializable, IControlledScreen {
 
     private ScreensController myController;
-    private Session session;
-    private Factory factory;
+    private Factory factory = Factory.getInstance();
 
     @FXML
     JFXButton jBtn = new JFXButton();
@@ -44,19 +43,19 @@ public class HomeController implements Initializable, IControlledScreen {
 
     @FXML
     private void goToSearch(ActionEvent event){
-        myController.setScreen(Factory.search);
+        myController.setScreen(factory.getSearch());
     }
 
     @FXML
     private void goToLogin(ActionEvent event){
-        myController.setScreen(Factory.login);
+        myController.setScreen(factory.getLogin());
     }
 
     @FXML
     private void logout(ActionEvent event){
         //cambia stato come non loggato
 //        session.setLogged(false);
-        myController.setScreen(Factory.home);
+        myController.setScreen(factory.getHome());
     }
 
 }

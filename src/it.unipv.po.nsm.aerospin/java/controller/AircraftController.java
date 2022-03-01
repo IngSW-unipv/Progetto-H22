@@ -13,6 +13,8 @@ import java.util.ResourceBundle;
 public class AircraftController implements Initializable, IControlledScreen {
 
     ScreensController myController;
+    private Factory factory = Factory.getInstance();
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -24,19 +26,19 @@ public class AircraftController implements Initializable, IControlledScreen {
 
     @FXML
     private void goToHome(ActionEvent event){
-        myController.setScreen(Factory.home);
+        myController.setScreen(factory.getHome());
     }
 
     @FXML
     private void goToManage(ActionEvent event){
-        myController.setScreen(Factory.manage);
+        myController.setScreen(factory.getManage());
     }
 
 
     @FXML
     private void logout(ActionEvent event){
         //cambia stato come non loggato
-        myController.setScreen(Factory.home);
+        myController.setScreen(factory.getHome());
     }
 
 }

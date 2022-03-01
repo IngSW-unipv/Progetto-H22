@@ -21,6 +21,8 @@ import java.util.ResourceBundle;
 
 public class SearchController implements Initializable, IControlledScreen {
 
+    private Factory factory = Factory.getInstance();
+
     @FXML
     private ComboBox<String> cb1;
 
@@ -91,18 +93,18 @@ public class SearchController implements Initializable, IControlledScreen {
 
     @FXML
     private void goToHome(ActionEvent event){
-        myController.setScreen(Factory.home);
+        myController.setScreen(factory.getHome());
     }
 
     @FXML
     private void goToLogin(ActionEvent event){
-        myController.setScreen(Factory.login);
+        myController.setScreen(factory.getLogin());
     }
 
     @FXML
     private void logout(ActionEvent event){
         //cambia stato come non loggato
-        myController.setScreen(Factory.home);
+        myController.setScreen(factory.getHome());
     }
 }
 

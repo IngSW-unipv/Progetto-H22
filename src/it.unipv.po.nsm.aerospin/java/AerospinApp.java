@@ -9,10 +9,7 @@ import view.*;
 
 public class AerospinApp extends Application {
 
-    Factory factory = new Factory();
-
-
-
+    Factory factory = Factory.getInstance();
 
     @Override
     public void start(Stage stage) {

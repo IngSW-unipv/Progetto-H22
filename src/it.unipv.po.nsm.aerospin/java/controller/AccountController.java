@@ -13,6 +13,9 @@ import java.util.ResourceBundle;
 
 public class AccountController implements Initializable, IControlledScreen {
 
+
+    private Factory factory = Factory.getInstance();
+
     @FXML
     private ListView lvMain;
 
@@ -29,12 +32,12 @@ public class AccountController implements Initializable, IControlledScreen {
 
     @FXML
     private void goToHome(ActionEvent event){
-        myController.setScreen(Factory.home);
+        myController.setScreen(factory.getHome());
     }
 
     @FXML
     private void goToSearch(ActionEvent event){
-        myController.setScreen(Factory.search);
+        myController.setScreen(factory.getSearch());
     }
 
 /*    @FXML

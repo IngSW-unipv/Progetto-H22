@@ -14,6 +14,8 @@ import java.util.ResourceBundle;
 public class ManageController implements Initializable, IControlledScreen {
 
     ScreensController myController;
+    private Factory factory = Factory.getInstance();
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -25,38 +27,38 @@ public class ManageController implements Initializable, IControlledScreen {
 
     @FXML
     private void goToHome(ActionEvent event){
-        myController.setScreen(Factory.home);
+        myController.setScreen(factory.getHome());
     }
 
     @FXML
     private void goToEmployee(ActionEvent event){
-        myController.setScreen(Factory.employee);
+        myController.setScreen(factory.getEmployee());
     }
 
     @FXML
     private void goToCrew(ActionEvent event){
-        myController.setScreen(Factory.crew);
+        myController.setScreen(factory.getCrew());
     }
 
     @FXML
     private void goToAircraft(ActionEvent event){
-        myController.setScreen(Factory.aircraft);
+        myController.setScreen(factory.getAircraft());
     }
 
     @FXML
     private void goToRoute(ActionEvent event){
-        myController.setScreen(Factory.route);
+        myController.setScreen(factory.getRoute());
     }
 
     @FXML
     private void goToFlight(ActionEvent event){
-        myController.setScreen(Factory.flight);
+        myController.setScreen(factory.getFlight());
     }
 
     @FXML
     private void logout(ActionEvent event){
         //cambia stato come non loggato
-        myController.setScreen(Factory.home);
+        myController.setScreen(factory.getHome());
     }
 
 }

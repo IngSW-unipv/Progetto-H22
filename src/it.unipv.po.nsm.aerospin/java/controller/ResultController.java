@@ -13,6 +13,8 @@ import java.util.ResourceBundle;
 public class ResultController implements Initializable, IControlledScreen {
 
     ScreensController myController;
+    private Factory factory = Factory.getInstance();
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -24,23 +26,23 @@ public class ResultController implements Initializable, IControlledScreen {
 
     @FXML
     private void goToHome(ActionEvent event){
-        myController.setScreen(Factory.home);
+        myController.setScreen(factory.getHome());
     }
 
     @FXML
     private void goToSearch(ActionEvent event){
-        myController.setScreen(Factory.search);
+        myController.setScreen(factory.getSearch());
     }
 
     @FXML
     private void goToLogin(ActionEvent event){
-        myController.setScreen(Factory.login);
+        myController.setScreen(factory.getLogin());
     }
 
     @FXML
     private void logout(ActionEvent event){
         //cambia stato come non loggato
-        myController.setScreen(Factory.home);
+        myController.setScreen(factory.getHome());
     }
 
 }

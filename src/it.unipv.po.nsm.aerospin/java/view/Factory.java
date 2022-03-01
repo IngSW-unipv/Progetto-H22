@@ -2,32 +2,54 @@ package view;
 
 import util.Session;
 
+//Singleton
 public class Factory {
 
-    public Session session;
+    private static Factory instance = null;
+    private Session session;
 
-    public static String home = "home";
-    public static String screen1File = "fxml/Home.fxml";
-    public static String search = "search";
-    public static String screen2File = "fxml/Search.fxml";
-    public static String result = "result";
-    public static String screen3File = "fxml/Result.fxml";
-    public static String login = "login";
-    public static String screen4File = "fxml/Login.fxml";
-    public static String account = "account";
-    public static String screen5File = "fxml/Account.fxml";
-    public static String manage = "manage";
-    public static String screen6File = "fxml/Manage.fxml";
-    public static String employee = "employee";
-    public static String screen7File = "fxml/Employee.fxml";
-    public static String crew = "crew";
-    public static String screen8File = "fxml/Crew.fxml";
-    public static String aircraft = "aircraft";
-    public static String screen9File = "fxml/Aircraft.fxml";
-    public static String route = "route";
-    public static String screen10File = "fxml/Route.fxml";
-    public static String flight = "flight";
-    public static String screen11File = "fxml/Flight.fxml";
+    // Hide the contructor
+    private Factory() {
+        session = new Session();
+    }
+
+    // Allow construction only once
+    public static Factory getInstance() {
+        if(instance == null) {
+            instance = new Factory();
+            System.out.println("Create new instance");
+        }
+        else
+            System.out.println("Instance already available");
+        return instance;
+    }
+
+    public Session getSession() {
+        return session;
+    }
+
+    private static String home = "home";
+    private static String screen1File = "fxml/Home.fxml";
+    private static String search = "search";
+    private static String screen2File = "fxml/Search.fxml";
+    private static String result = "result";
+    private static String screen3File = "fxml/Result.fxml";
+    private static String login = "login";
+    private static String screen4File = "fxml/Login.fxml";
+    private static String account = "account";
+    private static String screen5File = "fxml/Account.fxml";
+    private static String manage = "manage";
+    private static String screen6File = "fxml/Manage.fxml";
+    private static String employee = "employee";
+    private static String screen7File = "fxml/Employee.fxml";
+    private static String crew = "crew";
+    private static String screen8File = "fxml/Crew.fxml";
+    private static String aircraft = "aircraft";
+    private static String screen9File = "fxml/Aircraft.fxml";
+    private static String route = "route";
+    private static String screen10File = "fxml/Route.fxml";
+    private static String flight = "flight";
+    private static String screen11File = "fxml/Flight.fxml";
 
     public ScreensController createContainer() {
 
@@ -47,4 +69,49 @@ public class Factory {
 
         return mainContainer;
     }
+
+    public static String getHome() {
+        return home;
+    }
+
+    public static String getSearch() {
+        return search;
+    }
+
+    public static String getResult() {
+        return result;
+    }
+
+    public static String getLogin() {
+        return login;
+    }
+
+    public static String getAccount() {
+        return account;
+    }
+
+    public static String getManage() {
+        return manage;
+    }
+
+    public static String getEmployee() {
+        return employee;
+    }
+
+    public static String getCrew() {
+        return crew;
+    }
+
+    public static String getAircraft() {
+        return aircraft;
+    }
+
+    public static String getRoute() {
+        return route;
+    }
+
+    public static String getFlight() {
+        return flight;
+    }
+
 }
