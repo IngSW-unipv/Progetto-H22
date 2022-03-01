@@ -1,5 +1,6 @@
 package controller;
 
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -46,7 +47,7 @@ public class SearchController implements Initializable, IControlledScreen {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        Thread SearchThread = new Thread(()->{
+        Thread t1 = new Thread(()->{
             strings1 = search.getServedDepartures();
             cb1.setItems(FXCollections.observableArrayList(strings1));
             methods.selectOptionOnKey(cb1, strings1);
@@ -60,7 +61,7 @@ public class SearchController implements Initializable, IControlledScreen {
 //      Gestire errori CERCA!!
 
         });
-        SearchThread.start();
+        t1.start();
 
     }
 
@@ -72,12 +73,16 @@ public class SearchController implements Initializable, IControlledScreen {
 
     @FXML
     private void findArrivals (ActionEvent event){
-        Thread SearchThread = new Thread(()->{
+        Thread t2 = new Thread(()->{
             strings2 = search.getServedArrivals(cb1.getSelectionModel().getSelectedItem());
-            cb2.setItems(FXCollections.observableArrayList(strings2));
+            Platform.runLater(()->{
+
+                cb2.setItems(FXCollections.observableArrayList(strings2));
+            });
             methods.selectOptionOnKey(cb2, strings2);
         });
-        SearchThread.start();
+        t2.start();
+
 
 
 
