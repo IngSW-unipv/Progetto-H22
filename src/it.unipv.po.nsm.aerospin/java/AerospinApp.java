@@ -5,8 +5,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
-import view.Factory;
-import view.ScreensController;
+import view.*;
 
 public class AerospinApp extends Application {
 
@@ -14,8 +13,7 @@ public class AerospinApp extends Application {
 
     @Override
     public void start(Stage stage) {
-
-        ScreensController mainContainer = factory.getContainer();
+        ScreensController mainContainer = factory.createContainer();
 
         Group root = new Group();
         root.getChildren().addAll(mainContainer);

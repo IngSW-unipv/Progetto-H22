@@ -1,6 +1,10 @@
 package view;
 
+import util.Session;
+
 public class Factory {
+
+    public Session session;
 
     public static String home = "home";
     public static String screen1File = "fxml/Home.fxml";
@@ -25,14 +29,7 @@ public class Factory {
     public static String flight = "flight";
     public static String screen11File = "fxml/Flight.fxml";
 
-//    private Application mainApplication;
-
-//    public Factory(Application mainApplication) {
-//        this.mainApplication = mainApplication;
-//
-//    };
-
-    public ScreensController getContainer() {
+    public ScreensController createContainer() {
 
         ScreensController mainContainer = new ScreensController();
 
@@ -52,8 +49,4 @@ public class Factory {
 
         return mainContainer;
     }
-        
-        
-        
-
 }

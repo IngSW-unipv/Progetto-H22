@@ -19,10 +19,6 @@ public class ScreensController  extends StackPane {
     //Contiene gli screen da mostrare
     private HashMap<String, Node> screens = new HashMap<>();
 
-    public ScreensController() {
-        super();
-    }
-
     //Aggiunge lo screen allo Stack
     public void addScreen(String name, Node screen) {
         screens.put(name, screen);

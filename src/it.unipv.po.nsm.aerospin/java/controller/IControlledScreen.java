@@ -1,7 +1,9 @@
 package controller;
 
+import util.Session;
 import view.ScreensController;
 
 public interface IControlledScreen {
-    public void setScreenParent(ScreensController screenPage);
+    void setScreenParent(ScreensController screenPage);
+
 }
