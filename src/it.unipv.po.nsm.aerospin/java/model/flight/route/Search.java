@@ -12,33 +12,33 @@ import java.util.stream.Collectors;
 
 public class Search {
 
-    private List<String> airportsNames =  new ArrayList<>();
+    List<String> airportsNames =  new ArrayList<>();
     private RouteService routeService = new RouteService();
     private AirportService airportService = new AirportService();
     private Airport airport = new Airport();
 
 
     public List<String> getServedDepartures(){
-
+        airportsNames.clear();
         List<Route> routes = routeService.findAll();
         for (int i = 0; i < routes.size(); i++) {
             airportsNames.add(routes.get(i).getDepartureName());
         }
         airportsNames.sort(Comparator.naturalOrder());
-        airportsNames = airportsNames.stream().distinct().collect(Collectors.toList());
-        return airportsNames;
+        return airportsNames.stream().distinct().collect(Collectors.toList());
+
     }
 
     public List<String> getServedArrivals(String servedByDeparture){
-
+        airportsNames.clear();
         List<Route> routes = routeService.findByDepName(servedByDeparture);
         airport = airportService.findByName(servedByDeparture).get(0);
         for (int i = 0; i < routes.size(); i++) {
             airportsNames.add(routes.get(i).getArrivalName());
         }
         airportsNames.sort(Comparator.naturalOrder());
-        airportsNames = airportsNames.stream().distinct().collect(Collectors.toList());
-        return airportsNames;
+        return airportsNames.stream().distinct().collect(Collectors.toList());
+
     }
 
 }

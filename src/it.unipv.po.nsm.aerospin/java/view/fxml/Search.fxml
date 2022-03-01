@@ -8,7 +8,7 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SearchController">
     <children>
-      <JFXComboBox fx:id="cb1" layoutX="229.0" layoutY="138.0" prefHeight="30.0" prefWidth="200.0" promptText="Partenza" />
+      <JFXComboBox fx:id="cb1" layoutX="229.0" layoutY="138.0" onAction="#findArrivals" prefHeight="30.0" prefWidth="200.0" promptText="Partenza" />
       <JFXComboBox fx:id="cb2" layoutX="229.0" layoutY="225.0" prefHeight="30.0" prefWidth="200.0" promptText="Destinazione" />
       <JFXRadioButton fx:id="ar" layoutX="594.0" layoutY="104.0" mnemonicParsing="false" selected="true" text="Andata e Ritorno">
          <toggleGroup>
