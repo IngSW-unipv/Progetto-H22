@@ -1,6 +1,7 @@
 package model.persistence.dao;
 
 import model.persistence.Connection;
+import model.persistence.entity.Airport;
 import model.persistence.entity.Passenger;
 import model.persistence.entity.Route;
 import org.hibernate.query.Query;
@@ -17,8 +18,7 @@ public class RouteDao implements RouteDaoInterface{
 
     @Override
     public List<Route> findAll() {
-        Query query = conn.getCurrentSession().createNativeQuery("select * from Route order by departure asc ");
-        List<Route> routes = query.list();
+        List<Route> routes = (List<Route>) conn.getCurrentSession().createQuery("from Route ").list();
         return  routes;
     }
 
