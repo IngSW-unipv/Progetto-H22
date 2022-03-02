@@ -5,5 +5,4 @@ import view.ScreensController;
 
 public interface IControlledScreen {
     void setScreenParent(ScreensController screenPage);
-
 }

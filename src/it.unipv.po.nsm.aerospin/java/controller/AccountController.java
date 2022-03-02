@@ -1,10 +1,8 @@
 package controller;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
-import util.Session;
 import view.Factory;
 import view.ScreensController;
 
@@ -28,16 +26,6 @@ public class AccountController implements Initializable, IControlledScreen {
 
     public void setScreenParent(ScreensController screenParent){
         myController = screenParent;
-    }
-
-    @FXML
-    private void goToHome(ActionEvent event){
-        myController.setScreen(factory.getHome());
-    }
-
-    @FXML
-    private void goToSearch(ActionEvent event){
-        myController.setScreen(factory.getSearch());
     }
 
 /*    @FXML

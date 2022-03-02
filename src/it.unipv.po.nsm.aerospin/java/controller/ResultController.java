@@ -24,25 +24,4 @@ public class ResultController implements Initializable, IControlledScreen {
         myController = screenParent;
     }
 
-    @FXML
-    private void goToHome(ActionEvent event){
-        myController.setScreen(factory.getHome());
-    }
-
-    @FXML
-    private void goToSearch(ActionEvent event){
-        myController.setScreen(factory.getSearch());
-    }
-
-    @FXML
-    private void goToLogin(ActionEvent event){
-        myController.setScreen(factory.getLogin());
-    }
-
-    @FXML
-    private void logout(ActionEvent event){
-        //cambia stato come non loggato
-        myController.setScreen(factory.getHome());
-    }
-
 }

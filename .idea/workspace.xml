@@ -4,11 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1915805d-1a7a-4f83-a54f-9e53500a530f" name="Changes" comment="Completed Search Controller">
+    <list default="true" id="1915805d-1a7a-4f83-a54f-9e53500a530f" name="Changes" comment="Different Screen Structure">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/AerospinApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/AerospinApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/controller/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/view/fxml/Home.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/view/fxml/Main.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/controller/AccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/controller/AccountController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/controller/HomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/controller/IControlledScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/controller/IControlledScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/controller/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/controller/SearchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/controller/SearchController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/view/fxml/Home.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/view/fxml/Home.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/view/fxml/Main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/view/fxml/Main.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/view/fxml/Search.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/view/fxml/Search.fxml" afterDir="false" />
     </list>
     <list id="c2811ffa-3085-4fce-837e-74078819ff54" name="Changes by Hamza" comment="Changes by Hamza" />
     <option name="SHOW_DIALOG" value="false" />
@@ -42,7 +48,7 @@
     </favorite-branches>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="gui" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -193,8 +199,8 @@
         <item itemvalue="Application.AerospinApp" />
         <item itemvalue="Application.TestEmployeeManager" />
         <item itemvalue="Application.TestFlightManager" />
-        <item itemvalue="Application.Test" />
         <item itemvalue="Application.TestOrder" />
+        <item itemvalue="Application.Test" />
       </list>
     </recent_temporary>
   </component>
@@ -242,6 +248,7 @@
       <workItem from="1646208431226" duration="5707000" />
       <workItem from="1646216495414" duration="1048000" />
       <workItem from="1646217591919" duration="3127000" />
+      <workItem from="1646226804588" duration="1394000" />
     </task>
     <task id="LOCAL-00001" summary="Prova">
       <created>1645112352115</created>
@@ -471,7 +478,8 @@
     <MESSAGE value="Added threads" />
     <MESSAGE value="Implement Singleton Pattern" />
     <MESSAGE value="FlightManager" />
-    <option name="LAST_COMMIT_MESSAGE" value="FlightManager" />
+    <MESSAGE value="Different Screen Structure" />
+    <option name="LAST_COMMIT_MESSAGE" value="Different Screen Structure" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Progetto_H22$MainApplication.ic" NAME="MainApplication Coverage Results" MODIFIED="1645740929671" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
