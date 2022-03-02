@@ -4,8 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1915805d-1a7a-4f83-a54f-9e53500a530f" name="Changes" comment="FlightManager" />
-    <list id="c2811ffa-3085-4fce-837e-74078819ff54" name="Changes by Hamza" comment="Changes by Hamza" />
+    <list default="true" id="1915805d-1a7a-4f83-a54f-9e53500a530f" name="Changes" comment="FlightManager">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/controller/HomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/controller/SearchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/controller/SearchController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/util/ControllerMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/util/ControllerMethods.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/view/fxml/Search.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/view/fxml/Search.fxml" afterDir="false" />
+    </list>
+    <list id="cc0f6de1-d0a5-4dca-944d-050ad7427194" name="Changes by Hamza" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

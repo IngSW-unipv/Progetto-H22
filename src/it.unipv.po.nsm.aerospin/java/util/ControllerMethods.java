@@ -45,7 +45,7 @@ public class ControllerMethods {
     private static final int maxMonth = 4;
 
     // Mantengo le date selezionabili tra Oggi e prossimi 4 Mesi
-    public Callback<DatePicker, DateCell> dateRange() {
+    public Callback<DatePicker, DateCell> dateRange(LocalDate from) {
         return new Callback<DatePicker, DateCell>() {
             @Override
             public DateCell call(final DatePicker param) {
@@ -53,8 +53,8 @@ public class ControllerMethods {
                     @Override
                     public void updateItem(LocalDate date, boolean empty) {
                         super.updateItem(date, empty);
-                        LocalDate today = LocalDate.now();
-                        LocalDate next = LocalDate.now().plusMonths(maxMonth);
+                        LocalDate today = from;
+                        LocalDate next = from.plusMonths(maxMonth);
                         setDisable(empty || date.compareTo(today) < 0 || date.compareTo(next) > 0);
                     }
                 };

@@ -15,9 +15,9 @@
             <ToggleGroup fx:id="group" />
          </toggleGroup></JFXRadioButton>
       <JFXRadioButton fx:id="oneway" layoutX="752.0" layoutY="104.0" mnemonicParsing="false" text="Solo Andata" toggleGroup="$group" />
-        <DatePicker fx:id="date1" layoutX="548.0" layoutY="195.0" promptText="Scegli la data" />
+        <DatePicker fx:id="date1" layoutX="548.0" layoutY="195.0" onAction="#returnDate" promptText="Scegli la data" />
         <DatePicker fx:id="date2" layoutX="752.0" layoutY="195.0" promptText="Scegli la data" />
-      <JFXButton fx:id="cerca" layoutX="369.0" layoutY="426.0" prefHeight="65.0" prefWidth="250.0" text="CERCA" />
+      <JFXButton fx:id="cerca" layoutX="369.0" layoutY="426.0" onAction="#goToResult" prefHeight="65.0" prefWidth="250.0" text="CERCA" />
       <VBox prefHeight="600.0" prefWidth="120.0" spacing="10.0" style="-fx-background-color: #FBC02D;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <JFXButton onAction="#goToHome" prefHeight="45.0" prefWidth="100.0" text="HOME" textAlignment="CENTER" textFill="WHITE">
@@ -42,7 +42,7 @@
       </VBox>
       <HBox prefHeight="65.0" prefWidth="120.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
          <children>
-            <JFXButton onAction="#logout" prefHeight="45.0" prefWidth="100.0" text="LOGOUT" textAlignment="CENTER" textFill="WHITE">
+            <JFXButton fx:id="jBtn" onAction="#logout" prefHeight="45.0" prefWidth="100.0" text="LOGOUT" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -57,6 +57,6 @@
         <Label layoutX="548.0" layoutY="172.0" text="Partenza" />
         <Label layoutX="752.0" layoutY="172.0" text="Ritorno" />
       <Separator layoutX="355.0" layoutY="88.0" orientation="VERTICAL" prefHeight="200.0" AnchorPane.rightAnchor="500.0" />
-      <Label layoutX="302.0" layoutY="320.0" prefHeight="17.0" prefWidth="195.0" textFill="#ff0404" />
+      <Label fx:id="errLabel" layoutX="302.0" layoutY="320.0" prefHeight="17.0" prefWidth="195.0" textFill="#ff0404" />
     </children>
 </AnchorPane>

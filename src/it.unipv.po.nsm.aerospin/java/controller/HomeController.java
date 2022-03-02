@@ -34,7 +34,6 @@ public class HomeController implements Initializable, IControlledScreen {
 
     @FXML
     private void goToSearch(ActionEvent event){
-        factory.getSession().setLogged(true);
         myController.setScreen(factory.getSearch());
     }
 
@@ -48,6 +47,7 @@ public class HomeController implements Initializable, IControlledScreen {
         //cambia stato come non loggato
         factory.getSession().setLogged(false);
         myController.setScreen(factory.getHome());
+        jBtn.visibleProperty().bind(new SimpleBooleanProperty(factory.getSession().isLogged()));
     }
 
 }
