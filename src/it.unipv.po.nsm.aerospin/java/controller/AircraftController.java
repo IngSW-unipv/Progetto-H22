@@ -24,21 +24,4 @@ public class AircraftController implements Initializable, IControlledScreen {
         myController = screenParent;
     }
 
-    @FXML
-    private void goToHome(ActionEvent event){
-        myController.setScreen(factory.getHome());
-    }
-
-    @FXML
-    private void goToManage(ActionEvent event){
-        myController.setScreen(factory.getManage());
-    }
-
-
-    @FXML
-    private void logout(ActionEvent event){
-        //cambia stato come non loggato
-        myController.setScreen(factory.getHome());
-    }
-
 }

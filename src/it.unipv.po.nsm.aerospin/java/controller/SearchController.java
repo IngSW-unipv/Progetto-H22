@@ -1,8 +1,6 @@
 package controller;
 
-import com.jfoenix.controls.JFXButton;
 import javafx.application.Platform;
-import javafx.beans.property.SimpleBooleanProperty;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -49,17 +47,11 @@ public class SearchController implements Initializable, IControlledScreen {
     @FXML
     private Label errLabel;
 
-    @FXML
-    private JFXButton jBtn;
-
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        jBtn.visibleProperty().bind(new SimpleBooleanProperty(factory.getSession().isLogged()));
         // Se seleziono Solo Andata non posso inserire Data Ritorno
         date2.disableProperty().bind(oneway.selectedProperty().or(date1.valueProperty().isNull()));
         date1.setDayCellFactory(methods.dateRange(LocalDate.now()));
-
-
 
         Thread t1 = new Thread(()->{
             strings1 = searchManager.getServedDepartures();
@@ -92,32 +84,8 @@ public class SearchController implements Initializable, IControlledScreen {
     }
 
     @FXML
-    private void goToHome(ActionEvent event){
-        myController.setScreen(factory.getHome());
-    }
-
-    @FXML
-    private void goToLogin(ActionEvent event){
-        myController.setScreen(factory.getLogin());
-    }
-
-    @FXML
     private void goToResult(ActionEvent event){
         //if(cb2.getSelectionModel().)
         myController.setScreen(factory.getResult());
-
-
-
-
-    }
-
-    @FXML
-    private void logout(ActionEvent event){
-        //cambia stato come non loggato
-        factory.getSession().setLogged(false);
-        myController.setScreen(factory.getHome());
-        jBtn.visibleProperty().bind(new SimpleBooleanProperty(factory.getSession().isLogged()));
     }
 }
-
-

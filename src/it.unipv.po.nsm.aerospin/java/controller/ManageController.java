@@ -26,11 +26,6 @@ public class ManageController implements Initializable, IControlledScreen {
     }
 
     @FXML
-    private void goToHome(ActionEvent event){
-        myController.setScreen(factory.getHome());
-    }
-
-    @FXML
     private void goToEmployee(ActionEvent event){
         myController.setScreen(factory.getEmployee());
     }
@@ -54,11 +49,4 @@ public class ManageController implements Initializable, IControlledScreen {
     private void goToFlight(ActionEvent event){
         myController.setScreen(factory.getFlight());
     }
-
-    @FXML
-    private void logout(ActionEvent event){
-        //cambia stato come non loggato
-        myController.setScreen(factory.getHome());
-    }
-
 }

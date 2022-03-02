@@ -36,6 +36,11 @@ public class MainController implements Initializable {
     }
 
     @FXML
+    private void goToHome(ActionEvent event){
+        mainContainer.setScreen(factory.getHome());
+    }
+
+    @FXML
     private void goToSearch(ActionEvent event){
         mainContainer.setScreen(factory.getSearch());
     }
@@ -52,5 +57,4 @@ public class MainController implements Initializable {
         mainContainer.setScreen(factory.getHome());
         logout.visibleProperty().bind(new SimpleBooleanProperty(factory.getSession().isLogged()));
     }
-
 }
