@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="600.0" prefWidth="860.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ManageController">
+<AnchorPane prefHeight="600.0" prefWidth="860.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ManageController">
    <children>
       <JFXButton layoutX="120.0" onAction="#goToEmployee" prefHeight="300.0" prefWidth="430.0" text="EMPLOYEE" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <JFXButton layoutX="140.0" layoutY="20.0" onAction="#goToAircraft" prefHeight="300.0" prefWidth="430.0" text="AIRCRAFT" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" />
       <JFXButton layoutX="130.0" layoutY="10.0" onAction="#goToRoute" prefHeight="300.0" prefWidth="430.0" text="ROUTE" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-      <JFXButton layoutX="560.0" onAction="#goToCrew" prefHeight="300.0" prefWidth="430.0" text="CREW" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <JFXButton layoutX="280.0" layoutY="200.0" onAction="#goToFlight" prefHeight="200.0" prefWidth="300.0" text="FLIGHT" AnchorPane.bottomAnchor="200.0" AnchorPane.leftAnchor="280.0" AnchorPane.rightAnchor="280.0" AnchorPane.topAnchor="200.0" />
+      <JFXButton layoutX="560.0" onAction="#goToFlight" prefHeight="300.0" prefWidth="430.0" text="FLIGHT" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
    </children>
 </AnchorPane>

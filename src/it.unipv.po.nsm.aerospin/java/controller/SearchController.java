@@ -18,9 +18,8 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class SearchController implements Initializable, IControlledScreen {
-
     ScreensController myController;
-    private Factory factory = Factory.getInstance();
+    private final Factory factory = Factory.getInstance();
     ControllerMethods methods = new ControllerMethods();
     SearchManager searchManager = new SearchManager();
     List<String> strings1 = new ArrayList<>();

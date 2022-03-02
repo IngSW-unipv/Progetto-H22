@@ -19,16 +19,27 @@ public class MainController implements Initializable {
     ScreensController mainContainer = factory.createContainer();
 
     @FXML
-    private SubScene subscene;
+    SubScene subscene;
+
+    @FXML
+     JFXButton search;
 
     @FXML
     JFXButton login;
+
+    @FXML
+    JFXButton account;
+
+    @FXML
+    JFXButton manage;
 
     @FXML
     JFXButton logout;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        account.setVisible(false);
+        manage.setVisible(false);
         logout.setVisible(false);
         Group root = new Group();
         root.getChildren().addAll(mainContainer);

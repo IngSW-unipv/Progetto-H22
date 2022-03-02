@@ -31,11 +31,6 @@ public class ManageController implements Initializable, IControlledScreen {
     }
 
     @FXML
-    private void goToCrew(ActionEvent event){
-        myController.setScreen(factory.getCrew());
-    }
-
-    @FXML
     private void goToAircraft(ActionEvent event){
         myController.setScreen(factory.getAircraft());
     }

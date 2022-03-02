@@ -6,7 +6,7 @@ import util.Session;
 public class Factory {
 
     private static Factory instance = null;
-    private Session session;
+    private final Session session;
 
     // Hide the contructor
     private Factory() {
@@ -39,8 +39,6 @@ public class Factory {
     private static String screen6File = "fxml/Manage.fxml";
     private static String employee = "employee";
     private static String screen7File = "fxml/Employee.fxml";
-    private static String crew = "crew";
-    private static String screen8File = "fxml/Crew.fxml";
     private static String aircraft = "aircraft";
     private static String screen9File = "fxml/Aircraft.fxml";
     private static String route = "route";
@@ -58,7 +56,6 @@ public class Factory {
         // mainContainer.loadScreen(account, screen5File);
         mainContainer.loadScreen(manage, screen6File);
         mainContainer.loadScreen(employee, screen7File);
-        mainContainer.loadScreen(crew, screen8File);
         mainContainer.loadScreen(aircraft, screen9File);
         mainContainer.loadScreen(route, screen10File);
         mainContainer.loadScreen(flight, screen11File);
@@ -93,10 +90,6 @@ public class Factory {
 
     public static String getEmployee() {
         return employee;
-    }
-
-    public static String getCrew() {
-        return crew;
     }
 
     public static String getAircraft() {
