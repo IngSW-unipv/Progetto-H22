@@ -1,6 +1,7 @@
 package model.persistence;
 
 
+import javafx.scene.control.Alert;
 import model.flight.aircraft.Manufacturer;
 import model.persistence.entity.*;
 import model.persistence.service.*;
@@ -57,15 +58,15 @@ public class Test {
         employeeService.persist(employee);*/
 //////////////////////////////////////////TEST FLIGHT\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
-       FlightService flightService = new FlightService();
-       /* Flight flight = new Flight();
-        flight.setFlightNumber("AES372");
-        flight.setAircraft("NUOVOAEREO");
-        flight.setScheduledDate(new Date(System.currentTimeMillis()));
-        flight.setScheduledTime(new Time(8,00,00));
-        flight.setRouteId("NUOVAROTTA");
-        flightService.persist(flight);*/
-        flightService.deleteAll();
+//       FlightService flightService = new FlightService();
+//       /* Flight flight = new Flight();
+//        flight.setFlightNumber("AES372");
+//        flight.setAircraft("NUOVOAEREO");
+//        flight.setScheduledDate(new Date(System.currentTimeMillis()));
+//        flight.setScheduledTime(new Time(8,00,00));
+//        flight.setRouteId("NUOVAROTTA");
+//        flightService.persist(flight);*/
+//        flightService.deleteAll();
 //////////////////////////////////////////TEST PASSENGER\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
         /*PassengerService passengerService = new PassengerService();
@@ -79,25 +80,13 @@ public class Test {
         passengerService.persist(passenger);*/
 //////////////////////////////////////////TEST USER\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
-       /* System.out.println("ciaooooooooooooooo");
-        Thread t = new Thread(()->{
-            List<Route> routes = routeService.findByDepName("Lamezia");
-            Airport airport = new Airport();
-            System.out.println("ciao");
-            airport = airportService.findByName("Lamezia").get(0);
-
-            List<String> s = new ArrayList<>();
-
-            for (int i = 0; i <routes.size() ; i++) {
-                s.add(routes.get(i).getArrivalName());
-            }
-
-            for (String a:s) {
-                System.out.println(a);
-            }
-        });
-
-        t.start();*/
+//       UserService userService = new UserService();
+//       User user = new User();
+//       try {
+//           user = userService.findByEmail("ciao@ciao.com").get(0).;
+//       }catch (IndexOutOfBoundsException e){
+//           System.out.println("not registredesetgbqekrjgboàqwròf acv");
+//       }
 
 
         System.exit(0);

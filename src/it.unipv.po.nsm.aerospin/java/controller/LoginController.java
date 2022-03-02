@@ -7,6 +7,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
 import javafx.util.converter.DoubleStringConverter;
+import model.persistence.entity.User;
+import model.persistence.service.UserService;
 import view.*;
 
 import java.net.URL;
@@ -34,23 +36,60 @@ public class LoginController implements Initializable, IControlledScreen {
 
     @FXML
     private void logAccount(ActionEvent event){
-        if(validateFields(textField.getText())) {
-            myController.setScreen(factory.getManage());
+        if(checkExpression(textField.getText())) {
+            if(isRegistered(textField.getText())){
+                myController.setScreen(factory.getManage());
+            }
+
         }
     }
 
-    private final String pattern = "^[a-zA-Z]";
-
-    public boolean validateFields(String input){
-        if(Pattern.compile(pattern).matcher(input).matches()){
+    public boolean checkExpression(String input){
+        if(!validate(input)){
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Validate Fields");
             alert.setHeaderText(null);
-            alert.setContentText("Per favore inserire tutti i campi prima di procedere");
+            alert.setContentText("Email non valida");
             alert.showAndWait();
             return false;
         } else {
             return true;
         }
     }
+
+//    public boolean isAdmin(String input){
+//
+//    }
+
+    public boolean isRegistered(String input){
+        UserService userService = new UserService();
+
+        try{
+            String s = userService.findByEmail(input).get(0).getEmail();
+            return true;
+        }catch (IndexOutOfBoundsException e){
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Validate Fields");
+            alert.setHeaderText(null);
+            alert.setContentText("Utente non registrato");
+            alert.showAndWait();
+            return false;
+        }
+
+    }
+
+
+
+
+
+    public static final Pattern VALID_EMAIL_ADDRESS_REGEX =
+            Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
+
+    public static boolean validate(String emailStr) {
+        Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(emailStr);
+        return matcher.find();
+    }
+
+
+
 }

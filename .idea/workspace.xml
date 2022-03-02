@@ -4,12 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1915805d-1a7a-4f83-a54f-9e53500a530f" name="Changes" comment="managing errors">
+    <list default="true" id="1915805d-1a7a-4f83-a54f-9e53500a530f" name="Changes" comment="managing errors in resultPage">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/controller/ResultController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/controller/ResultController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/controller/SearchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/controller/SearchController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/controller/LoginController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/hibernate.cfg.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/view/fxml/Result.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/view/fxml/Result.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/persistence/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/persistence/Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/persistence/dao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/persistence/dao/UserDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/persistence/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/persistence/service/UserService.java" afterDir="false" />
     </list>
     <list id="c2811ffa-3085-4fce-837e-74078819ff54" name="Changes by Hamza" comment="Changes by Hamza" />
     <option name="SHOW_DIALOG" value="false" />
@@ -130,6 +131,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="RegexTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="controller.RegexTest" />
+      <module name="Progetto-H22" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="model.persistence.Test" />
       <module name="Progetto-H22" />
@@ -169,33 +183,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestOrder" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="model.flight.route.TestOrder" />
-      <module name="Progetto-H22" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="model.management.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <list>
       <item itemvalue="Application.AerospinApp" />
       <item itemvalue="Application.Test" />
-      <item itemvalue="Application.TestOrder" />
       <item itemvalue="Application.TestFlightManager" />
       <item itemvalue="Application.TestEmployeeManager" />
+      <item itemvalue="Application.RegexTest" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.AerospinApp" />
+        <item itemvalue="Application.Test" />
+        <item itemvalue="Application.RegexTest" />
         <item itemvalue="Application.TestEmployeeManager" />
         <item itemvalue="Application.TestFlightManager" />
-        <item itemvalue="Application.Test" />
-        <item itemvalue="Application.TestOrder" />
       </list>
     </recent_temporary>
   </component>
@@ -240,7 +241,7 @@
       <workItem from="1646149986761" duration="4365000" />
       <workItem from="1646167378683" duration="702000" />
       <workItem from="1646168964149" duration="688000" />
-      <workItem from="1646208431226" duration="16900000" />
+      <workItem from="1646208431226" duration="20583000" />
     </task>
     <task id="LOCAL-00001" summary="Prova">
       <created>1645112352115</created>
@@ -438,7 +439,14 @@
       <option name="project" value="LOCAL" />
       <updated>1646232126128</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="managing errors in resultPage">
+      <created>1646234546025</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1646234546025</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -468,7 +476,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Prova" />
     <MESSAGE value="Rimosso module-info.java" />
     <MESSAGE value="Aggiunta delle query necessarie per airport&#10;Implementazione cache di livello 2" />
     <MESSAGE value="GUI Screen Structure e Modifica Icona Software" />
@@ -493,7 +500,8 @@
     <MESSAGE value="FlightManager" />
     <MESSAGE value="working on managers for controllers" />
     <MESSAGE value="managing errors" />
-    <option name="LAST_COMMIT_MESSAGE" value="managing errors" />
+    <MESSAGE value="managing errors in resultPage" />
+    <option name="LAST_COMMIT_MESSAGE" value="managing errors in resultPage" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Progetto_H22$MainApplication.ic" NAME="MainApplication Coverage Results" MODIFIED="1645740929671" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

@@ -31,6 +31,8 @@ public class UserDao implements UserDaoInterface{
         return users;
     }
 
+
+
     @Override
     public void persist(User entity) {
         conn.getCurrentSession().save(entity);
