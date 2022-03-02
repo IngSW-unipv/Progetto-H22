@@ -1,5 +1,6 @@
 package controller;
 
+import com.jfoenix.controls.JFXAlert;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -85,6 +86,28 @@ public class SearchController implements Initializable, IControlledScreen {
     @FXML
     private void goToResult(ActionEvent event){
         //if(cb2.getSelectionModel().)
-        myController.setScreen(factory.getResult());
+
+        if (validateFields()){
+            myController.setScreen(factory.getResult());
+        }
+        //errLabel
+
+        cb2.getSelectionModel().isEmpty();
+
     }
+
+    public boolean validateFields(){
+        if( cb2.getSelectionModel().isEmpty() |date1.getValue() == null | date2.getValue() == null){
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Validate Fields");
+            alert.setHeaderText(null);
+            alert.setContentText("Per favore inserire tutti i campi prima di procedere");
+            alert.showAndWait();
+            return false;
+        }
+        return true;
+    }
+
+
+
 }
