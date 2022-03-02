@@ -8,7 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import model.management.Search;
+import model.management.SearchManager;
 import util.ControllerMethods;
 import view.Factory;
 import view.ScreensController;
@@ -24,7 +24,7 @@ public class SearchController implements Initializable, IControlledScreen {
     ScreensController myController;
     private Factory factory = Factory.getInstance();
     ControllerMethods methods = new ControllerMethods();
-    Search search = new Search();
+    SearchManager searchManager = new SearchManager();
     List<String> strings1 = new ArrayList<>();
     List<String> strings2 = new ArrayList<>();
 
@@ -62,7 +62,7 @@ public class SearchController implements Initializable, IControlledScreen {
 
 
         Thread t1 = new Thread(()->{
-            strings1 = search.getServedDepartures();
+            strings1 = searchManager.getServedDepartures();
             cb1.setItems(FXCollections.observableArrayList(strings1));
             methods.selectOptionOnKey(cb1, strings1);
         });
@@ -76,7 +76,7 @@ public class SearchController implements Initializable, IControlledScreen {
     @FXML
     private void findArrivals (ActionEvent event){
         Thread t2 = new Thread(()->{
-            strings2 = search.getServedArrivals(cb1.getSelectionModel().getSelectedItem());
+            strings2 = searchManager.getServedArrivals(cb1.getSelectionModel().getSelectedItem());
             Platform.runLater(()->{
                 cb2.setItems(FXCollections.observableArrayList(strings2));
             });
@@ -103,7 +103,7 @@ public class SearchController implements Initializable, IControlledScreen {
 
     @FXML
     private void goToResult(ActionEvent event){
-        if(cb2.getSelectionModel().)
+        //if(cb2.getSelectionModel().)
         myController.setScreen(factory.getResult());
 
 

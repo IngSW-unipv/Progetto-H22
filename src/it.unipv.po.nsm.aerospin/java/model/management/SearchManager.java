@@ -1,6 +1,5 @@
 package model.management;
 
-import javafx.application.Platform;
 import model.persistence.entity.Airport;
 import model.persistence.service.AirportService;
 import model.persistence.service.RouteService;
@@ -11,7 +10,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Search {
+public class SearchManager {
 
     private List<String> airportsNames =  new ArrayList<>();
     private RouteService routeService = new RouteService();

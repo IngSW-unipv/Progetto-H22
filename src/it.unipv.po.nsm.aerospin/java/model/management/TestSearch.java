@@ -1,14 +1,16 @@
 package model.management;
 
-import model.management.Search;
+import model.persistence.entity.Role;
+import model.persistence.service.RoleService;
 
 import java.util.List;
 
 public class TestSearch {
 
     public static void main(String[] args) {
-        Search search = new Search();
-        List<String> servedDepartures = search.getServedArrivals("Lamezia Terme Airport");
+        SearchManager searchManager = new SearchManager();
+
+        List<String> servedDepartures = searchManager.getServedArrivals("Lamezia Terme Airport");
 
         for (String s: servedDepartures) {
             System.out.printf(s);

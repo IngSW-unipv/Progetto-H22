@@ -6,10 +6,10 @@
     <session-factory>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="connection.url">jdbc:mysql://aerospin.ns0.it:3306/airports</property>
-        <property name="connection.username">aerospin1</property>
-        <property name="connection.password">Progettounipv22.</property>
         <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
         <property name="hibernate.show_sql">true</property>
+        <property name="connection.username">aerospin1</property>
+        <property name="connection.password">Progettounipv22.</property>
         <property name="hibernate.cache.use_second_level_cache">true</property>
          <property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</property>
            <property name="hibernate.cache.use_query_cache">true</property>
@@ -21,6 +21,7 @@
         <mapping class="model.persistence.entity.Aircraft"/>
         <mapping class="model.persistence.entity.Crew"/>
         <mapping class="model.persistence.entity.Flight"/>
+        <mapping class="model.persistence.entity.Role"/>
         <!-- <property name="connection.username"/> -->
         <!-- <property name="connection.password"/> -->
 

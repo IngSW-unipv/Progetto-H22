@@ -1,8 +1,10 @@
 package model.management;
 
 import model.persistence.entity.Aircraft;
+import model.persistence.entity.Flight;
 import model.persistence.entity.Route;
 import model.persistence.service.AircraftService;
+import model.persistence.service.FlightService;
 import model.persistence.service.RouteService;
 
 import java.util.ArrayList;
@@ -16,10 +18,15 @@ public class FlightManager {
     private List<String> servedRoutes = new ArrayList<>();
     private AircraftService aircraftService = new AircraftService();
     private RouteService routeService = new RouteService();
+    private List<Aircraft> aircrafts = new ArrayList<>();
+    private List<Route> routes = new ArrayList<>();
+    private FlightService flightService = new FlightService();
+
 
     public List<String> getFleet(){
         fleet.clear();
-        List<Aircraft> aircrafts = aircraftService.findAll();
+        aircrafts.clear();
+         aircrafts = aircraftService.findAll();
         for (int i = 0; i < aircrafts.size(); i++) {
             fleet.add(aircrafts.get(i).getTailNumber());
         }
@@ -29,13 +36,25 @@ public class FlightManager {
 
     public List<String> getServedRoutes(){
         servedRoutes.clear();
-        List<Route> routes = routeService.findAll();
+        routes.clear();
+        routes = routeService.findAll();
         for (int i = 0; i < routes.size(); i++) {
             servedRoutes.add(routes.get(i).getRouteId());
         }
         servedRoutes.sort(Comparator.naturalOrder());
         return servedRoutes.stream().distinct().collect(Collectors.toList());
     }
+
+    public void saveFlight(String aircraft, String route){
+        int i = 542;
+        Flight flight = new Flight();
+        flight.setFlightNumber("AES"+i);
+        flight.setAircraft(aircraft);
+        flight.setRouteId(route);
+        flightService.persist(flight);
+        i = i + 37;
+    }
+
 
 
 

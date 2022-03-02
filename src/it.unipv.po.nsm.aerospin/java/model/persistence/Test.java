@@ -57,15 +57,15 @@ public class Test {
         employeeService.persist(employee);*/
 //////////////////////////////////////////TEST FLIGHT\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
-       /* FlightService flightService = new FlightService();
-        Flight flight = new Flight();
+       FlightService flightService = new FlightService();
+       /* Flight flight = new Flight();
         flight.setFlightNumber("AES372");
-        flight.setAircraft(2);
-        flight.setCrew(1);
+        flight.setAircraft("NUOVOAEREO");
         flight.setScheduledDate(new Date(System.currentTimeMillis()));
         flight.setScheduledTime(new Time(8,00,00));
-        flight.setRouteId(1);
+        flight.setRouteId("NUOVAROTTA");
         flightService.persist(flight);*/
+        flightService.deleteAll();
 //////////////////////////////////////////TEST PASSENGER\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
         /*PassengerService passengerService = new PassengerService();
@@ -79,7 +79,7 @@ public class Test {
         passengerService.persist(passenger);*/
 //////////////////////////////////////////TEST USER\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
-        System.out.println("ciaooooooooooooooo");
+       /* System.out.println("ciaooooooooooooooo");
         Thread t = new Thread(()->{
             List<Route> routes = routeService.findByDepName("Lamezia");
             Airport airport = new Airport();
@@ -97,10 +97,10 @@ public class Test {
             }
         });
 
-        t.start();
+        t.start();*/
 
 
-        //System.exit(0);
+        System.exit(0);
 
 
     }
