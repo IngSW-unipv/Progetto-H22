@@ -3,50 +3,12 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXListView?>
 <?import com.jfoenix.controls.JFXTextArea?>
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AccountController">
+<AnchorPane prefHeight="600.0" prefWidth="860.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AccountController">
    <children>
-      <VBox layoutX="10.0" layoutY="10.0" prefHeight="600.0" prefWidth="120.0" spacing="10.0" style="-fx-background-color: #45a2c0;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <JFXButton prefHeight="45.0" prefWidth="100.0" text="HOME" textAlignment="CENTER" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </JFXButton>
-            <JFXButton prefHeight="45.0" prefWidth="100.0" text="RICERCA" textAlignment="CENTER" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </JFXButton>
-            <JFXButton prefHeight="45.0" prefWidth="100.0" text="PROFILO" textAlignment="CENTER" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </JFXButton>
-         </children>
-         <padding>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </padding>
-      </VBox>
-      <HBox prefHeight="65.0" prefWidth="120.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
-         <children>
-            <JFXButton prefHeight="45.0" prefWidth="100.0" text="LOGOUT" textAlignment="CENTER" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </JFXButton>
-         </children>
-         <padding>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </padding>
-      </HBox>
-      <JFXListView layoutX="189.0" layoutY="50.0" prefHeight="429.0" prefWidth="322.0" />
-      <JFXTextArea layoutX="637.0" layoutY="169.0" prefHeight="131.0" prefWidth="238.0" />
-      <JFXButton layoutX="730.0" layoutY="345.0" text="INVIA" />
+      <JFXListView layoutX="89.0" layoutY="86.0" prefHeight="429.0" prefWidth="322.0" />
+      <JFXTextArea layoutX="548.0" layoutY="205.0" prefHeight="131.0" prefWidth="238.0" />
+      <JFXButton layoutX="641.0" layoutY="381.0" text="INVIA" />
    </children>
 </AnchorPane>
