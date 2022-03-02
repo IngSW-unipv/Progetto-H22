@@ -85,19 +85,13 @@ public class SearchController implements Initializable, IControlledScreen {
 
     @FXML
     private void goToResult(ActionEvent event){
-        //if(cb2.getSelectionModel().)
-
         if (validateFields()){
             myController.setScreen(factory.getResult());
         }
-        //errLabel
-
-        cb2.getSelectionModel().isEmpty();
-
     }
 
     public boolean validateFields(){
-        if( cb2.getSelectionModel().isEmpty() |date1.getValue() == null | date2.getValue() == null){
+        if( cb2.getSelectionModel().isEmpty() | date1.getValue() == null | date2.getValue() == null){
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Validate Fields");
             alert.setHeaderText(null);

@@ -3,6 +3,7 @@ package controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
 import javafx.util.converter.DoubleStringConverter;
@@ -33,6 +34,23 @@ public class LoginController implements Initializable, IControlledScreen {
 
     @FXML
     private void logAccount(ActionEvent event){
-        myController.setScreen(factory.getManage());
+        if(validateFields(textField.getText())) {
+            myController.setScreen(factory.getManage());
+        }
+    }
+
+    private final String pattern = "^[a-zA-Z]";
+
+    public boolean validateFields(String input){
+        if(Pattern.compile(pattern).matcher(input).matches()){
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Validate Fields");
+            alert.setHeaderText(null);
+            alert.setContentText("Per favore inserire tutti i campi prima di procedere");
+            alert.showAndWait();
+            return false;
+        } else {
+            return true;
+        }
     }
 }
