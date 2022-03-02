@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 
 public class Search {
 
-    List<String> airportsNames =  new ArrayList<>();
+    private List<String> airportsNames =  new ArrayList<>();
     private RouteService routeService = new RouteService();
     private AirportService airportService = new AirportService();
     private Airport airport = new Airport();

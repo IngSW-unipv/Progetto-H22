@@ -49,9 +49,16 @@ public class SearchController implements Initializable, IControlledScreen {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
+
+
         Thread t1 = new Thread(()->{
+
             strings1 = search.getServedDepartures();
+
+
             cb1.setItems(FXCollections.observableArrayList(strings1));
+
+
             methods.selectOptionOnKey(cb1, strings1);
 
             date1.setDayCellFactory(methods.dateRange());
@@ -82,6 +89,7 @@ public class SearchController implements Initializable, IControlledScreen {
                 cb2.setItems(FXCollections.observableArrayList(strings2));
             });
             methods.selectOptionOnKey(cb2, strings2);
+
         });
         t2.start();
 

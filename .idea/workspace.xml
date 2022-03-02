@@ -4,10 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1915805d-1a7a-4f83-a54f-9e53500a530f" name="Changes" comment="Implement Singleton Pattern">
+    <list default="true" id="1915805d-1a7a-4f83-a54f-9e53500a530f" name="Changes" comment="Fixed Thread bugs">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/controller/HomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/view/Factory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/view/Factory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/controller/SearchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/controller/SearchController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/hibernate.cfg.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/flight/route/Search.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/flight/route/Search.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/persistence/entity/Aircraft.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/persistence/entity/Route.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/persistence/entity/Route.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/persistence/service/AirportService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/model/persistence/service/AirportService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/view/fxml/Search.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/it.unipv.po.nsm.aerospin/java/view/fxml/Search.fxml" afterDir="false" />
     </list>
     <list id="c2811ffa-3085-4fce-837e-74078819ff54" name="Changes by Hamza" comment="Changes by Hamza" />
     <option name="SHOW_DIALOG" value="false" />
@@ -85,7 +90,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="mysql" />
-    <property name="JPA.DatabaseSchemaImportDialog" value="f8f4fd41-2b45-497d-92aa-315fa5eb32d4" />
+    <property name="JPA.DatabaseSchemaImportDialog" value="544286b6-57a0-4eb2-b180-2601aaf946e7" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -128,13 +133,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MainApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="view.MainApplication" />
+    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="model.persistence.Test" />
       <module name="Progetto-H22" />
-      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Program Files\Java\javafx-sdk-17.0.2\lib&quot; --add-modules=javafx.controls,javafx.fxml" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="controller.*" />
+          <option name="PATTERN" value="model.persistence.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -142,12 +146,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="model.persistence.Test" />
+    <configuration name="TestFlightManager" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="model.flight.TestFlightManager" />
       <module name="Progetto-H22" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="model.persistence.*" />
+          <option name="PATTERN" value="model.flight.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -182,19 +186,19 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.MainApplication" />
       <item itemvalue="Application.AerospinApp" />
       <item itemvalue="Application.Test" />
       <item itemvalue="Application.TestSearch" />
       <item itemvalue="Application.TestOrder" />
+      <item itemvalue="Application.TestFlightManager" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.AerospinApp" />
+        <item itemvalue="Application.TestFlightManager" />
         <item itemvalue="Application.Test" />
         <item itemvalue="Application.TestOrder" />
         <item itemvalue="Application.TestSearch" />
-        <item itemvalue="Application.MainApplication" />
       </list>
     </recent_temporary>
   </component>

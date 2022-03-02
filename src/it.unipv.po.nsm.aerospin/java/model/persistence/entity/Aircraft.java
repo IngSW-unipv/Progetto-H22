@@ -1,7 +1,5 @@
 package model.persistence.entity;
 
-import model.flight.aircraft.Manufacturer;
-
 import javax.persistence.*;
 
 @Entity
@@ -9,28 +7,28 @@ public class Aircraft {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "tailNumber")
-    private int tailNumber;
+    private String tailNumber;
     @Basic
     @Column(name = "manufacturer")
     private String manufacturer;
     @Basic
-    @Column(name = "maxRange")
-    private Double maxRange;
+    @Column(name = "model")
+    private String model;
     @Basic
     @Column(name = "seats")
     private Integer seats;
     @Basic
     @Column(name = "availability")
-    private Boolean availability;
+    private Byte availability;
     @Basic
-    @Column(name = "model")
-    private String model;
+    @Column(name = "maxRange")
+    private Double maxRange;
 
-    public int getTailNumber() {
+    public String getTailNumber() {
         return tailNumber;
     }
 
-    public void setTailNumber(int tailNumber) {
+    public void setTailNumber(String tailNumber) {
         this.tailNumber = tailNumber;
     }
 
@@ -42,12 +40,12 @@ public class Aircraft {
         this.manufacturer = manufacturer;
     }
 
-    public Double getMaxRange(double v) {
-        return maxRange;
+    public String getModel() {
+        return model;
     }
 
-    public void setMaxRange(Double maxRange) {
-        this.maxRange = maxRange;
+    public void setModel(String model) {
+        this.model = model;
     }
 
     public Integer getSeats() {
@@ -58,20 +56,20 @@ public class Aircraft {
         this.seats = seats;
     }
 
-    public Boolean getAvailability() {
+    public Byte getAvailability() {
         return availability;
     }
 
-    public void setAvailability(Boolean availability) {
+    public void setAvailability(Byte availability) {
         this.availability = availability;
     }
 
-    public String getModel() {
-        return model;
+    public Double getMaxRange() {
+        return maxRange;
     }
 
-    public void setModel(String model) {
-        this.model = model;
+    public void setMaxRange(Double maxRange) {
+        this.maxRange = maxRange;
     }
 
     @Override
@@ -81,39 +79,26 @@ public class Aircraft {
 
         Aircraft aircraft = (Aircraft) o;
 
-        if (tailNumber != aircraft.tailNumber) return false;
+        if (tailNumber != null ? !tailNumber.equals(aircraft.tailNumber) : aircraft.tailNumber != null) return false;
         if (manufacturer != null ? !manufacturer.equals(aircraft.manufacturer) : aircraft.manufacturer != null)
             return false;
-        if (maxRange != null ? !maxRange.equals(aircraft.maxRange) : aircraft.maxRange != null) return false;
+        if (model != null ? !model.equals(aircraft.model) : aircraft.model != null) return false;
         if (seats != null ? !seats.equals(aircraft.seats) : aircraft.seats != null) return false;
         if (availability != null ? !availability.equals(aircraft.availability) : aircraft.availability != null)
             return false;
-        if (model != null ? !model.equals(aircraft.model) : aircraft.model != null) return false;
+        if (maxRange != null ? !maxRange.equals(aircraft.maxRange) : aircraft.maxRange != null) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = tailNumber;
+        int result = tailNumber != null ? tailNumber.hashCode() : 0;
         result = 31 * result + (manufacturer != null ? manufacturer.hashCode() : 0);
-        result = 31 * result + (maxRange != null ? maxRange.hashCode() : 0);
+        result = 31 * result + (model != null ? model.hashCode() : 0);
         result = 31 * result + (seats != null ? seats.hashCode() : 0);
         result = 31 * result + (availability != null ? availability.hashCode() : 0);
-        result = 31 * result + (model != null ? model.hashCode() : 0);
+        result = 31 * result + (maxRange != null ? maxRange.hashCode() : 0);
         return result;
-    }
-
-
-    @Override
-    public String toString() {
-        return "Aircraft{" +
-                "tailNumber=" + tailNumber +
-                ", manufacturer='" + manufacturer + '\'' +
-                ", maxRange=" + maxRange +
-                ", seats=" + seats +
-                ", availability=" + availability +
-                ", model='" + model + '\'' +
-                '}';
     }
 }

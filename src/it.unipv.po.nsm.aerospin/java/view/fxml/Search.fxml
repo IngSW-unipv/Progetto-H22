@@ -8,8 +8,8 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SearchController">
     <children>
-      <JFXComboBox fx:id="cb1" layoutX="229.0" layoutY="138.0" onAction="#findArrivals" prefHeight="30.0" prefWidth="200.0" promptText="Partenza" />
-      <JFXComboBox fx:id="cb2" layoutX="229.0" layoutY="225.0" prefHeight="30.0" prefWidth="200.0" promptText="Destinazione" />
+      <JFXComboBox fx:id="cb1" layoutX="202.0" layoutY="145.0" onAction="#findArrivals" prefHeight="30.0" prefWidth="250.0" promptText="Partenza" />
+      <JFXComboBox fx:id="cb2" layoutX="202.0" layoutY="232.0" prefHeight="30.0" prefWidth="250.0" promptText="Destinazione" />
       <JFXRadioButton fx:id="ar" layoutX="594.0" layoutY="104.0" mnemonicParsing="false" selected="true" text="Andata e Ritorno">
          <toggleGroup>
             <ToggleGroup fx:id="group" />
@@ -52,8 +52,8 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </padding>
       </HBox>
-        <Label layoutX="229.0" layoutY="121.0" text="Da" />
-        <Label layoutX="233.0" layoutY="212.0" text="A" />
+        <Label layoutX="202.0" layoutY="128.0" text="Da" />
+        <Label layoutX="206.0" layoutY="219.0" text="A" />
         <Label layoutX="548.0" layoutY="172.0" text="Partenza" />
         <Label layoutX="752.0" layoutY="172.0" text="Ritorno" />
       <Separator layoutX="355.0" layoutY="88.0" orientation="VERTICAL" prefHeight="200.0" AnchorPane.rightAnchor="500.0" />

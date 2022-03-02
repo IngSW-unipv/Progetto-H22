@@ -9,7 +9,7 @@ public class Route {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "routeId")
-    private int routeId;
+    private String routeId;
     @Basic
     @Column(name = "departure")
     private String departure;
@@ -52,11 +52,11 @@ public class Route {
 
 
 
-    public int getRouteId() {
+    public String getRouteId() {
         return routeId;
     }
 
-    public void setRouteId(int routeId) {
+    public void setRouteId(String routeId) {
         this.routeId = routeId;
     }
 
@@ -117,16 +117,7 @@ public class Route {
         return true;
     }
 
-    @Override
-    public int hashCode() {
-        int result = routeId;
-        result = 31 * result + (departure != null ? departure.hashCode() : 0);
-        result = 31 * result + (arrival != null ? arrival.hashCode() : 0);
-        result = 31 * result + (waypoints != null ? waypoints.hashCode() : 0);
-        result = 31 * result + (price != null ? price.hashCode() : 0);
-        result = 31 * result + (costIndex != null ? costIndex.hashCode() : 0);
-        return result;
-    }
+
 
     @Override
     public String toString() {

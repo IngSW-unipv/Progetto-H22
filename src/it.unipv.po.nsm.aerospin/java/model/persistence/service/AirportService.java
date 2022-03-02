@@ -2,8 +2,6 @@ package model.persistence.service;
 
 import model.persistence.dao.AirportDao;
 
-import model.persistence.dao.AirportDao;
-import model.persistence.entity.Aircraft;
 import model.persistence.entity.Airport;
 
 import java.util.List;
