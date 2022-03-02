@@ -1,4 +1,4 @@
-package model.flight.route;
+package model.management;
 
 import javafx.application.Platform;
 import model.persistence.entity.Airport;

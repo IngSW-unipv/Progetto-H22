@@ -9,7 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.RadioButton;
-import model.flight.route.Search;
+import model.management.Search;
 import util.ControllerMethods;
 import view.Factory;
 import view.ScreensController;

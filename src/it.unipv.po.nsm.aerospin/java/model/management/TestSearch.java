@@ -1,4 +1,6 @@
-package model.flight.route;
+package model.management;
+
+import model.management.Search;
 
 import java.util.List;
 
