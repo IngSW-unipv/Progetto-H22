@@ -1,29 +1,30 @@
 import javafx.application.Application;
 import javafx.event.EventHandler;
-import javafx.scene.Group;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
-import view.*;
+
+import java.io.IOException;
+import java.util.Objects;
 
 public class AerospinApp extends Application {
 
-    Factory factory = Factory.getInstance();
-
     @Override
-    public void start(Stage stage) {
+    public void start(Stage stage) throws IOException {
 
-        ScreensController mainContainer = factory.createContainer();
-        Group root = new Group();
-        root.getChildren().addAll(mainContainer);
-        Scene scene = new Scene(root);
+//        ScreensController mainContainer = factory.createContainer();
+//        Group root = new Group();
+//        root.getChildren().addAll(mainContainer);
+//        Scene scene = new Scene(root);
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("view/fxml/Main.fxml")));
         stage.setTitle("Aerospin");
-        stage.setScene(scene);
+        stage.setScene(new Scene(root));
         stage.getIcons().add(new Image("file:src/it.unipv.po.nsm.aerospin/resources/img/icon.png"));
         stage.setResizable(false);
         stage.show();
-
         stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             public void handle(WindowEvent we) {
                 System.exit(0);
@@ -32,7 +33,6 @@ public class AerospinApp extends Application {
     }
 
     public static void main(String[] args) {
-
         launch(args);
     }
 }
