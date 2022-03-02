@@ -1,46 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeController">
+<AnchorPane prefHeight="600.0" prefWidth="860.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeController">
    <children>
-      <VBox prefHeight="600.0" prefWidth="120.0" spacing="10.0" style="-fx-background-color: #45a2c0;">
-         <children>
-            <JFXButton prefHeight="45.0" prefWidth="100.0" text="HOME" textAlignment="CENTER" textFill="#ffffff">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font></JFXButton>
-            <JFXButton onAction="#goToSearch" prefHeight="45.0" prefWidth="100.0" text="RICERCA" textAlignment="CENTER" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </JFXButton>
-            <JFXButton onAction="#goToLogin" prefHeight="45.0" prefWidth="100.0" text="ACCEDI" textAlignment="CENTER" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </JFXButton>
-         </children>
-         <padding>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </padding>
-      </VBox>
-      <HBox layoutY="500.0" prefHeight="65.0" prefWidth="120.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
-         <children>
-            <JFXButton fx:id="jBtn" onAction="#logout" prefHeight="45.0" prefWidth="100.0" text="LOGOUT" textAlignment="CENTER" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </JFXButton>
-         </children>
-         <padding>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </padding>
-      </HBox>
-      <ImageView fitHeight="560.0" fitWidth="840.0" layoutX="138.0" layoutY="26.0" pickOnBounds="true" smooth="false" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0" />
+      <ImageView fitHeight="575.0" fitWidth="832.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0" />
    </children>
 </AnchorPane>
