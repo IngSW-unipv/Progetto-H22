@@ -21,28 +21,20 @@ public class HomeController implements Initializable, IControlledScreen {
     JFXButton jBtn = new JFXButton();
 
     @Override
+    public void initialize(URL url, ResourceBundle rb) {
+
+        jBtn.visibleProperty().bind(new SimpleBooleanProperty(factory.getSession().isLogged()));
+
+    }
+
+    @Override
     public void setScreenParent(ScreensController screenParent) {
         myController = screenParent;
     }
 
-
-
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-       // System.out.println(factory.session.isLogged());
-        //session = factory.getSession();
-
-
-
-        jBtn.disableProperty().bind(new SimpleBooleanProperty(true));
-       //System.out.println(session.isLogged());
-//        myController.getSession().isLogged();
-//        jBtn.disableProperty().bind(booleanBind);
-    }
-
-
     @FXML
     private void goToSearch(ActionEvent event){
+        factory.getSession().setLogged(true);
         myController.setScreen(factory.getSearch());
     }
 
@@ -54,7 +46,7 @@ public class HomeController implements Initializable, IControlledScreen {
     @FXML
     private void logout(ActionEvent event){
         //cambia stato come non loggato
-//        session.setLogged(false);
+        factory.getSession().setLogged(false);
         myController.setScreen(factory.getHome());
     }
 

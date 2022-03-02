@@ -17,10 +17,7 @@ public class Factory {
     public static Factory getInstance() {
         if(instance == null) {
             instance = new Factory();
-            System.out.println("Create new instance");
         }
-        else
-            System.out.println("Instance already available");
         return instance;
     }
 
