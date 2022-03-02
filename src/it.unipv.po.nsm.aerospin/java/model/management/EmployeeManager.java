@@ -14,16 +14,17 @@ import java.util.stream.Collectors;
 public class EmployeeManager {
 
     private List<String> roles = new ArrayList<>();
-    RoleService roleService = new RoleService();
-    List<Role> roleList = roleService.findAll();
-    EmployeeService employeeService = new EmployeeService();
+    private RoleService roleService = new RoleService();
+    private List<Role> roleList = new ArrayList<>();
+    private EmployeeService employeeService = new EmployeeService();
 
     public List<String> getRoles(){
         //roles.clear();
-
+        roleList = roleService.findAll();
         for (int i = 0; i <roleList.size(); i++) {
             roles.add(roleList.get(i).getRole());
         }
+        roles.sort(Comparator.naturalOrder());
        return roles.stream().distinct().collect(Collectors.toList());
     }
 
