@@ -9,5 +9,12 @@
       <jdbc-url>jdbc:mysql://127.0.0.1:3306/?user=root</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="AerospinGCP" uuid="1dc74b27-bb45-4bb4-b276-3b2a34b11df9">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://34.134.220.222:3306/Aerospin</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>
