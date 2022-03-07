@@ -32,7 +32,7 @@ public class AircraftDao implements AircraftDaoInterface{
         String hql = "from Aircraft a where a.manufacturer like :man ";
         Query query = conn.getCurrentSession().createQuery(hql);
         query.setParameter("man","%" + manufacturer + "%");
-        //query.setCacheable(true);
+        query.setCacheable(true);
         List<Aircraft> aircrafts = query.list();
         return aircrafts;
     }
@@ -42,7 +42,7 @@ public class AircraftDao implements AircraftDaoInterface{
         String hql = "from Aircraft a where a.model like :model ";
         Query query = conn.getCurrentSession().createQuery(hql);
         query.setParameter("model","%" + model + "%");
-        //query.setCacheable(true);
+        query.setCacheable(true);
         List<Aircraft> aircrafts = query.list();
         return aircrafts;
     }
@@ -52,17 +52,17 @@ public class AircraftDao implements AircraftDaoInterface{
         String hql = "from Aircraft a where a.tailNumber = :tail";
         Query query = conn.getCurrentSession().createQuery(hql);
         query.setParameter("tail",tailNumber);
-        //query.setCacheable(true);
+        query.setCacheable(true);
         List<Aircraft> aircrafts = query.list();
         return   aircrafts;
     }
 
     @Override
     public List<Aircraft> findAvailable() {
-        String hql = "from Aircraft a where a.availability = true ";
-        Query query = conn.getCurrentSession().createQuery(hql);
+        //String hql = "from Aircraft a where a.availability = true ";
+        //Query query = conn.getCurrentSession().createQuery(hql);
         //query.setCacheable(true);
-        List<Aircraft> aircrafts = query.list();
+        List<Aircraft> aircrafts = null;
         return aircrafts;
     }
 

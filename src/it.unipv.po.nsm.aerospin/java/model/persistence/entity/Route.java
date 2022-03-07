@@ -31,8 +31,7 @@ public class Route {
 
 
     public String getDepartureName(){
-        String arrivalName;
-        String departureName;
+
         AirportService airportService = new AirportService();
         Airport airport = airportService.findByIcao(departure).get(0);
         return airport.getAirportName();

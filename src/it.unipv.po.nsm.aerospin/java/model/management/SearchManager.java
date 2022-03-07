@@ -42,4 +42,22 @@ public class SearchManager {
 
     }
 
+    public boolean checkRoute(String depName, String arrName){
+        Airport dep = airportService.findByName(depName).get(0);
+        Airport arr = airportService.findByName(arrName).get(0);
+        return routeService.checkRoute(dep.getIcao(),arr.getIcao());
+
+    }
+
+
+
+
+
+
+
+
+
+
+    //fai da arrival a departure per verificare se ci sono voli di ritorno
+
 }

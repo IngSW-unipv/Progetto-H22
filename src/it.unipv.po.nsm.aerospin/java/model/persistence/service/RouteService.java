@@ -49,6 +49,12 @@ public class RouteService {
         return routes;
     }
 
+    public boolean checkRoute(String dep, String arr){
+        routeDao.getConn().openCurrentSession();
+        boolean check = routeDao.checkRoute(dep,arr);
+        return check;
+    }
+
     public void persist(Route route) {
         routeDao.getConn().openCurrentSessionwithTransaction();
         routeDao.persist(route);

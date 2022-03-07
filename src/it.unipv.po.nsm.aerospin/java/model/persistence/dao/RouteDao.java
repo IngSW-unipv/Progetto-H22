@@ -69,6 +69,23 @@ public class RouteDao implements RouteDaoInterface{
     }
 
     @Override
+    public boolean checkRoute(String dep, String arr) {
+
+        String hql = "from Route a where a.departure = :dep and a.arrival = :arr";
+        Query query = conn.getCurrentSession().createQuery(hql);
+        query.setParameter("dep",dep);
+        query.setParameter("arr",arr);
+        //query.setCacheable(true);
+
+        try {
+            Route route = (Route) query.list().get(0);
+            return true;
+        }catch (IndexOutOfBoundsException e){
+            return false;
+        }
+    }
+
+    @Override
     public void persist(Route entity) {
         conn.getCurrentSession().save(entity);
     }

@@ -89,6 +89,9 @@ public class Test {
 //       }
 
 
+        System.out.println(routeService.checkRoute("LICA","GMMN"));
+
+
         System.exit(0);
 
 

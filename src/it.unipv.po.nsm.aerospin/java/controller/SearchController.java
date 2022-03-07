@@ -26,6 +26,9 @@ public class SearchController implements Initializable, IControlledScreen {
     List<String> strings1 = new ArrayList<>();
     List<String> strings2 = new ArrayList<>();
 
+
+    String dep, arr;
+
     @FXML
     private ComboBox<String> cb1;
 
@@ -69,13 +72,26 @@ public class SearchController implements Initializable, IControlledScreen {
     private void findArrivals (ActionEvent event){
         Thread t2 = new Thread(()->{
             strings2 = searchManager.getServedArrivals(cb1.getSelectionModel().getSelectedItem());
+
             Platform.runLater(()->{
                 cb2.setItems(FXCollections.observableArrayList(strings2));
             });
             methods.selectOptionOnKey(cb2, strings2);
         });
         t2.start();
+
     }
+
+
+    @FXML
+    private void checkRoute(ActionEvent event){
+        if (checkReturning()){
+            System.out.println("okokokokokokokok");
+        }
+    }
+
+
+
 
     //Gestisco date2>>date1
     @FXML
@@ -101,6 +117,18 @@ public class SearchController implements Initializable, IControlledScreen {
             alert.setTitle("Validate Fields");
             alert.setHeaderText(null);
             alert.setContentText("Per favore inserire tutti i campi prima di procedere");
+            alert.showAndWait();
+            return false;
+        }
+        return true;
+    }
+
+    public boolean checkReturning(){
+        if(!(searchManager.checkRoute(cb2.getValue(),cb1.getValue()))){
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning");
+            alert.setHeaderText(null);
+            alert.setContentText("Ritorno non disponibileeeeeeeeeeeeeeeeeeeeeeeee you brat!");
             alert.showAndWait();
             return false;
         }
