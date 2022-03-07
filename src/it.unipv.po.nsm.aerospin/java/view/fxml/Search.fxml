@@ -8,19 +8,18 @@
     <children>
       <JFXComboBox fx:id="cb1" layoutX="104.0" layoutY="169.0" onAction="#findArrivals" prefHeight="30.0" prefWidth="250.0" promptText="Partenza" />
       <JFXComboBox fx:id="cb2" layoutX="104.0" layoutY="256.0" onAction="#checkRoute" prefHeight="30.0" prefWidth="250.0" promptText="Destinazione" />
-      <JFXRadioButton layoutX="476.0" layoutY="170.0" mnemonicParsing="false" selected="true" text="Andata e Ritorno">
+      <JFXRadioButton fx:id="oneway" layoutX="471.0" layoutY="170.0" mnemonicParsing="false" selected="true" text="Solo Andata">
          <toggleGroup>
             <ToggleGroup fx:id="group" />
          </toggleGroup></JFXRadioButton>
-      <JFXRadioButton fx:id="oneway" layoutX="634.0" layoutY="170.0" mnemonicParsing="false" text="Solo Andata" toggleGroup="$group" />
         <DatePicker fx:id="date1" layoutX="430.0" layoutY="261.0" onAction="#returnDate" promptText="Scegli la data" />
         <DatePicker fx:id="date2" layoutX="634.0" layoutY="261.0" promptText="Scegli la data" />
-      <JFXButton fx:id="cerca" layoutX="305.0" layoutY="418.0" onAction="#goToResult" prefHeight="65.0" prefWidth="250.0" text="CERCA" />
-      <Label fx:id="errLabel" layoutX="333.0" layoutY="401.0" prefHeight="17.0" prefWidth="195.0" textFill="#ff0404" />
+      <JFXButton layoutX="305.0" layoutY="418.0" onAction="#goToResult" prefHeight="65.0" prefWidth="250.0" text="CERCA" />
         <Label layoutX="104.0" layoutY="152.0" text="Da" />
         <Label layoutX="108.0" layoutY="243.0" text="A" />
         <Label layoutX="430.0" layoutY="238.0" text="Partenza" />
         <Label layoutX="634.0" layoutY="238.0" text="Ritorno" />
       <Separator layoutX="397.0" layoutY="120.0" orientation="VERTICAL" prefHeight="200.0" AnchorPane.rightAnchor="457.0" />
+      <JFXRadioButton layoutX="634.0" layoutY="170.0" mnemonicParsing="false" text="Andata e Ritorno" toggleGroup="$group" />
     </children>
 </AnchorPane>

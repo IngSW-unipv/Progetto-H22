@@ -1,12 +1,14 @@
 package controller;
 
-import com.jfoenix.controls.JFXAlert;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.RadioButton;
 import model.management.SearchManager;
 import util.ControllerMethods;
 import view.Factory;
@@ -30,7 +32,8 @@ public class SearchController implements Initializable, IControlledScreen {
     String dep, arr;
 
     @FXML
-    private ComboBox<String> cb1;
+    private
+    ComboBox<String> cb1;
 
     @FXML
     private ComboBox<String> cb2;
@@ -43,12 +46,6 @@ public class SearchController implements Initializable, IControlledScreen {
 
     @FXML
     private RadioButton oneway;
-
-    @FXML
-    private Button cerca;
-
-    @FXML
-    private Label errLabel;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -101,22 +98,23 @@ public class SearchController implements Initializable, IControlledScreen {
 
     @FXML
     private void goToResult(ActionEvent event){
-        //if(cb2.getSelectionModel().)
+        if (validateFields()) {
+            factory.getSession().getInfo().clear();
+            factory.getSession().addInfo(cb1.getSelectionModel().getSelectedItem());
+            factory.getSession().addInfo(cb2.getSelectionModel().getSelectedItem());
+            factory.getSession().addInfo(date1.getValue().toString());
+            //factory.getSession().addInfo(date2.getValue().toString());
 
-        if (validateFields()){
             myController.setScreen(factory.getResult());
         }
-        //errLabel
-
-
     }
 
     public boolean validateFields(){
-        if( cb2.getSelectionModel().isEmpty() |date1.getValue() == null | date2.getValue() == null){
+        if( cb2.getSelectionModel().isEmpty() | date1.getValue() == null | (date2.getValue() == null  & !oneway.isSelected())){
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Validate Fields");
             alert.setHeaderText(null);
-            alert.setContentText("Per favore inserire tutti i campi prima di procedere");
+            alert.setContentText("Inserire tutti i campi prima di procedere!");
             alert.showAndWait();
             return false;
         }
