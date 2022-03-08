@@ -36,5 +36,3 @@ public class AerospinApp extends Application {
         launch(args);
     }
 }
-
-probva
