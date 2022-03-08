@@ -5,10 +5,7 @@ import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.RadioButton;
+import javafx.scene.control.*;
 import model.management.SearchManager;
 import util.ControllerMethods;
 import view.Factory;
@@ -29,7 +26,7 @@ public class SearchController implements Initializable, IControlledScreen {
     List<String> strings2 = new ArrayList<>();
 
 
-    String dep, arr;
+//    String dep, arr;
 
     @FXML
     private
@@ -47,9 +44,16 @@ public class SearchController implements Initializable, IControlledScreen {
     @FXML
     private RadioButton oneway;
 
+    @FXML
+    private RadioButton ar;
+
+    @FXML
+    private Label errLabel;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // Se seleziono Solo Andata non posso inserire Data Ritorno
+        ar.setDisable(true);
         date2.disableProperty().bind(oneway.selectedProperty().or(date1.valueProperty().isNull()));
         date1.setDayCellFactory(methods.dateRange(LocalDate.now()));
 
@@ -76,19 +80,18 @@ public class SearchController implements Initializable, IControlledScreen {
             methods.selectOptionOnKey(cb2, strings2);
         });
         t2.start();
-
     }
 
 
     @FXML
     private void checkRoute(ActionEvent event){
-        if (checkReturning()){
-            System.out.println("okokokokokokokok");
+        if (searchManager.checkRoute(cb2.getValue(),cb1.getValue())){
+            ar.setDisable(false);
+        } else {
+            ar.setDisable(true);
+            errLabel.setText("Andata e Ritorno NON DISPONIBILE");
         }
     }
-
-
-
 
     //Gestisco date2>>date1
     @FXML
@@ -98,19 +101,23 @@ public class SearchController implements Initializable, IControlledScreen {
 
     @FXML
     private void goToResult(ActionEvent event){
+        //System.out.println(date1.getValue() == null);   può dare bug perchè se cancello data rimane not null
+        System.out.println(ar.isSelected());
         if (validateFields()) {
+            factory.getSession().setOneway(oneway.isSelected());
             factory.getSession().getInfo().clear();
             factory.getSession().addInfo(cb1.getSelectionModel().getSelectedItem());
             factory.getSession().addInfo(cb2.getSelectionModel().getSelectedItem());
             factory.getSession().addInfo(date1.getValue().toString());
-            //factory.getSession().addInfo(date2.getValue().toString());
-
+            if (!(factory.getSession().isOneway())) {
+                factory.getSession().addInfo(date2.getValue().toString());
+            }
             myController.setScreen(factory.getResult());
         }
     }
 
     public boolean validateFields(){
-        if( cb2.getSelectionModel().isEmpty() | date1.getValue() == null | (date2.getValue() == null  & !oneway.isSelected())){
+        if( cb2.getSelectionModel().isEmpty() | date1.getValue() == null | (date2.getValue() == null && ar.isSelected())){
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Validate Fields");
             alert.setHeaderText(null);
@@ -120,19 +127,6 @@ public class SearchController implements Initializable, IControlledScreen {
         }
         return true;
     }
-
-    public boolean checkReturning(){
-        if(!(searchManager.checkRoute(cb2.getValue(),cb1.getValue()))){
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Warning");
-            alert.setHeaderText(null);
-            alert.setContentText("Ritorno non disponibileeeeeeeeeeeeeeeeeeeeeeeee you brat!");
-            alert.showAndWait();
-            return false;
-        }
-        return true;
-    }
-
 
 
 }

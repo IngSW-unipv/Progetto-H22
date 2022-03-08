@@ -10,6 +10,7 @@ public class Session {
     private User user;
     private boolean logged = false;
     private List<String> info = new ArrayList<>();
+    private boolean oneway = true;
 
     public Session () {
         logged = false;
@@ -42,5 +43,13 @@ public class Session {
 
     public void addInfo(String item) {
         this.info.add(item);
+    }
+
+    public boolean isOneway() {
+        return oneway;
+    }
+
+    public void setOneway(boolean oneway) {
+        this.oneway = oneway;
     }
 }
