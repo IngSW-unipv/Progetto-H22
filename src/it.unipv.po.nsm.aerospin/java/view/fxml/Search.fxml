@@ -21,6 +21,6 @@
         <Label layoutX="430.0" layoutY="238.0" text="Partenza" />
         <Label layoutX="634.0" layoutY="238.0" text="Ritorno" />
       <Separator layoutX="397.0" layoutY="120.0" orientation="VERTICAL" prefHeight="200.0" AnchorPane.rightAnchor="457.0" />
-      <Label fx:id="errLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="308.0" layoutY="401.0" prefHeight="17.0" prefWidth="250.0" textFill="RED" />
+      <Label fx:id="errLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="479.0" layoutY="199.0" prefHeight="17.0" prefWidth="250.0" textFill="RED" />
     </children>
 </AnchorPane>

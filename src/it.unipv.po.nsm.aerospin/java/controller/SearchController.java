@@ -25,9 +25,6 @@ public class SearchController implements Initializable, IControlledScreen {
     List<String> strings1 = new ArrayList<>();
     List<String> strings2 = new ArrayList<>();
 
-
-//    String dep, arr;
-
     @FXML
     private
     ComboBox<String> cb1;
@@ -82,7 +79,6 @@ public class SearchController implements Initializable, IControlledScreen {
         t2.start();
     }
 
-
     @FXML
     private void checkRoute(ActionEvent event){
         if (searchManager.checkRoute(cb2.getValue(),cb1.getValue())){
@@ -101,8 +97,6 @@ public class SearchController implements Initializable, IControlledScreen {
 
     @FXML
     private void goToResult(ActionEvent event){
-        //System.out.println(date1.getValue() == null);   può dare bug perchè se cancello data rimane not null
-        System.out.println(ar.isSelected());
         if (validateFields()) {
             factory.getSession().setOneway(oneway.isSelected());
             factory.getSession().getInfo().clear();
@@ -116,6 +110,7 @@ public class SearchController implements Initializable, IControlledScreen {
         }
     }
 
+    //System.out.println(date1.getValue() == null);   può dare bug perchè se cancello la data rimane not null
     public boolean validateFields(){
         if( cb2.getSelectionModel().isEmpty() | date1.getValue() == null | (date2.getValue() == null && ar.isSelected())){
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -127,6 +122,5 @@ public class SearchController implements Initializable, IControlledScreen {
         }
         return true;
     }
-
 
 }
