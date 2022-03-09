@@ -69,13 +69,14 @@ public class SearchController implements Initializable, IControlledScreen {
     @FXML
     private void findArrivals (ActionEvent event){
         //cancella selezione cb2
-        cb2.autosize();
         Thread t2 = new Thread(()->{
+            cb2.getSelectionModel().clearSelection();
+            cb2.autosize();
             strings2 = searchManager.getServedArrivals(cb1.getSelectionModel().getSelectedItem());
             Platform.runLater(()->{
                 cb2.setItems(FXCollections.observableArrayList(strings2));
+                methods.selectOptionOnKey(cb2, strings2);
             });
-            methods.selectOptionOnKey(cb2, strings2);
         });
         t2.start();
     }
@@ -109,7 +110,7 @@ public class SearchController implements Initializable, IControlledScreen {
                 factory.getSession().addInfo(date2.getValue().toString());
             }
             myController.setScreen(factory.getResult());
-        }
+            date1.getProperties().clear();        }
     }
 
     //System.out.println(date1.getValue() == null);   può dare bug perchè se cancello la data, rimane not null
