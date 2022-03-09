@@ -23,7 +23,7 @@ public class SearchManager {
         airportsNames.clear();
         List<Route> routes = routeService.findAll();
         for (int i = 0; i < routes.size(); i++) {
-            airportsNames.add(routes.get(i).getDepartureName());
+            airportsNames.add(routes.get(i).getDeparture().getAirportName());
         }
         airportsNames.sort(Comparator.naturalOrder());
         return airportsNames.stream().distinct().collect(Collectors.toList());
@@ -35,7 +35,7 @@ public class SearchManager {
         List<Route> routes = routeService.findByDepName(servedByDeparture);
         airport = airportService.findByName(servedByDeparture).get(0);
         for (int i = 0; i < routes.size(); i++) {
-            airportsNames.add(routes.get(i).getArrivalName());
+            airportsNames.add(routes.get(i).getArrival().getAirportName());
         }
         airportsNames.sort(Comparator.naturalOrder());
         return airportsNames.stream().distinct().collect(Collectors.toList());

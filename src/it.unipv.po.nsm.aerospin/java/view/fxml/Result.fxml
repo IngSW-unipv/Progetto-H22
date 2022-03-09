@@ -37,7 +37,7 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </padding>
       </HBox>
-      <JFXButton layoutX="483.0" layoutY="418.0" onAction="#setProva" prefHeight="65.0" prefWidth="222.0" text="ACQUISTA" />
+      <JFXButton fx:id="acquista" layoutX="483.0" layoutY="418.0" onAction="#checkout" prefHeight="65.0" prefWidth="222.0" text="ACQUISTA" />
       <VBox layoutX="458.0" layoutY="75.0" spacing="5.0">
          <children>
             <JFXRadioButton fx:id="first" text="FIRST">

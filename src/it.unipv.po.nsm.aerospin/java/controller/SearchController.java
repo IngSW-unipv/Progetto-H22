@@ -1,5 +1,6 @@
 package controller;
 
+import com.jfoenix.controls.JFXButton;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -47,6 +48,8 @@ public class SearchController implements Initializable, IControlledScreen {
 
     @FXML
     private Label errLabel;
+
+
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {

@@ -1,4 +1,4 @@
-package model.flight.route;
+package model.flight;
 
 
 import model.persistence.entity.Aircraft;

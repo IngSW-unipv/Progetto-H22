@@ -27,24 +27,50 @@ public class Route {
     private Integer costIndex;
 
 
+    @Transient
+    private Airport dep;
+    @Transient
+    private Airport arr;
+    @Transient
+    private AirportService airportService;
 
 
 
-    public String getDepartureName(){
 
-        AirportService airportService = new AirportService();
-        Airport airport = airportService.findByIcao(departure).get(0);
-        return airport.getAirportName();
+
+    public Airport getDeparture(){
+        airportService = new AirportService();
+        dep= airportService.findByIcao(departure).get(0);
+        return dep;
     }
 
 
-    public String getArrivalName(){
-        AirportService airportService = new AirportService();
-        Airport airport = airportService.findByIcao(arrival).get(0);
-        return airport.getAirportName();
+    public Airport getArrival(){
+        airportService = new AirportService();
+        arr = airportService.findByIcao(arrival).get(0);
+        return arr;
     }
 
 
+    public double getDistance(){
+        double depLat = getDeparture().getLatitude() * (Math.PI/180);
+        double depLong = getDeparture().getLongitude() * (Math.PI/180);
+        double arrLat = getArrival().getLatitude() * (Math.PI/180);
+        double arrLong = getArrival().getLongitude() * (Math.PI/180);
+
+        double distance = 3963 * Math.acos(Math.sin(depLat)*Math.sin(arrLat) + Math.cos(depLat)*Math.cos(arrLat) * Math.cos(arrLong - depLong));
+        return distance;
+    }
+
+
+    public double getFlightTime(){
+        double depTimeZone = getDeparture().getTimezone();
+        double arrTimeZone = getArrival().getTimezone();
+        double addedTime = arrTimeZone - depTimeZone;
+        double speed = 10 * costIndex; //avg speed coefficient = 10;
+        double flightTime = (getDistance()/speed) + addedTime;
+        return Math.round(flightTime * 100.0)  / 100.0;
+    }
 
 
 
@@ -58,17 +84,11 @@ public class Route {
         this.routeId = routeId;
     }
 
-    public String getDeparture() {
-        return departure;
-    }
 
     public void setDeparture(String departure) {
         this.departure = departure;
     }
 
-    public String getArrival() {
-        return arrival;
-    }
 
     public void setArrival(String arrival) {
         this.arrival = arrival;

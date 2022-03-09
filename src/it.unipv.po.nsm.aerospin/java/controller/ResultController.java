@@ -1,5 +1,6 @@
 package controller;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXRadioButton;
 import javafx.beans.binding.Bindings;
@@ -12,6 +13,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import model.booking.payment.AeroPay;
+import model.booking.payment.PaymentStrategy;
 import view.Factory;
 import view.ScreensController;
 
@@ -64,7 +67,9 @@ public class ResultController implements Initializable, IControlledScreen {
     @FXML
     private TextField cvv;
 
+
     private List<String> items = new ArrayList<>();
+    PaymentStrategy paymentStrategy = new AeroPay();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -98,6 +103,11 @@ public class ResultController implements Initializable, IControlledScreen {
 //        listB.resize(0,0);
 //        listB.setVisible(false);
 //        listA.resize(280,480);
+    }
+    @FXML
+    private void checkout(ActionEvent event){
+        paymentStrategy.pay();
+
     }
 
     public void setScreenParent(ScreensController screenParent){
