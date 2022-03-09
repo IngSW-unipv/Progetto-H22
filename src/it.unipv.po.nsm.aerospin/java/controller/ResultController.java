@@ -2,6 +2,7 @@ package controller;
 
 import com.jfoenix.controls.JFXRadioButton;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -130,6 +131,16 @@ public class ResultController implements Initializable, IControlledScreen {
         table1.setItems(list);
         table2.setItems(list);
 
+        table1.getSelectionModel().setSelectionMode(SelectionMode.SINGLE); // just in case you didnt already set the selection model to multiple selection.
+        table1.getSelectionModel().getSelectedIndices().addListener(new ListChangeListener<Integer>()
+        {
+            @Override
+            public void onChanged(Change<? extends Integer> change){
+            int i = (int) table1.getSelectionModel().getSelectedItem().getPrice();
+                cost.setText(String.valueOf(i));
+            }
+
+        });
    //     cost.setText(factory.getSession().getInfo(0)).bind();
 
 
