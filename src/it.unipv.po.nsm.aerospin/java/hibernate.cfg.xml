@@ -5,11 +5,11 @@
 <hibernate-configuration>
     <session-factory>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-        <property name="connection.url">jdbc:mysql://localhost:3306/airports</property>
+        <property name="connection.url">jdbc:mysql://34.134.220.222:3306/Aerospin</property>
         <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
         <property name="hibernate.show_sql">true</property>
         <property name="connection.username">root</property>
-        <property name="connection.password">Kbeoqsm7@</property>
+        <property name="connection.password">kbeoqsm7</property>
         <property name="hibernate.cache.use_second_level_cache">true</property>
          <property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</property>
            <property name="hibernate.cache.use_query_cache">true</property>
