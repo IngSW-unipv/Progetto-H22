@@ -32,7 +32,6 @@ public class RouteManager {
         route.setDeparture(departure);
         route.setArrival(arrival);
         route.setWaypoints(waypoints);
-        route.setPrice(price);
         //route.setCostIndex(xxxxxxxxxxx);
         routeService.persist(route);
 
