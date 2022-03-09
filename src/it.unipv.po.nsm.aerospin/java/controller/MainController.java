@@ -52,24 +52,24 @@ public class MainController implements Initializable {
 
     @FXML
     private void goToHome(ActionEvent event) throws IOException {
-        mainContainer.setScreen(factory.getHome());
+        mainContainer.setScreen(Factory.getHome());
     }
 
     @FXML
     private void goToSearch(ActionEvent event) throws IOException {
-        mainContainer.setScreen(factory.getSearch());
+        mainContainer.setScreen(Factory.getSearch());
     }
 
     @FXML
     private void goToLogin(ActionEvent event) throws IOException {
-        mainContainer.setScreen(factory.getLogin());
+        mainContainer.setScreen(Factory.getLogin());
     }
 
     @FXML
     private void logout(ActionEvent event) throws IOException {
         //cambia stato come non loggato
         factory.getSession().setLogged(false);
-        mainContainer.setScreen(factory.getHome());
+        mainContainer.setScreen(Factory.getHome());
         logout.visibleProperty().bind(new SimpleBooleanProperty(factory.getSession().isLogged()));
     }
 }

@@ -113,8 +113,8 @@ public class SearchController implements Initializable, IControlledScreen {
             if (!(factory.getSession().isOneway())) {
                 factory.getSession().addInfo(date2.getValue().toString());
             }
-            myController.setScreen(factory.getResult());
-            date1.getProperties().clear();        }
+            myController.setScreen(Factory.getResult());
+        }
     }
 
     //System.out.println(date1.getValue() == null);   può dare bug perchè se cancello la data, rimane not null

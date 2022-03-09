@@ -1,38 +1,43 @@
 package controller;
 
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXRadioButton;
-import javafx.beans.binding.Bindings;
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.SimpleBooleanProperty;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import model.booking.payment.AeroPay;
 import model.booking.payment.PaymentStrategy;
+import model.management.ResultManager;
+import model.persistence.entity.Flight;
+import util.Session;
 import view.Factory;
 import view.ScreensController;
 
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
+import java.sql.Time;
 import java.util.ResourceBundle;
 
 public class ResultController implements Initializable, IControlledScreen {
 
     ScreensController myController;
     private Factory factory = Factory.getInstance();
+    private Session session = factory.getSession();
+    private ResultManager resultManager = new ResultManager();
 
     @FXML
-    private JFXListView listA;
+    private Label depLabel;
 
     @FXML
-    private JFXListView listB;
+    private Label retLabel;
+
+    @FXML
+    private TableView<Flight> table1;
+
+    @FXML
+    private TableView<Flight> table2;
 
     @FXML
     private JFXRadioButton econ;
@@ -67,43 +72,69 @@ public class ResultController implements Initializable, IControlledScreen {
     @FXML
     private TextField cvv;
 
+    @FXML
+    private TableColumn<Flight,String> flightNumber1;
 
-    private List<String> items = new ArrayList<>();
+    @FXML
+    private TableColumn<Flight, Time> scheduledTime1;
+
+    @FXML
+    private TableColumn<Flight, Time> arrivalTime1;
+
+    @FXML
+    private TableColumn<Flight, Double> price1;
+
+    @FXML
+    private TableColumn<Flight,String> flightNumber2;
+
+    @FXML
+    private TableColumn<Flight, Time> scheduledTime2;
+
+    @FXML
+    private TableColumn<Flight, Time> arrivalTime2;
+
+    @FXML
+    private TableColumn<Flight, Double> price2;
+
+
+    private ObservableList<Flight> list;
     PaymentStrategy paymentStrategy = new AeroPay();
+
+    private String depart;
+    private String ret;
+    private String format = "Da %s\nA %s il %s";
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        items.add("bravo");
-        items.add("alpha");
-        items.add("bravo");
-        items.add("bravo");
-        items.add("sierra");
-        items.add("hotel");
-        items.add("paul");
-        listA.setItems(FXCollections.observableArrayList(items));
+        depart = String.format(format,session.getInfo().get(0), session.getInfo().get(1), session.getInfo().get(2));
+        depLabel.setText(depart);
+        if(session.isOneway()){
+            retLabel.setVisible(false);
+            table2.setVisible(false);
+        } else {
+            ret = String.format(format,session.getInfo().get(1), session.getInfo().get(0), session.getInfo().get(3));
+            retLabel.setText(ret);
+        }
 
-//        listB.visibleProperty().bind(
-//                Bindings.when(new SimpleBooleanProperty(factory.getSession().isOneway()))
-//                        .then(xx);
-//                        .otherwise(
-//                                Bindings.selectInteger(model.databaseProperty(), "size").asString(
-//                                        bundle.getString("status.ready")))
-//        );
-        listB.visibleProperty().bind(new SimpleBooleanProperty(factory.getSession().isOneway()));
+        list = FXCollections.observableArrayList(resultManager.getFlights());
+        flightNumber1.setCellValueFactory(new PropertyValueFactory<Flight,String>("flightNumber"));
+        scheduledTime1.setCellValueFactory(new PropertyValueFactory<Flight,Time>("scheduledTime"));
+        arrivalTime1.setCellValueFactory(new PropertyValueFactory<Flight,Time>("arrivalTime"));
+        price1.setCellValueFactory(new PropertyValueFactory<Flight,Double>("price"));
 
+        flightNumber2.setCellValueFactory(new PropertyValueFactory<Flight,String>("flightNumber"));
+        scheduledTime2.setCellValueFactory(new PropertyValueFactory<Flight,Time>("scheduledTime"));
+        arrivalTime2.setCellValueFactory(new PropertyValueFactory<Flight,Time>("arrivalTime"));
+        price2.setCellValueFactory(new PropertyValueFactory<Flight,Double>("price"));
+
+        table1.setItems(list);
+        table2.setItems(list);
 
    //     cost.setText(factory.getSession().getInfo(0)).bind();
 
 
     }
 
-    @FXML
-    private void setProva (ActionEvent event){
-        System.out.println(factory.getSession().isOneway());
-//        listB.resize(0,0);
-//        listB.setVisible(false);
-//        listA.resize(280,480);
-    }
     @FXML
     private void checkout(ActionEvent event){
         paymentStrategy.pay();
@@ -114,4 +145,9 @@ public class ResultController implements Initializable, IControlledScreen {
         myController = screenParent;
     }
 
+
+    @FXML
+    private void setProva (ActionEvent event){
+
+    }
 }
