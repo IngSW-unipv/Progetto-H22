@@ -2,6 +2,8 @@ package view;
 
 import util.Session;
 
+import java.io.IOException;
+
 //Singleton
 public class Factory {
 
@@ -46,7 +48,7 @@ public class Factory {
     private static String flight = "flight";
     private static String screen11File = "fxml/Flight.fxml";
 
-    public ScreensController createContainer() {
+    public ScreensController createContainer() throws IOException {
 
         ScreensController mainContainer = new ScreensController();
         mainContainer.loadScreen(home, screen1File);

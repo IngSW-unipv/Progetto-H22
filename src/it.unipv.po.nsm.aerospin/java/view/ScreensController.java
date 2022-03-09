@@ -1,5 +1,6 @@
 package view;
 
+import java.io.IOException;
 import java.util.HashMap;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -17,15 +18,15 @@ import controller.IControlledScreen;
 public class ScreensController  extends StackPane {
 
     //Contiene gli screen da mostrare
-    private HashMap<String, Node> screens = new HashMap<>();
+    private HashMap<String, String> screens = new HashMap<>();
 
     //Aggiunge lo screen allo Stack
-    public void addScreen(String name, Node screen) {
-        screens.put(name, screen);
+    public void addScreen(String name, String path) {
+        screens.put(name, path);
     }
 
-    //Ritorna il Node con il determinato nome
-    public Node getScreen(String name) {
+    //Ritorna il path con il determinato nome
+    public String getScreen(String name) {
         return screens.get(name);
     }
 
@@ -33,11 +34,11 @@ public class ScreensController  extends StackPane {
     //infine recupero il controller.
     public boolean loadScreen(String name, String resource) {
         try {
-            FXMLLoader myLoader = new FXMLLoader(getClass().getResource(resource));
-            Parent loadScreen = (Parent) myLoader.load();
-            IControlledScreen myScreenController = ((IControlledScreen) myLoader.getController());
-            myScreenController.setScreenParent(this);
-            addScreen(name, loadScreen);
+//            FXMLLoader myLoader = new FXMLLoader(getClass().getResource(resource));
+//            Parent loadScreen = (Parent) myLoader.load();
+//            IControlledScreen myScreenController = ((IControlledScreen) myLoader.getController());
+//            myScreenController.setScreenParent(this);
+            addScreen(name, resource);
             return true;
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -49,9 +50,14 @@ public class ScreensController  extends StackPane {
     //Prima controllo se ho uno screen caricato.
     //In caso positivo rimuovo lo screen attuale e carico il nuovo;
     //altrimenti carico direttamente lo screen.
-    public boolean setScreen(final String name) {
+    public boolean setScreen(final String name) throws IOException {
 
         if (screens.get(name) != null) {   //screen caricato
+
+            FXMLLoader myLoader = new FXMLLoader(getClass().getResource(screens.get(name)));
+            Parent loadScreen = (Parent) myLoader.load();
+            IControlledScreen myScreenController = ((IControlledScreen) myLoader.getController());
+            myScreenController.setScreenParent(this);
             final DoubleProperty opacity = opacityProperty();
 
             if (!getChildren().isEmpty()) {    //se lo screen ha un "parent"
@@ -61,7 +67,7 @@ public class ScreensController  extends StackPane {
                             @Override
                             public void handle(ActionEvent t) {
                                 getChildren().remove(0);                    //rimuovo screen attuale
-                                getChildren().add(0, screens.get(name));     //aggiungo nuovo screen
+                                getChildren().add(0, loadScreen);     //aggiungo nuovo screen
                                 Timeline fadeIn = new Timeline(
                                         new KeyFrame(Duration.ZERO, new KeyValue(opacity, 0.0)),
                                         new KeyFrame(new Duration(200), new KeyValue(opacity, 1.0)));
@@ -71,7 +77,7 @@ public class ScreensController  extends StackPane {
                 fade.play();
             } else {
                 setOpacity(0.0);
-                getChildren().add(screens.get(name));       //primo screen, semplicemente carica
+                getChildren().add(loadScreen);       //primo screen, semplicemente carica
                 Timeline fadeIn = new Timeline(
                         new KeyFrame(Duration.ZERO, new KeyValue(opacity, 0.0)),
                         new KeyFrame(new Duration(1000), new KeyValue(opacity, 1.0)));

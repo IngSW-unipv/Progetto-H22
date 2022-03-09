@@ -10,6 +10,7 @@ import javafx.scene.SubScene;
 import view.Factory;
 import view.ScreensController;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -36,6 +37,9 @@ public class MainController implements Initializable {
     @FXML
     JFXButton logout;
 
+    public MainController() throws IOException {
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         account.setVisible(false);
@@ -47,22 +51,22 @@ public class MainController implements Initializable {
     }
 
     @FXML
-    private void goToHome(ActionEvent event){
+    private void goToHome(ActionEvent event) throws IOException {
         mainContainer.setScreen(factory.getHome());
     }
 
     @FXML
-    private void goToSearch(ActionEvent event){
+    private void goToSearch(ActionEvent event) throws IOException {
         mainContainer.setScreen(factory.getSearch());
     }
 
     @FXML
-    private void goToLogin(ActionEvent event){
+    private void goToLogin(ActionEvent event) throws IOException {
         mainContainer.setScreen(factory.getLogin());
     }
 
     @FXML
-    private void logout(ActionEvent event){
+    private void logout(ActionEvent event) throws IOException {
         //cambia stato come non loggato
         factory.getSession().setLogged(false);
         mainContainer.setScreen(factory.getHome());

@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import view.Factory;
 import view.ScreensController;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -24,22 +25,22 @@ public class ManageController implements Initializable, IControlledScreen {
     }
 
     @FXML
-    private void goToEmployee(ActionEvent event){
+    private void goToEmployee(ActionEvent event) throws IOException {
         myController.setScreen(factory.getEmployee());
     }
 
     @FXML
-    private void goToAircraft(ActionEvent event){
+    private void goToAircraft(ActionEvent event) throws IOException {
         myController.setScreen(factory.getAircraft());
     }
 
     @FXML
-    private void goToRoute(ActionEvent event){
+    private void goToRoute(ActionEvent event) throws IOException {
         myController.setScreen(factory.getRoute());
     }
 
     @FXML
-    private void goToFlight(ActionEvent event){
+    private void goToFlight(ActionEvent event) throws IOException {
         myController.setScreen(factory.getFlight());
     }
 }

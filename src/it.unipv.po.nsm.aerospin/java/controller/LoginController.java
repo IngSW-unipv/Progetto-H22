@@ -11,6 +11,7 @@ import model.persistence.entity.User;
 import model.persistence.service.UserService;
 import view.*;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
@@ -35,7 +36,7 @@ public class LoginController implements Initializable, IControlledScreen {
     }
 
     @FXML
-    private void logAccount(ActionEvent event){
+    private void logAccount(ActionEvent event) throws IOException {
         if(checkExpression(textField.getText())) {
             if(isRegistered(textField.getText())){
                 myController.setScreen(factory.getManage());
