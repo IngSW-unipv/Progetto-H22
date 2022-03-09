@@ -26,6 +26,9 @@ public class Flight {
     @Column(name = "flightrouteId")
     private String routeId;
     @Basic
+    @Column(name = "flightTime")
+    private Time flightTime;
+    @Basic
     @Column(name = "price")
     private  double price;
 
@@ -63,6 +66,14 @@ public class Flight {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public Time getFlightTime() {
+        return flightTime;
+    }
+
+    public void setFlightTime(Time flightTime) {
+        this.flightTime = flightTime;
     }
 
     public Date getScheduledDate() {
