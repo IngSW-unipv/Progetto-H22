@@ -7,7 +7,15 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="860.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ResultController">
    <children>
-      <JFXListView fx:id="list" layoutX="33.0" layoutY="54.0" prefHeight="230.0" prefWidth="275.0" />
+      <VBox layoutX="23.0" layoutY="55.0" prefHeight="500.0" prefWidth="300.0" spacing="40.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="50.0">
+         <children>
+            <JFXListView fx:id="listA" prefHeight="220.0" prefWidth="280.0" />
+            <JFXListView fx:id="listB" prefHeight="220.0" prefWidth="280.0" />
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </VBox>
       <HBox layoutX="358.0" layoutY="181.0" spacing="20.0">
          <children>
             <TextField fx:id="name" />
@@ -29,7 +37,7 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </padding>
       </HBox>
-      <JFXButton layoutX="483.0" layoutY="418.0" prefHeight="65.0" prefWidth="222.0" text="ACQUISTA" />
+      <JFXButton layoutX="483.0" layoutY="418.0" onAction="#setProva" prefHeight="65.0" prefWidth="222.0" text="ACQUISTA" />
       <VBox layoutX="458.0" layoutY="75.0" spacing="5.0">
          <children>
             <JFXRadioButton fx:id="first" text="FIRST">
@@ -48,7 +56,6 @@
       <Label layoutX="527.0" layoutY="160.0" text="Cognome" />
       <Label layoutX="696.0" layoutY="160.0" text="Data di Nascita" />
       <Label alignment="CENTER" layoutX="396.0" layoutY="508.0" prefHeight="17.0" prefWidth="395.0" text="Label" />
-      <JFXListView fx:id="list1" layoutX="33.0" layoutY="317.0" prefHeight="230.0" prefWidth="275.0" />
       <Label layoutX="33.0" layoutY="37.0" text="Andata" />
       <Label layoutX="32.0" layoutY="296.0" text="Ritorno" />
    </children>

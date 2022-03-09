@@ -68,9 +68,10 @@ public class SearchController implements Initializable, IControlledScreen {
 
     @FXML
     private void findArrivals (ActionEvent event){
+        //cancella selezione cb2
+        cb2.autosize();
         Thread t2 = new Thread(()->{
             strings2 = searchManager.getServedArrivals(cb1.getSelectionModel().getSelectedItem());
-
             Platform.runLater(()->{
                 cb2.setItems(FXCollections.observableArrayList(strings2));
             });
@@ -81,6 +82,7 @@ public class SearchController implements Initializable, IControlledScreen {
 
     @FXML
     private void checkRoute(ActionEvent event){
+        errLabel.setText("");
         if (searchManager.checkRoute(cb2.getValue(),cb1.getValue())){
             ar.setDisable(false);
         } else {
@@ -110,7 +112,7 @@ public class SearchController implements Initializable, IControlledScreen {
         }
     }
 
-    //System.out.println(date1.getValue() == null);   può dare bug perchè se cancello la data rimane not null
+    //System.out.println(date1.getValue() == null);   può dare bug perchè se cancello la data, rimane not null
     public boolean validateFields(){
         if( cb2.getSelectionModel().isEmpty() | date1.getValue() == null | (date2.getValue() == null && ar.isSelected())){
             Alert alert = new Alert(Alert.AlertType.WARNING);

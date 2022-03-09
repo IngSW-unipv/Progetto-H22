@@ -15,10 +15,6 @@ public class AerospinApp extends Application {
     @Override
     public void start(Stage stage) throws IOException {
 
-//        ScreensController mainContainer = factory.createContainer();
-//        Group root = new Group();
-//        root.getChildren().addAll(mainContainer);
-//        Scene scene = new Scene(root);
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("view/fxml/Main.fxml")));
         stage.setTitle("Aerospin");
         stage.setScene(new Scene(root));
