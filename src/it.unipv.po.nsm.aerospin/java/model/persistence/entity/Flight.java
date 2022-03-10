@@ -44,7 +44,7 @@ public class Flight {
         this.flightNumber = flightNumber;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -60,7 +60,7 @@ public class Flight {
         this.aircraft = aircraft;
     }
 
-    public double getPrice() {
+    public Double getPrice() {
         return price;
     }
 

@@ -98,45 +98,51 @@ public class ResultController implements Initializable, IControlledScreen {
     private TableColumn<Flight, Double> price2;
 
 
-    private ObservableList<Flight> list;
+    private ObservableList<Flight> list1;
+    private ObservableList<Flight> list2;
     PaymentStrategy paymentStrategy = new AeroPay();
 
-    private String depart;
+    private String dep;
     private String ret;
+    private String dateDep;
+    private String dateRet;
     private String format = "Da %s\nA %s il %s";
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        depart = String.format(format,session.getInfo().get(0), session.getInfo().get(1), session.getInfo().get(2));
-        depLabel.setText(depart);
+        dep = session.getInfo().get(0);
+        ret = session.getInfo().get(1);
+        dateDep = session.getInfo().get(2);
+
+        depLabel.setText(String.format(format,dep,ret,dateDep));
         if(session.isOneway()){
             retLabel.setVisible(false);
             table2.setVisible(false);
         } else {
-            ret = String.format(format,session.getInfo().get(1), session.getInfo().get(0), session.getInfo().get(3));
-            retLabel.setText(ret);
+            retLabel.setText(String.format(format,ret,dep,dateRet));
         }
 
-        list = FXCollections.observableArrayList(resultManager.getFlights());
+        list1 = FXCollections.observableArrayList(resultManager.getFlightsByDepArr(dep,ret,dateDep));
         flightNumber1.setCellValueFactory(new PropertyValueFactory<Flight,String>("flightNumber"));
         scheduledTime1.setCellValueFactory(new PropertyValueFactory<Flight,Time>("scheduledTime"));
         arrivalTime1.setCellValueFactory(new PropertyValueFactory<Flight,Time>("arrivalTime"));
         price1.setCellValueFactory(new PropertyValueFactory<Flight,Double>("price"));
 
-        flightNumber2.setCellValueFactory(new PropertyValueFactory<Flight,String>("flightNumber"));
-        scheduledTime2.setCellValueFactory(new PropertyValueFactory<Flight,Time>("scheduledTime"));
-        arrivalTime2.setCellValueFactory(new PropertyValueFactory<Flight,Time>("arrivalTime"));
-        price2.setCellValueFactory(new PropertyValueFactory<Flight,Double>("price"));
+//        list2 = FXCollections.observableArrayList(resultManager.getFlightsByDepArr(ret,dep,dateDep));
+//        flightNumber2.setCellValueFactory(new PropertyValueFactory<Flight,String>("flightNumber"));
+//        scheduledTime2.setCellValueFactory(new PropertyValueFactory<Flight,Time>("scheduledTime"));
+//        arrivalTime2.setCellValueFactory(new PropertyValueFactory<Flight,Time>("arrivalTime"));
+//        price2.setCellValueFactory(new PropertyValueFactory<Flight,Double>("price"));
 
-        table1.setItems(list);
-        table2.setItems(list);
+        table1.setItems(list1);
+//        table2.setItems(list2);
 
         table1.getSelectionModel().setSelectionMode(SelectionMode.SINGLE); // just in case you didnt already set the selection model to multiple selection.
         table1.getSelectionModel().getSelectedIndices().addListener(new ListChangeListener<Integer>()
         {
             @Override
             public void onChanged(Change<? extends Integer> change){
-            int i = (int) table1.getSelectionModel().getSelectedItem().getPrice();
+            double i = table1.getSelectionModel().getSelectedItem().getPrice();
                 cost.setText(String.valueOf(i));
             }
 

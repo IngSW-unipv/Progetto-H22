@@ -16,7 +16,7 @@
               <columns>
                 <TableColumn fx:id="flightNumber1" editable="false" resizable="false" sortable="false" text="Numero Volo" />
                 <TableColumn fx:id="scheduledTime1" editable="false" prefWidth="67.0" resizable="false" text="Partenza" />
-                  <TableColumn fx:id="arrivalTime1" prefWidth="67.0" resizable="false" text="Arriva" />
+                  <TableColumn fx:id="arrivalTime1" prefWidth="67.0" resizable="false" text="Arrivo" />
                   <TableColumn fx:id="price1" prefWidth="64.0" resizable="false" text="Costo" />
               </columns>
                <columnResizePolicy>
@@ -27,7 +27,7 @@
                <columns>
                   <TableColumn fx:id="flightNumber2" editable="false" resizable="false" sortable="false" text="Numero Volo" />
                   <TableColumn fx:id="scheduledTime2" editable="false" prefWidth="67.0" resizable="false" text="Partenza" />
-                  <TableColumn fx:id="arrivalTime2" prefWidth="67.0" resizable="false" text="Arriva" />
+                  <TableColumn fx:id="arrivalTime2" prefWidth="67.0" resizable="false" text="Arrivo" />
                   <TableColumn fx:id="price2" prefWidth="64.0" resizable="false" text="Costo" />
                </columns>
                <columnResizePolicy>
