@@ -60,12 +60,26 @@ public class RouteDao implements RouteDaoInterface{
 
     @Override
     public List<Route> findByArr(String arr) {
-        String hql = "from Route a where a.departure = :arr order by a.departure ASC";
+        String hql = "from Route a where a.arrival = :arr order by a.arrival ASC";
         Query query = conn.getCurrentSession().createQuery(hql);
         query.setParameter("arr",arr);
         //query.setCacheable(true);
         List<Route> routes = query.list();
         return routes;
+    }
+
+    @Override
+    public Route findByDepArr(String dep, String arr) {
+        AirportService airportService = new AirportService();
+        Airport departureAirport = airportService.findByName(dep).get(0);
+        Airport arrivalAirport = airportService.findByName(arr).get(0);
+
+        String hql = "from Route a where a.departure = :dep and a.arrival = :arr";
+        Query query = conn.getCurrentSession().createQuery(hql);
+        query.setParameter("dep",departureAirport.getIcao());
+        query.setParameter("arr",arrivalAirport.getIcao());
+        Route route = (Route) query.list().get(0);
+        return route;
     }
 
     @Override

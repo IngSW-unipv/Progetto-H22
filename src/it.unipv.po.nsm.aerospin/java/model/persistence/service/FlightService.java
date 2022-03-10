@@ -4,8 +4,9 @@ package model.persistence.service;
 import model.persistence.dao.FlightDao;
 import model.persistence.entity.Employee;
 import model.persistence.entity.Flight;
+import model.persistence.entity.Route;
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 public class FlightService {
@@ -33,6 +34,12 @@ public class FlightService {
     public List<Flight> findByDate(Date date) {
         flightDao.getConn().openCurrentSession();
         List<Flight> flights = flightDao.findByDate(date);
+        flightDao.getConn().closeCurrentSession();
+        return flights;
+    }
+    public List<Flight> findFlightsByDate(String dep, String arr, String scheduledDate){
+        flightDao.getConn().openCurrentSession();
+        List<Flight> flights = flightDao.findFlightsByDate(dep,arr,scheduledDate);
         flightDao.getConn().closeCurrentSession();
         return flights;
     }

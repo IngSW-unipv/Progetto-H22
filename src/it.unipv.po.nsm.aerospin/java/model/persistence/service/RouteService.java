@@ -48,6 +48,12 @@ public class RouteService {
         routeDao.getConn().closeCurrentSession();
         return routes;
     }
+    public Route findBydepArr(String dep,String arr) {
+        routeDao.getConn().openCurrentSession();
+        Route route = routeDao.findByDepArr(dep,arr);
+        routeDao.getConn().closeCurrentSession();
+        return route;
+    }
 
     public boolean checkRoute(String dep, String arr){
         routeDao.getConn().openCurrentSession();

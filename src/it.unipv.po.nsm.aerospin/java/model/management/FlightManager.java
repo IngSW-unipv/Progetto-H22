@@ -45,6 +45,7 @@ public class FlightManager {
         return servedRoutes.stream().distinct().collect(Collectors.toList());
     }
 
+
     public void saveFlight(String aircraft, String route){
         int i = 542;
         Flight flight = new Flight();

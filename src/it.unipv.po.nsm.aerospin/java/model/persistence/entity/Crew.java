@@ -7,7 +7,7 @@ public class Crew {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "crewId")
-    private int id;
+    private Integer id;
     @Basic
     @Column(name = "employeeId")
     private Integer employeeId;

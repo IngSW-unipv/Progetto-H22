@@ -8,7 +8,7 @@ public class Passenger {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "passengerid")
-    private int id;
+    private Integer id;
     @Basic
     @Column(name = "name")
     private String name;

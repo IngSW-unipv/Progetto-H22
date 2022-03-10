@@ -1,6 +1,7 @@
 package model.persistence.entity;
 
 import javax.persistence.*;
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.Date;
 import java.util.Collection;
 
@@ -9,7 +10,7 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "employeeId")
-    private int id;
+    private Integer id;
     @Basic
     @Column(name = "Name")
     private String name;

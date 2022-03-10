@@ -3,6 +3,7 @@ package model.management;
 import model.persistence.entity.Flight;
 import model.persistence.service.FlightService;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,4 +18,10 @@ public class ResultManager {
         flights = flightService.findAll();
         return flights;
     }
+
+    public List<Flight> getFlightsByDepArr(String dep, String arr, String scheduledDate){
+        List<Flight> flights = flightService.findFlightsByDate(dep,arr,scheduledDate);
+        return flights;
+    }
+
 }

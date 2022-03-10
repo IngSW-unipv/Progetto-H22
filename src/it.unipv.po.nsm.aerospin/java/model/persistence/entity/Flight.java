@@ -10,7 +10,7 @@ public class Flight {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id")
-    private int id;
+    private Integer id;
     @Column(name = "flightNumber")
     private String flightNumber;
     @Basic
@@ -30,7 +30,7 @@ public class Flight {
     private Time arrivalTime;
     @Basic
     @Column(name = "price")
-    private  double price;
+    private Double price;
 
 
 
@@ -71,6 +71,7 @@ public class Flight {
     public Time getArrivalTime() {
         return arrivalTime;
     }
+
 
     public void setArrivalTime(Time arrivalTime) {
         this.arrivalTime = arrivalTime;
@@ -118,15 +119,17 @@ public class Flight {
     }
 
 
-
     @Override
     public String toString() {
         return "Flight{" +
+                "id=" + id +
                 ", flightNumber='" + flightNumber + '\'' +
-                ", aircraft=" + aircraft +
+                ", aircraft='" + aircraft + '\'' +
                 ", scheduledDate=" + scheduledDate +
                 ", scheduledTime=" + scheduledTime +
-                ", routeId=" + routeId +
+                ", routeId='" + routeId + '\'' +
+                ", arrivalTime=" + arrivalTime +
+                ", price=" + price +
                 '}';
     }
 }

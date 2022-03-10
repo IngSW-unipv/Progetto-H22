@@ -89,7 +89,16 @@ public class Test {
 //       }
 
 
-        System.out.println(routeService.checkRoute("LICA","GMMN"));
+//        System.out.println(routeService.checkRoute("LICA","GMMN"));
+
+
+
+        FlightService flightService = new FlightService();
+        List<Flight> flights = flightService.findFlightsByDate("Heathrow","Caravaggio", "2022-03-17");
+
+        for (Flight f:flights) {
+            System.out.println(f);
+        }
 
 
         System.exit(0);

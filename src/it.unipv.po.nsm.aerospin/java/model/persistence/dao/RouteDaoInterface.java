@@ -11,6 +11,7 @@ public interface RouteDaoInterface {
     List<Route> findByDepIcao(String dep);
     List<Route> findByDepName(String dep);
     List<Route> findByArr(String arr);
+    Route findByDepArr(String dep, String arr);
     boolean checkRoute(String dep, String arr);
     public void persist(Route entity);
     public void update(Route entity);
