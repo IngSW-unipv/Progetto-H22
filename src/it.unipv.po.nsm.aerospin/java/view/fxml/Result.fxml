@@ -17,7 +17,7 @@
                 <TableColumn fx:id="flightNumber1" editable="false" resizable="false" sortable="false" text="Numero Volo" />
                 <TableColumn fx:id="scheduledTime1" editable="false" prefWidth="67.0" resizable="false" text="Partenza" />
                   <TableColumn fx:id="arrivalTime1" prefWidth="67.0" resizable="false" text="Arrivo" />
-                  <TableColumn fx:id="price1" prefWidth="64.0" resizable="false" text="Costo" />
+                  <TableColumn fx:id="price1" prefWidth="64.0" resizable="false" text="Costo €" />
               </columns>
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -28,7 +28,7 @@
                   <TableColumn fx:id="flightNumber2" editable="false" resizable="false" sortable="false" text="Numero Volo" />
                   <TableColumn fx:id="scheduledTime2" editable="false" prefWidth="67.0" resizable="false" text="Partenza" />
                   <TableColumn fx:id="arrivalTime2" prefWidth="67.0" resizable="false" text="Arrivo" />
-                  <TableColumn fx:id="price2" prefWidth="64.0" resizable="false" text="Costo" />
+                  <TableColumn fx:id="price2" prefWidth="64.0" resizable="false" text="Costo €" />
                </columns>
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -57,20 +57,20 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </padding>
       </HBox>
-      <JFXButton layoutX="483.0" layoutY="418.0" onAction="#setProva" prefHeight="65.0" prefWidth="222.0" text="ACQUISTA" />
+      <JFXButton layoutX="483.0" layoutY="418.0" onAction="#checkout" prefHeight="65.0" prefWidth="222.0" text="ACQUISTA" />
       <VBox layoutX="458.0" layoutY="75.0" spacing="5.0">
          <children>
-            <JFXRadioButton fx:id="first" text="FIRST">
+            <JFXRadioButton onAction="#firstClass" text="FIRST">
                <toggleGroup>
                   <ToggleGroup fx:id="group" />
                </toggleGroup>
             </JFXRadioButton>
-            <JFXRadioButton fx:id="business" text="BUSINESS" toggleGroup="$group" />
-            <JFXRadioButton fx:id="econ" selected="true" text="ECONOMY" toggleGroup="$group" />
+            <JFXRadioButton onAction="#businessClass" text="BUSINESS" toggleGroup="$group" />
+            <JFXRadioButton onAction="#economyClass" selected="true" text="ECONOMY" toggleGroup="$group" />
          </children>
       </VBox>
       <Label layoutX="345.0" layoutY="97.0" text="Seleziona la Classe:" />
-      <Label fx:id="cost" alignment="CENTER" contentDisplay="CENTER" layoutX="749.0" layoutY="83.0" prefHeight="45.0" prefWidth="68.0" text="Label" />
+      <Label fx:id="costLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="749.0" layoutY="83.0" prefHeight="45.0" prefWidth="68.0" text="Label" />
       <Label layoutX="686.0" layoutY="97.0" text="Costo:   €" />
       <Label layoutX="358.0" layoutY="160.0" text="Nome" />
       <Label layoutX="527.0" layoutY="160.0" text="Cognome" />
