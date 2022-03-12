@@ -21,7 +21,7 @@ import java.util.ResourceBundle;
 public class SearchController implements Initializable, IControlledScreen {
     ScreensController myController;
     private final Factory factory = Factory.getInstance();
-    ControllerMethods methods = new ControllerMethods();
+    private final ControllerMethods methods = new ControllerMethods();
     SearchManager searchManager = new SearchManager();
     List<String> strings1 = new ArrayList<>();
     List<String> strings2 = new ArrayList<>();
@@ -55,7 +55,7 @@ public class SearchController implements Initializable, IControlledScreen {
         // Se seleziono Solo Andata non posso inserire Data Ritorno
         ar.setDisable(true);
         date2.disableProperty().bind(oneway.selectedProperty().or(date1.valueProperty().isNull()));
-        date1.setDayCellFactory(methods.dateRange(LocalDate.now()));
+        date1.setDayCellFactory(methods.bookingRange(LocalDate.now()));
 
         Thread t1 = new Thread(()->{
             strings1 = searchManager.getServedDepartures();
@@ -98,7 +98,7 @@ public class SearchController implements Initializable, IControlledScreen {
     //Gestisco date2>>date1
     @FXML
     private void returnDate (ActionEvent event){
-        date2.setDayCellFactory(methods.dateRange(date1.getValue()));
+        date2.setDayCellFactory(methods.bookingRange(date1.getValue()));
     }
 
     @FXML

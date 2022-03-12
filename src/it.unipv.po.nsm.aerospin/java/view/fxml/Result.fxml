@@ -1,11 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.SubScene?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="600.0" prefWidth="860.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ResultController">
+<AnchorPane prefHeight="600.0" prefWidth="860.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ResultController">
    <children>
       <VBox layoutX="23.0" layoutY="55.0" prefHeight="500.0" prefWidth="300.0" spacing="40.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="50.0">
          <padding>
@@ -38,9 +49,9 @@
       </VBox>
       <HBox layoutX="358.0" layoutY="181.0" spacing="20.0">
          <children>
-            <TextField fx:id="name" />
+            <TextField fx:id="name" onKeyTyped="#logged" />
             <TextField fx:id="surname" />
-            <DatePicker fx:id="date1" prefHeight="25.0" prefWidth="131.0" />
+            <DatePicker fx:id="date" onAction="#minors" prefHeight="25.0" prefWidth="131.0" />
          </children>
       </HBox>
       <Separator layoutX="430.0" layoutY="244.0" prefHeight="4.0" prefWidth="350.0" />
@@ -49,7 +60,7 @@
       <TextField fx:id="cardName" layoutX="621.0" layoutY="292.0" />
       <Label layoutX="622.0" layoutY="275.0" text="Nome sulla Carta" />
       <Label layoutX="416.0" layoutY="345.0" text="Data Scadenza" />
-      <TextField fx:id="date2" accessibleRole="DATE_PICKER" layoutX="416.0" layoutY="362.0" />
+      <TextField fx:id="expDate" accessibleRole="DATE_PICKER" layoutX="416.0" layoutY="362.0" />
       <Label layoutX="622.0" layoutY="345.0" text="CVV" />
       <TextField fx:id="cvv" layoutX="622.0" layoutY="362.0" />
       <HBox layoutX="-56.0" layoutY="535.0" prefHeight="65.0" prefWidth="120.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-56.0">
@@ -78,5 +89,10 @@
       <Label alignment="CENTER" layoutX="396.0" layoutY="508.0" prefHeight="17.0" prefWidth="395.0" text="Label" />
       <Label fx:id="depLabel" alignment="TOP_LEFT" layoutX="30.0" layoutY="24.0" prefHeight="40.0" prefWidth="400.0" text="Andata" />
       <Label fx:id="retLabel" alignment="TOP_LEFT" layoutX="30.0" layoutY="285.0" prefHeight="40.0" prefWidth="400.0" text="Ritorno" />
+      <SubScene fx:id="cover" height="308.0" layoutX="414.0" layoutY="236.0" width="400.0">
+        <root>
+          <Region />
+        </root>
+      </SubScene>
    </children>
 </AnchorPane>

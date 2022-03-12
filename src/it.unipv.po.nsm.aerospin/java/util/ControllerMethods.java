@@ -6,6 +6,7 @@ import javafx.scene.input.KeyCode;
 import javafx.util.Callback;
 
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.List;
 
 public class ControllerMethods {
@@ -45,7 +46,7 @@ public class ControllerMethods {
     private static final int maxMonth = 4;
 
     // Mantengo le date selezionabili tra Oggi e prossimi 4 Mesi
-    public Callback<DatePicker, DateCell> dateRange(LocalDate from) {
+    public Callback<DatePicker, DateCell> bookingRange(LocalDate from) {
         return new Callback<DatePicker, DateCell>() {
             @Override
             public DateCell call(final DatePicker param) {
@@ -62,5 +63,27 @@ public class ControllerMethods {
         };
     }
 
+    public boolean isMinor(LocalDate birthDate){
+        LocalDate today = LocalDate.now();
+        Period age = Period.between(birthDate, today);
+        long years = age.getYears();
+        return years < 16;
+    }
 
+
+    public Callback<DatePicker, DateCell> ageRange() {
+        return new Callback<DatePicker, DateCell>() {
+            @Override
+            public DateCell call(final DatePicker param) {
+                return new DateCell() {
+                    @Override
+                    public void updateItem(LocalDate date, boolean empty) {
+                        super.updateItem(date, empty);
+                        LocalDate today = LocalDate.now();
+                        setDisable(empty || date.compareTo(today) > 0);
+                    }
+                };
+            }
+        };
+    }
 }
