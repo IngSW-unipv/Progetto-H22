@@ -1,7 +1,10 @@
 package controller;
 
+import javafx.beans.binding.Bindings;
 import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.value.ObservableBooleanValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
@@ -23,12 +26,11 @@ import view.ScreensController;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Time;
-import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class ResultController implements Initializable, IControlledScreen {
 
-    ScreensController myController;
+    private ScreensController myController;
     private final Factory factory = Factory.getInstance();
     private final Session session = factory.getSession();
     private final ControllerMethods methods = new ControllerMethods();
@@ -78,6 +80,8 @@ public class ResultController implements Initializable, IControlledScreen {
     public void initialize(URL url, ResourceBundle rb) {
         table1.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         table2.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+        table1.setPlaceholder(new Label("Nessun volo disponibile in questa data!"));
+        table2.setPlaceholder(new Label("Nessun volo disponibile in questa data!"));
         flightNumber1.setCellValueFactory(new PropertyValueFactory<Flight,String>("flightNumber"));
         scheduledTime1.setCellValueFactory(new PropertyValueFactory<Flight,Time>("scheduledTime"));
         arrivalTime1.setCellValueFactory(new PropertyValueFactory<Flight,Time>("arrivalTime"));
@@ -120,10 +124,7 @@ public class ResultController implements Initializable, IControlledScreen {
         }
 
         date.setDayCellFactory(methods.ageRange());
-
-        cover.visibleProperty().bind(name.textProperty().isEmpty().or(
-                surname.textProperty().isEmpty()).or(
-                date.valueProperty().isNull()));
+        cover.visibleProperty().bind(enableBuy());
 
         //THREADDD
         list1 = FXCollections.observableArrayList(resultManager.getFlightsByDepArr(dep, ret, dateDep));
@@ -135,6 +136,46 @@ public class ResultController implements Initializable, IControlledScreen {
         //THREADDD
 
 
+
+
+//        @FXML
+//        private void logAccount(ActionEvent event) throws IOException {
+//            if(checkExpression(textField.getText())) {
+//                if(isRegistered(textField.getText())){
+//                    myController.setScreen(factory.getManage());
+//                }
+//
+//            }
+//        }
+
+
+
+
+
+
+
+
+
+    }
+
+    private ObservableBooleanValue enableBuy() {
+        System.out.println(new SimpleBooleanProperty());
+        SimpleBooleanProperty filled = new SimpleBooleanProperty();
+        filled.bind(name.textProperty().isEmpty().or(
+                table1.selectionModelProperty().isNotNull()).or(
+                table2.getSelectionModel().cellSelectionEnabledProperty()).or(
+                surname.textProperty().isEmpty()).or(
+                date.valueProperty().isNull()));
+
+
+//        if(checkExpression(textField.getText())) {
+//            if(isRegistered(textField.getText())){
+//                ;
+//            }
+//        }
+
+
+        return filled;
     }
 
     public void setScreenParent(ScreensController screenParent){
@@ -158,15 +199,15 @@ public class ResultController implements Initializable, IControlledScreen {
 
     //SISTEMARE
     @FXML
-    private void logged(ActionEvent event) throws IOException {
+    private void logged() throws IOException {
         System.out.println(session.isLogged());
         if (!session.isLogged()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Login Error");
             alert.setHeaderText(null);
-            alert.setContentText("Non ha effettuato il Login!\nPrima di poter procedere effettuare il Login\nSe non si è registrato, procedere alla Registrazione");
+            alert.setContentText("Utente non loggato!\nPrima di poter procedere effettuare il Login\nSe non si è registrato, procedere alla Registrazione");
             alert.showAndWait();
-            myController.setScreen(Factory.getLogin());
+//            myController.setScreen(Factory.getLogin());
         }
     }
 
@@ -184,8 +225,12 @@ public class ResultController implements Initializable, IControlledScreen {
     @FXML
     private void checkout(ActionEvent event) throws IOException {
 
-        myController.setScreen(Factory.getHome());
+
         //paymentStrategy.pay();
+
+
+        myController.setScreen(Factory.getHome());
+
 
     }
 

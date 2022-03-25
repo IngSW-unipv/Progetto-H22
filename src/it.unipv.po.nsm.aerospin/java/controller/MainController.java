@@ -2,40 +2,43 @@ package controller;
 
 import com.jfoenix.controls.JFXButton;
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
 import javafx.scene.SubScene;
+import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
+import javafx.scene.layout.BorderPane;
 import view.Factory;
 import view.ScreensController;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.concurrent.TimeUnit;
 
 public class MainController implements Initializable {
 
     Factory factory = Factory.getInstance();
     ScreensController mainContainer = factory.createContainer();
 
-    @FXML
-    SubScene subscene;
+    @FXML private ProgressBar bar;
 
-    @FXML
-     JFXButton search;
+    @FXML private Label progress;
 
-    @FXML
-    JFXButton login;
+    @FXML private SubScene subscene;
 
-    @FXML
-    JFXButton account;
+    @FXML private JFXButton search;
 
-    @FXML
-    JFXButton manage;
+    @FXML private JFXButton login;
 
-    @FXML
-    JFXButton logout;
+    @FXML private JFXButton account;
+
+    @FXML private JFXButton manage;
+
+    @FXML private JFXButton logout;
 
     public MainController() throws IOException {
     }
@@ -45,6 +48,19 @@ public class MainController implements Initializable {
         account.setVisible(false);
         manage.setVisible(false);
         logout.setVisible(false);
+        Thread t1 = new Thread(()->{
+            try {
+                //QUERYYY
+
+                TimeUnit.SECONDS.sleep(5);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            bar.setVisible(false);
+            progress.setVisible(false);
+        });
+        t1.start();
+
         Group root = new Group();
         root.getChildren().addAll(mainContainer);
         subscene.setRoot(root);

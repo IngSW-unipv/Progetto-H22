@@ -79,7 +79,7 @@ public class ControllerMethods {
                     @Override
                     public void updateItem(LocalDate date, boolean empty) {
                         super.updateItem(date, empty);
-                        LocalDate today = LocalDate.now();
+                        LocalDate today = LocalDate.now().minusDays(1);
                         setDisable(empty || date.compareTo(today) > 0);
                     }
                 };

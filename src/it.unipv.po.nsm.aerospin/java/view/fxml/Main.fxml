@@ -3,6 +3,7 @@
 <?import com.jfoenix.controls.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
@@ -56,5 +57,22 @@
           <Region />
         </root>
       </SubScene>
+      <BorderPane prefHeight="600.0" prefWidth="860.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <bottom>
+            <StackPane BorderPane.alignment="CENTER">
+               <children>
+                  <ProgressBar fx:id="bar" prefHeight="30.0" prefWidth="500.0">
+                     <opaqueInsets>
+                        <Insets left="5000.0" />
+                     </opaqueInsets>
+                  </ProgressBar>
+                  <Label fx:id="progress" text="Label" />
+               </children>
+               <BorderPane.margin>
+                  <Insets bottom="50.0" />
+               </BorderPane.margin>
+            </StackPane>
+         </bottom>
+      </BorderPane>
    </children>
 </AnchorPane>
