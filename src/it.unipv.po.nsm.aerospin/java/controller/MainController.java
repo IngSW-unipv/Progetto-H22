@@ -24,11 +24,9 @@ public class MainController implements Initializable {
     Factory factory = Factory.getInstance();
     ScreensController mainContainer = factory.createContainer();
 
-    @FXML private ProgressBar bar;
-
-    @FXML private Label progress;
-
     @FXML private SubScene subscene;
+
+    @FXML private JFXButton home;
 
     @FXML private JFXButton search;
 
@@ -45,25 +43,28 @@ public class MainController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        account.setVisible(false);
-        manage.setVisible(false);
-        logout.setVisible(false);
+        Group root = new Group();
+        root.getChildren().addAll(mainContainer);
+        subscene.setRoot(root);
+
+
         Thread t1 = new Thread(()->{
             try {
                 //QUERYYY
 
                 TimeUnit.SECONDS.sleep(5);
-            } catch (InterruptedException e) {
+                mainContainer.setScreen(Factory.getHome());
+                home.setDisable(false);
+                search.setDisable(false);
+                login.setDisable(false);
+            } catch (InterruptedException | IOException e) {
                 e.printStackTrace();
             }
-            bar.setVisible(false);
-            progress.setVisible(false);
         });
         t1.start();
 
-        Group root = new Group();
-        root.getChildren().addAll(mainContainer);
-        subscene.setRoot(root);
+
+
     }
 
     @FXML

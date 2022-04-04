@@ -1,0 +1,5 @@
+.body {
+    -fx-background-image: url("img/background.jpg");
+    -fx-background-position: center center;
+    -fx-background-size: cover;
+}

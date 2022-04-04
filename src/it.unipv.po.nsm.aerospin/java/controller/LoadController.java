@@ -3,12 +3,15 @@ package controller;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.image.ImageView;
+import view.Factory;
 import view.ScreensController;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.concurrent.TimeUnit;
 
-public class HomeController implements Initializable, IControlledScreen {
+public class LoadController implements Initializable, IControlledScreen {
 
     ScreensController myController;
 
@@ -16,6 +19,8 @@ public class HomeController implements Initializable, IControlledScreen {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+
 
     }
 

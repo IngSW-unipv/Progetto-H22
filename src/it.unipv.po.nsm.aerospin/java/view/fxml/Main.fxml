@@ -3,7 +3,6 @@
 <?import com.jfoenix.controls.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
@@ -11,26 +10,26 @@
    <children>
       <VBox prefHeight="600.0" prefWidth="140.0" spacing="10.0" style="-fx-background-color: #45a2c0;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <JFXButton onAction="#goToHome" prefHeight="45.0" prefWidth="120.0" text="HOME" textAlignment="CENTER" textFill="#ffffff">
+            <JFXButton fx:id="home" disable="true" onAction="#goToHome" prefHeight="45.0" prefWidth="120.0" text="HOME" textAlignment="CENTER" textFill="#ffffff">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font></JFXButton>
-            <JFXButton fx:id="search" onAction="#goToSearch" prefHeight="45.0" prefWidth="120.0" text="RICERCA" textAlignment="CENTER" textFill="WHITE">
+            <JFXButton fx:id="search" disable="true" onAction="#goToSearch" prefHeight="45.0" prefWidth="120.0" text="RICERCA" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </JFXButton>
-            <JFXButton fx:id="login" onAction="#goToLogin" prefHeight="45.0" prefWidth="120.0" text="ACCEDI" textAlignment="CENTER" textFill="WHITE">
+            <JFXButton fx:id="login" disable="true" onAction="#goToLogin" prefHeight="45.0" prefWidth="120.0" text="ACCEDI" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </JFXButton>
-            <JFXButton fx:id="account" layoutX="20.0" layoutY="130.0" onAction="#goToLogin" prefHeight="45.0" prefWidth="120.0" text="PROFILO" textAlignment="CENTER" textFill="WHITE">
+            <JFXButton fx:id="account" layoutX="20.0" layoutY="130.0" onAction="#goToLogin" prefHeight="45.0" prefWidth="120.0" text="PROFILO" textAlignment="CENTER" textFill="WHITE" visible="false">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </JFXButton>
-            <JFXButton fx:id="manage" layoutX="20.0" layoutY="185.0" onAction="#goToLogin" prefHeight="45.0" prefWidth="120.0" text="GESTIONE" textAlignment="CENTER" textFill="WHITE">
+            <JFXButton fx:id="manage" layoutX="20.0" layoutY="185.0" onAction="#goToLogin" prefHeight="45.0" prefWidth="120.0" text="GESTIONE" textAlignment="CENTER" textFill="WHITE" visible="false">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -42,7 +41,7 @@
       </VBox>
       <HBox layoutY="500.0" prefHeight="65.0" prefWidth="140.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
          <children>
-            <JFXButton fx:id="logout" onAction="#logout" prefHeight="45.0" prefWidth="120.0" text="LOGOUT" textAlignment="CENTER" textFill="WHITE">
+            <JFXButton fx:id="logout" onAction="#logout" prefHeight="45.0" prefWidth="120.0" text="LOGOUT" textAlignment="CENTER" textFill="WHITE" visible="false">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -57,22 +56,5 @@
           <Region />
         </root>
       </SubScene>
-      <BorderPane prefHeight="600.0" prefWidth="860.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <bottom>
-            <StackPane BorderPane.alignment="CENTER">
-               <children>
-                  <ProgressBar fx:id="bar" prefHeight="30.0" prefWidth="500.0">
-                     <opaqueInsets>
-                        <Insets left="5000.0" />
-                     </opaqueInsets>
-                  </ProgressBar>
-                  <Label fx:id="progress" text="Label" />
-               </children>
-               <BorderPane.margin>
-                  <Insets bottom="50.0" />
-               </BorderPane.margin>
-            </StackPane>
-         </bottom>
-      </BorderPane>
    </children>
 </AnchorPane>

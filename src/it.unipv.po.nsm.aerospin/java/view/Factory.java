@@ -27,6 +27,8 @@ public class Factory {
         return session;
     }
 
+    private static String load = "load";
+    private static String screen0File = "fxml/Load.fxml";
     private static String home = "home";
     private static String screen1File = "fxml/Home.fxml";
     private static String search = "search";
@@ -51,6 +53,7 @@ public class Factory {
     public ScreensController createContainer() throws IOException {
 
         ScreensController mainContainer = new ScreensController();
+        mainContainer.loadScreen(load, screen0File);
         mainContainer.loadScreen(home, screen1File);
         mainContainer.loadScreen(search, screen2File);
         mainContainer.loadScreen(result, screen3File);
@@ -61,9 +64,13 @@ public class Factory {
         mainContainer.loadScreen(aircraft, screen9File);
         mainContainer.loadScreen(route, screen10File);
         mainContainer.loadScreen(flight, screen11File);
-        mainContainer.setScreen(home);
+        mainContainer.setScreen(load);
 
         return mainContainer;
+    }
+
+    public static String getLoad() {
+        return load;
     }
 
     public static String getHome() {
