@@ -27,10 +27,9 @@ public class RouteManager {
         return airports.stream().distinct().collect(Collectors.toList());
     }
 
-    public void saveRoute(String departure, String arrival, String waypoints, double price){
+    public void saveRoute(Airport departure, String arrival, String waypoints, double price){
         Route route = new Route();
-        route.setDeparture(departure);
-        route.setArrival(arrival);
+        //route.setDeparture(departure);
         route.setWaypoints(waypoints);
         //route.setCostIndex(xxxxxxxxxxx);
         routeService.persist(route);

@@ -1,7 +1,6 @@
 package model.persistence.dao;
 
 import model.persistence.Connection;
-import model.persistence.entity.Employee;
 import model.persistence.entity.Flight;
 import model.persistence.entity.Route;
 import model.persistence.service.RouteService;
@@ -59,7 +58,7 @@ public class FlightDao implements FlightDaoInterface{
         Date date =Date.valueOf(scheduledDate);
         RouteService routeService = new RouteService();
         Route route = routeService.findBydepArr(dep,arr);
-        String hql = "from Flight a where a.scheduledDate = :date and a.routeId = :routeId";
+        String hql = "from Flight a where a.scheduledDate = :date and a.flightRouteId = :routeId";
         Query query = conn.getCurrentSession().createQuery(hql);
         query.setParameter("date",date);
         query.setParameter("routeId",route.getRouteId());

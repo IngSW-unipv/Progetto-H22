@@ -50,8 +50,8 @@ public class FlightManager {
         int i = 542;
         Flight flight = new Flight();
         flight.setFlightNumber("AES"+i);
-        flight.setAircraft(aircraft);
-        flight.setRouteId(route);
+        flight.setTailNumber(aircraft);
+        flight.setFlightRouteId(route);
         flightService.persist(flight);
         i = i + 37;
     }

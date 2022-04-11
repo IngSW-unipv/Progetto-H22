@@ -9,6 +9,7 @@ import model.persistence.service.*;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,9 +17,7 @@ public class Test {
     public static void main(String[] args) {
 
 //////////////////////////////////////////TEST ROUTE\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-        AirportService airportService = new AirportService();
-        RouteService routeService = new RouteService();
-        Route route = new Route();
+
         /*String waypoints = "VAK8Q VAKON T484 LISKO T415 VIE L612 KAPPO L862 LUPAL " +
                             "M872 LATAN UM872 KFN UM601 EVENO M601 " +
                             "BALMA UR655 CAK UN310 LATEB J222 " +
@@ -92,12 +91,12 @@ public class Test {
 //        System.out.println(routeService.checkRoute("LICA","GMMN"));
 
 
-
         FlightService flightService = new FlightService();
-        List<Flight> flights = flightService.findFlightsByDate("Heathrow","Caravaggio", "2022-03-17");
-
-        for (Flight f:flights) {
-            System.out.println(f);
+        List<Flight> flights = flightService.findAll();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        java.sql.Date date = Date.valueOf("2022-04-20");
+        for(Flight flight : flights){
+            System.out.println(flight.getScheduledDate().compareTo(date));
         }
 
 
@@ -106,3 +105,5 @@ public class Test {
 
     }
 }
+
+

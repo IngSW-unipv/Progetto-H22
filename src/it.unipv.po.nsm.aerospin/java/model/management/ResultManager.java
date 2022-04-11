@@ -4,8 +4,11 @@ import model.persistence.entity.Flight;
 import model.persistence.service.FlightService;
 
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.SimpleFormatter;
+import java.util.stream.Collectors;
 
 public class ResultManager {
 
@@ -19,9 +22,14 @@ public class ResultManager {
         return flights;
     }
 
-    public List<Flight> getFlightsByDepArr(String dep, String arr, String scheduledDate){
-        List<Flight> flights = flightService.findFlightsByDate(dep,arr,scheduledDate);
-        return flights;
+    public List<Flight> getFlightsByDepArr(String dep, String arr, String scheduledDate) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = Date.valueOf(scheduledDate);
+        List<Flight> flights = flightService.findAll();
+        return flights.stream().filter(f -> f.getRouteByFlightRouteId().getDeparture().get(0).getAirportName().equals(dep) &&
+                f.getRouteByFlightRouteId().getArrival().get(0).getAirportName().equals(arr) &&
+                f.getScheduledDate().compareTo(date) == 0).collect(Collectors.toList());
+
     }
 
 }

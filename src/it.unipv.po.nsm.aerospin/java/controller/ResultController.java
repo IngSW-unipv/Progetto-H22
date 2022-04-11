@@ -25,7 +25,9 @@ import view.ScreensController;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Date;
 import java.sql.Time;
+import java.text.SimpleDateFormat;
 import java.util.ResourceBundle;
 
 public class ResultController implements Initializable, IControlledScreen {

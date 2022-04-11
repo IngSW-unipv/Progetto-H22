@@ -2,9 +2,7 @@ package model.persistence.service;
 
 
 import model.persistence.dao.FlightDao;
-import model.persistence.entity.Employee;
 import model.persistence.entity.Flight;
-import model.persistence.entity.Route;
 
 import java.sql.Date;
 import java.util.List;

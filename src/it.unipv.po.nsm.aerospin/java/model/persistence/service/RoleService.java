@@ -2,7 +2,6 @@ package model.persistence.service;
 
 import model.persistence.dao.RoleDao;
 import model.persistence.entity.Role;
-import model.persistence.entity.Route;
 
 import java.util.List;
 

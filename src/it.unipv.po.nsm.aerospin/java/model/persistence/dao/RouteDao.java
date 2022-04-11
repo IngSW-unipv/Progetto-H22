@@ -2,14 +2,13 @@ package model.persistence.dao;
 
 import model.persistence.Connection;
 import model.persistence.entity.Airport;
-import model.persistence.entity.Passenger;
 import model.persistence.entity.Route;
 import model.persistence.service.AirportService;
 import org.hibernate.query.Query;
 
 import java.util.List;
 
-public class RouteDao implements RouteDaoInterface{
+public class RouteDao implements RouteDaoInterface {
 
     private Connection conn;
 
@@ -19,7 +18,9 @@ public class RouteDao implements RouteDaoInterface{
 
     @Override
     public List<Route> findAll() {
-        List<Route> routes = (List<Route>) conn.getCurrentSession().createQuery("from Route ").list();
+        String query = "from Route";
+        Query q = conn.getCurrentSession().createQuery(query);
+        List<Route> routes = (List<Route>) q.list();
         return  routes;
     }
 
@@ -60,7 +61,7 @@ public class RouteDao implements RouteDaoInterface{
 
     @Override
     public List<Route> findByArr(String arr) {
-        String hql = "from Route a where a.arrival = :arr order by a.arrival ASC";
+        String hql = "from Route a where a.arrival = :arr order by a.arrival_ICAO ASC";
         Query query = conn.getCurrentSession().createQuery(hql);
         query.setParameter("arr",arr);
         //query.setCacheable(true);
@@ -82,7 +83,7 @@ public class RouteDao implements RouteDaoInterface{
         return route;
     }
 
-    @Override
+    /*@Override
     public boolean checkRoute(String dep, String arr) {
 
         String hql = "from Route a where a.departure = :dep and a.arrival = :arr";
@@ -97,7 +98,7 @@ public class RouteDao implements RouteDaoInterface{
         }catch (IndexOutOfBoundsException e){
             return false;
         }
-    }
+    }*/
 
     @Override
     public void persist(Route entity) {

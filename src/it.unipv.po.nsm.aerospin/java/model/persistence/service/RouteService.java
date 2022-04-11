@@ -1,7 +1,6 @@
 package model.persistence.service;
 
 import model.persistence.dao.RouteDao;
-import model.persistence.entity.Passenger;
 import model.persistence.entity.Route;
 
 import java.util.List;
@@ -55,11 +54,7 @@ public class RouteService {
         return route;
     }
 
-    public boolean checkRoute(String dep, String arr){
-        routeDao.getConn().openCurrentSession();
-        boolean check = routeDao.checkRoute(dep,arr);
-        return check;
-    }
+
 
     public void persist(Route route) {
         routeDao.getConn().openCurrentSessionwithTransaction();
