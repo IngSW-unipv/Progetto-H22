@@ -1,7 +1,7 @@
 package model.persistence.dao;
 
 import model.persistence.Connection;
-import model.persistence.entity.Crew;
+import model.persistence.daoInterface.EmployeeDaoInterface;
 import model.persistence.entity.Employee;
 import org.hibernate.query.Query;
 

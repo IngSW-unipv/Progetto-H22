@@ -1,13 +1,13 @@
 package model.persistence.dao;
 
 import model.persistence.Connection;
-import model.persistence.entity.Flight;
+import model.persistence.daoInterface.PassengerDaoInterface;
 import model.persistence.entity.Passenger;
 import org.hibernate.query.Query;
 
 import java.util.List;
 
-public class PassengerDao implements PassengerDaoInterface{
+public class PassengerDao implements PassengerDaoInterface {
 
     private Connection conn;
 

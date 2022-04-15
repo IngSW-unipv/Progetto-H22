@@ -1,6 +1,7 @@
 package model.persistence.dao;
 
 import model.persistence.Connection;
+import model.persistence.daoInterface.RouteDaoInterface;
 import model.persistence.entity.Airport;
 import model.persistence.entity.Route;
 import model.persistence.service.AirportService;
@@ -29,7 +30,7 @@ public class RouteDao implements RouteDaoInterface {
         String hql = "from Route a where a.id = :id";
         Query query = conn.getCurrentSession().createQuery(hql);
         query.setParameter("id",id);
-        //query.setCacheable(true);
+        query.setCacheable(true);
         List<Route> routes = query.list();
         return routes;
     }

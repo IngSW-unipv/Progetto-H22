@@ -1,12 +1,13 @@
 package model.persistence.dao;
 
 import model.persistence.Connection;
+import model.persistence.daoInterface.UserDaoInterface;
 import model.persistence.entity.User;
 import org.hibernate.query.Query;
 
 import java.util.List;
 
-public class UserDao implements UserDaoInterface{
+public class UserDao implements UserDaoInterface {
 
     private Connection conn;
 

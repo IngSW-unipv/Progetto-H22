@@ -5,6 +5,7 @@ import javafx.scene.control.Alert;
 import model.flight.aircraft.Manufacturer;
 import model.persistence.entity.*;
 import model.persistence.service.*;
+import net.sf.ehcache.CacheManager;
 
 
 import java.sql.Date;
@@ -91,14 +92,15 @@ public class Test {
 //        System.out.println(routeService.checkRoute("LICA","GMMN"));
 
 
-        FlightService flightService = new FlightService();
-        List<Flight> flights = flightService.findAll();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        java.sql.Date date = Date.valueOf("2022-04-20");
-        for(Flight flight : flights){
-            System.out.println(flight.getScheduledDate().compareTo(date));
+        RouteService routeService = new RouteService();
+        List<Route> routes = routeService.findAll();
+        for (Route route : routes) {
+            System.out.println(route.getRouteId());
+
         }
 
+        int size = CacheManager.ALL_CACHE_MANAGERS.get(0).getCache("routes").getSize();
+        System.out.println(size);
 
         System.exit(0);
 

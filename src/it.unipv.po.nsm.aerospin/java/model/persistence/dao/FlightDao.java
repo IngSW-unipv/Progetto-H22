@@ -1,6 +1,7 @@
 package model.persistence.dao;
 
 import model.persistence.Connection;
+import model.persistence.daoInterface.FlightDaoInterface;
 import model.persistence.entity.Flight;
 import model.persistence.entity.Route;
 import model.persistence.service.RouteService;
@@ -9,7 +10,7 @@ import org.hibernate.query.Query;
 import java.sql.Date;
 import java.util.List;
 
-public class FlightDao implements FlightDaoInterface{
+public class FlightDao implements FlightDaoInterface {
 
     private Connection conn;
 

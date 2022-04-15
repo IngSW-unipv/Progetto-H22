@@ -2,11 +2,12 @@ package model.persistence.dao;
 
 import model.flight.aircraft.Manufacturer;
 import model.persistence.Connection;
+import model.persistence.daoInterface.AircraftDaoInterface;
 import model.persistence.entity.Aircraft;
 import org.hibernate.query.Query;
 import java.util.List;
 
-public class AircraftDao implements AircraftDaoInterface{
+public class AircraftDao implements AircraftDaoInterface {
     private Connection conn;
 
     public AircraftDao() {

@@ -1,13 +1,14 @@
 package model.persistence.dao;
 
 import model.persistence.Connection;
+import model.persistence.daoInterface.AirportDaoInterface;
 import model.persistence.entity.Airport;
 import org.hibernate.query.Query;
 
 
 import java.util.List;
 
-public class AirportDao implements AirportDaoInterface{
+public class AirportDao implements AirportDaoInterface {
     private Connection conn;
 
     public AirportDao() {

@@ -1,13 +1,13 @@
 package model.persistence.dao;
 
 import model.persistence.Connection;
-import model.persistence.entity.Crew;
+import model.persistence.daoInterface.RoleDaoInterface;
 import model.persistence.entity.Role;
 import org.hibernate.query.Query;
 
 import java.util.List;
 
-public class RoleDao implements RoleDaoInterface{
+public class RoleDao implements RoleDaoInterface {
 
     private Connection conn;
     public RoleDao() {
