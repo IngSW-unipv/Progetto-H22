@@ -51,10 +51,14 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </padding>
       </HBox>
-      <SubScene fx:id="subscene" height="600.0" layoutX="120.0" width="860.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <root>
-          <Region />
-        </root>
-      </SubScene>
+      <AnchorPane prefHeight="600.0" prefWidth="860.0" style="-fx-background-color: transparent;" styleClass="body" stylesheets="@Background.css" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <SubScene fx:id="subscene" fill="WHITE" height="600.0" layoutX="222.0" layoutY="213.0" width="860.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <root>
+                <Region />
+              </root>
+            </SubScene>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

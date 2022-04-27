@@ -2,15 +2,11 @@ package controller;
 
 import com.jfoenix.controls.JFXButton;
 import javafx.beans.property.SimpleBooleanProperty;
-import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
 import javafx.scene.SubScene;
-import javafx.scene.control.Label;
-import javafx.scene.control.ProgressBar;
-import javafx.scene.layout.BorderPane;
 import view.Factory;
 import view.ScreensController;
 
@@ -51,8 +47,8 @@ public class MainController implements Initializable {
         Thread t1 = new Thread(()->{
             try {
                 //QUERYYY
-
                 TimeUnit.SECONDS.sleep(5);
+
                 mainContainer.setScreen(Factory.getHome());
                 home.setDisable(false);
                 search.setDisable(false);
