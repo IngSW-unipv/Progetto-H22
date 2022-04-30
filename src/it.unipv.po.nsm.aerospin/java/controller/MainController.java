@@ -7,31 +7,26 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
 import javafx.scene.SubScene;
-import view.Factory;
-import view.ScreensController;
+import model.persistence.CachedFlights;
+import view.*;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.concurrent.TimeUnit;
 
 public class MainController implements Initializable {
 
     Factory factory = Factory.getInstance();
     ScreensController mainContainer = factory.createContainer();
+    CachedFlights searchResult = CachedFlights.getInstance();
 
     @FXML private SubScene subscene;
 
     @FXML private JFXButton home;
-
     @FXML private JFXButton search;
-
     @FXML private JFXButton login;
-
     @FXML private JFXButton account;
-
     @FXML private JFXButton manage;
-
     @FXML private JFXButton logout;
 
     public MainController() throws IOException {
@@ -43,24 +38,18 @@ public class MainController implements Initializable {
         root.getChildren().addAll(mainContainer);
         subscene.setRoot(root);
 
-
         Thread t1 = new Thread(()->{
             try {
-                //QUERYYY
-                TimeUnit.SECONDS.sleep(5);
-
+                searchResult.findAll();
                 mainContainer.setScreen(Factory.getHome());
                 home.setDisable(false);
                 search.setDisable(false);
                 login.setDisable(false);
-            } catch (InterruptedException | IOException e) {
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         });
         t1.start();
-
-
-
     }
 
     @FXML
@@ -76,6 +65,16 @@ public class MainController implements Initializable {
     @FXML
     private void goToLogin(ActionEvent event) throws IOException {
         mainContainer.setScreen(Factory.getLogin());
+    }
+
+    @FXML
+    private void goToAccount(ActionEvent event) throws IOException {
+        mainContainer.setScreen(Factory.getAccount());
+    }
+
+    @FXML
+    private void goToManage(ActionEvent event) throws IOException {
+        mainContainer.setScreen(Factory.getManage());
     }
 
     @FXML

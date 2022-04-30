@@ -6,7 +6,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import model.management.SearchManager;
+import model.persistence.CachedFlights;
+import model.persistence.entity.Flight;
 import util.ControllerMethods;
 import view.Factory;
 import view.ScreensController;
@@ -17,38 +18,31 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 public class SearchController implements Initializable, IControlledScreen {
+
+
+    Factory factory = Factory.getInstance();
     ScreensController myController;
-    private final Factory factory = Factory.getInstance();
-    private final ControllerMethods methods = new ControllerMethods();
-    SearchManager searchManager = new SearchManager();
-    List<String> strings1 = new ArrayList<>();
-    List<String> strings2 = new ArrayList<>();
+    CachedFlights searchResult = CachedFlights.getInstance();
+    ControllerMethods methods = new ControllerMethods();
+//    SearchManager searchManager = new SearchManager();
 
-    @FXML
-    private
-    ComboBox<String> cb1;
+    @FXML private ComboBox<String> cb1;
+    @FXML private ComboBox<String> cb2;
 
-    @FXML
-    private ComboBox<String> cb2;
+    @FXML private DatePicker date1;
+    @FXML private DatePicker date2;
 
-    @FXML
-    private DatePicker date1;
+    @FXML private RadioButton oneway;
+    @FXML private RadioButton ar;
 
-    @FXML
-    private DatePicker date2;
+    @FXML private Label errLabel;
 
-    @FXML
-    private RadioButton oneway;
-
-    @FXML
-    private RadioButton ar;
-
-    @FXML
-    private Label errLabel;
-
-
+    List<Flight> results = searchResult.findAll();
+    List<String> listDepart = new ArrayList<>();
+    List<String> listReturn = new ArrayList<>();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -58,9 +52,20 @@ public class SearchController implements Initializable, IControlledScreen {
         date1.setDayCellFactory(methods.bookingRange(LocalDate.now()));
 
         Thread t1 = new Thread(()->{
-            strings1 = searchManager.getServedDepartures();
-            cb1.setItems(FXCollections.observableArrayList(strings1));
-            methods.selectOptionOnKey(cb1, strings1);
+            listDepart = results.stream()
+                                .map(o->o.getRouteByFlightRouteId().getDeparture().get(0).getAirportName())
+                                .collect(Collectors.toList());
+            //poi rimuovere secondo get(0)
+
+//            List<String> codes =
+//                    orders.stream()
+//                            .filter(o -> o.getStatus().equals("NEW"))
+//                            .map(Order::getCode)
+//                            .collect(Collectors.toList());
+//                    results.get(0).getRouteByFlightRouteId().getDeparture().get(0).getAirportName();
+
+            cb1.setItems(FXCollections.observableArrayList(listDepart));
+            methods.selectOptionOnKey(cb1, listDepart);
         });
         t1.start();
     }
@@ -71,15 +76,23 @@ public class SearchController implements Initializable, IControlledScreen {
 
     @FXML
     private void findArrivals (ActionEvent event){
-        //cancella selezione cb2
         Thread t2 = new Thread(()->{
+            //controlla che venga resettato la combobox
             cb2.getSelectionModel().clearSelection();
             cb2.autosize();
-            strings2 = searchManager.getServedArrivals(cb1.getSelectionModel().getSelectedItem());
-            Platform.runLater(()->{
-                cb2.setItems(FXCollections.observableArrayList(strings2));
-                methods.selectOptionOnKey(cb2, strings2);
-            });
+
+            //OVERRIDE EQUALS AIRPORT TO STRING
+            listReturn = results.stream()
+                        .filter(o -> o.getRouteByFlightRouteId().getDeparture().equals(cb1.getValue()))
+                        .map(o->o.getRouteByFlightRouteId().getArrival().get(0).getAirportName())
+                        .collect(Collectors.toList());;
+            cb2.setItems(FXCollections.observableArrayList(listReturn));
+            methods.selectOptionOnKey(cb2, listReturn);
+
+//            Platform.runLater(()->{
+//                cb2.setItems(FXCollections.observableArrayList(listReturn));
+//                methods.selectOptionOnKey(cb2, listReturn);
+//            });
         });
         t2.start();
     }
@@ -87,7 +100,7 @@ public class SearchController implements Initializable, IControlledScreen {
     @FXML
     private void checkRoute(ActionEvent event){
         errLabel.setText("");
-        if (searchManager.checkRoute(cb2.getValue(),cb1.getValue())){
+        if (methods.checkRoute(cb2.getValue(),cb1.getValue())){
             ar.setDisable(false);
         } else {
             ar.setDisable(true);
