@@ -31,11 +31,11 @@ public class Route implements Serializable {
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private List<Flight> flightsByRouteId;
     @LazyCollection(LazyCollectionOption.FALSE)
-    @OneToMany(mappedBy = "routeByIcao",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<Airport> arrival;
+    @OneToOne(mappedBy = "routeByIcao",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Airport arrival;
     @LazyCollection(LazyCollectionOption.FALSE)
-    @OneToMany(mappedBy = "routeByIcao_0",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<Airport> departure;
+    @OneToOne(mappedBy = "routeByIcao_0",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Airport departure;
 
     public String getRouteId() {
         return routeId;
@@ -102,19 +102,19 @@ public class Route implements Serializable {
         this.flightsByRouteId = flightsByRouteId;
     }
 
-    public List<Airport> getArrival() {
+    public Airport getArrival() {
         return arrival;
     }
 
-    public void setArrival(List<Airport> arrival) {
+    public void setArrival(Airport arrival) {
         this.arrival = arrival;
     }
 
-    public List<Airport> getDeparture() {
+    public Airport getDeparture() {
         return departure;
     }
 
-    public void setDeparture(List<Airport> departure) {
+    public void setDeparture(Airport departure) {
         this.departure = departure;
     }
 

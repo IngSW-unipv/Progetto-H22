@@ -8,7 +8,7 @@ import java.util.List;
 public interface UserDaoInterface {
 
     List<User> findAll();
-    List<User> findByEmail(String email);
+    User findByEmail(String email);
     public void persist(User entity);
     public void update(User entity);
     public void delete(User entity);

@@ -21,9 +21,9 @@ public class UserService {
         return users;
     }
 
-    public List<User> findByEmail(String email) {
+    public User findByEmail(String email) {
         userDao.getConn().openCurrentSession();
-        List<User> users = userDao.findByEmail(email);
+        User users = userDao.findByEmail(email);
         userDao.getConn().closeCurrentSession();
         return users;
     }

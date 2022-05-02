@@ -51,10 +51,10 @@ public class Airport implements Serializable {
     @Basic
     @Column(name = "SOURCE_A", nullable = true, length = 20)
     private String sourceA;
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "ICAO", referencedColumnName = "arrival", insertable = false, updatable = false)
     private Route routeByIcao;
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "ICAO", referencedColumnName = "departure", insertable = false, updatable = false)
     private Route routeByIcao_0;
 

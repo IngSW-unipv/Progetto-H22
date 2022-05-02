@@ -85,7 +85,7 @@ public class LoginController implements Initializable, IControlledScreen {
         UserService userService = new UserService();
 
         try{
-            String s = userService.findByEmail(input).get(0).getEmail();
+            String s = userService.findByEmail(input).getEmail();
             return true;
         }catch (IndexOutOfBoundsException e){
             Alert alert = new Alert(Alert.AlertType.WARNING);

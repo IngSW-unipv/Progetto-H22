@@ -22,12 +22,12 @@ public class UserDao implements UserDaoInterface {
     }
 
     @Override
-    public List<User> findByEmail(String email) {
+    public User findByEmail(String email) {
         String hql = "from User a where a.email = :email";
         Query query = conn.getCurrentSession().createQuery(hql);
         query.setParameter("email",email);
         //query.setCacheable(true);
-        List<User> users = query.list();
+        User users = (User) query.list().get(0);
         return users;
     }
 
