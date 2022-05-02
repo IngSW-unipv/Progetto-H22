@@ -1,7 +1,7 @@
 package model.persistence.dao;
 
 import model.persistence.Connection;
-import model.persistence.daoInterface.RouteDaoInterface;
+import model.persistence.dao.RouteDaoInterface;
 import model.persistence.entity.Airport;
 import model.persistence.entity.Route;
 import model.persistence.service.AirportService;

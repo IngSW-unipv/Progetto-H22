@@ -1,7 +1,7 @@
 package model.persistence.dao;
 
 import model.persistence.Connection;
-import model.persistence.daoInterface.UserDaoInterface;
+import model.persistence.dao.UserDaoInterface;
 import model.persistence.entity.User;
 import org.hibernate.query.Query;
 
@@ -17,7 +17,7 @@ public class UserDao implements UserDaoInterface {
 
     @Override
     public List<User> findAll() {
-        List<User> users = (List<User>) conn.getCurrentSession().createQuery("from User ").list();
+        List<User> users = (List<User>) conn.getCurrentSession().createQuery("from User ").setCacheable(true).list();
         return  users;
     }
 

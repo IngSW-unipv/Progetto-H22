@@ -8,8 +8,6 @@ import org.hibernate.annotations.Cache;
 
 
 @Entity
-@Cacheable
-@Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
 public class Crew implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id

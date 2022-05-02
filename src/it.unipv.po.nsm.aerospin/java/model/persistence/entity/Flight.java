@@ -11,8 +11,6 @@ import java.util.Date;
 import java.sql.Time;
 
 @Entity
-@Cacheable
-@Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
 public class Flight implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id

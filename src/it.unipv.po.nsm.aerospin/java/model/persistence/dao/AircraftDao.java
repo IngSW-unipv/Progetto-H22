@@ -2,7 +2,7 @@ package model.persistence.dao;
 
 import model.flight.aircraft.Manufacturer;
 import model.persistence.Connection;
-import model.persistence.daoInterface.AircraftDaoInterface;
+import model.persistence.dao.AircraftDaoInterface;
 import model.persistence.entity.Aircraft;
 import org.hibernate.query.Query;
 import java.util.List;
@@ -33,7 +33,6 @@ public class AircraftDao implements AircraftDaoInterface {
         String hql = "from Aircraft a where a.manufacturer like :man ";
         Query query = conn.getCurrentSession().createQuery(hql);
         query.setParameter("man","%" + manufacturer + "%");
-        query.setCacheable(true);
         List<Aircraft> aircrafts = query.list();
         return aircrafts;
     }

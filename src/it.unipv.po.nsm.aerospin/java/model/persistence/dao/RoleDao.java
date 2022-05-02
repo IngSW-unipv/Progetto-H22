@@ -1,7 +1,7 @@
 package model.persistence.dao;
 
 import model.persistence.Connection;
-import model.persistence.daoInterface.RoleDaoInterface;
+import model.persistence.dao.RoleDaoInterface;
 import model.persistence.entity.Role;
 import org.hibernate.query.Query;
 

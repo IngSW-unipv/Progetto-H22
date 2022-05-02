@@ -1,7 +1,7 @@
 package model.persistence.dao;
 
 import model.persistence.Connection;
-import model.persistence.daoInterface.PassengerDaoInterface;
+import model.persistence.dao.PassengerDaoInterface;
 import model.persistence.entity.Passenger;
 import org.hibernate.query.Query;
 

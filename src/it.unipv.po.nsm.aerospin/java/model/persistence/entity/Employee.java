@@ -9,8 +9,6 @@ import java.sql.Date;
 import java.util.Collection;
 
 @Entity
-@Cacheable
-@Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
 public class Employee implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id

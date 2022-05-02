@@ -7,8 +7,6 @@ import java.io.Serializable;
 import org.hibernate.annotations.Cache;
 
 @Entity
-@Cacheable
-@Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
 
 public class User implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -10,8 +10,7 @@ import java.util.List;
 
 import org.hibernate.annotations.Cache;
 @Entity
-@Cacheable
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+
 
 public class Route implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,6 +28,7 @@ public class Route implements Serializable {
     private String waypoints;
     @LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(mappedBy = "routeByFlightRouteId",cascade = CascadeType.ALL)
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private List<Flight> flightsByRouteId;
     @LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(mappedBy = "routeByIcao",cascade = CascadeType.ALL, fetch = FetchType.EAGER)

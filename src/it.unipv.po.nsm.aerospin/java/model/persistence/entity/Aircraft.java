@@ -10,8 +10,6 @@ import java.io.Serializable;
 import java.util.Collection;
 
 @Entity
-@Cacheable
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class Aircraft implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id

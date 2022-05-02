@@ -94,13 +94,12 @@ public class Test {
 
         RouteService routeService = new RouteService();
         List<Route> routes = routeService.findAll();
-        for (Route route : routes) {
+        System.out.println("sheeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeesh");
+        List<Route> routes1 = routeService.findAll();
+        for (Route route : routes1) {
             System.out.println(route.getRouteId());
-
         }
 
-        int size = CacheManager.ALL_CACHE_MANAGERS.get(0).getCache("routes").getSize();
-        System.out.println(size);
 
         System.exit(0);
 
