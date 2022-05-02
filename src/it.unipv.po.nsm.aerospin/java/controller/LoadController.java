@@ -15,8 +15,6 @@ public class LoadController implements Initializable, IControlledScreen {
 
     ScreensController myController;
 
-
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 

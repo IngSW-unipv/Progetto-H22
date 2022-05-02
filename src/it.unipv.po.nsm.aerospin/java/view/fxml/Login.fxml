@@ -13,6 +13,6 @@
         <Label layoutX="154.0" layoutY="228.0" text="ID" />
         <Label layoutX="154.0" layoutY="273.0" prefHeight="17.0" prefWidth="77.0" text="Password" />
       <Label layoutX="662.0" layoutY="250.0" text="oppure" />
-      <Label fx:id="errLabel" layoutX="180.0" layoutY="314.0" prefHeight="17.0" prefWidth="318.0" />
+      <Label fx:id="errLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="154.0" layoutY="314.0" prefHeight="17.0" prefWidth="286.0" textAlignment="CENTER" textFill="RED" />
     </children>
 </AnchorPane>

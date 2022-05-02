@@ -12,6 +12,7 @@ import model.persistence.CachedFlights;
 import model.persistence.entity.User;
 import model.persistence.service.UserService;
 import util.ControllerMethods;
+import util.NoMatchException;
 import util.Session;
 import view.*;
 
@@ -37,7 +38,6 @@ public class LoginController implements Initializable, IControlledScreen {
 
     @FXML private Label errLabel;
 
-    private List<User> users;
     private static final Pattern VALID_EMAIL_ADDRESS_REGEX =
             Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
 
@@ -46,10 +46,10 @@ public class LoginController implements Initializable, IControlledScreen {
 
         //CONTROLLARE CHE SIA CACHED!!
         //POCO SICURO, CONTROLLO INPUT EMAIL
-        Thread t1 = new Thread(()->{
-            users = userService.findAll();
-        });
-        t1.start();
+//        Thread t1 = new Thread(()->{
+//            users = userService.findAll();
+//        });
+//        t1.start();
 
     }
 
@@ -57,45 +57,37 @@ public class LoginController implements Initializable, IControlledScreen {
         myController = screenParent;
     }
 
-
-    //formato email non corretto
-    //email o pwd errati
-
     @FXML
     private void login(ActionEvent event) throws IOException {
-//        while(cond){
-//            ...
-//            ...
-//            ...
-//        }
-//
-//
-//
-//
-//        //CONTROLLO FORMATO EMAIL
-//        if(checkMail()) {
-//            //CONTROLLO SE UTENTE REGISTRATO
-//            if(isRegistered()) {
-//
-//
-//
-//
-//            }
-//
-//            if(isRegistered(email.getText())){
-//                myController.setScreen(Factory.getManage());
-//            }
-//
-//
-//
-//        } else {
-//            email.clear();
-//            pwd.clear();
-//        }
+        //AGGIUNGERE THREAD, CONTROLLARE
+
+        //CONTROLLO FORMATO EMAIL
+        if(checkMail()) {
+            errLabel.setText("");
+            //CONTROLLO SE UTENTE REGISTRATO E PWD CORRETTA
+            if (isRegistered()) {
+                //CONTROLLO SE ADMIN O USER
+                if(session.getUser().isAdmin()){
+                    myController.setScreen(Factory.getManage());
+                } else {
+                    myController.setScreen(Factory.getAccount());
+                }
+            }
+        }
+        email.clear();
+        pwd.clear();
     }
 
     @FXML
     private void register(ActionEvent event) throws IOException {
+
+        //COMPLETARE
+
+
+
+
+
+
 
     }
 
@@ -105,33 +97,32 @@ public class LoginController implements Initializable, IControlledScreen {
             return true;
         } else {
             errLabel.setText("Formato email non valido!");
-//            errLabel.visibleProperty().bind((ObservableValue<? extends Boolean>) email.getOnMouseClicked());
             return false;
         }
     }
 
-//    public boolean isAdmin(String input){
-//
-//    }
+    public boolean isRegistered(){
+        User logged;
 
-    public boolean isRegistered(String input){
-        UserService userService = new UserService();
-
-        //è cached??
+        //CONTROLLARE CHE SIA NOT CACHED
         try{
-            String s = userService.findByEmail(input).getEmail();
-            return true;
-        }catch (IndexOutOfBoundsException e){
+            logged = userService.findByEmail(email.getText());
+            if(logged.getPwd().equals(pwd.getText()))  {
+                session.setUser(logged);
+                return true;
+            } else {
+                throw new NoMatchException("Not Matched!\n");
+            }
+        }catch (IndexOutOfBoundsException | NoMatchException e){
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Validate Fields");
             alert.setHeaderText(null);
-            alert.setContentText("Utente non registrato");
+            alert.setContentText("Login Errato!\nControllare accessi o Registrarsi");
             alert.showAndWait();
             return false;
         }
-
     }
 
-
-
 }
+
+

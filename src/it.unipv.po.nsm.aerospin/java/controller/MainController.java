@@ -7,18 +7,23 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
 import javafx.scene.SubScene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import model.persistence.CachedFlights;
-import view.*;
+import view.Factory;
+import view.ScreensController;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.Timer;
 
 public class MainController implements Initializable {
 
     Factory factory = Factory.getInstance();
     ScreensController mainContainer = factory.createContainer();
     CachedFlights searchResult = CachedFlights.getInstance();
+    Timer t = new Timer();
 
     @FXML private SubScene subscene;
 
@@ -46,7 +51,11 @@ public class MainController implements Initializable {
                 search.setDisable(false);
                 login.setDisable(false);
             } catch (IOException e) {
-                e.printStackTrace();
+                Alert alert = new Alert(Alert.AlertType.ERROR,"", ButtonType.CLOSE);
+                alert.setTitle("DB Connection");
+                alert.setHeaderText(null);
+                alert.setContentText("Inserire tutti i campi prima di procedere!");
+                alert.showAndWait();
             }
         });
         t1.start();

@@ -10,6 +10,7 @@ import model.persistence.entity.Flight;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ControllerMethods {
 
@@ -98,14 +99,19 @@ public class ControllerMethods {
      *  in base agli aereoporti selezionati
      */
     public boolean checkRoute(String dep, String ret) {
-//        Flight a = results.
+        List<Flight> a = results.stream()
+                                .filter(o -> o.getRouteByFlightRouteId().getDeparture().equalsString(dep))
+                                .collect(Collectors.toList());
 
-        if (true){
+        List<Flight> b = a.stream()
+                          .filter(o -> o.getRouteByFlightRouteId().getArrival().equalsString(ret))
+                          .collect(Collectors.toList());
+
+        if (b.size()>0){
             return true;
         } else {
             return false;
         }
-
-
     }
+
 }

@@ -76,4 +76,9 @@ public class User implements Serializable {
     public void setEmployeeByEmployeeId(Employee employeeByEmployeeId) {
         this.employeeByEmployeeId = employeeByEmployeeId;
     }
+
+    public boolean isAdmin() {
+        return (employeeId != null);
+    }
+
 }
