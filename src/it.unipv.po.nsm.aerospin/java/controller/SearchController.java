@@ -9,6 +9,7 @@ import javafx.scene.control.*;
 import model.persistence.CachedFlights;
 import model.persistence.entity.Flight;
 import util.ControllerMethods;
+import util.Session;
 import view.Factory;
 import view.ScreensController;
 
@@ -25,9 +26,9 @@ public class SearchController implements Initializable, IControlledScreen {
 
     Factory factory = Factory.getInstance();
     ScreensController myController;
+    Session session = factory.getSession();
     CachedFlights searchResult = CachedFlights.getInstance();
     ControllerMethods methods = new ControllerMethods();
-//    SearchManager searchManager = new SearchManager();
 
     @FXML private ComboBox<String> cb1;
     @FXML private ComboBox<String> cb2;
@@ -50,19 +51,11 @@ public class SearchController implements Initializable, IControlledScreen {
         ar.setDisable(true);
         date2.disableProperty().bind(oneway.selectedProperty().or(date1.valueProperty().isNull()));
         date1.setDayCellFactory(methods.bookingRange(LocalDate.now()));
-
         Thread t1 = new Thread(()->{
             listDepart = results.stream()
-                                .map(o->o.getRouteByFlightRouteId().getDeparture().get(0).getAirportName())
+                                .map(o->o.getRouteByFlightRouteId().getDeparture().getAirportName())
                                 .collect(Collectors.toList());
             //poi rimuovere secondo get(0)
-
-//            List<String> codes =
-//                    orders.stream()
-//                            .filter(o -> o.getStatus().equals("NEW"))
-//                            .map(Order::getCode)
-//                            .collect(Collectors.toList());
-//                    results.get(0).getRouteByFlightRouteId().getDeparture().get(0).getAirportName();
 
             cb1.setItems(FXCollections.observableArrayList(listDepart));
             methods.selectOptionOnKey(cb1, listDepart);
@@ -81,11 +74,11 @@ public class SearchController implements Initializable, IControlledScreen {
             cb2.getSelectionModel().clearSelection();
             cb2.autosize();
 
-            //OVERRIDE EQUALS AIRPORT TO STRING
+            //OVERRIDE EQUALS AIRPORT TO STRING FATTO
             listReturn = results.stream()
-                        .filter(o -> o.getRouteByFlightRouteId().getDeparture().equals(cb1.getValue()))
-                        .map(o->o.getRouteByFlightRouteId().getArrival().get(0).getAirportName())
-                        .collect(Collectors.toList());;
+                        .filter(o -> o.getRouteByFlightRouteId().getDeparture().equalsString(cb1.getValue()))
+                        .map(o->o.getRouteByFlightRouteId().getArrival().getAirportName())
+                        .collect(Collectors.toList());
             cb2.setItems(FXCollections.observableArrayList(listReturn));
             methods.selectOptionOnKey(cb2, listReturn);
 
@@ -117,19 +110,20 @@ public class SearchController implements Initializable, IControlledScreen {
     @FXML
     private void goToResult(ActionEvent event) throws IOException {
         if (validateFields()) {
-            factory.getSession().setOneway(oneway.isSelected());
-            factory.getSession().getInfo().clear();
-            factory.getSession().addInfo(cb1.getSelectionModel().getSelectedItem());
-            factory.getSession().addInfo(cb2.getSelectionModel().getSelectedItem());
-            factory.getSession().addInfo(date1.getValue().toString());
-            if (!(factory.getSession().isOneway())) {
-                factory.getSession().addInfo(date2.getValue().toString());
+            session.setOneway(oneway.isSelected());
+            session.getInfo().clear();
+            session.addInfo(cb1.getSelectionModel().getSelectedItem());
+            session.addInfo(cb2.getSelectionModel().getSelectedItem());
+            session.addInfo(date1.getValue().toString());
+            if (!(session.isOneway())) {
+                session.addInfo(date2.getValue().toString());
             }
             myController.setScreen(Factory.getResult());
         }
     }
 
     //System.out.println(date1.getValue() == null);   può dare bug perchè se cancello la data, rimane not null
+
     public boolean validateFields(){
         if( cb2.getSelectionModel().isEmpty() | date1.getValue() == null | (date2.getValue() == null && ar.isSelected())){
             Alert alert = new Alert(Alert.AlertType.WARNING);

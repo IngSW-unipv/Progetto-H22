@@ -1,6 +1,5 @@
 package controller;
 
-import javafx.beans.binding.Bindings;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleDoubleProperty;
@@ -17,6 +16,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import model.booking.payment.AeroPay;
 import model.booking.payment.PaymentStrategy;
 import model.management.ResultManager;
+import model.persistence.CachedFlights;
 import model.persistence.entity.Flight;
 import util.ControllerMethods;
 import util.Session;
@@ -25,17 +25,19 @@ import view.ScreensController;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Date;
 import java.sql.Time;
-import java.text.SimpleDateFormat;
 import java.util.ResourceBundle;
 
 public class ResultController implements Initializable, IControlledScreen {
 
-    private ScreensController myController;
-    private final Factory factory = Factory.getInstance();
-    private final Session session = factory.getSession();
-    private final ControllerMethods methods = new ControllerMethods();
+    Factory factory = Factory.getInstance();
+    ScreensController myController;
+    Session session = factory.getSession();
+    CachedFlights searchResult = CachedFlights.getInstance();
+    ControllerMethods methods = new ControllerMethods();
+
+
+    //controllare
     private final ResultManager resultManager = new ResultManager();
     private final PaymentStrategy paymentStrategy = new AeroPay();
 

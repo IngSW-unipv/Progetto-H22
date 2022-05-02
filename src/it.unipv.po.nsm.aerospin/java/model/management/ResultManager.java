@@ -26,8 +26,8 @@ public class ResultManager {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Date date = Date.valueOf(scheduledDate);
         List<Flight> flights = flightService.findAll();
-        return flights.stream().filter(f -> f.getRouteByFlightRouteId().getDeparture().get(0).getAirportName().equals(dep) &&
-                f.getRouteByFlightRouteId().getArrival().get(0).getAirportName().equals(arr) &&
+        return flights.stream().filter(f -> f.getRouteByFlightRouteId().getDeparture().getAirportName().equals(dep) &&
+                f.getRouteByFlightRouteId().getArrival().getAirportName().equals(arr) &&
                 f.getScheduledDate().compareTo(date) == 0).collect(Collectors.toList());
 
     }

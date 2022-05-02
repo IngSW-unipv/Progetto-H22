@@ -170,37 +170,35 @@ public class Airport implements Serializable {
         this.sourceA = sourceA;
     }
 
-    // CHECK EQUALS NOME AEROPORT
-
-//    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (o == null || getClass() != o.getClass()) return false;
-//
-//        Airport airport = (Airport) o;
-//
-//        if (airportId != airport.airportId) return false;
-//        if (airportName != null ? !airportName.equals(airport.airportName) : airport.airportName != null) return false;
-//        if (city != null ? !city.equals(airport.city) : airport.city != null) return false;
-//        if (country != null ? !country.equals(airport.country) : airport.country != null) return false;
-//        if (iata != null ? !iata.equals(airport.iata) : airport.iata != null) return false;
-//        if (icao != null ? !icao.equals(airport.icao) : airport.icao != null) return false;
-//        if (latitude != null ? !latitude.equals(airport.latitude) : airport.latitude != null) return false;
-//        if (longitude != null ? !longitude.equals(airport.longitude) : airport.longitude != null) return false;
-//        if (altitude != null ? !altitude.equals(airport.altitude) : airport.altitude != null) return false;
-//        if (timezone != null ? !timezone.equals(airport.timezone) : airport.timezone != null) return false;
-//        if (dst != null ? !dst.equals(airport.dst) : airport.dst != null) return false;
-//        if (tz != null ? !tz.equals(airport.tz) : airport.tz != null) return false;
-//        if (typeA != null ? !typeA.equals(airport.typeA) : airport.typeA != null) return false;
-//        if (sourceA != null ? !sourceA.equals(airport.sourceA) : airport.sourceA != null) return false;
-//
-//        return true;
-//    }
-
 
     @Override
     public boolean equals(Object o) {
-        String airportName = (String) o;
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Airport airport = (Airport) o;
+
+        if (airportId != airport.airportId) return false;
+        if (airportName != null ? !airportName.equals(airport.airportName) : airport.airportName != null) return false;
+        if (city != null ? !city.equals(airport.city) : airport.city != null) return false;
+        if (country != null ? !country.equals(airport.country) : airport.country != null) return false;
+        if (iata != null ? !iata.equals(airport.iata) : airport.iata != null) return false;
+        if (icao != null ? !icao.equals(airport.icao) : airport.icao != null) return false;
+        if (latitude != null ? !latitude.equals(airport.latitude) : airport.latitude != null) return false;
+        if (longitude != null ? !longitude.equals(airport.longitude) : airport.longitude != null) return false;
+        if (altitude != null ? !altitude.equals(airport.altitude) : airport.altitude != null) return false;
+        if (timezone != null ? !timezone.equals(airport.timezone) : airport.timezone != null) return false;
+        if (dst != null ? !dst.equals(airport.dst) : airport.dst != null) return false;
+        if (tz != null ? !tz.equals(airport.tz) : airport.tz != null) return false;
+        if (typeA != null ? !typeA.equals(airport.typeA) : airport.typeA != null) return false;
+        if (sourceA != null ? !sourceA.equals(airport.sourceA) : airport.sourceA != null) return false;
+
+        return true;
+    }
+
+
+
+    public boolean equalsString(String airportName) {
         if (this.airportName.equals(airportName)) {
             return true;
         }

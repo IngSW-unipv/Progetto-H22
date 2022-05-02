@@ -1,14 +1,18 @@
 package controller;
 
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import model.persistence.CachedFlights;
 import model.persistence.entity.User;
 import model.persistence.service.UserService;
+import util.ControllerMethods;
+import util.Session;
 import view.*;
 
 import java.io.IOException;
@@ -17,11 +21,16 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class LoginController implements Initializable, IControlledScreen {
 
+    Factory factory = Factory.getInstance();
     ScreensController myController;
-    private final Factory factory = Factory.getInstance();
+    Session session = factory.getSession();
+    CachedFlights searchResult = CachedFlights.getInstance();
+    ControllerMethods methods = new ControllerMethods();
+    UserService userService = new UserService();
 
     @FXML private TextField email;
     @FXML private TextField pwd;
@@ -29,17 +38,18 @@ public class LoginController implements Initializable, IControlledScreen {
     @FXML private Label errLabel;
 
     private List<User> users;
+    private static final Pattern VALID_EMAIL_ADDRESS_REGEX =
+            Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        errLabel.setText("Formato email non valido!");
-
-        //poco sicuro?? efficienza?
-        // metodo da Hamza per caricare tutta lista user
-        // user = ..............;
-
-
+        //CONTROLLARE CHE SIA CACHED!!
+        //POCO SICURO, CONTROLLO INPUT EMAIL
+        Thread t1 = new Thread(()->{
+            users = userService.findAll();
+        });
+        t1.start();
 
     }
 
@@ -47,14 +57,28 @@ public class LoginController implements Initializable, IControlledScreen {
         myController = screenParent;
     }
 
+
     //formato email non corretto
     //email o pwd errati
 
-
     @FXML
-    private void logAccount(ActionEvent event) throws IOException {
+    private void login(ActionEvent event) throws IOException {
+//        while(cond){
+//            ...
+//            ...
+//            ...
+//        }
+//
+//
+//
+//
+//        //CONTROLLO FORMATO EMAIL
 //        if(checkMail()) {
+//            //CONTROLLO SE UTENTE REGISTRATO
 //            if(isRegistered()) {
+//
+//
+//
 //
 //            }
 //
@@ -64,15 +88,24 @@ public class LoginController implements Initializable, IControlledScreen {
 //
 //
 //
+//        } else {
+//            email.clear();
+//            pwd.clear();
 //        }
     }
 
+    @FXML
+    private void register(ActionEvent event) throws IOException {
+
+    }
+
     public boolean checkMail(){
-        if(validate(email.getText())){
+        Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(email.getText());
+        if(matcher.find()){
             return true;
         } else {
-            errLabel.setVisible(true);
-            errLabel.visibleProperty().bind((ObservableValue<? extends Boolean>) email.getOnMouseClicked());
+            errLabel.setText("Formato email non valido!");
+//            errLabel.visibleProperty().bind((ObservableValue<? extends Boolean>) email.getOnMouseClicked());
             return false;
         }
     }
@@ -84,6 +117,7 @@ public class LoginController implements Initializable, IControlledScreen {
     public boolean isRegistered(String input){
         UserService userService = new UserService();
 
+        //è cached??
         try{
             String s = userService.findByEmail(input).getEmail();
             return true;
@@ -98,11 +132,6 @@ public class LoginController implements Initializable, IControlledScreen {
 
     }
 
-    public static final Pattern VALID_EMAIL_ADDRESS_REGEX =
-            Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
 
-    public static boolean validate(String email) {
-        Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(email);
-        return matcher.find();
-    }
+
 }

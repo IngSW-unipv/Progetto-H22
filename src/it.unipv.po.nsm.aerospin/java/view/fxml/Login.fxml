@@ -8,8 +8,8 @@
     <children>
         <TextField fx:id="email" cacheShape="false" layoutX="239.0" layoutY="224.0" prefHeight="25.0" prefWidth="200.0" promptText="example@domain.com" />
         <PasswordField fx:id="pwd" layoutX="239.0" layoutY="269.0" prefHeight="25.0" prefWidth="200.0" promptText="password" />
-      <JFXButton layoutX="650.0" layoutY="177.0" onAction="#logAccount" text="LOGIN" />
-      <JFXButton layoutX="637.0" layoutY="310.0" text="REGISTRATI" />
+      <JFXButton layoutX="650.0" layoutY="177.0" onAction="#login" text="LOGIN" />
+      <JFXButton layoutX="637.0" layoutY="310.0" onAction="#register" text="REGISTRATI" />
         <Label layoutX="154.0" layoutY="228.0" text="ID" />
         <Label layoutX="154.0" layoutY="273.0" prefHeight="17.0" prefWidth="77.0" text="Password" />
       <Label layoutX="662.0" layoutY="250.0" text="oppure" />
