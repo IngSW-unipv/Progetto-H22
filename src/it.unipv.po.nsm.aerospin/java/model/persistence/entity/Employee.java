@@ -1,15 +1,11 @@
 package model.persistence.entity;
-import org.hibernate.annotations.Cache;
-
-import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.sql.Date;
 import java.util.Collection;
 
 @Entity
-public class Employee implements Serializable {
+public class Employee {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "employeeId", nullable = false)

@@ -1,15 +1,11 @@
 package model.persistence.entity;
 
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.Cache;
-
 import javax.persistence.*;
-import java.io.Serializable;
+import java.util.Collection;
 
 @Entity
-public class Airport implements Serializable {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Id
+public class Airport {
+    @Basic
     @Column(name = "AIRPORT_ID", nullable = false)
     private long airportId;
     @Basic
@@ -24,8 +20,9 @@ public class Airport implements Serializable {
     @Basic
     @Column(name = "IATA", nullable = true, length = 3)
     private String iata;
-    @Basic
-    @Column(name = "ICAO", nullable = false, length = 4)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @Column(name = "ICAO", nullable = false, length = 25)
     private String icao;
     @Basic
     @Column(name = "LATITUDE", nullable = true, precision = 0)
@@ -51,12 +48,10 @@ public class Airport implements Serializable {
     @Basic
     @Column(name = "SOURCE_A", nullable = true, length = 20)
     private String sourceA;
-    @OneToOne
-    @JoinColumn(name = "ICAO", referencedColumnName = "arrival", insertable = false, updatable = false)
-    private Route routeByIcao;
-    @OneToOne
-    @JoinColumn(name = "ICAO", referencedColumnName = "departure", insertable = false, updatable = false)
-    private Route routeByIcao_0;
+    @OneToMany(mappedBy = "airportByArrival")
+    private Collection<Route> routesByIcao;
+    @OneToMany(mappedBy = "airportByDeparture")
+    private Collection<Route> routesByIcao_0;
 
     public long getAirportId() {
         return airportId;
@@ -170,7 +165,6 @@ public class Airport implements Serializable {
         this.sourceA = sourceA;
     }
 
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -196,16 +190,6 @@ public class Airport implements Serializable {
         return true;
     }
 
-
-
-    public boolean equalsString(String airportName) {
-        if (this.airportName.equals(airportName)) {
-            return true;
-        }
-        return false;
-    }
-
-
     @Override
     public int hashCode() {
         int result = (int) (airportId ^ (airportId >>> 32));
@@ -225,34 +209,26 @@ public class Airport implements Serializable {
         return result;
     }
 
-    public Route getRouteByIcao() {
-        return routeByIcao;
+    public boolean equalsString(String airportName) {
+        if (this.airportName.equals(airportName)) {
+            return true;
+        }
+        return false;
     }
 
-    public void setRouteByIcao(Route routeByIcao) {
-        this.routeByIcao = routeByIcao;
+    public Collection<Route> getRoutesByIcao() {
+        return routesByIcao;
     }
 
-    public Route getRouteByIcao_0() {
-        return routeByIcao_0;
+    public void setRoutesByIcao(Collection<Route> routesByIcao) {
+        this.routesByIcao = routesByIcao;
     }
 
-    public void setRouteByIcao_0(Route routeByIcao_0) {
-        this.routeByIcao_0 = routeByIcao_0;
+    public Collection<Route> getRoutesByIcao_0() {
+        return routesByIcao_0;
     }
 
-    @Override
-    public String toString() {
-        return "Airport{" +
-                "airportId=" + airportId +
-                ", airportName='" + airportName + '\'' +
-
-                ", iata='" + iata + '\'' +
-                ", icao='" + icao + '\'' +
-                ", latitude=" + latitude +
-                ", longitude=" + longitude +
-                ", altitude=" + altitude +
-                ", timezone=" + timezone +
-                '}';
+    public void setRoutesByIcao_0(Collection<Route> routesByIcao_0) {
+        this.routesByIcao_0 = routesByIcao_0;
     }
 }

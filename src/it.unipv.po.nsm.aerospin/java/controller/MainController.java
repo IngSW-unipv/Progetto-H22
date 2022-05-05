@@ -45,9 +45,9 @@ public class MainController implements Initializable {
 //            try {
 //                searchResult.findAll();
 //                mainContainer.setScreen(Factory.getHome());
-//                home.setDisable(false);
-//                search.setDisable(false);
-//                login.setDisable(false);
+                home.setDisable(false);
+                search.setDisable(false);
+                login.setDisable(false);
 //            } catch (IOException e) {
 //                e.printStackTrace();
 //            }

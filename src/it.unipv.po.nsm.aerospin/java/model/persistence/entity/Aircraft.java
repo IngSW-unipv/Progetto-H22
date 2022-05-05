@@ -1,16 +1,10 @@
 package model.persistence.entity;
 
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
-import org.hibernate.annotations.Cache;
-
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Collection;
 
 @Entity
-public class Aircraft implements Serializable {
+public class Aircraft {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "tailNumber", nullable = false, length = 50)
@@ -30,7 +24,6 @@ public class Aircraft implements Serializable {
     @Basic
     @Column(name = "maxRange", nullable = true, precision = 0)
     private Double maxRange;
-    @LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(mappedBy = "aircraftByTailNumber")
     private Collection<Flight> flightsByTailNumber;
 
@@ -118,17 +111,5 @@ public class Aircraft implements Serializable {
 
     public void setFlightsByTailNumber(Collection<Flight> flightsByTailNumber) {
         this.flightsByTailNumber = flightsByTailNumber;
-    }
-
-    @Override
-    public String toString() {
-        return "Aircraft{" +
-                "tailNumber='" + tailNumber + '\'' +
-                ", manufacturer='" + manufacturer + '\'' +
-                ", model='" + model + '\'' +
-                ", seats=" + seats +
-                ", availability=" + availability +
-                ", maxRange=" + maxRange +
-                '}';
     }
 }

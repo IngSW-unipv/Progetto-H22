@@ -100,11 +100,11 @@ public class ControllerMethods {
      */
     public boolean checkRoute(String dep, String ret) {
         List<Flight> a = results.stream()
-                                .filter(o -> o.getRouteByFlightRouteId().getDeparture().equalsString(dep))
+                                .filter(o -> o.getRouteByFlightRouteId().getAirportByDeparture().equalsString(dep))
                                 .collect(Collectors.toList());
 
         List<Flight> b = a.stream()
-                          .filter(o -> o.getRouteByFlightRouteId().getArrival().equalsString(ret))
+                          .filter(o -> o.getRouteByFlightRouteId().getAirportByArrival().equalsString(ret))
                           .collect(Collectors.toList());
 
         if (b.size()>0){

@@ -1,64 +1,54 @@
 package model.persistence.entity;
 
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
-
 import javax.persistence.*;
-import java.io.Serializable;
-import java.util.List;
+import java.util.Collection;
 
-import org.hibernate.annotations.Cache;
 @Entity
-
-
-public class Route implements Serializable {
+public class Route {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "routeId", nullable = false, length = 20)
-    private String routeId;
+    @Column(name = "routeId", nullable = false)
+    private int routeId;
     @Basic
-    @Column(name = "arrival", nullable = false, length = 25)
-    private String arrival_ICAO;
+    @Column(name = "arrival", nullable = false, length = 25, insertable = false, updatable = false)
+    private String arrival;
     @Basic
-    @Column(name = "departure", nullable = false, length = 25)
-    private String departure_ICAO;
+    @Column(name = "departure", nullable = false, length = 25, insertable = false, updatable = false)
+    private String departure;
     @Basic
     @Column(name = "waypoints", nullable = false, length = 300)
     private String waypoints;
-    @LazyCollection(LazyCollectionOption.FALSE)
-    @OneToMany(mappedBy = "routeByFlightRouteId",cascade = CascadeType.ALL)
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private List<Flight> flightsByRouteId;
-    @LazyCollection(LazyCollectionOption.FALSE)
-    @OneToOne(mappedBy = "routeByIcao",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private Airport arrival;
-    @LazyCollection(LazyCollectionOption.FALSE)
-    @OneToOne(mappedBy = "routeByIcao_0",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private Airport departure;
+    @OneToMany(mappedBy = "routeByFlightRouteId")
+    private Collection<Flight> flightsByRouteId;
+    @ManyToOne
+    @JoinColumn(name = "arrival", referencedColumnName = "ICAO", nullable = false)
+    private Airport airportByArrival;
+    @ManyToOne
+    @JoinColumn(name = "departure", referencedColumnName = "ICAO", nullable = false)
+    private Airport airportByDeparture;
 
-    public String getRouteId() {
+    public int getRouteId() {
         return routeId;
     }
 
-    public void setRouteId(String routeId) {
+    public void setRouteId(int routeId) {
         this.routeId = routeId;
     }
 
-    public String getArrival_ICAO() {
-        return arrival_ICAO;
+    public String getArrival() {
+        return arrival;
     }
 
-    public void setArrival_ICAO(String arrival_ICAO) {
-        this.arrival_ICAO = arrival_ICAO;
+    public void setArrival(String arrival) {
+        this.arrival = arrival;
     }
 
-    public String getDeparture_ICAO() {
-        return departure_ICAO;
+    public String getDeparture() {
+        return departure;
     }
 
-    public void setDeparture_ICAO(String departure_ICAO) {
-        this.departure_ICAO = departure_ICAO;
+    public void setDeparture(String departure) {
+        this.departure = departure;
     }
 
     public String getWaypoints() {
@@ -76,10 +66,9 @@ public class Route implements Serializable {
 
         Route route = (Route) o;
 
-        if (routeId != null ? !routeId.equals(route.routeId) : route.routeId != null) return false;
-        if (arrival_ICAO != null ? !arrival_ICAO.equals(route.arrival_ICAO) : route.arrival_ICAO != null) return false;
-        if (departure_ICAO != null ? !departure_ICAO.equals(route.departure_ICAO) : route.departure_ICAO != null)
-            return false;
+        if (routeId != route.routeId) return false;
+        if (arrival != null ? !arrival.equals(route.arrival) : route.arrival != null) return false;
+        if (departure != null ? !departure.equals(route.departure) : route.departure != null) return false;
         if (waypoints != null ? !waypoints.equals(route.waypoints) : route.waypoints != null) return false;
 
         return true;
@@ -87,46 +76,34 @@ public class Route implements Serializable {
 
     @Override
     public int hashCode() {
-        int result = routeId != null ? routeId.hashCode() : 0;
-        result = 31 * result + (arrival_ICAO != null ? arrival_ICAO.hashCode() : 0);
-        result = 31 * result + (departure_ICAO != null ? departure_ICAO.hashCode() : 0);
+        int result = routeId;
+        result = 31 * result + (arrival != null ? arrival.hashCode() : 0);
+        result = 31 * result + (departure != null ? departure.hashCode() : 0);
         result = 31 * result + (waypoints != null ? waypoints.hashCode() : 0);
         return result;
     }
 
-    public List<Flight> getFlightsByRouteId() {
+    public Collection<Flight> getFlightsByRouteId() {
         return flightsByRouteId;
     }
 
-    public void setFlightsByRouteId(List<Flight> flightsByRouteId) {
+    public void setFlightsByRouteId(Collection<Flight> flightsByRouteId) {
         this.flightsByRouteId = flightsByRouteId;
     }
 
-    public Airport getArrival() {
-        return arrival;
+    public Airport getAirportByArrival() {
+        return airportByArrival;
     }
 
-    public void setArrival(Airport arrival) {
-        this.arrival = arrival;
+    public void setAirportByArrival(Airport airportByArrival) {
+        this.airportByArrival = airportByArrival;
     }
 
-    public Airport getDeparture() {
-        return departure;
+    public Airport getAirportByDeparture() {
+        return airportByDeparture;
     }
 
-    public void setDeparture(Airport departure) {
-        this.departure = departure;
-    }
-
-    @Override
-    public String toString() {
-        return "Route{" +
-                "routeId='" + routeId + '\'' +
-                ", arrival_ICAO='" + arrival_ICAO + '\'' +
-                ", departure_ICAO='" + departure_ICAO + '\'' +
-                ", waypoints='" + waypoints + '\'' +
-                ", arrival=" + arrival +
-                ", departure=" + departure +
-                '}';
+    public void setAirportByDeparture(Airport airportByDeparture) {
+        this.airportByDeparture = airportByDeparture;
     }
 }

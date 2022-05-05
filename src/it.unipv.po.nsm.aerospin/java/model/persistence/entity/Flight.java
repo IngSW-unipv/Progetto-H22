@@ -1,17 +1,11 @@
 package model.persistence.entity;
-import org.hibernate.annotations.Cache;
-
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
-import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
 import java.sql.Time;
 
 @Entity
-public class Flight implements Serializable {
+public class Flight {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id", nullable = false)
@@ -20,11 +14,11 @@ public class Flight implements Serializable {
     @Column(name = "flightNumber", nullable = true, length = 100)
     private String flightNumber;
     @Basic
-    @Column(name = "tailNumber", nullable = true, length = 100)
+    @Column(name = "tailNumber", nullable = true, length = 100,insertable = false, updatable = false)
     private String tailNumber;
     @Basic
-    @Column(name = "flightRouteId", nullable = true, length = 100)
-    private String flightRouteId;
+    @Column(name = "flightRouteId", nullable = true, insertable = false, updatable = false)
+    private Integer flightRouteId;
     @Basic
     @Column(name = "scheduledDate", nullable = true)
     private Date scheduledDate;
@@ -37,13 +31,11 @@ public class Flight implements Serializable {
     @Basic
     @Column(name = "price", nullable = false, precision = 0)
     private double price;
-    @LazyCollection(LazyCollectionOption.FALSE)
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "tailNumber", referencedColumnName = "tailNumber", nullable = false, insertable = false, updatable = false)
+    @ManyToOne
+    @JoinColumn(name = "tailNumber", referencedColumnName = "tailNumber", insertable = false, updatable = false)
     private Aircraft aircraftByTailNumber;
-    @LazyCollection(LazyCollectionOption.FALSE)
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "flightRouteId", referencedColumnName = "routeId", nullable = false, insertable = false, updatable = false)
+    @ManyToOne
+    @JoinColumn(name = "flightRouteId", referencedColumnName = "routeId")
     private Route routeByFlightRouteId;
 
     public int getId() {
@@ -70,11 +62,11 @@ public class Flight implements Serializable {
         this.tailNumber = tailNumber;
     }
 
-    public String getFlightRouteId() {
+    public Integer getFlightRouteId() {
         return flightRouteId;
     }
 
-    public void setFlightRouteId(String flightRouteId) {
+    public void setFlightRouteId(Integer flightRouteId) {
         this.flightRouteId = flightRouteId;
     }
 
@@ -163,21 +155,5 @@ public class Flight implements Serializable {
 
     public void setRouteByFlightRouteId(Route routeByFlightRouteId) {
         this.routeByFlightRouteId = routeByFlightRouteId;
-    }
-
-    @Override
-    public String toString() {
-        return "Flight{" +
-                "id=" + id +
-                ", flightNumber='" + flightNumber + '\'' +
-                ", tailNumber='" + tailNumber + '\'' +
-                ", flightRouteId='" + flightRouteId + '\'' +
-                ", scheduledDate=" + scheduledDate +
-                ", scheduledTime=" + scheduledTime +
-                ", arrivalTime=" + arrivalTime +
-                ", price=" + price +
-                ", aircraftByTailNumber=" + aircraftByTailNumber +
-                ", routeByFlightRouteId=" + routeByFlightRouteId +
-                '}';
     }
 }

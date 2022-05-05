@@ -1,29 +1,24 @@
 package model.persistence.entity;
 
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-
 import javax.persistence.*;
-import java.io.Serializable;
-import org.hibernate.annotations.Cache;
-
 
 @Entity
-public class Crew implements Serializable {
+public class Crew {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "crewId", nullable = false)
     private int crewId;
     @Basic
-    @Column(name = "employeeId", nullable = true)
+    @Column(name = "employeeId", nullable = true, insertable = false, updatable = false)
     private Integer employeeId;
     @Basic
     @Column(name = "role", nullable = true, length = 25)
     private String role;
     @OneToOne
-    @JoinColumn(name = "crewId", referencedColumnName = "employeeId", insertable = true , updatable = true)
+    @JoinColumn(name = "crewId", referencedColumnName = "employeeId", nullable = false)
     private Employee employeeByCrewId;
     @ManyToOne
-    @JoinColumn(name = "employeeId", referencedColumnName = "employeeId", insertable = false, updatable = false)
+    @JoinColumn(name = "employeeId", referencedColumnName = "employeeId")
     private Employee employeeByEmployeeId;
 
     public int getCrewId() {

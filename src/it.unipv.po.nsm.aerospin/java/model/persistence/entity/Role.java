@@ -1,13 +1,9 @@
 package model.persistence.entity;
 
 import javax.persistence.*;
-import java.io.Serializable;
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 @Entity
-
-public class Role implements Serializable {
+public class Role {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id", nullable = false)

@@ -34,7 +34,7 @@ public class FlightManager {
         return fleet.stream().distinct().collect(Collectors.toList());
     }
 
-    public List<String> getServedRoutes(){
+    /*public List<String> getServedRoutes(){
         servedRoutes.clear();
         routes.clear();
         routes = routeService.findAll();
@@ -43,7 +43,7 @@ public class FlightManager {
         }
         servedRoutes.sort(Comparator.naturalOrder());
         return servedRoutes.stream().distinct().collect(Collectors.toList());
-    }
+    }*/
 
 
     public void saveFlight(String aircraft, String route){
@@ -51,7 +51,7 @@ public class FlightManager {
         Flight flight = new Flight();
         flight.setFlightNumber("AES"+i);
         flight.setTailNumber(aircraft);
-        flight.setFlightRouteId(route);
+        //flight.setFlightRouteId(route);
         flightService.persist(flight);
         i = i + 37;
     }

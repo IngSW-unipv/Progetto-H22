@@ -1,14 +1,9 @@
 package model.persistence.entity;
 
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-
 import javax.persistence.*;
-import java.io.Serializable;
-import org.hibernate.annotations.Cache;
 
 @Entity
-
-public class User implements Serializable {
+public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "email", nullable = false, length = 150)
@@ -80,5 +75,4 @@ public class User implements Serializable {
     public boolean isAdmin() {
         return (employeeId != null);
     }
-
 }
