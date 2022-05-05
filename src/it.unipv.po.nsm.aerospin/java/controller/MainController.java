@@ -55,6 +55,10 @@ public class MainController implements Initializable {
 //        t1.start();
     }
 
+
+
+
+
     @FXML
     private void goToHome(ActionEvent event) throws IOException {
         mainContainer.setScreen(Factory.getHome());

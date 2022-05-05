@@ -8,7 +8,12 @@
    <children>
       <Label layoutX="75.0" layoutY="300.0" text="BENVENUTI">
          <font>
-            <Font size="18.0" />
+            <Font name="Verdana Bold" size="18.0" />
          </font></Label>
+      <Label layoutX="85.0" layoutY="310.0" text="e chi si ferma è perduto" translateY="260.0">
+         <font>
+            <Font name="Lucida Calligraphy Italic" size="11.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

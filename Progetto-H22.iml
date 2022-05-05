@@ -6,7 +6,7 @@
         <setting name="validation-enabled" value="true" />
         <setting name="provider-name" value="Hibernate" />
         <datasource-mapping>
-          <factory-entry name="Progetto-H22" value="03f247d5-3286-4ced-9747-39cc8b193ee9" />
+          <factory-entry name="Progetto-H22" value="da1006c5-17c8-4144-acc8-a33523e4ed96" />
         </datasource-mapping>
         <naming-strategy-map />
       </configuration>
@@ -22,11 +22,6 @@
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/src/it.unipv.po.nsm.aerospin/java" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/it.unipv.po.nsm.aerospin/resources" type="java-resource" />
-      <excludeFolder url="file://$MODULE_DIR$/target" />
-    </content>
-    <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <content url="file://$MODULE_DIR$">
@@ -47,6 +42,11 @@
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/target" />
+    </content>
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src/it.unipv.po.nsm.aerospin/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/it.unipv.po.nsm.aerospin/resources" type="java-resource" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <content url="file://$MODULE_DIR$">

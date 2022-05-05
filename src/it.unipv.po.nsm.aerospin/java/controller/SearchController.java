@@ -52,8 +52,8 @@ public class SearchController implements Initializable, IControlledScreen {
         date1.setDayCellFactory(methods.bookingRange(LocalDate.now()));
         Thread t1 = new Thread(()->{
             listDepart = results.stream()
-                                .map(o->o.getRouteByFlightRouteId().getAirportByDeparture().getAirportName())
-                                .collect(Collectors.toList());
+                                .map(o->o.getRouteByFlightRouteId().getAirportByDeparture().getAirportName()).sorted()
+                                .distinct().collect(Collectors.toList());
             cbDep.setItems(FXCollections.observableArrayList(listDepart));
             methods.selectOptionOnKey(cbDep, listDepart);
         });
@@ -74,8 +74,8 @@ public class SearchController implements Initializable, IControlledScreen {
             //OVERRIDE EQUALS AIRPORT TO STRING !!FATTO!!
             listReturn = results.stream()
                         .filter(o -> o.getRouteByFlightRouteId().getAirportByDeparture().equalsString(cbDep.getValue()))
-                        .map(o->o.getRouteByFlightRouteId().getAirportByArrival().getAirportName())
-                        .collect(Collectors.toList());
+                        .map(o->o.getRouteByFlightRouteId().getAirportByArrival().getAirportName()).sorted()
+                        .distinct().collect(Collectors.toList());
             cbRet.setItems(FXCollections.observableArrayList(listReturn));
             methods.selectOptionOnKey(cbRet, listReturn);
 
