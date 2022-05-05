@@ -11,7 +11,7 @@
             <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
                   <ProgressBar prefHeight="40.0" prefWidth="400.0" />
-                  <Label text="Caricamento in corso" textAlignment="CENTER">
+                  <Label fx:id="loading" text="Caricamento in corso" textAlignment="CENTER">
                      <font>
                         <Font size="18.0" />
                      </font></Label>

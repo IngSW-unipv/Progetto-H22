@@ -1,7 +1,5 @@
 package controller;
 
-import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -14,15 +12,14 @@ import model.persistence.service.UserService;
 import util.ControllerMethods;
 import util.NoMatchException;
 import util.Session;
-import view.*;
+import view.Factory;
+import view.ScreensController;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 
 public class LoginController implements Initializable, IControlledScreen {
 
@@ -60,6 +57,7 @@ public class LoginController implements Initializable, IControlledScreen {
     @FXML
     private void login(ActionEvent event) throws IOException {
         //AGGIUNGERE THREAD, CONTROLLARE
+        //disabilitare campi e button
 
         //CONTROLLO FORMATO EMAIL
         if(checkMail()) {
@@ -81,13 +79,26 @@ public class LoginController implements Initializable, IControlledScreen {
     @FXML
     private void register(ActionEvent event) throws IOException {
 
-        //COMPLETARE
+        if(checkMail()) {
+            errLabel.setText("");
+            if(userService.findByEmail(email.getText()) == null) {
+                User newUser = new User();
+                newUser.setEmail(email.getText());
+                //NO VINCOLI SU PASSWORD
+                newUser.setPwd(pwd.getText());
 
+                userService.persist(newUser);
 
-
-
-
-
+                session.setUser(newUser);
+                myController.setScreen(Factory.getAccount());
+            } else {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Invalid Input");
+                alert.setHeaderText(null);
+                alert.setContentText("Utente già esistente!");
+                alert.showAndWait();
+            }
+        }
 
     }
 

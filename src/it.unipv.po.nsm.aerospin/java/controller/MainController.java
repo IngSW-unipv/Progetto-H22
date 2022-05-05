@@ -22,15 +22,13 @@ public class MainController implements Initializable {
 
     Factory factory = Factory.getInstance();
     ScreensController mainContainer = factory.createContainer();
-    CachedFlights searchResult = CachedFlights.getInstance();
-    Timer t = new Timer();
 
     @FXML private SubScene subscene;
 
-    @FXML private JFXButton home;
+    @FXML public JFXButton home;
     @FXML private JFXButton search;
     @FXML private JFXButton login;
-    @FXML private JFXButton account;
+    @FXML public JFXButton account;
     @FXML private JFXButton manage;
     @FXML private JFXButton logout;
 
@@ -43,22 +41,18 @@ public class MainController implements Initializable {
         root.getChildren().addAll(mainContainer);
         subscene.setRoot(root);
 
-        Thread t1 = new Thread(()->{
-            try {
-                searchResult.findAll();
-                mainContainer.setScreen(Factory.getHome());
-                home.setDisable(false);
-                search.setDisable(false);
-                login.setDisable(false);
-            } catch (IOException e) {
-                Alert alert = new Alert(Alert.AlertType.ERROR,"", ButtonType.CLOSE);
-                alert.setTitle("DB Connection");
-                alert.setHeaderText(null);
-                alert.setContentText("Inserire tutti i campi prima di procedere!");
-                alert.showAndWait();
-            }
-        });
-        t1.start();
+//        Thread t1 = new Thread(()->{
+//            try {
+//                searchResult.findAll();
+//                mainContainer.setScreen(Factory.getHome());
+//                home.setDisable(false);
+//                search.setDisable(false);
+//                login.setDisable(false);
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//        });
+//        t1.start();
     }
 
     @FXML
