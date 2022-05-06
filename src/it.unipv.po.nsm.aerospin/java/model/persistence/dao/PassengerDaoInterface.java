@@ -9,9 +9,9 @@ public interface PassengerDaoInterface {
     List<Passenger> findById(int id);
     List<Passenger> findByName(String name);
     List<Passenger> findBySurname(String surname);
-    public void persist(Passenger entity);
-    public void update(Passenger entity);
-    public void delete(Passenger entity);
-    public void deleteAll();
+    void persist(Passenger entity);
+    void update(Passenger entity);
+    void delete(Passenger entity);
+    void deleteAll();
 
 }

@@ -1,7 +1,6 @@
 package model.persistence.service;
 
 import model.persistence.dao.UserDao;
-import model.persistence.entity.Passenger;
 import model.persistence.entity.User;
 
 import java.util.List;

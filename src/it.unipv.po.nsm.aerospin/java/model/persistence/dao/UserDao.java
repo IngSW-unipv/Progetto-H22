@@ -1,7 +1,6 @@
 package model.persistence.dao;
 
 import model.persistence.Connection;
-import model.persistence.dao.UserDaoInterface;
 import model.persistence.entity.User;
 import org.hibernate.query.Query;
 

@@ -8,8 +8,8 @@ public interface UserDaoInterface {
 
     List<User> findAll();
     User findByEmail(String email);
-    public void persist(User entity);
-    public void update(User entity);
-    public void delete(User entity);
-    public void deleteAll();
+    void persist(User entity);
+    void update(User entity);
+    void delete(User entity);
+    void deleteAll();
 }

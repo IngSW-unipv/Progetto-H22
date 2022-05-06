@@ -2,7 +2,6 @@ package model.persistence.service;
 
 
 import model.persistence.dao.PassengerDao;
-import model.persistence.entity.Flight;
 import model.persistence.entity.Passenger;
 
 import java.util.List;

@@ -13,69 +13,33 @@ public class RouteService {
          routeDao= new RouteDao();
     }
 
-//    public List<Route> findAll() {
-//        routeDao.getConn().openCurrentSession();
-//        List<Route> routes = routeDao.findAll();
-//        routeDao.getConn().closeCurrentSession();
-//        return routes;
-//    }
-//
-//    public List<Route> findById(int id) {
-//        routeDao.getConn().openCurrentSession();
-//        List<Route> routes = routeDao.findById(id);
-//        routeDao.getConn().closeCurrentSession();
-//        return routes;
-//    }
-//
-//    public List<Route> findByDepIcao(String dep) {
-//        routeDao.getConn().openCurrentSession();
-//        List<Route> routes = routeDao.findByDepIcao(dep);
-//        routeDao.getConn().closeCurrentSession();
-//        return routes;
-//    }
-//
-//    public List<Route> findByDepName(String dep) {
-//        routeDao.getConn().openCurrentSession();
-//        List<Route> routes = routeDao.findByDepName(dep);
-//        routeDao.getConn().closeCurrentSession();
-//        return routes;
-//    }
-//
-//    public List<Route> findByArr(String arr) {
-//        routeDao.getConn().openCurrentSession();
-//        List<Route> routes = routeDao.findByArr(arr);
-//        routeDao.getConn().closeCurrentSession();
-//        return routes;
-//    }
-//    public Route findBydepArr(String dep,String arr) {
-//        routeDao.getConn().openCurrentSession();
-//        Route route = routeDao.findByDepArr(dep,arr);
-//        routeDao.getConn().closeCurrentSession();
-//        return route;
-//    }
-//
-//
-//
-//    public void persist(Route route) {
-//        routeDao.getConn().openCurrentSessionwithTransaction();
-//        routeDao.persist(route);
-//        routeDao.getConn().closeCurrentSessionwithTransaction();
-//    }
-//
-//    public void update(Route route) {
-//        routeDao.getConn().openCurrentSessionwithTransaction();
-//        routeDao.update(route);
-//        routeDao.getConn().closeCurrentSessionwithTransaction();
-//    }
-//
-//    public void delete(Route route) {
-//        routeDao.getConn().openCurrentSessionwithTransaction();
-//        routeDao.delete(route);
-//        routeDao.getConn().closeCurrentSessionwithTransaction();
-//    }
-//    public void deleteAll() {
-//        routeDao.getConn().openCurrentSessionwithTransaction();
-//        routeDao.deleteAll();
-//        routeDao.getConn().closeCurrentSessionwithTransaction();
-//    }
+    public List<Route> findAll() {
+        routeDao.getConn().openCurrentSession();
+        List<Route> routes = routeDao.findAll();
+        routeDao.getConn().closeCurrentSession();
+        return routes;
+    }
+
+    public void persist(Route route) {
+        routeDao.getConn().openCurrentSessionwithTransaction();
+        routeDao.persist(route);
+        routeDao.getConn().closeCurrentSessionwithTransaction();
+    }
+
+    public void update(Route route) {
+        routeDao.getConn().openCurrentSessionwithTransaction();
+        routeDao.update(route);
+        routeDao.getConn().closeCurrentSessionwithTransaction();
+    }
+
+    public void delete(Route route) {
+        routeDao.getConn().openCurrentSessionwithTransaction();
+        routeDao.delete(route);
+        routeDao.getConn().closeCurrentSessionwithTransaction();
+    }
+    public void deleteAll() {
+        routeDao.getConn().openCurrentSessionwithTransaction();
+        routeDao.deleteAll();
+        routeDao.getConn().closeCurrentSessionwithTransaction();
+    }
 }

@@ -34,7 +34,6 @@ public class PassengerDao implements PassengerDaoInterface {
         String hql = "from Passenger a where a.id = :id";
         Query query = conn.getCurrentSession().createQuery(hql);
         query.setParameter("id",id);
-        //query.setCacheable(true);
         List<Passenger> passengers = query.list();
         return passengers;
     }
@@ -44,7 +43,6 @@ public class PassengerDao implements PassengerDaoInterface {
         String hql = "from Passenger a where a.name = :name";
         Query query = conn.getCurrentSession().createQuery(hql);
         query.setParameter("name",name);
-        //query.setCacheable(true);
         List<Passenger> passengers = query.list();
         return passengers;
     }
@@ -54,7 +52,6 @@ public class PassengerDao implements PassengerDaoInterface {
         String hql = "from Passenger a where a.surname = :surname";
         Query query = conn.getCurrentSession().createQuery(hql);
         query.setParameter("surname",surname);
-        //query.setCacheable(true);
         List<Passenger> passengers = query.list();
         return passengers;
     }
