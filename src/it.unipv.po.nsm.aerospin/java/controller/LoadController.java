@@ -20,13 +20,8 @@ public class LoadController implements Initializable, IControlledScreen {
 
     ScreensController myController;
     CachedFlights searchResult = CachedFlights.getInstance();
-//    MainController mainController = new MainController();
-    Timer timer = new Timer();
 
     @FXML private Label loading;
-
-    public LoadController() throws IOException {
-    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

@@ -58,7 +58,7 @@ public class Factory {
         mainContainer.loadScreen(search, screen2File);
         mainContainer.loadScreen(result, screen3File);
         mainContainer.loadScreen(login, screen4File);
-        // mainContainer.loadScreen(account, screen5File);
+        mainContainer.loadScreen(account, screen5File);
         mainContainer.loadScreen(manage, screen6File);
         mainContainer.loadScreen(employee, screen7File);
         mainContainer.loadScreen(aircraft, screen9File);

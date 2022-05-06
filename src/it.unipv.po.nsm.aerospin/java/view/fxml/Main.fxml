@@ -19,19 +19,7 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </JFXButton>
-            <JFXButton fx:id="login" disable="true" onAction="#goToLogin" prefHeight="45.0" prefWidth="120.0" text="ACCEDI" textAlignment="CENTER" textFill="#f8dd94">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </JFXButton>
-            <JFXButton fx:id="account" layoutX="20.0" layoutY="130.0" onAction="#goToAccount" prefHeight="45.0" prefWidth="120.0" text="PROFILO" textAlignment="CENTER" textFill="#f8dd94"
-                       visible="false">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </JFXButton>
-            <JFXButton fx:id="manage" layoutX="20.0" layoutY="185.0" onAction="#goToManage" prefHeight="45.0" prefWidth="120.0" text="GESTIONE" textAlignment="CENTER" textFill="#f8dd94"
-                       visible="false">
+            <JFXButton fx:id="login" disable="true" onAction="#goToLogin" prefHeight="45.0" prefWidth="120.0" text="ACCOUNT" textAlignment="CENTER" textFill="#f8dd94">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -43,8 +31,7 @@
       </VBox>
       <HBox layoutY="500.0" prefHeight="65.0" prefWidth="140.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
          <children>
-            <JFXButton fx:id="logout" onAction="#logout" prefHeight="45.0" prefWidth="120.0" text="LOGOUT" textAlignment="CENTER" textFill="#f8dd94"
-                       visible="false">
+            <JFXButton fx:id="logout" onAction="#logout" prefHeight="45.0" prefWidth="120.0" text="LOGOUT" textAlignment="CENTER" textFill="#f8dd94">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>

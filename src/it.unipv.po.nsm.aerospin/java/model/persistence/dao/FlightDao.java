@@ -45,19 +45,19 @@ public class FlightDao implements FlightDaoInterface {
 
 
 
-    @Override
-    public List<Flight> findFlightsByDate(String dep, String arr, String scheduledDate) {
-
-        Date date =Date.valueOf(scheduledDate);
-        RouteService routeService = new RouteService();
-        Route route = routeService.findBydepArr(dep,arr);
-        String hql = "from Flight a where a.scheduledDate = :date and a.flightRouteId = :routeId";
-        Query query = conn.getCurrentSession().createQuery(hql);
-        query.setParameter("date",date);
-        query.setParameter("routeId",route.getRouteId());
-        List<Flight> flights = query.list();
-        return flights;
-    }
+//    @Override
+//    public List<Flight> findFlightsByDate(String dep, String arr, String scheduledDate) {
+//
+//        Date date =Date.valueOf(scheduledDate);
+//        RouteService routeService = new RouteService();
+//        Route route = routeService.findBydepArr(dep,arr);
+//        String hql = "from Flight a where a.scheduledDate = :date and a.flightRouteId = :routeId";
+//        Query query = conn.getCurrentSession().createQuery(hql);
+//        query.setParameter("date",date);
+//        query.setParameter("routeId",route.getRouteId());
+//        List<Flight> flights = query.list();
+//        return flights;
+//    }
 
     @Override
     public void persist(Flight entity) {

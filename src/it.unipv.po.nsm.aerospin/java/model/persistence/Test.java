@@ -91,13 +91,13 @@ public class Test {
 //        System.out.println(routeService.checkRoute("LICA","GMMN"));
 
 
-        RouteService routeService = new RouteService();
-        List<Route> routes = routeService.findAll();
-        System.out.println("sheeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeesh");
-        List<Route> routes1 = routeService.findAll();
-        for (Route route : routes1) {
-            System.out.println(route.getRouteId());
-        }
+//        RouteService routeService = new RouteService();
+//        List<Route> routes = routeService.findAll();
+//        System.out.println("sheeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeesh");
+//        List<Route> routes1 = routeService.findAll();
+//        for (Route route : routes1) {
+//            System.out.println(route.getRouteId());
+//        }
 
 
         System.exit(0);

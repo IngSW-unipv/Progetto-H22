@@ -32,12 +32,12 @@ public class FlightService {
 
 
 
-    public List<Flight> findFlightsByDate(String dep, String arr, String scheduledDate){
-        flightDao.getConn().openCurrentSession();
-        List<Flight> flights = flightDao.findFlightsByDate(dep,arr,scheduledDate);
-        flightDao.getConn().closeCurrentSession();
-        return flights;
-    }
+//    public List<Flight> findFlightsByDate(String dep, String arr, String scheduledDate){
+//        flightDao.getConn().openCurrentSession();
+//        List<Flight> flights = flightDao.findFlightsByDate(dep,arr,scheduledDate);
+//        flightDao.getConn().closeCurrentSession();
+//        return flights;
+//    }
 
     public void persist(Flight flight) {
         flightDao.getConn().openCurrentSessionwithTransaction();

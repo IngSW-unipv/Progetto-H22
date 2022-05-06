@@ -8,17 +8,12 @@ import java.util.List;
 public class Session {
 
     private User user;
-    private boolean logged = false;
+    private boolean logged;
     private List<String> info = new ArrayList<>();
     private boolean oneway = true;
 
     public Session () {
         logged = false;
-    }
-
-    public Session(User user) {
-        this.user = user;
-        logged = true;
     }
 
     public User getUser() {

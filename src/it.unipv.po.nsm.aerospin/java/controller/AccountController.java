@@ -12,10 +12,7 @@ import java.util.ResourceBundle;
 public class AccountController implements Initializable, IControlledScreen {
 
 
-    private Factory factory = Factory.getInstance();
 
-    @FXML
-    private ListView lvMain;
 
 
     ScreensController myController;
