@@ -47,7 +47,6 @@ public class LoadController implements Initializable, IControlledScreen {
         task.setOnSucceeded(e -> {
             try {
                 myContainer.setScreen(Factory.getHome());
-                //mostra/nascondi bottoni
             } catch (IOException ex) {
                 ex.printStackTrace();
             }

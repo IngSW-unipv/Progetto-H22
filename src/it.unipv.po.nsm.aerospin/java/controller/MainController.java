@@ -1,15 +1,15 @@
 package controller;
 
 import com.jfoenix.controls.JFXButton;
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
 import javafx.scene.SubScene;
-import model.util.Session;
 import model.Factory;
+import model.util.Session;
 import view.ScreenContainer;
 
 import java.io.IOException;
@@ -29,7 +29,6 @@ public class MainController implements Initializable {
     @FXML private JFXButton login;
     @FXML private JFXButton logout;
 
-    BooleanProperty isLogged = new SimpleBooleanProperty(session.isLogged());
 
     public MainController() throws IOException {
     }
@@ -40,13 +39,8 @@ public class MainController implements Initializable {
         root.getChildren().addAll(myContainer);
         subscene.setRoot(root);
 
-        //solve
-        logout.visibleProperty().bind(isLogged);
-
-        //after load
-        home.setDisable(false);
-        search.setDisable(false);
-        login.setDisable(false);
+        logout.visibleProperty().bind(session.loggedProperty());
+        myContainer.getScreen().addListener(listener);
     }
 
     @FXML
@@ -57,7 +51,6 @@ public class MainController implements Initializable {
     @FXML
     private void goToSearch(ActionEvent event) throws IOException {
         myContainer.setScreen(Factory.getSearch());
-//        session.setLogged(true);
     }
 
     @FXML
@@ -74,6 +67,19 @@ public class MainController implements Initializable {
         //cambia stato come non loggato
         factory.getSession().setLogged(false);
         myContainer.setScreen(Factory.getHome());
-
     }
+
+    ChangeListener listener = new ChangeListener() {
+
+        @Override
+        public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+            if (newValue.equals("home")) {
+                home.setDisable(false);
+                search.setDisable(false);
+                login.setDisable(false);
+                myContainer.getScreen().removeListener(listener);
+            }
+        }
+    };
+
 }

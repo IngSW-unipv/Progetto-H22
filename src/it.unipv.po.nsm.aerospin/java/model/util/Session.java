@@ -1,5 +1,7 @@
 package model.util;
 
+import javafx.beans.binding.BooleanBinding;
+import javafx.beans.property.SimpleBooleanProperty;
 import model.persistence.entity.User;
 
 import java.util.ArrayList;
@@ -8,12 +10,20 @@ import java.util.List;
 public class Session {
 
     private User user;
-    private boolean logged;
+    private SimpleBooleanProperty logged = new SimpleBooleanProperty();
     private List<String> info = new ArrayList<>();
     private boolean oneway = true;
 
+
+
     public Session () {
-        logged = false;
+        logged.set(false);
+
+        logged.addListener((observable, oldValue, newValue) -> {
+            // Only if completed
+            if (newValue && oldValue)
+                logged.set(newValue);
+        });
     }
 
     public User getUser() {
@@ -25,11 +35,15 @@ public class Session {
     }
 
     public boolean isLogged() {
-        return logged;
+        return logged.get();
     }
 
     public void setLogged(boolean logged) {
-        this.logged = logged;
+        this.logged.set(logged);
+    }
+
+    public SimpleBooleanProperty loggedProperty() {
+        return logged;
     }
 
     public List<String> getInfo() {

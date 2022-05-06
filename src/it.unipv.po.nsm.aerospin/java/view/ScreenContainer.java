@@ -6,6 +6,8 @@ import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
@@ -18,25 +20,22 @@ public class ScreenContainer extends StackPane {
 
     //Contiene gli screen da mostrare
     private HashMap<String, String> screens = new HashMap<>();
+    private SimpleStringProperty actualScreen = new SimpleStringProperty();
 
     //Aggiunge lo screen allo Stack
     public void addScreen(String name, String path) {
         screens.put(name, path);
     }
 
-    //Ritorna il path con il determinato nome
-    public String getScreen(String name) {
-        return screens.get(name);
+    //Ritorna il nome dello Screen attuale
+    public StringProperty getScreen() {
+        return actualScreen;
     }
 
     //Carica il file fxml, aggiunge lo screen alla collection e
     //infine recupero il controller.
     public boolean loadScreen(String name, String resource) {
         try {
-//            FXMLLoader myLoader = new FXMLLoader(getClass().getResource(resource));
-//            Parent loadScreen = (Parent) myLoader.load();
-//            IControlledScreen myScreenController = ((IControlledScreen) myLoader.getController());
-//            myScreenController.setScreenParent(this);
             addScreen(name, resource);
             return true;
         } catch (Exception e) {
@@ -53,6 +52,7 @@ public class ScreenContainer extends StackPane {
 
         if (screens.get(name) != null) {   //screen caricato
 
+            actualScreen.set(name);
             FXMLLoader myLoader = new FXMLLoader(getClass().getResource(screens.get(name)));
             Parent loadScreen = (Parent) myLoader.load();
             IControlledScreen myScreenController = ((IControlledScreen) myLoader.getController());
