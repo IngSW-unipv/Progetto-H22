@@ -15,6 +15,7 @@ public class ResultManager {
     private List<Flight> flights = new ArrayList<>();
     private FlightService flightService = new FlightService();
     private Flight flight = new Flight();
+    private String date;
 
     public List<Flight> getFlights(){
         flights = flightService.findAll();
@@ -22,12 +23,19 @@ public class ResultManager {
     }
 
     public List<Flight> getFlightsByDepArr(String dep, String arr, String scheduledDate) {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        Date date = Date.valueOf(scheduledDate);
         List<Flight> flights = flightService.findAll();
-        return flights.stream().filter(f -> f.getRouteByFlightRouteId().getAirportByDeparture().getAirportName().equals(dep) &&
-                f.getRouteByFlightRouteId().getAirportByArrival().getAirportName().equals(arr)).collect(Collectors.toList());
+        List<Flight> results = new ArrayList<>();
+        for (Flight f : flights) {
+            date = f.getScheduledDate().toString().substring(0,10);
+            if (f.getRouteByFlightRouteId().getAirportByDeparture().getAirportName().equals(dep)
+                    && f.getRouteByFlightRouteId().getAirportByArrival().getAirportName().equals(arr) &&
+                    date.equals(scheduledDate)) {
+                results.add(f);
+            }
 
+        }
+
+        return results;
     }
 
 }

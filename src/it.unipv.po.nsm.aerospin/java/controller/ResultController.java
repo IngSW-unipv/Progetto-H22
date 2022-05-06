@@ -131,10 +131,10 @@ public class ResultController implements Initializable, IControlledScreen {
         cover.visibleProperty().bind(enableBuy());
 
         //THREADDD
-        list1 = FXCollections.observableArrayList(resultManager.getFlightsByDepArr(dep, ret, dateDep));
+        list1 = FXCollections.observableArrayList(resultManager.getFlightsByDepArr(ret, dep, dateDep));
         table1.setItems(list1);
         if(!(session.isOneway())) {
-            list2 = FXCollections.observableArrayList(resultManager.getFlightsByDepArr(ret, dep,dateRet));
+            list2 = FXCollections.observableArrayList(resultManager.getFlightsByDepArr(dep, ret,dateRet));
             table2.setItems(list2);
         }
         //THREADDD
