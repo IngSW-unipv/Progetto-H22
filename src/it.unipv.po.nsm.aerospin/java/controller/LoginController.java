@@ -9,7 +9,6 @@ import javafx.scene.control.TextField;
 import model.persistence.CachedFlights;
 import model.persistence.entity.User;
 import model.persistence.service.UserService;
-import model.util.ControllerMethods;
 import model.util.exception.NoMatchException;
 import model.util.Session;
 import model.Factory;
@@ -27,7 +26,6 @@ public class LoginController implements Initializable, IControlledScreen {
     ScreenContainer myContainer;
     Session session = factory.getSession();
     CachedFlights searchResult = CachedFlights.getInstance();
-    ControllerMethods methods = new ControllerMethods();
     UserService userService = new UserService();
 
     @FXML private TextField email;

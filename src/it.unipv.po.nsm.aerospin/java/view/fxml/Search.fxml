@@ -12,7 +12,7 @@
          <toggleGroup>
             <ToggleGroup fx:id="group" />
          </toggleGroup></JFXRadioButton>
-      <JFXRadioButton fx:id="ar" layoutX="634.0" layoutY="170.0" mnemonicParsing="false" text="Andata e Ritorno" toggleGroup="$group" />
+      <JFXRadioButton fx:id="ar" disable="true" layoutX="634.0" layoutY="170.0" mnemonicParsing="false" text="Andata e Ritorno" toggleGroup="$group" />
         <DatePicker fx:id="date1" layoutX="430.0" layoutY="261.0" onAction="#returnDate" promptText="Scegli la data" />
         <DatePicker fx:id="date2" layoutX="634.0" layoutY="261.0" promptText="Scegli la data" />
       <JFXButton layoutX="305.0" layoutY="418.0" onAction="#goToResult" prefHeight="65.0" prefWidth="250.0" text="CERCA" />
@@ -21,6 +21,6 @@
         <Label layoutX="430.0" layoutY="238.0" text="Partenza" />
         <Label layoutX="634.0" layoutY="238.0" text="Ritorno" />
       <Separator layoutX="397.0" layoutY="120.0" orientation="VERTICAL" prefHeight="200.0" AnchorPane.rightAnchor="457.0" />
-      <Label fx:id="errLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="479.0" layoutY="199.0" prefHeight="17.0" prefWidth="250.0" textFill="RED" />
+      <Label fx:id="errLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="479.0" layoutY="199.0" prefHeight="17.0" prefWidth="250.0" text="Andata e Ritorno NON DISPONIBILE" textFill="RED" visible="false" />
     </children>
 </AnchorPane>

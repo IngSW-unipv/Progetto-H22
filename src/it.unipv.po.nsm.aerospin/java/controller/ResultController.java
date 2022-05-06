@@ -13,14 +13,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.SubScene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import model.Factory;
 import model.booking.payment.AeroPay;
 import model.booking.payment.PaymentStrategy;
-import model.util.manager.ResultManager;
-import model.persistence.CachedFlights;
 import model.persistence.entity.Flight;
-import model.util.ControllerMethods;
 import model.util.Session;
-import model.Factory;
+import model.util.manager.ResultManager;
 import view.ScreenContainer;
 
 import java.io.IOException;
@@ -30,11 +28,10 @@ import java.util.ResourceBundle;
 
 public class ResultController implements Initializable, IControlledScreen {
 
-    Factory factory = Factory.getInstance();
+
     ScreenContainer myContainer;
-    Session session = factory.getSession();
-    CachedFlights searchResult = CachedFlights.getInstance();
-    ControllerMethods methods = new ControllerMethods();
+    Session session = Factory.getInstance().getSession();
+    ResultManager methods = new ResultManager();
 
 
     //controllare

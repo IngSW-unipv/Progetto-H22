@@ -1,31 +1,25 @@
 package controller;
 
-import javafx.collections.FXCollections;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import model.persistence.CachedFlights;
-import model.persistence.entity.Flight;
-import model.util.ControllerMethods;
-import model.util.Session;
 import model.Factory;
+import model.util.Session;
+import model.util.manager.SearchManager;
 import view.ScreenContainer;
 
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
-import java.util.stream.Collectors;
 
 public class SearchController implements Initializable, IControlledScreen {
 
     ScreenContainer myContainer;
     Session session = Factory.getInstance().getSession();
-    CachedFlights searchResult = CachedFlights.getInstance();
-    ControllerMethods methods = new ControllerMethods();
+    SearchManager methods = new SearchManager();
 
     @FXML private ComboBox<String> cbDep;
     @FXML private ComboBox<String> cbRet;
@@ -38,24 +32,18 @@ public class SearchController implements Initializable, IControlledScreen {
 
     @FXML private Label errLabel;
 
-    List<Flight> results = searchResult.findAll();
-    List<String> listDepart = new ArrayList<>();
-    List<String> listReturn = new ArrayList<>();
+    private SimpleBooleanProperty error = new SimpleBooleanProperty(false);
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // Se seleziono Solo Andata non posso inserire Data Ritorno
-        ar.setDisable(true);
-        date2.disableProperty().bind(oneway.selectedProperty().or(date1.valueProperty().isNull()));
         date1.setDayCellFactory(methods.bookingRange(LocalDate.now()));
-        Thread t1 = new Thread(()->{
-            listDepart = results.stream()
-                                .map(o->o.getRouteByFlightRouteId().getAirportByDeparture().getAirportName()).sorted()
-                                .distinct().collect(Collectors.toList());
-            cbDep.setItems(FXCollections.observableArrayList(listDepart));
-            methods.selectOptionOnKey(cbDep, listDepart);
-        });
-        t1.start();
+        date2.disableProperty().bind(oneway.selectedProperty().or(date1.valueProperty().isNull()));
+
+        cbDep.setItems(methods.getDepartures());
+//            methods.selectOptionOnKey(cbDep, listDepart);
+        errLabel.visibleProperty().bind(error);
+
     }
 
     public void setScreenParent(ScreenContainer screenParent) {
@@ -64,35 +52,24 @@ public class SearchController implements Initializable, IControlledScreen {
 
     @FXML
     private void findArrivals (ActionEvent event){
-        Thread t2 = new Thread(()->{
             //controlla che venga resettato la combobox
-            cbRet.getSelectionModel().clearSelection();
-            cbRet.autosize();
+        cbRet.getSelectionModel().clearSelection();
+//        cbRet.autosize();
+        error.set(false);
+        cbRet.setItems(methods.getArrivals(cbDep.getValue()));
+//            methods.selectOptionOnKey(cbRet, listReturn);
 
-            //OVERRIDE EQUALS AIRPORT TO STRING !!FATTO!!
-            listReturn = results.stream()
-                        .filter(o -> o.getRouteByFlightRouteId().getAirportByDeparture().equalsString(cbDep.getValue()))
-                        .map(o->o.getRouteByFlightRouteId().getAirportByArrival().getAirportName()).sorted()
-                        .distinct().collect(Collectors.toList());
-            cbRet.setItems(FXCollections.observableArrayList(listReturn));
-            methods.selectOptionOnKey(cbRet, listReturn);
-
-//            Platform.runLater(()->{
-//                cbRet.setItems(FXCollections.observableArrayList(listReturn));
-//                methods.selectOptionOnKey(cbRet, listReturn);
-//            });
-        });
-        t2.start();
+        //resetta radiobutton ar oneway
     }
 
     @FXML
     private void checkRoute(ActionEvent event){
-        errLabel.setText("");
         if (methods.checkRoute(cbRet.getValue(), cbDep.getValue())){
             ar.setDisable(false);
+//            error.set(false);
         } else {
             ar.setDisable(true);
-            errLabel.setText("Andata e Ritorno NON DISPONIBILE");
+            error.set(true);
         }
     }
 

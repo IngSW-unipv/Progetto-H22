@@ -7,14 +7,15 @@ ToDO:
 	-Docs
 	-Rivedere managers (cercare pattern)
 	-Creare package Exceptions //Done
+	-cbbox con imput tastiera
 
 
 
 ToRemove:
-	-Rimuovere persistence inutili
 	-Ripulire package resources
-	-Ripulire i servizi
 
+	-Rimuovere persistence inutili //Done
+	-Ripulire i servizi //Done
 	-Controllers //Done
 	-package Flight //Done
 	-Rimuovere package Person //Done
