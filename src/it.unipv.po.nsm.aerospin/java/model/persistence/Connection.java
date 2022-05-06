@@ -6,7 +6,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
-import util.ConnectionDBException;
+import model.util.exception.NetworkException;
 
 public class Connection {
     private Session currentSession;
@@ -33,7 +33,7 @@ public class Connection {
         currentSession.close();
     }
 
-    private static SessionFactory getSessionFactory() throws ConnectionDBException {
+    private static SessionFactory getSessionFactory() throws NetworkException {
 
         SessionFactory sessionFactory = null;
         try {
@@ -43,7 +43,7 @@ public class Connection {
             return sessionFactory;
         } catch (HibernateException e) {
             System.out.println(e.getLocalizedMessage());
-            throw new ConnectionDBException(e.getLocalizedMessage());
+            throw new NetworkException(e.getLocalizedMessage());
         }
     }
 

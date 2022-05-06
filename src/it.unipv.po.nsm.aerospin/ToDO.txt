@@ -6,7 +6,7 @@ ToDO:
 	-Richiesta Assistenza
 	-Docs
 	-Rivedere managers (cercare pattern)
-	-Creare package Exceptions
+	-Creare package Exceptions //Done
 
 
 

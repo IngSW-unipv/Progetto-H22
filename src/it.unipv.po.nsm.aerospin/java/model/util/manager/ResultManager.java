@@ -1,4 +1,4 @@
-package model.manager;
+package model.util.manager;
 
 import model.persistence.entity.Flight;
 import model.persistence.service.FlightService;

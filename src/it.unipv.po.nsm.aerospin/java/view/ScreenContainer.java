@@ -9,13 +9,12 @@ import javafx.beans.property.DoubleProperty;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
 import controller.IControlledScreen;
 
-public class ScreensController  extends StackPane {
+public class ScreenContainer extends StackPane {
 
     //Contiene gli screen da mostrare
     private HashMap<String, String> screens = new HashMap<>();

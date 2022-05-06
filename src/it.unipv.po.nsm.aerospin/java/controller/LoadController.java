@@ -4,21 +4,19 @@ import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import model.persistence.CachedFlights;
-import util.ConnectionDBException;
-import view.Factory;
-import view.ScreensController;
+import model.util.exception.NetworkException;
+import model.Factory;
+import view.ScreenContainer;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.Timer;
 import java.util.concurrent.TimeUnit;
 
 public class LoadController implements Initializable, IControlledScreen {
 
-    ScreensController myController;
+    ScreenContainer myContainer;
     CachedFlights searchResult = CachedFlights.getInstance();
 
     @FXML private Label loading;
@@ -29,13 +27,13 @@ public class LoadController implements Initializable, IControlledScreen {
         Task<Void> task = new Task<Void>() {
 
             @Override
-            public Void call() throws InterruptedException, ConnectionDBException {
+            public Void call() throws InterruptedException, NetworkException {
                 try {
 
                     updateMessage("Loading flights...");
                     searchResult.findAll();
 
-                } catch (ConnectionDBException e) {
+                } catch (NetworkException e) {
                     loading.setStyle("-fx-text-fill: #d70000");
                     updateMessage("Errore nel Caricamento");
                     TimeUnit.SECONDS.sleep(5);
@@ -48,7 +46,7 @@ public class LoadController implements Initializable, IControlledScreen {
 
         task.setOnSucceeded(e -> {
             try {
-                myController.setScreen(Factory.getHome());
+                myContainer.setScreen(Factory.getHome());
                 //mostra/nascondi bottoni
             } catch (IOException ex) {
                 ex.printStackTrace();
@@ -64,7 +62,7 @@ public class LoadController implements Initializable, IControlledScreen {
     }
 
     @Override
-    public void setScreenParent(ScreensController screenParent) {
-        myController = screenParent;
+    public void setScreenParent(ScreenContainer screenParent) {
+        myContainer = screenParent;
     }
 }

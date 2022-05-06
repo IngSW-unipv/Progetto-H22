@@ -7,10 +7,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import model.persistence.CachedFlights;
 import model.persistence.entity.Flight;
-import util.ControllerMethods;
-import util.Session;
-import view.Factory;
-import view.ScreensController;
+import model.util.ControllerMethods;
+import model.util.Session;
+import model.Factory;
+import view.ScreenContainer;
 
 import java.io.IOException;
 import java.net.URL;
@@ -22,10 +22,8 @@ import java.util.stream.Collectors;
 
 public class SearchController implements Initializable, IControlledScreen {
 
-
-    Factory factory = Factory.getInstance();
-    ScreensController myController;
-    Session session = factory.getSession();
+    ScreenContainer myContainer;
+    Session session = Factory.getInstance().getSession();
     CachedFlights searchResult = CachedFlights.getInstance();
     ControllerMethods methods = new ControllerMethods();
 
@@ -60,8 +58,8 @@ public class SearchController implements Initializable, IControlledScreen {
         t1.start();
     }
 
-    public void setScreenParent(ScreensController screenParent) {
-        myController = screenParent;
+    public void setScreenParent(ScreenContainer screenParent) {
+        myContainer = screenParent;
     }
 
     @FXML
@@ -115,7 +113,7 @@ public class SearchController implements Initializable, IControlledScreen {
             if (!(session.isOneway())) {
                 session.addInfo(date2.getValue().toString());
             }
-            myController.setScreen(Factory.getResult());
+            myContainer.setScreen(Factory.getResult());
         }
     }
 

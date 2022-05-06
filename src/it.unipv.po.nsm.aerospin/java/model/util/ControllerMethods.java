@@ -1,4 +1,4 @@
-package util;
+package model.util;
 
 import javafx.scene.control.*;
 import javafx.scene.control.skin.ComboBoxListViewSkin;

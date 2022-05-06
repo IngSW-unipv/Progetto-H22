@@ -9,11 +9,11 @@ import javafx.scene.control.TextField;
 import model.persistence.CachedFlights;
 import model.persistence.entity.User;
 import model.persistence.service.UserService;
-import util.ControllerMethods;
-import util.NoMatchException;
-import util.Session;
-import view.Factory;
-import view.ScreensController;
+import model.util.ControllerMethods;
+import model.util.exception.NoMatchException;
+import model.util.Session;
+import model.Factory;
+import view.ScreenContainer;
 
 import java.io.IOException;
 import java.net.URL;
@@ -24,7 +24,7 @@ import java.util.regex.Pattern;
 public class LoginController implements Initializable, IControlledScreen {
 
     Factory factory = Factory.getInstance();
-    ScreensController myController;
+    ScreenContainer myContainer;
     Session session = factory.getSession();
     CachedFlights searchResult = CachedFlights.getInstance();
     ControllerMethods methods = new ControllerMethods();
@@ -50,8 +50,8 @@ public class LoginController implements Initializable, IControlledScreen {
 
     }
 
-    public void setScreenParent(ScreensController screenParent){
-        myController = screenParent;
+    public void setScreenParent(ScreenContainer screenParent){
+        myContainer = screenParent;
     }
 
     @FXML
@@ -66,9 +66,9 @@ public class LoginController implements Initializable, IControlledScreen {
             if (isRegistered()) {
                 //CONTROLLO SE ADMIN O USER
                 if(session.getUser().isAdmin()){
-                    myController.setScreen(Factory.getManage());
+//                    myContainer.setScreen(Factory.getManage());
                 } else {
-                    myController.setScreen(Factory.getAccount());
+                    myContainer.setScreen(Factory.getAccount());
                 }
             }
         }
@@ -90,7 +90,7 @@ public class LoginController implements Initializable, IControlledScreen {
                 userService.persist(newUser);
 
                 session.setUser(newUser);
-                myController.setScreen(Factory.getAccount());
+                myContainer.setScreen(Factory.getAccount());
             } else {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Invalid Input");

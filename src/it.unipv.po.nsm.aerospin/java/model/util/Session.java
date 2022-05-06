@@ -1,4 +1,4 @@
-package util;
+package model.util;
 
 import model.persistence.entity.User;
 
@@ -47,4 +47,5 @@ public class Session {
     public void setOneway(boolean oneway) {
         this.oneway = oneway;
     }
+
 }

@@ -1,6 +1,7 @@
-package view;
+package model;
 
-import util.Session;
+import model.util.Session;
+import view.ScreenContainer;
 
 import java.io.IOException;
 
@@ -39,31 +40,17 @@ public class Factory {
     private static String screen4File = "fxml/Login.fxml";
     private static String account = "account";
     private static String screen5File = "fxml/Account.fxml";
-    private static String manage = "manage";
-    private static String screen6File = "fxml/Manage.fxml";
-    private static String employee = "employee";
-    private static String screen7File = "fxml/Employee.fxml";
-    private static String aircraft = "aircraft";
-    private static String screen9File = "fxml/Aircraft.fxml";
-    private static String route = "route";
-    private static String screen10File = "fxml/Route.fxml";
-    private static String flight = "flight";
-    private static String screen11File = "fxml/Flight.fxml";
 
-    public ScreensController createContainer() throws IOException {
 
-        ScreensController mainContainer = new ScreensController();
+    public ScreenContainer createContainer() throws IOException {
+
+        ScreenContainer mainContainer = new ScreenContainer();
         mainContainer.loadScreen(load, screen0File);
         mainContainer.loadScreen(home, screen1File);
         mainContainer.loadScreen(search, screen2File);
         mainContainer.loadScreen(result, screen3File);
         mainContainer.loadScreen(login, screen4File);
         mainContainer.loadScreen(account, screen5File);
-        mainContainer.loadScreen(manage, screen6File);
-        mainContainer.loadScreen(employee, screen7File);
-        mainContainer.loadScreen(aircraft, screen9File);
-        mainContainer.loadScreen(route, screen10File);
-        mainContainer.loadScreen(flight, screen11File);
         mainContainer.setScreen(load);
 
         return mainContainer;
@@ -87,26 +74,6 @@ public class Factory {
 
     public static String getAccount() {
         return account;
-    }
-
-    public static String getManage() {
-        return manage;
-    }
-
-    public static String getEmployee() {
-        return employee;
-    }
-
-    public static String getAircraft() {
-        return aircraft;
-    }
-
-    public static String getRoute() {
-        return route;
-    }
-
-    public static String getFlight() {
-        return flight;
     }
 
 }

@@ -15,13 +15,13 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.booking.payment.AeroPay;
 import model.booking.payment.PaymentStrategy;
-import model.manager.ResultManager;
+import model.util.manager.ResultManager;
 import model.persistence.CachedFlights;
 import model.persistence.entity.Flight;
-import util.ControllerMethods;
-import util.Session;
-import view.Factory;
-import view.ScreensController;
+import model.util.ControllerMethods;
+import model.util.Session;
+import model.Factory;
+import view.ScreenContainer;
 
 import java.io.IOException;
 import java.net.URL;
@@ -31,7 +31,7 @@ import java.util.ResourceBundle;
 public class ResultController implements Initializable, IControlledScreen {
 
     Factory factory = Factory.getInstance();
-    ScreensController myController;
+    ScreenContainer myContainer;
     Session session = factory.getSession();
     CachedFlights searchResult = CachedFlights.getInstance();
     ControllerMethods methods = new ControllerMethods();
@@ -146,7 +146,7 @@ public class ResultController implements Initializable, IControlledScreen {
 //        private void logAccount(ActionEvent event) throws IOException {
 //            if(checkExpression(textField.getText())) {
 //                if(isRegistered(textField.getText())){
-//                    myController.setScreen(factory.getManage());
+//                    myContainer.setScreen(factory.getManage());
 //                }
 //
 //            }
@@ -182,8 +182,8 @@ public class ResultController implements Initializable, IControlledScreen {
         return filled;
     }
 
-    public void setScreenParent(ScreensController screenParent){
-        myController = screenParent;
+    public void setScreenParent(ScreenContainer screenParent){
+        myContainer = screenParent;
     }
 
     @FXML
@@ -211,7 +211,7 @@ public class ResultController implements Initializable, IControlledScreen {
             alert.setHeaderText(null);
             alert.setContentText("Utente non loggato!\nPrima di poter procedere effettuare il Login\nSe non si è registrato, procedere alla Registrazione");
             alert.showAndWait();
-//            myController.setScreen(Factory.getLogin());
+//            myContainer.setScreen(Factory.getLogin());
         }
     }
 
@@ -233,7 +233,7 @@ public class ResultController implements Initializable, IControlledScreen {
         //paymentStrategy.pay();
 
 
-        myController.setScreen(Factory.getHome());
+        myContainer.setScreen(Factory.getHome());
 
 
     }
