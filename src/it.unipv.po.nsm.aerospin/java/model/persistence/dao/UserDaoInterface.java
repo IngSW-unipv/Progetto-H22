@@ -1,6 +1,5 @@
 package model.persistence.dao;
 
-import model.persistence.entity.Crew;
 import model.persistence.entity.User;
 
 import java.util.List;
