@@ -13,9 +13,7 @@ public class Flight {
     @Basic
     @Column(name = "flightNumber", nullable = true, length = 100)
     private String flightNumber;
-    @Basic
-    @Column(name = "tailNumber", nullable = true, length = 100,insertable = false, updatable = false)
-    private String tailNumber;
+
     @Basic
     @Column(name = "flightRouteId", nullable = true, insertable = false, updatable = false)
     private Integer flightRouteId;
@@ -31,9 +29,7 @@ public class Flight {
     @Basic
     @Column(name = "price", nullable = false, precision = 0)
     private double price;
-    @ManyToOne
-    @JoinColumn(name = "tailNumber", referencedColumnName = "tailNumber", insertable = false, updatable = false)
-    private Aircraft aircraftByTailNumber;
+
     @ManyToOne
     @JoinColumn(name = "flightRouteId", referencedColumnName = "routeId")
     private Route routeByFlightRouteId;
@@ -54,13 +50,7 @@ public class Flight {
         this.flightNumber = flightNumber;
     }
 
-    public String getTailNumber() {
-        return tailNumber;
-    }
 
-    public void setTailNumber(String tailNumber) {
-        this.tailNumber = tailNumber;
-    }
 
     public Integer getFlightRouteId() {
         return flightRouteId;
@@ -114,7 +104,6 @@ public class Flight {
         if (Double.compare(flight.price, price) != 0) return false;
         if (flightNumber != null ? !flightNumber.equals(flight.flightNumber) : flight.flightNumber != null)
             return false;
-        if (tailNumber != null ? !tailNumber.equals(flight.tailNumber) : flight.tailNumber != null) return false;
         if (flightRouteId != null ? !flightRouteId.equals(flight.flightRouteId) : flight.flightRouteId != null)
             return false;
         if (scheduledDate != null ? !scheduledDate.equals(flight.scheduledDate) : flight.scheduledDate != null)
@@ -132,7 +121,6 @@ public class Flight {
         long temp;
         result = id;
         result = 31 * result + (flightNumber != null ? flightNumber.hashCode() : 0);
-        result = 31 * result + (tailNumber != null ? tailNumber.hashCode() : 0);
         result = 31 * result + (flightRouteId != null ? flightRouteId.hashCode() : 0);
         result = 31 * result + (scheduledDate != null ? scheduledDate.hashCode() : 0);
         result = 31 * result + (scheduledTime != null ? scheduledTime.hashCode() : 0);
@@ -142,13 +130,6 @@ public class Flight {
         return result;
     }
 
-    public Aircraft getAircraftByTailNumber() {
-        return aircraftByTailNumber;
-    }
-
-    public void setAircraftByTailNumber(Aircraft aircraftByTailNumber) {
-        this.aircraftByTailNumber = aircraftByTailNumber;
-    }
 
     public Route getRouteByFlightRouteId() {
         return routeByFlightRouteId;
