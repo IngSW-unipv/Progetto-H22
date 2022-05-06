@@ -29,9 +29,7 @@ public class MainController implements Initializable {
     @FXML private JFXButton login;
     @FXML private JFXButton logout;
 
-
-    public MainController() throws IOException {
-    }
+    public MainController() throws IOException {}
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -69,11 +67,11 @@ public class MainController implements Initializable {
         myContainer.setScreen(Factory.getHome());
     }
 
-    ChangeListener listener = new ChangeListener() {
-
+    //commentare
+    ChangeListener<String> listener = new ChangeListener<String>() {
         @Override
-        public void changed(ObservableValue observable, Object oldValue, Object newValue) {
-            if (newValue.equals("home")) {
+        public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+            if (newValue.equals(Factory.getHome())) {
                 home.setDisable(false);
                 search.setDisable(false);
                 login.setDisable(false);
