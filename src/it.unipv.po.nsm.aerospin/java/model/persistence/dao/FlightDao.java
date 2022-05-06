@@ -8,6 +8,8 @@ import model.persistence.service.RouteService;
 import org.hibernate.query.Query;
 
 import java.sql.Date;
+
+import java.sql.Timestamp;
 import java.util.List;
 
 public class FlightDao implements FlightDaoInterface {
@@ -33,25 +35,15 @@ public class FlightDao implements FlightDaoInterface {
         return  flights;
     }
 
-    @Override
-    public List<Flight> findById(int id) {
-        String hql = "from Flight a where a.id = :id";
-        Query query = conn.getCurrentSession().createQuery(hql);
-        query.setParameter("id",id);
-        //query.setCacheable(true);
-        List<Flight> flights = query.list();
-        return flights;
+    public Timestamp getFlightDate(String flightNumber) {
+
+        Query query = conn.getCurrentSession().createQuery("select scheduledDate from Flight where flightNumber = :flightNumber");
+        query.setParameter("flightNumber",flightNumber);
+        Timestamp date = (Timestamp) query.uniqueResult();
+        return date;
     }
 
-    @Override
-    public List<Flight> findByDate(Date date) {
-        String hql = "from Flight a where a.scheduledDate = :date";
-        Query query = conn.getCurrentSession().createQuery(hql);
-        query.setParameter("date",date);
-        //query.setCacheable(true);
-        List<Flight> flights = query.list();
-        return flights;
-    }
+
 
     @Override
     public List<Flight> findFlightsByDate(String dep, String arr, String scheduledDate) {

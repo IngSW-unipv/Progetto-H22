@@ -1,0 +1,21 @@
+ToDO:
+	-Grafica
+	-Booking
+	-Creazione e invio biglietto
+	-User Account
+	-Richiesta Assistenza
+	-Docs
+	-Rivedere managers (cercare pattern)
+	-Creare package Exceptions
+
+
+
+ToRemove:
+	-Rimuovere persistence inutili
+	-Ripulire package resources
+	-Ripulire i servizi
+
+	-Controllers //Done
+	-package Flight //Done
+	-Rimuovere package Person //Done
+	-Ripulire fxml //Done

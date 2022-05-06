@@ -1,4 +1,4 @@
-package model.management;
+package model.manager;
 
 import model.persistence.entity.Flight;
 import model.persistence.service.FlightService;
@@ -7,7 +7,6 @@ import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.SimpleFormatter;
 import java.util.stream.Collectors;
 
 public class ResultManager {
@@ -27,8 +26,7 @@ public class ResultManager {
         Date date = Date.valueOf(scheduledDate);
         List<Flight> flights = flightService.findAll();
         return flights.stream().filter(f -> f.getRouteByFlightRouteId().getAirportByDeparture().getAirportName().equals(dep) &&
-                f.getRouteByFlightRouteId().getAirportByArrival().getAirportName().equals(arr) &&
-                f.getScheduledDate().compareTo(date) == 0).collect(Collectors.toList());
+                f.getRouteByFlightRouteId().getAirportByArrival().getAirportName().equals(arr)).collect(Collectors.toList());
 
     }
 

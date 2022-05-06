@@ -1,7 +1,7 @@
 package model.persistence.entity;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
 import java.sql.Time;
 
 @Entity
@@ -73,6 +73,7 @@ public class Flight {
     public Date getScheduledDate() {
         return scheduledDate;
     }
+    
 
     public void setScheduledDate(Date scheduledDate) {
         this.scheduledDate = scheduledDate;

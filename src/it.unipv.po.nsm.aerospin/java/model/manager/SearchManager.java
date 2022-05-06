@@ -1,4 +1,4 @@
-package model.management;
+package model.manager;
 
 import model.persistence.entity.Route;
 import model.persistence.service.RouteService;

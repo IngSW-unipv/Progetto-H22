@@ -5,6 +5,7 @@ import model.persistence.dao.FlightDao;
 import model.persistence.entity.Flight;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.List;
 
 public class FlightService {
@@ -22,19 +23,15 @@ public class FlightService {
         return flights;
     }
 
-    public List<Flight> findById(int id) {
+    public Timestamp getFlightDate(String flightNumber){
         flightDao.getConn().openCurrentSession();
-        List<Flight> flights = flightDao.findById(id);
+        Timestamp date = flightDao.getFlightDate(flightNumber);
         flightDao.getConn().closeCurrentSession();
-        return flights;
+        return date;
     }
 
-    public List<Flight> findByDate(Date date) {
-        flightDao.getConn().openCurrentSession();
-        List<Flight> flights = flightDao.findByDate(date);
-        flightDao.getConn().closeCurrentSession();
-        return flights;
-    }
+
+    
     public List<Flight> findFlightsByDate(String dep, String arr, String scheduledDate){
         flightDao.getConn().openCurrentSession();
         List<Flight> flights = flightDao.findFlightsByDate(dep,arr,scheduledDate);

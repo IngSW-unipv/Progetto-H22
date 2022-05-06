@@ -1,4 +1,4 @@
-package model.management;
+package model.manager;
 
 public class TestSearchManager {
     public static void main(String[] args) {

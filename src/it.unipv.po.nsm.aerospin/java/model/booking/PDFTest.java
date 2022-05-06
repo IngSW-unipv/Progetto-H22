@@ -1,4 +1,4 @@
-package model.persistence;
+package model.booking;
 
 
 

@@ -2,7 +2,6 @@ package model.persistence;
 
 
 import javafx.scene.control.Alert;
-import model.flight.aircraft.Manufacturer;
 import model.persistence.entity.*;
 import model.persistence.service.*;
 import net.sf.ehcache.CacheManager;

@@ -15,7 +15,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.booking.payment.AeroPay;
 import model.booking.payment.PaymentStrategy;
-import model.management.ResultManager;
+import model.manager.ResultManager;
 import model.persistence.CachedFlights;
 import model.persistence.entity.Flight;
 import util.ControllerMethods;

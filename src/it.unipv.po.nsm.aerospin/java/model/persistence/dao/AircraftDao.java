@@ -1,6 +1,6 @@
 package model.persistence.dao;
 
-import model.flight.aircraft.Manufacturer;
+
 import model.persistence.Connection;
 import model.persistence.dao.AircraftDaoInterface;
 import model.persistence.entity.Aircraft;
@@ -28,14 +28,7 @@ public class AircraftDao implements AircraftDaoInterface {
         return  aircrafts;
     }
 
-    @Override
-    public List<Aircraft> findByMan(Manufacturer manufacturer) {
-        String hql = "from Aircraft a where a.manufacturer like :man ";
-        Query query = conn.getCurrentSession().createQuery(hql);
-        query.setParameter("man","%" + manufacturer + "%");
-        List<Aircraft> aircrafts = query.list();
-        return aircrafts;
-    }
+
 
     @Override
     public List<Aircraft> findByModel(String model) {
