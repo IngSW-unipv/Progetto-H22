@@ -15,12 +15,9 @@
         <property name="show_sql">true</property>
         <mapping class="model.persistence.entity.Airport"/>
         <mapping class="model.persistence.entity.Route"/>
-        <mapping class="model.persistence.entity.Employee"/>
         <mapping class="model.persistence.entity.Passenger"/>
         <mapping class="model.persistence.entity.User"/>
-        <mapping class="model.persistence.entity.Crew"/>
         <mapping class="model.persistence.entity.Flight"/>
-        <mapping class="model.persistence.entity.Role"/>
         <!-- <property name="connection.username"/> -->
         <!-- <property name="connection.password"/> -->
 
