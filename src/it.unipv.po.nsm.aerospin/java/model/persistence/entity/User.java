@@ -14,9 +14,7 @@ public class User {
     @Basic
     @Column(name = "employeeId", nullable = true)
     private Integer employeeId;
-    @ManyToOne
-    @JoinColumn(name = "employeeId", referencedColumnName = "employeeId", insertable = false, updatable = false)
-    private Employee employeeByEmployeeId;
+
 
     public String getEmail() {
         return email;
@@ -64,13 +62,6 @@ public class User {
         return result;
     }
 
-    public Employee getEmployeeByEmployeeId() {
-        return employeeByEmployeeId;
-    }
-
-    public void setEmployeeByEmployeeId(Employee employeeByEmployeeId) {
-        this.employeeByEmployeeId = employeeByEmployeeId;
-    }
 
     public boolean isAdmin() {
         return (employeeId != null);
