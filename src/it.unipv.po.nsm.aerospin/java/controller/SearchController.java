@@ -41,8 +41,8 @@ public class SearchController implements Initializable, IControlledScreen {
         date2.disableProperty().bind(oneway.selectedProperty().or(date1.valueProperty().isNull()));
 
         cbDep.setItems(methods.getDepartures());
-//            methods.selectOptionOnKey(cbDep, listDepart);
         errLabel.visibleProperty().bind(error);
+//            methods.selectOptionOnKey(cbDep, listDepart);
 
     }
 
@@ -54,20 +54,20 @@ public class SearchController implements Initializable, IControlledScreen {
     private void findArrivals (ActionEvent event){
             //controlla che venga resettato la combobox
         cbRet.getSelectionModel().clearSelection();
-//        cbRet.autosize();
-        error.set(false);
         cbRet.setItems(methods.getArrivals(cbDep.getValue()));
-//            methods.selectOptionOnKey(cbRet, listReturn);
-
-        //resetta radiobutton ar oneway
+//        cbRet.autosize();
+        oneway.setSelected(true);
+        error.set(false);
+//      methods.selectOptionOnKey(cbRet, listReturn);
     }
 
     @FXML
     private void checkRoute(ActionEvent event){
         if (methods.checkRoute(cbRet.getValue(), cbDep.getValue())){
             ar.setDisable(false);
-//            error.set(false);
+            error.set(false);
         } else {
+            oneway.setSelected(true);
             ar.setDisable(true);
             error.set(true);
         }
@@ -76,6 +76,7 @@ public class SearchController implements Initializable, IControlledScreen {
     //Gestisco date2>>date1
     @FXML
     private void returnDate (ActionEvent event){
+        date2.setValue(null);
         date2.setDayCellFactory(methods.bookingRange(date1.getValue()));
     }
 

@@ -22,9 +22,9 @@ public class UserService {
 
     public User findByEmail(String email) {
         userDao.getConn().openCurrentSession();
-        User users = userDao.findByEmail(email);
+        User user = userDao.findByEmail(email);
         userDao.getConn().closeCurrentSession();
-        return users;
+        return user;
     }
 
     public void persist(User user) {

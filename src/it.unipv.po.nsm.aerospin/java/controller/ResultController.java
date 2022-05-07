@@ -28,11 +28,9 @@ import java.util.ResourceBundle;
 
 public class ResultController implements Initializable, IControlledScreen {
 
-
     ScreenContainer myContainer;
     Session session = Factory.getInstance().getSession();
     ResultManager methods = new ResultManager();
-
 
     //controllare
     private final ResultManager resultManager = new ResultManager();
@@ -71,7 +69,7 @@ public class ResultController implements Initializable, IControlledScreen {
     private ObservableList<Flight> list2;
 
     private String dateRet;
-    private String format = "Da %s\nA %s il %s";
+    private final String format = "Da %s\nA %s il %s";
     private final DoubleProperty cost1 = new SimpleDoubleProperty(0);
     private final DoubleProperty cost2 = new SimpleDoubleProperty(0);
     private final DoubleProperty priceClass = new SimpleDoubleProperty(1);

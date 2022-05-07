@@ -26,8 +26,8 @@ public class UserDao implements UserDaoInterface {
         Query query = conn.getCurrentSession().createQuery(hql);
         query.setParameter("email",email);
         //query.setCacheable(true);
-        User users = (User) query.list().get(0);
-        return users;
+        User user = (User) query.list().get(0);
+        return user;
     }
 
 

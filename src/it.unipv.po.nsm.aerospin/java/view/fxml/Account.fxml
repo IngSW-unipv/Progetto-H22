@@ -1,14 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXListView?>
-<?import com.jfoenix.controls.JFXTextArea?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
 
-<AnchorPane prefHeight="600.0" prefWidth="860.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AccountController">
+<AnchorPane prefHeight="600.0" prefWidth="860.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AccountController">
    <children>
-      <JFXListView layoutX="89.0" layoutY="86.0" prefHeight="429.0" prefWidth="322.0" />
-      <JFXTextArea layoutX="548.0" layoutY="205.0" prefHeight="131.0" prefWidth="238.0" />
-      <JFXButton layoutX="641.0" layoutY="381.0" text="INVIA" />
+      <JFXListView layoutX="135.0" layoutY="101.0" prefHeight="429.0" prefWidth="591.0" />
+      <JFXButton buttonType="RAISED" layoutX="651.0" layoutY="25.0" prefHeight="39.0" prefWidth="150.0" text="ASSISTENZA">
+         <ripplerFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.07407407462596893" green="1.0" blue="0.8611111044883728" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </ripplerFill></JFXButton>
    </children>
 </AnchorPane>

@@ -22,6 +22,27 @@ public class SearchManager {
     CachedFlights cachedFlights = CachedFlights.getInstance();
     List<Flight> results = cachedFlights.findAll();
 
+    public ObservableList<String> getDepartures() {
+        List<String> departures;
+
+        departures = results.stream()
+                .map(o->o.getRouteByFlightRouteId().getAirportByDeparture().getAirportName()).sorted()
+                .distinct().collect(Collectors.toList());
+
+        return FXCollections.observableArrayList(departures);
+    }
+
+    public ObservableList<String> getArrivals(String departure) {
+        List<String> arrivals;
+
+        arrivals = results.stream()
+                .filter(o -> o.getRouteByFlightRouteId().getAirportByDeparture().equalsString(departure))
+                .map(o->o.getRouteByFlightRouteId().getAirportByArrival().getAirportName()).sorted()
+                .distinct().collect(Collectors.toList());
+
+        return FXCollections.observableArrayList(arrivals);
+    }
+
 //    /*  Quando premo una lettera mentre uso un ComboBox
 //     *  questo metodo seleziona e sposta il cursore sul primo item
 //     *  che inizia con la input letter
@@ -51,27 +72,6 @@ public class SearchManager {
 //        });
 //    }
 
-    /*  Mantengo le date selezionabili tra
-     *  Oggi e i prossimi 4 Mesi
-     */
-    private static final int maxMonth = 4;
-    public Callback<DatePicker, DateCell> bookingRange(LocalDate from) {
-        return new Callback<DatePicker, DateCell>() {
-            @Override
-            public DateCell call(final DatePicker param) {
-                return new DateCell() {
-                    @Override
-                    public void updateItem(LocalDate date, boolean empty) {
-                        super.updateItem(date, empty);
-                        LocalDate today = from;
-                        LocalDate next = from.plusMonths(maxMonth);
-                        setDisable(empty || date.isBefore(today) || date.isAfter(next));
-                    }
-                };
-            }
-        };
-    }
-
     /*  Controllo se posso selezionare a/r
      *  in base agli aereoporti selezionati
      */
@@ -84,31 +84,30 @@ public class SearchManager {
                 .filter(o -> o.getRouteByFlightRouteId().getAirportByArrival().equalsString(ret))
                 .collect(Collectors.toList());
 
-        if (b.size()>0){
-            return true;
-        } else {
-            return false;
-        }
+        return b.size() > 0;
+    }
+
+    /*  Mantengo le date selezionabili tra
+     *  Oggi e i prossimi 4 Mesi
+     */
+    private static final int maxMonth = 4;
+    public Callback<DatePicker, DateCell> bookingRange(LocalDate from) {
+        return new Callback<DatePicker, DateCell>() {
+            @Override
+            public DateCell call(final DatePicker param) {
+                return new DateCell() {
+                    @Override
+                    public void updateItem(LocalDate date, boolean empty) {
+                        super.updateItem(date, empty);
+                        LocalDate after = from.plusMonths(maxMonth);
+                        setDisable(empty || date.isBefore(from) || date.isAfter(after));
+                    }
+                };
+            }
+        };
     }
 
 
-    public ObservableList<String> getDepartures() {
-        List<String> departures;
 
-        departures = results.stream()
-                .map(o->o.getRouteByFlightRouteId().getAirportByDeparture().getAirportName()).sorted()
-                .distinct().collect(Collectors.toList());
 
-        return FXCollections.observableArrayList(departures);
-    }
-
-    public ObservableList<String> getArrivals(String departure) {
-        List<String> arrivals;
-        arrivals = results.stream()
-                .filter(o -> o.getRouteByFlightRouteId().getAirportByDeparture().equalsString(departure))
-                .map(o->o.getRouteByFlightRouteId().getAirportByArrival().getAirportName()).sorted()
-                .distinct().collect(Collectors.toList());
-
-        return FXCollections.observableArrayList(arrivals);
-    }
 }

@@ -22,10 +22,8 @@ import java.util.regex.Pattern;
 
 public class LoginController implements Initializable, IControlledScreen {
 
-    Factory factory = Factory.getInstance();
     ScreenContainer myContainer;
-    Session session = factory.getSession();
-    CachedFlights searchResult = CachedFlights.getInstance();
+    Session session = Factory.getInstance().getSession();
     UserService userService = new UserService();
 
     @FXML private TextField email;
@@ -39,13 +37,6 @@ public class LoginController implements Initializable, IControlledScreen {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        //CONTROLLARE CHE SIA CACHED!!
-        //POCO SICURO, CONTROLLO INPUT EMAIL
-//        Thread t1 = new Thread(()->{
-//            users = userService.findAll();
-//        });
-//        t1.start();
-
     }
 
     public void setScreenParent(ScreenContainer screenParent){
@@ -54,20 +45,12 @@ public class LoginController implements Initializable, IControlledScreen {
 
     @FXML
     private void login(ActionEvent event) throws IOException {
-        //AGGIUNGERE THREAD, CONTROLLARE
-        //disabilitare campi e button
-
         //CONTROLLO FORMATO EMAIL
         if(checkMail()) {
             errLabel.setText("");
             //CONTROLLO SE UTENTE REGISTRATO E PWD CORRETTA
             if (isRegistered()) {
-                //CONTROLLO SE ADMIN O USER
-                if(session.getUser().isAdmin()){
-//                    myContainer.setScreen(Factory.getManage());
-                } else {
-                    myContainer.setScreen(Factory.getAccount());
-                }
+                myContainer.setScreen(Factory.getAccount());
             }
         }
         email.clear();
@@ -76,25 +59,29 @@ public class LoginController implements Initializable, IControlledScreen {
 
     @FXML
     private void register(ActionEvent event) throws IOException {
-
         if(checkMail()) {
             errLabel.setText("");
-            if(userService.findByEmail(email.getText()) == null) {
-                User newUser = new User();
-                newUser.setEmail(email.getText());
-                //NO VINCOLI SU PASSWORD
-                newUser.setPwd(pwd.getText());
+            int i = pwd.getText().length();
+            if(i > 3 && i < 13) {
+                if (userService.findByEmail(email.getText()).getEmail() == null) {
+                    User newUser = new User();
+                    newUser.setEmail(email.getText());
+                    //NO VINCOLI SU PASSWORD
+                    newUser.setPwd(pwd.getText());
 
-                userService.persist(newUser);
+//                    userService.persist(newUser);
 
-                session.setUser(newUser);
-                myContainer.setScreen(Factory.getAccount());
+                    session.setUser(newUser);
+                    myContainer.setScreen(Factory.getAccount());
+                } else {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Invalid Input");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Utente già esistente!");
+                    alert.showAndWait();
+                }
             } else {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Invalid Input");
-                alert.setHeaderText(null);
-                alert.setContentText("Utente già esistente!");
-                alert.showAndWait();
+                errLabel.setText("Inserire Password da 4-12 Caratteri");
             }
         }
 
@@ -112,8 +99,6 @@ public class LoginController implements Initializable, IControlledScreen {
 
     public boolean isRegistered(){
         User logged;
-
-        //CONTROLLARE CHE SIA NOT CACHED
         try{
             logged = userService.findByEmail(email.getText());
             if(logged.getPwd().equals(pwd.getText()))  {

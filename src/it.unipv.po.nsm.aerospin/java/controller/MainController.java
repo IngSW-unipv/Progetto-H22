@@ -18,9 +18,8 @@ import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
 
-    Factory factory = Factory.getInstance();
-    ScreenContainer myContainer = factory.createContainer();
-    Session session = factory.getSession();
+    ScreenContainer myContainer = Factory.getInstance().createContainer();
+    Session session = Factory.getInstance().getSession();
 
     @FXML private SubScene subscene;
 
@@ -63,7 +62,7 @@ public class MainController implements Initializable {
     @FXML
     private void logout(ActionEvent event) throws IOException {
         //cambia stato come non loggato
-        factory.getSession().setLogged(false);
+        session.setLogged(false);
         myContainer.setScreen(Factory.getHome());
     }
 
