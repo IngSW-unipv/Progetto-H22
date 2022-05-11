@@ -1,17 +1,23 @@
 package model.persistence.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
-public class User {
+public class User implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "email", nullable = false, length = 150)
+    @Column(name = "email", nullable = false, length = 45)
     private String email;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
     @Basic
-    @Column(name = "pwd", nullable = false, length = 50)
+    @Column(name = "pwd", nullable = false, length = 45)
     private String pwd;
-
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @Column(name = "idUser", nullable = false)
+    private int idUser;
 
     public String getEmail() {
         return email;
@@ -28,7 +34,6 @@ public class User {
     public void setPwd(String pwd) {
         this.pwd = pwd;
     }
-
 
     @Override
     public boolean equals(Object o) {
@@ -50,5 +55,11 @@ public class User {
         return result;
     }
 
+    public int getIdUser() {
+        return idUser;
+    }
 
+    public void setIdUser(int idUser) {
+        this.idUser = idUser;
+    }
 }
