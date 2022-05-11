@@ -11,9 +11,6 @@ public class User {
     @Basic
     @Column(name = "pwd", nullable = false, length = 50)
     private String pwd;
-    @Basic
-    @Column(name = "employeeId", nullable = true)
-    private Integer employeeId;
 
 
     public String getEmail() {
@@ -32,13 +29,6 @@ public class User {
         this.pwd = pwd;
     }
 
-    public Integer getEmployeeId() {
-        return employeeId;
-    }
-
-    public void setEmployeeId(Integer employeeId) {
-        this.employeeId = employeeId;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -49,7 +39,6 @@ public class User {
 
         if (email != null ? !email.equals(user.email) : user.email != null) return false;
         if (pwd != null ? !pwd.equals(user.pwd) : user.pwd != null) return false;
-        if (employeeId != null ? !employeeId.equals(user.employeeId) : user.employeeId != null) return false;
 
         return true;
     }
@@ -58,12 +47,8 @@ public class User {
     public int hashCode() {
         int result = email != null ? email.hashCode() : 0;
         result = 31 * result + (pwd != null ? pwd.hashCode() : 0);
-        result = 31 * result + (employeeId != null ? employeeId.hashCode() : 0);
         return result;
     }
 
 
-    public boolean isAdmin() {
-        return (employeeId != null);
-    }
 }

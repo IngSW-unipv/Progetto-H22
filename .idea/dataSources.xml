@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="Aerospin" uuid="ecb4ffd3-a06e-4382-a27b-8cbe48e9cc8f">
+    <data-source source="LOCAL" name="aerospin_db@34.65.107.51" uuid="6fb57795-80db-4195-9403-d0143bcc5e2f">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://34.154.238.123:3306/aerospin_db</jdbc-url>
+      <jdbc-url>jdbc:mysql://34.65.107.51:3306/aerospin_db</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>
