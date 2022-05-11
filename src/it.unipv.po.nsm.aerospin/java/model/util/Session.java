@@ -20,9 +20,9 @@ public class Session {
         logged.set(false);
 
         logged.addListener((observable, oldValue, newValue) -> {
-            // Only if completed
-            if (newValue && oldValue)
-                logged.set(newValue);
+            logged.set(newValue);
+            if(!newValue)
+                user = null;
         });
     }
 
@@ -31,6 +31,7 @@ public class Session {
     }
 
     public void setUser(User user) {
+        logged.set(true);
         this.user = user;
     }
 

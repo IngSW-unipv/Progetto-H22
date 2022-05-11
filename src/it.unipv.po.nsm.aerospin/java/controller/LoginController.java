@@ -32,7 +32,7 @@ public class LoginController implements Initializable, IControlledScreen {
     @FXML private Label errLabel;
 
     private static final Pattern VALID_EMAIL_ADDRESS_REGEX =
-            Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
+            Pattern.compile("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,6}$");
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -63,13 +63,12 @@ public class LoginController implements Initializable, IControlledScreen {
             errLabel.setText("");
             int i = pwd.getText().length();
             if(i > 3 && i < 13) {
-                if (userService.findByEmail(email.getText()).getEmail() == null) {
+                if (userService.findByEmail(email.getText()) == null) {
                     User newUser = new User();
                     newUser.setEmail(email.getText());
                     //NO VINCOLI SU PASSWORD
                     newUser.setPwd(pwd.getText());
-
-//                    userService.persist(newUser);
+                    userService.persist(newUser);
 
                     session.setUser(newUser);
                     myContainer.setScreen(Factory.getAccount());
@@ -84,6 +83,8 @@ public class LoginController implements Initializable, IControlledScreen {
                 errLabel.setText("Inserire Password da 4-12 Caratteri");
             }
         }
+        email.clear();
+        pwd.clear();
 
     }
 

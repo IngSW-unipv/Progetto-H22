@@ -24,16 +24,9 @@ public class UserDao implements UserDaoInterface {
     public User findByEmail(String email) {
         String hql = "from User a where a.email = :email";
         Query query = conn.getCurrentSession().createQuery(hql);
-        query.setParameter("email", email);
+        query.setParameter("email",email);
         //query.setCacheable(true);
-        User user;
-        try {
-            user = (User) query.uniqueResult();
-        } catch (Exception e) {
-            return null;
-        }
-
-        return user;
+        return (User) query.uniqueResult();
     }
 
 
