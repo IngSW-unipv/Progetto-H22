@@ -2,18 +2,13 @@ package model.util.manager;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.control.*;
-import javafx.scene.control.skin.ComboBoxListViewSkin;
-import javafx.scene.input.KeyCode;
+import javafx.scene.control.DateCell;
+import javafx.scene.control.DatePicker;
 import javafx.util.Callback;
 import model.persistence.CachedFlights;
 import model.persistence.entity.Flight;
-import model.persistence.entity.Route;
-import model.persistence.service.RouteService;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -42,35 +37,6 @@ public class SearchManager {
 
         return FXCollections.observableArrayList(arrivals);
     }
-
-//    /*  Quando premo una lettera mentre uso un ComboBox
-//     *  questo metodo seleziona e sposta il cursore sul primo item
-//     *  che inizia con la input letter
-//     */
-//    public void selectOptionOnKey(ComboBox<String> cb, List<String> strings) {
-//        cb.setOnKeyPressed(e -> {
-//            KeyCode keyCode = e.getCode();
-//
-//            if (keyCode.isLetterKey()) {
-//                char key = keyCode.getName().charAt(0);
-//                SingleSelectionModel<String> cbSelectionModel = cb.getSelectionModel();
-//                cbSelectionModel.select(0);
-//
-//                for (int i = 0; i < strings.size(); i++) {
-//                    if(cbSelectionModel.getSelectedItem().charAt(0) == key) {
-//                        cbSelectionModel.select(i);
-//                        ComboBoxListViewSkin<?> skin = (ComboBoxListViewSkin<?>) cb.getSkin();
-//                        ListView<?> list = (ListView<?>) skin.getPopupContent();
-//                        list.scrollTo(i);
-//                        return;
-//                    }
-//                    else {
-//                        cbSelectionModel.selectNext();
-//                    }
-//                }
-//            }
-//        });
-//    }
 
     /*  Controllo se posso selezionare a/r
      *  in base agli aereoporti selezionati
@@ -106,8 +72,5 @@ public class SearchManager {
             }
         };
     }
-
-
-
 
 }

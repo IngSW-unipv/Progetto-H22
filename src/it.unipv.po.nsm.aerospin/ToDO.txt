@@ -7,7 +7,7 @@ ToDO:
 	-Docs
 	-Rivedere managers (cercare pattern)
 	-Creare package Exceptions //Done
-	-cbbox con imput tastiera
+	-cbbox con imput tastiera //Done
 	-Rivedere dep e ret in result controller...erano logicamente
 	 invertiti e per farli funzionare ho messo dep al posto di ret e viceversa
     -Email devono essere nocasesentitive //Done

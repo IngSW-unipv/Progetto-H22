@@ -3,25 +3,26 @@
 <?import com.jfoenix.controls.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import org.controlsfx.control.*?>
 
 <AnchorPane prefHeight="600.0" prefWidth="860.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SearchController">
     <children>
       <SearchableComboBox fx:id="scbDep" layoutX="104.0" layoutY="169.0" onAction="#findArrivals" prefHeight="30.0" prefWidth="250.0" promptText="Partenza" />
       <SearchableComboBox fx:id="scbRet" layoutX="104.0" layoutY="256.0" onAction="#checkRoute" prefHeight="30.0" prefWidth="250.0" promptText="Destinazione" />
-      <JFXRadioButton fx:id="oneway" layoutX="471.0" layoutY="170.0" mnemonicParsing="false" selected="true" text="Solo Andata">
-         <toggleGroup>
-            <ToggleGroup fx:id="group" />
-         </toggleGroup></JFXRadioButton>
-      <JFXRadioButton fx:id="ar" disable="true" layoutX="634.0" layoutY="170.0" mnemonicParsing="false" text="Andata e Ritorno" toggleGroup="$group" />
+        <Label layoutX="104.0" layoutY="152.0" text="Da" />
+      <Separator layoutX="397.0" layoutY="120.0" orientation="VERTICAL" prefHeight="200.0" AnchorPane.rightAnchor="457.0" />
+      <JFXToggleButton fx:id="select" disable="true" ellipsisString="" layoutX="495.0" layoutY="109.0" prefHeight="87.0" prefWidth="234.0" size="15.0" text="Solo Andata" textAlignment="CENTER">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </JFXToggleButton>
+      <JFXButton layoutX="305.0" layoutY="418.0" onAction="#goToResult" prefHeight="65.0" prefWidth="250.0" text="CERCA" />
         <DatePicker fx:id="date1" layoutX="430.0" layoutY="261.0" onAction="#returnDate" promptText="Scegli la data" />
         <DatePicker fx:id="date2" layoutX="634.0" layoutY="261.0" promptText="Scegli la data" />
-      <JFXButton layoutX="305.0" layoutY="418.0" onAction="#goToResult" prefHeight="65.0" prefWidth="250.0" text="CERCA" />
-        <Label layoutX="104.0" layoutY="152.0" text="Da" />
         <Label layoutX="108.0" layoutY="243.0" text="A" />
         <Label layoutX="430.0" layoutY="238.0" text="Partenza" />
         <Label layoutX="634.0" layoutY="238.0" text="Ritorno" />
-      <Separator layoutX="397.0" layoutY="120.0" orientation="VERTICAL" prefHeight="200.0" AnchorPane.rightAnchor="457.0" />
       <Label fx:id="errLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="479.0" layoutY="199.0" prefHeight="17.0" prefWidth="250.0" text="Andata e Ritorno NON DISPONIBILE" textFill="RED" visible="false" />
     </children>
 </AnchorPane>

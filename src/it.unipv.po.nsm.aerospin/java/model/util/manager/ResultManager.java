@@ -3,6 +3,7 @@ package model.util.manager;
 import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.util.Callback;
+import model.persistence.CachedFlights;
 import model.persistence.entity.Flight;
 import model.persistence.service.FlightService;
 
@@ -15,6 +16,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class ResultManager {
+
+    CachedFlights cachedFlights = CachedFlights.getInstance();
+    List<Flight> results = cachedFlights.findAll();
 
 
     private List<Flight> flights = new ArrayList<>();

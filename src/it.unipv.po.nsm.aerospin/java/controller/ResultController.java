@@ -32,8 +32,8 @@ public class ResultController implements Initializable, IControlledScreen {
     Session session = Factory.getInstance().getSession();
     ResultManager methods = new ResultManager();
 
+    ResultManager resultManager = new ResultManager();
     //controllare
-    private final ResultManager resultManager = new ResultManager();
     private final PaymentStrategy paymentStrategy = new AeroPay();
 
     @FXML private Label depLabel;
