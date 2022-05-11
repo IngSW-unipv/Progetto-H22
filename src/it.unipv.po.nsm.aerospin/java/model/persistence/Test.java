@@ -99,6 +99,13 @@ public class Test {
 //            System.out.println(route.getRouteId());
 //        }
 
+        UserService userService = new UserService();
+        User user = new User();
+        user.setEmail("hamza@gmail.com");
+        user.setPwd("2");
+        userService.persist(user);
+
+
 
         System.exit(0);
 

@@ -4,20 +4,16 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-public class User implements Serializable {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class User  {
     @Id
-    @Column(name = "email", nullable = false, length = 45)
-    private String email;
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Id
-    @Basic
-    @Column(name = "pwd", nullable = false, length = 45)
-    private String pwd;
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Id
-    @Column(name = "idUser", nullable = false)
+    @Column(name = "idUser")
     private int idUser;
+    @Basic
+    @Column(name = "email")
+    private String email;
+    @Basic
+    @Column(name = "pwd")
+    private String pwd;
 
     public String getEmail() {
         return email;
