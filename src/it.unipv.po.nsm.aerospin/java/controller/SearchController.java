@@ -9,7 +9,7 @@ import model.Factory;
 import model.util.Session;
 import model.util.manager.SearchManager;
 import view.ScreenContainer;
-//import org.controlsfx.controls;
+import org.controlsfx.control.SearchableComboBox;
 
 import java.io.IOException;
 import java.net.URL;
@@ -22,8 +22,8 @@ public class SearchController implements Initializable, IControlledScreen {
     Session session = Factory.getInstance().getSession();
     SearchManager methods = new SearchManager();
 
-    @FXML private ComboBox<String> cbDep;
-    @FXML private ComboBox<String> cbRet;
+    @FXML private SearchableComboBox<String> scbDep;
+    @FXML private SearchableComboBox<String> scbRet;
 
     @FXML private DatePicker date1;
     @FXML private DatePicker date2;
@@ -41,10 +41,8 @@ public class SearchController implements Initializable, IControlledScreen {
         date1.setDayCellFactory(methods.bookingRange(LocalDate.now()));
         date2.disableProperty().bind(oneway.selectedProperty().or(date1.valueProperty().isNull()));
 
-        cbDep.setItems(methods.getDepartures());
+        scbDep.setItems(methods.getDepartures());
         errLabel.visibleProperty().bind(error);
-//            methods.selectOptionOnKey(cbDep, listDepart);
-
     }
 
     public void setScreenParent(ScreenContainer screenParent) {
@@ -54,17 +52,15 @@ public class SearchController implements Initializable, IControlledScreen {
     @FXML
     private void findArrivals (ActionEvent event){
             //controlla che venga resettato la combobox
-        cbRet.getSelectionModel().clearSelection();
-        cbRet.setItems(methods.getArrivals(cbDep.getValue()));
-//        cbRet.autosize();
+        scbRet.getSelectionModel().clearSelection();
+        scbRet.setItems(methods.getArrivals(scbDep.getValue()));
         oneway.setSelected(true);
         error.set(false);
-//      methods.selectOptionOnKey(cbRet, listReturn);
     }
 
     @FXML
     private void checkRoute(ActionEvent event){
-        if (methods.checkRoute(cbRet.getValue(), cbDep.getValue())){
+        if (methods.checkRoute(scbRet.getValue(), scbDep.getValue())){
             ar.setDisable(false);
             error.set(false);
         } else {
@@ -86,8 +82,8 @@ public class SearchController implements Initializable, IControlledScreen {
         if (validateFields()) {
             session.setOneway(oneway.isSelected());
             session.getInfo().clear();
-            session.addInfo(cbDep.getSelectionModel().getSelectedItem());
-            session.addInfo(cbRet.getSelectionModel().getSelectedItem());
+            session.addInfo(scbDep.getSelectionModel().getSelectedItem());
+            session.addInfo(scbRet.getSelectionModel().getSelectedItem());
             session.addInfo(date1.getValue().toString());
             if (!(session.isOneway())) {
                 session.addInfo(date2.getValue().toString());
@@ -96,10 +92,8 @@ public class SearchController implements Initializable, IControlledScreen {
         }
     }
 
-    //System.out.println(date1.getValue() == null);   può dare bug perchè se cancello la data, rimane not null
-
     public boolean validateFields(){
-        if( cbRet.getSelectionModel().isEmpty() | date1.getValue() == null | (date2.getValue() == null && ar.isSelected())){
+        if( scbRet.getSelectionModel().isEmpty() | date1.getValue() == null | (date2.getValue() == null && ar.isSelected())){
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Validate Fields");
             alert.setHeaderText(null);
