@@ -9,10 +9,10 @@ ToDO:
 	-Creare package Exceptions //Done
 	-cbbox con imput tastiera //Done
 	-Rivedere dep e ret in result controller...erano logicamente
-	 invertiti e per farli funzionare ho messo dep al posto di ret e viceversa
+	 invertiti e per farli funzionare ho messo dep al posto di ret e viceversa //Done
     -Email devono essere nocasesentitive //Done
 
-    ATTENZIONE VOLI CHE ARRIVANO GIORNO DOPO. FARE DOC
+    ATTENZIONE VOLI CHE ARRIVANO GIORNO DOPO. SPECIFICARE IN DOC
 
 
 ToRemove:
