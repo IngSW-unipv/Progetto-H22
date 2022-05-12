@@ -14,7 +14,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
-import controller.IControlledScreen;
+import controller.util.IControlledScreen;
 
 public class ScreenContainer extends StackPane {
 

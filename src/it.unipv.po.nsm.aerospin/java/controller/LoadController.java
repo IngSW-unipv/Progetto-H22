@@ -1,11 +1,12 @@
 package controller;
 
+import controller.util.IControlledScreen;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import model.persistence.CachedFlights;
-import model.util.exception.NetworkException;
+import model.exception.NetworkException;
 import model.Factory;
 import view.ScreenContainer;
 

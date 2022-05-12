@@ -1,4 +1,4 @@
-package model.util.exception;
+package model.exception;
 
 public class NoMatchException extends Exception {
 

@@ -9,7 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Group;
 import javafx.scene.SubScene;
 import model.Factory;
-import model.util.Session;
+import model.Session;
 import view.ScreenContainer;
 
 import java.io.IOException;

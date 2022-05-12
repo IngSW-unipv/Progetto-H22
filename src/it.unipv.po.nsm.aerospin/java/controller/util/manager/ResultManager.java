@@ -1,4 +1,4 @@
-package model.util.manager;
+package controller.util.manager;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

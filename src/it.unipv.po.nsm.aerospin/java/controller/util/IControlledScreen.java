@@ -1,4 +1,4 @@
-package controller;
+package controller.util;
 
 import view.ScreenContainer;
 

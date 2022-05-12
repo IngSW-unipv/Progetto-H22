@@ -1,4 +1,4 @@
-package model.util.exception;
+package model.exception;
 
 import org.hibernate.HibernateException;
 

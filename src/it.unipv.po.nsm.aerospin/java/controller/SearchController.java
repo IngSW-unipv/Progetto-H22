@@ -1,6 +1,7 @@
 package controller;
 
 import com.jfoenix.controls.JFXToggleButton;
+import controller.util.IControlledScreen;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,8 +10,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import model.Factory;
-import model.util.Session;
-import model.util.manager.SearchManager;
+import model.Session;
+import controller.util.manager.SearchManager;
 import org.controlsfx.control.SearchableComboBox;
 import view.ScreenContainer;
 

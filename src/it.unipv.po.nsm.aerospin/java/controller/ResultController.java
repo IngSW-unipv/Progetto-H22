@@ -1,26 +1,33 @@
 package controller;
 
+import controller.util.IControlledScreen;
 import javafx.beans.property.*;
-import javafx.beans.value.ObservableBooleanValue;
 import javafx.collections.ListChangeListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import model.Factory;
 import model.booking.passenger.ClassType;
 import model.booking.payment.AeroPay;
 import model.booking.payment.PaymentStrategy;
 import model.persistence.entity.Flight;
-import model.util.Session;
-import model.util.manager.ResultManager;
+import model.Session;
+import controller.util.manager.ResultManager;
 import view.ScreenContainer;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Time;
 import java.sql.Date;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class ResultController implements Initializable, IControlledScreen {
@@ -137,6 +144,14 @@ public class ResultController implements Initializable, IControlledScreen {
 
     @FXML
     private void checkout(ActionEvent event) throws IOException {
+        Parent root1 = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("util/Payment.fxml")));
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.initStyle(StageStyle.TRANSPARENT);        //oppure UTILITY
+//        stage.setTitle("ABC");
+        stage.setScene(new Scene(root1));
+        stage.showAndWait();
+
         if (session.isLogged()) {
             if(Integer.parseInt(price()) > 0 &
                 name.getText().isEmpty() & surname.getText().isEmpty() & birthDate.getProperties().isEmpty()){
@@ -155,65 +170,12 @@ public class ResultController implements Initializable, IControlledScreen {
             alert.setContentText("Utente non loggato!\nPrima di poter procedere effettuare il Login\nSe non si è registrato, procedere alla Registrazione");
             alert.showAndWait();
         }
-//
-//
-//        Service<Void> service = new Service<Void>() {
-//            @Override
-//            protected Task<Void> createTask() {
-//                return new Task<Void>() {
-//                    @Override
-//                    protected Void call() throws Exception {
-//                        //Do Long running work here<<<
-//                        System.out.println("In task 1");
-//                        Parent root1 = null;
-//                        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Customer.fxml"));
-//                        try {
-//                            root1 = (Parent) fxmlLoader.load();
-//                        } catch (IOException e) {
-//                            // TODO Auto-generated catch block
-//                            e.printStackTrace();
-//                        }
-//
-//                        Stage stage = new Stage();
-//                        stage.initModality(Modality.APPLICATION_MODAL);
-//                        stage.initStyle(StageStyle.UNDECORATED);
-//                        stage.setTitle("ABC");
-//                        System.out.println("In task 2");
-//                        stage.setScene(new Scene(root1));
-//                        stage.show();
-//                        System.out.println("In task 3");
-//
-//                        return null;
-//                    }
-//                };
-//            }
-//            @Override
-//            protected void succeeded() {
-//                //Called when finished without exception
-//                System.out.println("OnSucceeded");
-//                TextFileReadWrite getCustomer = new TextFileReadWrite();
-//                String cusName = "";
-//                try {
-//                    cusName = getCustomer.readFromFile("C:\\gasoum\\YannaKSIA\\ForitiTimologisi\\tempFiles\\tempCustomer.txt");
-//                } catch (IOException e) {
-//                    // TODO Auto-generated catch block
-//                    e.printStackTrace();
-//                }
-//                System.out.println("Col:" + col + " Row: "+ row);
-//                checkCusFile = true;
-//                oList.get(row).cusEponymia = cusName;
-//                table.refresh();
-//
-//
-//            }
-//        };
-//        service.start(); // starts Thread
-//
-//
-//
+
+
+
 //        myContainer.setScreen(Factory.getHome());
-//
-//
+
+
     }
 
 

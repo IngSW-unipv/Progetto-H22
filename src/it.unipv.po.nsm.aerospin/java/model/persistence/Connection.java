@@ -6,7 +6,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
-import model.util.exception.NetworkException;
+import model.exception.NetworkException;
 
 public class Connection {
     private Session currentSession;

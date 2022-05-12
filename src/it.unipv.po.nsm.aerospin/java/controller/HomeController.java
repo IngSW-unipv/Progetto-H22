@@ -1,5 +1,6 @@
 package controller;
 
+import controller.util.IControlledScreen;
 import javafx.fxml.Initializable;
 import view.ScreenContainer;
 

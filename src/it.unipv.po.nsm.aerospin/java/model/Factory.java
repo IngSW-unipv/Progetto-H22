@@ -1,6 +1,5 @@
 package model;
 
-import model.util.Session;
 import view.ScreenContainer;
 
 import java.io.IOException;

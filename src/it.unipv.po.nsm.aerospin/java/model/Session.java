@@ -1,12 +1,10 @@
-package model.util;
+package model;
 
 import javafx.beans.property.SimpleBooleanProperty;
 import model.persistence.entity.User;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.sql.Date;
-import java.util.List;
+import java.time.LocalDate;
 
 public class Session {
 

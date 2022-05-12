@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="240.0" prefWidth="246.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PaymentController">
+   <children>
+      <TextField fx:id="cardNumber" layoutX="40.0" layoutY="162.0" />
+      <Label layoutX="34.0" layoutY="141.0" text="Numero della Carta" />
+      <TextField fx:id="cardName" layoutX="213.0" layoutY="162.0" />
+      <Label layoutX="214.0" layoutY="141.0" text="Nome sulla Carta" />
+      <Label layoutX="40.0" layoutY="229.0" text="Data Scadenza" />
+      <TextField fx:id="expDate" accessibleRole="DATE_PICKER" layoutX="40.0" layoutY="246.0" />
+      <Label layoutX="213.0" layoutY="221.0" text="CVV" />
+      <TextField fx:id="cvv" layoutX="213.0" layoutY="246.0" />
+      <JFXButton layoutX="96.0" layoutY="279.0" prefHeight="65.0" prefWidth="222.0" text="ACQUISTA" />
+      <Label alignment="CENTER" layoutY="81.0" prefHeight="17.0" prefWidth="395.0" text="Label" />
+   </children>
+</AnchorPane>
