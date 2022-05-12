@@ -1,19 +1,22 @@
 package model.util;
 
-import javafx.beans.binding.BooleanBinding;
 import javafx.beans.property.SimpleBooleanProperty;
 import model.persistence.entity.User;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.sql.Date;
 import java.util.List;
 
 public class Session {
 
     private User user;
     private SimpleBooleanProperty logged = new SimpleBooleanProperty();
-    private List<String> info = new ArrayList<>();
     private boolean oneway = true;
-
+    private String dep;
+    private String ret;
+    private Date dateDep;
+    private Date dateRet;
 
 
     public Session () {
@@ -47,14 +50,6 @@ public class Session {
         return logged;
     }
 
-    public List<String> getInfo() {
-        return info;
-    }
-
-    public void addInfo(String item) {
-        this.info.add(item);
-    }
-
     public boolean isOneway() {
         return oneway;
     }
@@ -63,4 +58,42 @@ public class Session {
         this.oneway = oneway;
     }
 
+    public String getDep() {
+        return dep;
+    }
+
+    public void setDep(String dep) {
+        this.dep = dep;
+    }
+
+    public String getRet() {
+        return ret;
+    }
+
+    public void setRet(String ret) {
+        this.ret = ret;
+    }
+
+    public Date getDateDep() {
+        return dateDep;
+    }
+
+    public void setDateDep(LocalDate dateDep) {
+        this.dateDep = Date.valueOf(dateDep);
+    }
+
+    public Date getDateRet() {
+        return dateRet;
+    }
+
+    public void setDateRet(LocalDate dateRet) {
+        this.dateRet = Date.valueOf(dateRet);
+    }
+
+    public void clear() {
+        dep = null;
+        ret = null;
+        dateDep = null;
+        dateRet = null;
+    }
 }

@@ -44,13 +44,10 @@ public class SearchManager {
     public boolean checkRoute(String dep, String ret) {
         List<Flight> a = results.stream()
                 .filter(o -> o.getRouteByFlightRouteId().getAirportByDeparture().equalsString(dep))
-                .collect(Collectors.toList());
-
-        List<Flight> b = a.stream()
                 .filter(o -> o.getRouteByFlightRouteId().getAirportByArrival().equalsString(ret))
-                .collect(Collectors.toList());
+                .distinct().collect(Collectors.toList());
 
-        return b.size() > 0;
+        return a.size() > 0;
     }
 
     /*  Mantengo le date selezionabili tra

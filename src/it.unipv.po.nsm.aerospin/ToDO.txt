@@ -12,6 +12,8 @@ ToDO:
 	 invertiti e per farli funzionare ho messo dep al posto di ret e viceversa
     -Email devono essere nocasesentitive //Done
 
+    ATTENZIONE VOLI CHE ARRIVANO GIORNO DOPO. FARE DOC
+
 
 ToRemove:
 	-Ripulire package resources

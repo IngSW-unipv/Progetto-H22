@@ -41,9 +41,7 @@ public class SearchController implements Initializable, IControlledScreen {
     public void initialize(URL url, ResourceBundle rb) {
         // Se seleziono Solo Andata non posso inserire Data Ritorno
         date1.setDayCellFactory(methods.bookingRange(LocalDate.now()));
-//        date2.disableProperty().bind(select.selectedProperty().or(date1.valueProperty().isNull()));
         date2.disableProperty().bind(select.selectedProperty().not().or(date1.valueProperty().isNull()));
-//        date2.disableProperty().bind(date1.valueProperty().isNull().not().);
 
         scbDep.setItems(methods.getDepartures());
         errLabel.visibleProperty().bind(error);
@@ -70,7 +68,6 @@ public class SearchController implements Initializable, IControlledScreen {
         scbRet.setItems(methods.getArrivals(scbDep.getValue()));
         select.setSelected(false);
         select.setDisable(true);
-//        select.setSelected(true);
         error.set(false);
     }
 
@@ -78,13 +75,10 @@ public class SearchController implements Initializable, IControlledScreen {
     private void checkRoute(ActionEvent event){
         select.setSelected(false);
         if (methods.checkRoute(scbRet.getValue(), scbDep.getValue())){
-//            ar.setDisable(false);
             error.set(false);
             select.setDisable(false);
         } else {
             select.setDisable(true);
-//            select.setSelected(true);
-//            ar.setDisable(true);
             error.set(true);
         }
     }
@@ -100,12 +94,12 @@ public class SearchController implements Initializable, IControlledScreen {
     private void goToResult(ActionEvent event) throws IOException {
         if (validateFields()) {
             session.setOneway(!select.isSelected());
-            session.getInfo().clear();
-            session.addInfo(scbDep.getSelectionModel().getSelectedItem());
-            session.addInfo(scbRet.getSelectionModel().getSelectedItem());
-            session.addInfo(date1.getValue().toString());
+            session.clear();
+            session.setDep(scbDep.getSelectionModel().getSelectedItem());
+            session.setRet(scbRet.getSelectionModel().getSelectedItem());
+            session.setDateDep(date1.getValue());
             if (!(session.isOneway())) {
-                session.addInfo(date2.getValue().toString());
+                session.setDateRet(date2.getValue());
             }
             myContainer.setScreen(Factory.getResult());
         }
