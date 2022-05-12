@@ -1,20 +1,85 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="240.0" prefWidth="246.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PaymentController">
+<AnchorPane prefHeight="350.0" prefWidth="250.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PaymentController">
    <children>
-      <TextField fx:id="cardNumber" layoutX="40.0" layoutY="162.0" />
-      <Label layoutX="34.0" layoutY="141.0" text="Numero della Carta" />
-      <TextField fx:id="cardName" layoutX="213.0" layoutY="162.0" />
-      <Label layoutX="214.0" layoutY="141.0" text="Nome sulla Carta" />
-      <Label layoutX="40.0" layoutY="229.0" text="Data Scadenza" />
-      <TextField fx:id="expDate" accessibleRole="DATE_PICKER" layoutX="40.0" layoutY="246.0" />
-      <Label layoutX="213.0" layoutY="221.0" text="CVV" />
-      <TextField fx:id="cvv" layoutX="213.0" layoutY="246.0" />
-      <JFXButton layoutX="96.0" layoutY="279.0" onAction="#execute" prefHeight="65.0" prefWidth="222.0" text="ACQUISTA" />
-      <Label alignment="CENTER" layoutY="81.0" prefHeight="17.0" prefWidth="395.0" text="Label" />
+      <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label text="Pagamento" wrapText="true">
+               <font>
+                  <Font name="Berlin Sans FB" size="26.0" />
+               </font>
+            </Label>
+            <Label ellipsisString="" layoutX="30.0" layoutY="20.0" text="Compilare tutti i campi prima di procedere" wrapText="true">
+               <font>
+                  <Font name="Berlin Sans FB Demi Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label text="Numero della Carta">
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
+            </Label>
+            <TextField fx:id="cardNumber" />
+            <Label text="Nome sulla Carta">
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
+            </Label>
+            <TextField fx:id="cardName" />
+            <HBox spacing="10.0">
+               <children>
+                  <VBox maxWidth="1.7976931348623157E308" minWidth="140.0" prefWidth="120.0">
+                     <children>
+                        <Label text="Data Scadenza" />
+                        <HBox>
+                           <children>
+                              <ChoiceBox prefWidth="60.0" />
+                              <ChoiceBox layoutX="10.0" layoutY="10.0" prefWidth="80.0" />
+                           </children>
+                        </HBox>
+                     </children>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </VBox>
+                  <VBox>
+                     <children>
+                        <Label text="CVV" />
+                        <TextField fx:id="cvv" />
+                     </children>
+                  </VBox>
+               </children>
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
+            </HBox>
+            <StackPane>
+               <children>
+                  <JFXButton onAction="#execute" prefHeight="50.0" prefWidth="210.0" text="ACQUISTA">
+                     <StackPane.margin>
+                        <Insets />
+                     </StackPane.margin>
+                  </JFXButton>
+               </children>
+               <padding>
+                  <Insets top="30.0" />
+               </padding>
+            </StackPane>
+         </children>
+         <padding>
+            <Insets left="20.0" right="20.0" top="10.0" />
+         </padding>
+      </VBox>
    </children>
 </AnchorPane>

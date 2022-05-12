@@ -150,6 +150,7 @@ public class ResultController implements Initializable, IControlledScreen {
         stage.initStyle(StageStyle.TRANSPARENT);        //oppure UTILITY
 //        stage.setTitle("ABC");
         stage.setScene(new Scene(root1));
+//        stage.setX(100);      CONTROLLARE CHE SIA CENTRALE
         stage.showAndWait();
 
         if (session.isLogged()) {
