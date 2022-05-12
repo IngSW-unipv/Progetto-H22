@@ -67,11 +67,10 @@ public class ResultController implements Initializable, IControlledScreen {
         birthDate.setDayCellFactory(methods.ageRange());
 
         group.selectedToggleProperty().addListener((ov, oldT, newT) -> {
-            if(!newT.isSelected()) {
-                System.out.println("ora");
-                group.selectToggle(group.getToggles().get(3));
+            if(newT == null) {
+                group.selectToggle(group.getToggles().get(2));
             }
-            multiplier = ((ClassType) newT.getUserData()).getPriceM();
+            multiplier = ((ClassType) group.selectedToggleProperty().get().getUserData()).getPriceM();
             costLabel.setText(price());
         });
     }
@@ -155,8 +154,6 @@ public class ResultController implements Initializable, IControlledScreen {
             alert.setHeaderText(null);
             alert.setContentText("Utente non loggato!\nPrima di poter procedere effettuare il Login\nSe non si è registrato, procedere alla Registrazione");
             alert.showAndWait();
-    //DECIDERE QUESTO
-    // myContainer.setScreen(Factory.getLogin());
         }
 //
 //
