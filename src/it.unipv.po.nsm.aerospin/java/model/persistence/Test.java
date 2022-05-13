@@ -99,11 +99,11 @@ public class Test {
 //            System.out.println(route.getRouteId());
 //        }
 
-        UserService userService = new UserService();
-        User user = new User();
-        user.setEmail("hamza@gmail.com");
-        user.setPwd("2");
-        userService.persist(user);
+        FlightService flightService = new FlightService();
+        List<Flight> flights = flightService.findAll();
+        for (Flight flight : flights) {
+            System.out.println(flight.getFlightNumber());
+        }
 
 
 
