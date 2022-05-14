@@ -1,6 +1,8 @@
 package model.persistence.entity;
 
 import javax.persistence.*;
+import java.util.Collection;
+import java.util.Objects;
 
 @Entity
 public class User {
@@ -14,6 +16,8 @@ public class User {
     @Basic
     @Column(name = "pwd", nullable = false, length = 45)
     private String pwd;
+    @OneToMany(mappedBy = "userByUserId")
+    private Collection<Passenger> passengersById;
 
     public int getId() {
         return id;
@@ -47,10 +51,8 @@ public class User {
         User user = (User) o;
 
         if (id != user.id) return false;
-        if (email != null ? !email.equals(user.email) : user.email != null) return false;
-        if (pwd != null ? !pwd.equals(user.pwd) : user.pwd != null) return false;
-
-        return true;
+        if (!Objects.equals(email, user.email)) return false;
+        return Objects.equals(pwd, user.pwd);
     }
 
     @Override
@@ -59,5 +61,13 @@ public class User {
         result = 31 * result + (email != null ? email.hashCode() : 0);
         result = 31 * result + (pwd != null ? pwd.hashCode() : 0);
         return result;
+    }
+
+    public Collection<Passenger> getPassengersById() {
+        return passengersById;
+    }
+
+    public void setPassengersById(Collection<Passenger> passengersById) {
+        this.passengersById = passengersById;
     }
 }

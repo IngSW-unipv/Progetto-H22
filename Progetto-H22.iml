@@ -6,7 +6,7 @@
         <setting name="validation-enabled" value="true" />
         <setting name="provider-name" value="Hibernate" />
         <datasource-mapping>
-          <factory-entry name="Progetto-H22" value="f1539247-7774-4061-b1fe-22b66833640d" />
+          <factory-entry name="Progetto-H22" value="528a6452-85b7-47c1-b441-016c3d25f483" />
         </datasource-mapping>
         <naming-strategy-map />
       </configuration>

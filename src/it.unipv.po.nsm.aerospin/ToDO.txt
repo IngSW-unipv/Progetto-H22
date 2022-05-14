@@ -36,25 +36,30 @@ ToDO:
         ultime 4 cifre carta
         data acquisto
         prezzo
-
-
-    strategy posti: file config e salvo solo il numero
-                di posti occupati
-
-
-in Flight: 10% First - 20% Business - 70% economy
+    in Flight: 10% First - 20% Business - 70% economy
             default: 0
             type: tinyInt
             rimuovere seats
-*/
+            User: mettere email come primary key
+            Passenger:
+                -id (PK)
+                -userId (FK)
+                -name
+                -surname
+Done:
+    Order
+    Flight
+    User
+    Passenger
 
-User: mettere email come primary key
+
+strategy posti: file config e salvo solo il numero
+            di posti occupati
+
+
+
+
 ---------------------------------------
-Passenger:
-    -id (PK)
-    -userId (FK)
-    -name
-    -surname
 
 
     user logged -> recupero passaggeri ->

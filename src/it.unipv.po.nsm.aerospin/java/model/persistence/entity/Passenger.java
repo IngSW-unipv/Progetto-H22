@@ -1,35 +1,41 @@
 package model.persistence.entity;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 public class Passenger {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "passengerId", nullable = false)
-    private int passengerId;
+    @Column(name = "id", nullable = false)
+    private int id;
     @Basic
-    @Column(name = "name", nullable = false, length = 100)
+    @Column(name = "userId")
+    private Integer userId;
+    @Basic
+    @Column(name = "name", length = 25)
     private String name;
     @Basic
-    @Column(name = "surname", nullable = false, length = 100)
+    @Column(name = "surname",length = 25)
     private String surname;
-    @Basic
-    @Column(name = "classType", nullable = false, length = 10)
-    private String classType;
-    @Basic
-    @Column(name = "flightId", nullable = false, length = 10)
-    private String flightId;
-    @Basic
-    @Column(name = "passengerEmail", nullable = false, length = 100)
-    private String passengerEmail;
+    @ManyToOne
+    @JoinColumn(name = "userId", referencedColumnName = "id",insertable = false, updatable = false)
+    private User userByUserId;
 
-    public int getPassengerId() {
-        return passengerId;
+    public int getId() {
+        return id;
     }
 
-    public void setPassengerId(int passengerId) {
-        this.passengerId = passengerId;
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     public String getName() {
@@ -48,30 +54,6 @@ public class Passenger {
         this.surname = surname;
     }
 
-    public String getClassType() {
-        return classType;
-    }
-
-    public void setClassType(String classType) {
-        this.classType = classType;
-    }
-
-    public String getFlightId() {
-        return flightId;
-    }
-
-    public void setFlightId(String flightId) {
-        this.flightId = flightId;
-    }
-
-    public String getPassengerEmail() {
-        return passengerEmail;
-    }
-
-    public void setPassengerEmail(String passengerEmail) {
-        this.passengerEmail = passengerEmail;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -79,25 +61,26 @@ public class Passenger {
 
         Passenger passenger = (Passenger) o;
 
-        if (passengerId != passenger.passengerId) return false;
-        if (name != null ? !name.equals(passenger.name) : passenger.name != null) return false;
-        if (surname != null ? !surname.equals(passenger.surname) : passenger.surname != null) return false;
-        if (classType != null ? !classType.equals(passenger.classType) : passenger.classType != null) return false;
-        if (flightId != null ? !flightId.equals(passenger.flightId) : passenger.flightId != null) return false;
-        if (passengerEmail != null ? !passengerEmail.equals(passenger.passengerEmail) : passenger.passengerEmail != null)
-            return false;
-
-        return true;
+        if (id != passenger.id) return false;
+        if (!Objects.equals(userId, passenger.userId)) return false;
+        if (!Objects.equals(name, passenger.name)) return false;
+        return Objects.equals(surname, passenger.surname);
     }
 
     @Override
     public int hashCode() {
-        int result = passengerId;
+        int result = id;
+        result = 31 * result + (userId != null ? userId.hashCode() : 0);
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (surname != null ? surname.hashCode() : 0);
-        result = 31 * result + (classType != null ? classType.hashCode() : 0);
-        result = 31 * result + (flightId != null ? flightId.hashCode() : 0);
-        result = 31 * result + (passengerEmail != null ? passengerEmail.hashCode() : 0);
         return result;
+    }
+
+    public User getUserByUserId() {
+        return userByUserId;
+    }
+
+    public void setUserByUserId(User userByUserId) {
+        this.userByUserId = userByUserId;
     }
 }
