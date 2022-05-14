@@ -13,4 +13,9 @@
       <module name="Progetto-H22" target="16" />
     </bytecodeTargetLevel>
   </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Progetto-H22" options="--add-exports java.base/sun.security.x509=ALL-UNNAMED" />
+    </option>
+  </component>
 </project>

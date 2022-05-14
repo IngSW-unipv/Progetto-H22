@@ -1,19 +1,27 @@
 package model.persistence.entity;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity
-public class User  {
+public class User {
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "idUser")
-    private int idUser;
+    @Column(name = "id", nullable = false)
+    private int id;
     @Basic
-    @Column(name = "email")
+    @Column(name = "email", nullable = false, length = 45)
     private String email;
     @Basic
-    @Column(name = "pwd")
+    @Column(name = "pwd", nullable = false, length = 45)
     private String pwd;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getEmail() {
         return email;
@@ -38,6 +46,7 @@ public class User  {
 
         User user = (User) o;
 
+        if (id != user.id) return false;
         if (email != null ? !email.equals(user.email) : user.email != null) return false;
         if (pwd != null ? !pwd.equals(user.pwd) : user.pwd != null) return false;
 
@@ -46,16 +55,9 @@ public class User  {
 
     @Override
     public int hashCode() {
-        int result = email != null ? email.hashCode() : 0;
+        int result = id;
+        result = 31 * result + (email != null ? email.hashCode() : 0);
         result = 31 * result + (pwd != null ? pwd.hashCode() : 0);
         return result;
-    }
-
-    public int getIdUser() {
-        return idUser;
-    }
-
-    public void setIdUser(int idUser) {
-        this.idUser = idUser;
     }
 }

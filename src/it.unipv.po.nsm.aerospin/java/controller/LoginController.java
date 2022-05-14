@@ -1,16 +1,17 @@
 package controller;
 
 import controller.util.IControlledScreen;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import model.Factory;
-import model.Session;
-import model.exception.NoMatchException;
 import model.persistence.entity.User;
 import model.persistence.service.UserService;
+import model.exception.NoMatchException;
+import model.Session;
+import model.Factory;
 import view.ScreenContainer;
 
 import java.io.IOException;
@@ -43,7 +44,7 @@ public class LoginController implements Initializable, IControlledScreen {
     }
 
     @FXML
-    private void login() throws IOException {
+    private void login(ActionEvent event) throws IOException {
         //CONTROLLO FORMATO EMAIL
         if(checkMail()) {
             errLabel.setText("");
@@ -57,7 +58,7 @@ public class LoginController implements Initializable, IControlledScreen {
     }
 
     @FXML
-    private void register() throws IOException {
+    private void register(ActionEvent event) throws IOException {
         if(checkMail()) {
             errLabel.setText("");
             int i = pwd.getText().length();
