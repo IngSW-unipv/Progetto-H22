@@ -13,9 +13,10 @@ import model.exception.NoMatchException;
 import model.Session;
 import model.Factory;
 import view.ScreenContainer;
-
+import static controller.util.Encryption.*;
 import java.io.IOException;
 import java.net.URL;
+import java.security.Key;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -25,6 +26,9 @@ public class LoginController implements Initializable, IControlledScreen {
     ScreenContainer myContainer;
     Session session = Factory.getInstance().getSession();
     UserService userService = new UserService();
+    Key key = generateKey();
+    String encryptedPassword;
+
 
     @FXML private TextField email;
     @FXML private TextField pwd;
@@ -33,6 +37,9 @@ public class LoginController implements Initializable, IControlledScreen {
 
     private static final Pattern VALID_EMAIL_ADDRESS_REGEX =
             Pattern.compile("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,6}$");
+
+    public LoginController() throws Exception {
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -58,7 +65,8 @@ public class LoginController implements Initializable, IControlledScreen {
     }
 
     @FXML
-    private void register(ActionEvent event) throws IOException {
+    private void register(ActionEvent event) throws Exception {
+
         if(checkMail()) {
             errLabel.setText("");
             int i = pwd.getText().length();
@@ -67,7 +75,9 @@ public class LoginController implements Initializable, IControlledScreen {
                     User newUser = new User();
                     newUser.setEmail(email.getText());
                     //NO VINCOLI SU PASSWORD
-                    newUser.setPwd(pwd.getText());
+
+                    encryptedPassword = encrypt(pwd.getText(), key);
+                    newUser.setPwd(encryptedPassword);
                     userService.persist(newUser);
 
                     session.setUser(newUser);
@@ -100,15 +110,18 @@ public class LoginController implements Initializable, IControlledScreen {
 
     public boolean isRegistered(){
         User logged;
+        String decryptedPassword;
+
         try{
             logged = userService.findByEmail(email.getText());
-            if(logged.getPwd().equals(pwd.getText()))  {
+            decryptedPassword = decrypt(logged.getPwd(), key);
+            if(decryptedPassword.equals(pwd.getText()))  {
                 session.setUser(logged);
                 return true;
             } else {
                 throw new NoMatchException("Not Matched!\n");
             }
-        }catch (IndexOutOfBoundsException | NoMatchException e){
+        }catch (Exception e){
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Validate Fields");
             alert.setHeaderText(null);

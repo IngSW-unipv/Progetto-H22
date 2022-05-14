@@ -15,7 +15,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="Progetto-H22" options="--add-exports java.base/sun.security.x509=ALL-UNNAMED" />
+      <module name="Progetto-H22" options="" />
     </option>
   </component>
 </project>

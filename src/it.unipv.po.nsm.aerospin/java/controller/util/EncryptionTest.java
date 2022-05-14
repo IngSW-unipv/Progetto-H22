@@ -10,7 +10,7 @@ public class EncryptionTest {
     public static void main(String args[]) throws Exception {
 
         Key key = generateKey();
-        //String encriptValue = encrypt("K3lL0t0ksfUBtQyRxR4D8A==",key);
+        String encriptValue = encrypt("K3lL0t0ksfUBtQyRxR4D8A==",key);
 
         decrypt("K3lL0t0ksfUBtQyRxR4D8A==",key);
 
