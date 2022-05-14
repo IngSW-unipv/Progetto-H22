@@ -24,3 +24,40 @@ ToRemove:
 	-package Flight //Done
 	-Rimuovere package Person //Done
 	-Ripulire fxml //Done
+
+
+
+ToDO:
+    Order:
+        id (PK)
+        idPassenger (FK)
+        idFlight(a/r) (FK)
+        classe volo
+        ultime 4 cifre carta
+        data acquisto
+        prezzo
+
+
+    strategy posti: file config e salvo solo il numero
+                di posti occupati
+
+
+in Flight: 10% First - 20% Business - 70% economy
+            default: 0
+            type: tinyInt
+            rimuovere seats
+*/
+
+User: mettere email come primary key
+---------------------------------------
+Passenger:
+    -id (PK)
+    -userId (FK)
+    -name
+    -surname
+
+
+    user logged -> recupero passaggeri ->
+    onLogged -> cache orders
+    se ho gia' ordine in db non creare un nuovo passengerID
+
