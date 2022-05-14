@@ -137,6 +137,7 @@
                               <Font name="Comic Sans MS" size="15.0" />
                            </font>
                         </JFXButton>
+                        <Label fx:id="errLabel" text="Completare prima tutti i campi!" textFill="RED" visible="false" />
                      </children>
                      <padding>
                         <Insets left="10.0" />

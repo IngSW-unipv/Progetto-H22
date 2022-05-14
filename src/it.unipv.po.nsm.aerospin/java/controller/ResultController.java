@@ -41,6 +41,7 @@ public class ResultController implements Initializable, IControlledScreen {
 
     @FXML private Label depLabel;
     @FXML private Label retLabel;
+    @FXML private Label errLabel;
 
     @FXML private TableView<Flight> table1;
     @FXML private TableColumn<Flight,String> flightNumber1;
@@ -92,6 +93,7 @@ public class ResultController implements Initializable, IControlledScreen {
         table1.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         table2.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 
+        //DECIDERE
         flightNumber1.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getFlightNumber()));
         flightNumber2.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getFlightNumber()));
         scheduledTime1.setCellValueFactory(new PropertyValueFactory<>("scheduledTime"));
@@ -132,7 +134,7 @@ public class ResultController implements Initializable, IControlledScreen {
     }
 
     @FXML
-    private void ageCheck(ActionEvent event) {
+    private void ageCheck() {
         if (methods.isMinor(birthDate.getValue())) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Reminder");
@@ -143,27 +145,28 @@ public class ResultController implements Initializable, IControlledScreen {
     }
 
     @FXML
-    private void checkout(ActionEvent event) throws IOException {
+    private void checkout() throws IOException {
         Parent root1 = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("util/Payment.fxml")));
-        Stage stage = new Stage();
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.initStyle(StageStyle.TRANSPARENT);        //oppure UTILITY
-//        stage.setTitle("ABC");
-        stage.setScene(new Scene(root1));
-//        stage.setX(100);      CONTROLLARE CHE SIA CENTRALE
-        stage.showAndWait();
+        Stage childStage = new Stage();
+        childStage.initModality(Modality.APPLICATION_MODAL);
+        childStage.initStyle(StageStyle.TRANSPARENT);        //oppure UTILITY
+        childStage.setScene(new Scene(root1));
+        childStage.showAndWait();
 
+        errLabel.setVisible(false);
         if (session.isLogged()) {
-            if(Integer.parseInt(price()) > 0 &
-                name.getText().isEmpty() & surname.getText().isEmpty() & birthDate.getProperties().isEmpty()){
-                System.out.println("ok");
+            if( Double.parseDouble(price()) > 0 &&
+                methods.dataCheck(name.getText(),surname.getText()) &&
+                birthDate.getValue() != null){
+
+
+
+
+
+//        myContainer.setScreen(Factory.getHome());
+            } else {
+                errLabel.setVisible(true);
             }
-            System.out.println("non ok");
-
-
-
-
-
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Login Error");
@@ -174,7 +177,7 @@ public class ResultController implements Initializable, IControlledScreen {
 
 
 
-//        myContainer.setScreen(Factory.getHome());
+
 
 
     }

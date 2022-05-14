@@ -3,7 +3,6 @@ package controller;
 import com.jfoenix.controls.JFXButton;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
@@ -41,17 +40,17 @@ public class MainController implements Initializable {
     }
 
     @FXML
-    private void goToHome(ActionEvent event) throws IOException {
+    private void goToHome() throws IOException {
         myContainer.setScreen(Factory.getHome());
     }
 
     @FXML
-    private void goToSearch(ActionEvent event) throws IOException {
+    private void goToSearch() throws IOException {
         myContainer.setScreen(Factory.getSearch());
     }
 
     @FXML
-    private void goToLogin(ActionEvent event) throws IOException {
+    private void goToLogin() throws IOException {
         if(session.isLogged()) {
             myContainer.setScreen(Factory.getAccount());
         } else {
@@ -60,14 +59,14 @@ public class MainController implements Initializable {
     }
 
     @FXML
-    private void logout(ActionEvent event) throws IOException {
+    private void logout() throws IOException {
         //cambia stato come non loggato
         session.setLogged(false);
         myContainer.setScreen(Factory.getHome());
     }
 
     //commentare
-    ChangeListener<String> listener = new ChangeListener<String>() {
+    ChangeListener<String> listener = new ChangeListener<>() {
         @Override
         public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
             if (newValue.equals(Factory.getHome())) {

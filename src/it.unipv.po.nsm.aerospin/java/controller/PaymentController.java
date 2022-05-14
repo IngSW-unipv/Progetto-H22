@@ -17,7 +17,7 @@ public class PaymentController implements Initializable {
     }
 
     @FXML
-    private void execute(ActionEvent event){
+    private void execute(){
         Stage stage = (Stage) Stage.getWindows().get(1);
         stage.close();
     }

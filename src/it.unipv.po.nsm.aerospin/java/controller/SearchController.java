@@ -2,8 +2,8 @@ package controller;
 
 import com.jfoenix.controls.JFXToggleButton;
 import controller.util.IControlledScreen;
+import controller.util.manager.SearchManager;
 import javafx.beans.property.SimpleBooleanProperty;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -11,7 +11,6 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import model.Factory;
 import model.Session;
-import controller.util.manager.SearchManager;
 import org.controlsfx.control.SearchableComboBox;
 import view.ScreenContainer;
 
@@ -63,7 +62,7 @@ public class SearchController implements Initializable, IControlledScreen {
     }
 
     @FXML
-    private void findArrivals (ActionEvent event){
+    private void findArrivals(){
         //controlla che venga resettato la combobox
         scbRet.getSelectionModel().clearSelection();
         scbRet.setItems(methods.getArrivals(scbDep.getValue()));
@@ -73,7 +72,7 @@ public class SearchController implements Initializable, IControlledScreen {
     }
 
     @FXML
-    private void checkRoute(ActionEvent event){
+    private void checkRoute(){
         select.setSelected(false);
         if (methods.checkRoute(scbRet.getValue(), scbDep.getValue())){
             error.set(false);
@@ -86,13 +85,13 @@ public class SearchController implements Initializable, IControlledScreen {
 
     //Gestisco date2>>date1
     @FXML
-    private void returnDate (ActionEvent event){
+    private void returnDate(){
         date2.setValue(null);
-        date2.setDayCellFactory(methods.bookingRange(date1.getValue()));
+        date2.setDayCellFactory(methods.bookingRange(date1.getValue().plusDays(1)));
     }
 
     @FXML
-    private void goToResult(ActionEvent event) throws IOException {
+    private void goToResult() throws IOException {
         if (validateFields()) {
             session.setOneway(!select.isSelected());
             session.clear();
@@ -107,9 +106,9 @@ public class SearchController implements Initializable, IControlledScreen {
     }
 
     public boolean validateFields(){
-        if( scbRet.getSelectionModel().isEmpty() |
-            date1.getValue() == null |
-           (date2.getValue() == null & select.isSelected())){
+        if( scbRet.getSelectionModel().isEmpty() ||
+            date1.getValue() == null ||
+           (date2.getValue() == null && select.isSelected())){
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setTitle("Validate Fields");
                 alert.setHeaderText(null);

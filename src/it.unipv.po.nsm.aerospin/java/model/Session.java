@@ -1,6 +1,7 @@
 package model;
 
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.stage.Stage;
 import model.persistence.entity.User;
 
 import java.sql.Date;

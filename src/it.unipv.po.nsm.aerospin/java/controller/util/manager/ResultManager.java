@@ -12,12 +12,17 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class ResultManager {
 
     CachedFlights cachedFlights = CachedFlights.getInstance();
     List<Flight> results = cachedFlights.findAll();
+
+    private static final Pattern VALID_NAME_REGEX =
+            Pattern.compile("^[a-zA-z]{2,15}$");
 
     public ObservableList<Flight> getFlights(String dep, String ret, Date date) {
 
@@ -56,5 +61,12 @@ public class ResultManager {
                 };
             }
         };
+    }
+
+    public boolean dataCheck(String name, String surname) {
+        Matcher matcher1 = VALID_NAME_REGEX.matcher(name);
+        Matcher matcher2 = VALID_NAME_REGEX.matcher(surname);
+
+        return matcher1.find() && matcher2.find();
     }
 }

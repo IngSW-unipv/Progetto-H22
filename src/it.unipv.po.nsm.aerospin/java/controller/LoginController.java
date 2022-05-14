@@ -44,7 +44,7 @@ public class LoginController implements Initializable, IControlledScreen {
     }
 
     @FXML
-    private void login(ActionEvent event) throws IOException {
+    private void login() throws IOException {
         //CONTROLLO FORMATO EMAIL
         if(checkMail()) {
             errLabel.setText("");
@@ -58,7 +58,7 @@ public class LoginController implements Initializable, IControlledScreen {
     }
 
     @FXML
-    private void register(ActionEvent event) throws IOException {
+    private void register() throws IOException {
         if(checkMail()) {
             errLabel.setText("");
             int i = pwd.getText().length();
