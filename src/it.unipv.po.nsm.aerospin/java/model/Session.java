@@ -1,7 +1,6 @@
 package model;
 
 import javafx.beans.property.SimpleBooleanProperty;
-import javafx.stage.Stage;
 import model.persistence.entity.User;
 
 import java.sql.Date;
@@ -10,7 +9,7 @@ import java.time.LocalDate;
 public class Session {
 
     private User user;
-    private SimpleBooleanProperty logged = new SimpleBooleanProperty();
+    private final SimpleBooleanProperty logged = new SimpleBooleanProperty();
     private boolean oneway = true;
     private String dep;
     private String ret;

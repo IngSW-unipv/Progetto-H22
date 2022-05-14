@@ -45,7 +45,7 @@ public class SearchManager {
         List<Flight> a = results.stream()
                 .filter(o -> o.getRouteByFlightRouteId().getAirportByDeparture().equalsString(dep))
                 .filter(o -> o.getRouteByFlightRouteId().getAirportByArrival().equalsString(ret))
-                .distinct().collect(Collectors.toList());
+                .distinct().toList();
 
         return a.size() > 0;
     }
@@ -55,7 +55,7 @@ public class SearchManager {
      */
     private static final int maxMonth = 4;
     public Callback<DatePicker, DateCell> bookingRange(LocalDate from) {
-        return new Callback<DatePicker, DateCell>() {
+        return new Callback<>() {
             @Override
             public DateCell call(final DatePicker param) {
                 return new DateCell() {

@@ -27,18 +27,18 @@ public class Factory {
         return session;
     }
 
-    private static String load = "load";
-    private static String screen0File = "fxml/Load.fxml";
-    private static String home = "home";
-    private static String screen1File = "fxml/Home.fxml";
-    private static String search = "search";
-    private static String screen2File = "fxml/Search.fxml";
-    private static String result = "result";
-    private static String screen3File = "fxml/Result.fxml";
-    private static String login = "login";
-    private static String screen4File = "fxml/Login.fxml";
-    private static String account = "account";
-    private static String screen5File = "fxml/Account.fxml";
+    private static final String load = "load";
+    private static final String screen0File = "fxml/Load.fxml";
+    private static final String home = "home";
+    private static final String screen1File = "fxml/Home.fxml";
+    private static final String search = "search";
+    private static final String screen2File = "fxml/Search.fxml";
+    private static final String result = "result";
+    private static final String screen3File = "fxml/Result.fxml";
+    private static final String login = "login";
+    private static final String screen4File = "fxml/Login.fxml";
+    private static final String account = "account";
+    private static final String screen5File = "fxml/Account.fxml";
 
 
     public ScreenContainer createContainer() throws IOException {

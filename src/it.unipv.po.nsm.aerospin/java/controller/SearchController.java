@@ -35,7 +35,7 @@ public class SearchController implements Initializable, IControlledScreen {
 
     @FXML private Label errLabel;
 
-    private SimpleBooleanProperty error = new SimpleBooleanProperty(false);
+    private final SimpleBooleanProperty error = new SimpleBooleanProperty(false);
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {

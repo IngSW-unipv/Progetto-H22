@@ -22,8 +22,7 @@ public class AirportDao implements AirportDaoInterface {
 
     @SuppressWarnings("unchecked")
     public List<Airport> findAll() {
-        List<Airport> airports = (List<Airport>) conn.getCurrentSession().createQuery("from Airport ").list();
-        return airports;
+        return (List<Airport>) conn.getCurrentSession().createQuery("from Airport ").list();
     }
 
     @Override

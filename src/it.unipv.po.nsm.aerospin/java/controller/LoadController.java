@@ -25,7 +25,7 @@ public class LoadController implements Initializable, IControlledScreen {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        Task<Void> task = new Task<Void>() {
+        Task<Void> task = new Task<>() {
 
             @Override
             public Void call() throws InterruptedException, NetworkException {
@@ -53,9 +53,7 @@ public class LoadController implements Initializable, IControlledScreen {
             }
         });
 
-        task.messageProperty().addListener((obs, oldVal, newVal) -> {
-            loading.setText(newVal);
-        });
+        task.messageProperty().addListener((obs, oldVal, newVal) -> loading.setText(newVal));
 
         new Thread(task).start();
 

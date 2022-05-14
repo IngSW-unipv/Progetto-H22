@@ -1,26 +1,25 @@
 package view;
 
-import java.io.IOException;
-import java.util.HashMap;
+import controller.util.IControlledScreen;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
-import controller.util.IControlledScreen;
+
+import java.io.IOException;
+import java.util.HashMap;
 
 public class ScreenContainer extends StackPane {
 
     //Contiene gli screen da mostrare
-    private HashMap<String, String> screens = new HashMap<>();
-    private SimpleStringProperty actualScreen = new SimpleStringProperty();
+    private final HashMap<String, String> screens = new HashMap<>();
+    private final SimpleStringProperty actualScreen = new SimpleStringProperty();
 
     //Aggiunge lo screen allo Stack
     public void addScreen(String name, String path) {
@@ -54,24 +53,21 @@ public class ScreenContainer extends StackPane {
 
             actualScreen.set(name);
             FXMLLoader myLoader = new FXMLLoader(getClass().getResource(screens.get(name)));
-            Parent loadScreen = (Parent) myLoader.load();
-            IControlledScreen myScreenController = ((IControlledScreen) myLoader.getController());
+            Parent loadScreen = myLoader.load();
+            IControlledScreen myScreenController = myLoader.getController();
             myScreenController.setScreenParent(this);
             final DoubleProperty opacity = opacityProperty();
 
             if (!getChildren().isEmpty()) {    //se lo screen ha un "parent"
                 Timeline fade = new Timeline(
                         new KeyFrame(Duration.ZERO, new KeyValue(opacity, 1.0)),
-                        new KeyFrame(new Duration(100), new EventHandler<ActionEvent>() {
-                            @Override
-                            public void handle(ActionEvent t) {
-                                getChildren().remove(0);                    //rimuovo screen attuale
-                                getChildren().add(0, loadScreen);     //aggiungo nuovo screen
-                                Timeline fadeIn = new Timeline(
-                                        new KeyFrame(Duration.ZERO, new KeyValue(opacity, 0.0)),
-                                        new KeyFrame(new Duration(200), new KeyValue(opacity, 1.0)));
-                                fadeIn.play();
-                            }
+                        new KeyFrame(new Duration(100), t -> {
+                            getChildren().remove(0);                    //rimuovo screen attuale
+                            getChildren().add(0, loadScreen);     //aggiungo nuovo screen
+                            Timeline fadeIn = new Timeline(
+                                    new KeyFrame(Duration.ZERO, new KeyValue(opacity, 0.0)),
+                                    new KeyFrame(new Duration(200), new KeyValue(opacity, 1.0)));
+                            fadeIn.play();
                         }, new KeyValue(opacity, 0.0)));
                 fade.play();
             } else {

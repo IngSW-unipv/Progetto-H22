@@ -24,8 +24,7 @@ public class FlightDao implements FlightDaoInterface {
 
     @Override
     public List<Flight> findAll() {
-        List<Flight> flights = (List<Flight>) conn.getCurrentSession().createQuery("from Flight ").list();
-        return  flights;
+        return (List<Flight>) conn.getCurrentSession().createQuery("from Flight ").list();
     }
 
 

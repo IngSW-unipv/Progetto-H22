@@ -48,7 +48,7 @@ public class ResultManager {
         return years < 16;
     }
     public Callback<DatePicker, DateCell> ageRange() {
-        return new Callback<DatePicker, DateCell>() {
+        return new Callback<>() {
             @Override
             public DateCell call(final DatePicker param) {
                 return new DateCell() {

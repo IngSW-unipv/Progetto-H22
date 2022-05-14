@@ -1,17 +1,16 @@
 package controller;
 
 import controller.util.IControlledScreen;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import model.Factory;
+import model.Session;
+import model.exception.NoMatchException;
 import model.persistence.entity.User;
 import model.persistence.service.UserService;
-import model.exception.NoMatchException;
-import model.Session;
-import model.Factory;
 import view.ScreenContainer;
 
 import java.io.IOException;

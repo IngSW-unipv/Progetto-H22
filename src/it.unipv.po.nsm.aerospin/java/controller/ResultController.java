@@ -1,9 +1,9 @@
 package controller;
 
 import controller.util.IControlledScreen;
-import javafx.beans.property.*;
+import controller.util.manager.ResultManager;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.ListChangeListener;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -15,18 +15,15 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import model.Factory;
-import model.booking.passenger.ClassType;
-import model.booking.payment.AeroPay;
-import model.booking.payment.PaymentStrategy;
-import model.persistence.entity.Flight;
 import model.Session;
-import controller.util.manager.ResultManager;
+import model.booking.passenger.ClassType;
+import model.persistence.entity.Flight;
 import view.ScreenContainer;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Time;
 import java.sql.Date;
+import java.sql.Time;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -37,7 +34,7 @@ public class ResultController implements Initializable, IControlledScreen {
     ResultManager methods = new ResultManager();
 
     //controllare
-    private final PaymentStrategy paymentStrategy = new AeroPay();
+   // private final PaymentStrategy paymentStrategy = new AeroPay();
 
     @FXML private Label depLabel;
     @FXML private Label retLabel;
@@ -160,9 +157,7 @@ public class ResultController implements Initializable, IControlledScreen {
                 birthDate.getValue() != null){
 
 
-
-
-
+                System.out.println("ok");
 //        myContainer.setScreen(Factory.getHome());
             } else {
                 errLabel.setVisible(true);

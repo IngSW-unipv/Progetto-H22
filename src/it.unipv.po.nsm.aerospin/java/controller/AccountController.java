@@ -20,8 +20,4 @@ public class AccountController implements Initializable, IControlledScreen {
         myContainer = screenParent;
     }
 
-/*    @FXML
-    private void goToAccount(ActionEvent event){
-        myContainer.setScreen(MainApplication.account);
-    }*/
 }
