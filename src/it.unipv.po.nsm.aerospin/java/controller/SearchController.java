@@ -2,6 +2,7 @@ package controller;
 
 import com.jfoenix.controls.JFXToggleButton;
 import controller.util.IControlledScreen;
+import controller.util.manager.ResultManager;
 import controller.util.manager.SearchManager;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.fxml.FXML;
@@ -9,8 +10,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.stage.StageStyle;
 import model.Factory;
 import model.Session;
+import model.exception.NoMatchException;
 import org.controlsfx.control.SearchableComboBox;
 import view.ScreenContainer;
 
@@ -24,6 +27,7 @@ public class SearchController implements Initializable, IControlledScreen {
     ScreenContainer myContainer;
     Session session = Factory.getInstance().getSession();
     SearchManager methods = new SearchManager();
+    ResultManager results = new ResultManager();
 
     @FXML private SearchableComboBox<String> scbDep;
     @FXML private SearchableComboBox<String> scbRet;
@@ -101,7 +105,16 @@ public class SearchController implements Initializable, IControlledScreen {
             if (!(session.isOneway())) {
                 session.setDateRet(date2.getValue());
             }
-            myContainer.setScreen(Factory.getResult());
+            try {
+                results.getFlights(session.getDep(), session.getRet(), session.getDateDep());
+                myContainer.setScreen(Factory.getResult());
+            } catch (NoMatchException e) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("No Match");
+                alert.initStyle(StageStyle.TRANSPARENT);
+                alert.setContentText("Il volo di andata non è disponibile in questa data");
+                alert.showAndWait();
+            }
         }
     }
 
@@ -111,7 +124,6 @@ public class SearchController implements Initializable, IControlledScreen {
            (date2.getValue() == null && select.isSelected())){
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setTitle("Validate Fields");
-                alert.setHeaderText(null);
                 alert.setContentText("Inserire tutti i campi prima di procedere!");
                 alert.showAndWait();
                 return false;

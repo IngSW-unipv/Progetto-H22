@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.util.Callback;
+import model.exception.NoMatchException;
 import model.persistence.CachedFlights;
 import model.persistence.entity.Flight;
 
@@ -24,7 +25,7 @@ public class ResultManager {
     private static final Pattern VALID_NAME_REGEX =
             Pattern.compile("^[a-zA-z]{2,15}$");
 
-    public ObservableList<Flight> getFlights(String dep, String ret, Date date) {
+    public ObservableList<Flight> getFlights(String dep, String ret, Date date) throws NoMatchException {
 
         List<Flight> departures;
         departures = results.stream()
@@ -33,8 +34,11 @@ public class ResultManager {
                 .filter(o -> o.getScheduledDate().equals(date))
                 .distinct()
                 .collect(Collectors.toList());
-
-        return FXCollections.observableArrayList(departures);
+        if(departures.size() == 0){
+            throw new NoMatchException("Not Matched!\n");
+        } else {
+            return FXCollections.observableArrayList(departures);
+        }
     }
 
     /*  Controllo se l'età selezionata è > 16

@@ -17,6 +17,7 @@ import javafx.stage.StageStyle;
 import model.Factory;
 import model.Session;
 import model.booking.passenger.ClassType;
+import model.exception.NoMatchException;
 import model.persistence.entity.Flight;
 import view.ScreenContainer;
 
@@ -67,7 +68,7 @@ public class ResultController implements Initializable, IControlledScreen {
     private double multiplier = ClassType.ECONOMY.getPriceM();
 
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    public void initialize(URL url, ResourceBundle rb){
         initTable();
         birthDate.setDayCellFactory(methods.ageRange());
 
@@ -101,7 +102,9 @@ public class ResultController implements Initializable, IControlledScreen {
         price2.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getPrice() + " €"));
 
         table1.setPlaceholder(new Label("Volo non disponibile in questa data!"));
-        table1.setItems(methods.getFlights(dep,ret,dateDep));
+        try {
+            table1.setItems(methods.getFlights(dep, ret, dateDep));
+        } catch (NoMatchException ignored) {}
         table1.getSelectionModel().getSelectedIndices().addListener(
                 (ListChangeListener<Integer>) change -> costLabel.setText(price()));
         depLabel.setText(String.format(format, dep, ret, dateDep));
@@ -110,7 +113,9 @@ public class ResultController implements Initializable, IControlledScreen {
             table2.setPlaceholder(new Label("Ritorno non selezionato!"));
         } else {
             table2.setPlaceholder(new Label("Volo non disponibile in questa data!"));
-            table2.setItems(methods.getFlights(ret,dep,dateRet));
+            try {
+                table2.setItems(methods.getFlights(ret, dep, dateRet));
+            }catch (NoMatchException ignored){}
             table2.getSelectionModel().getSelectedIndices().addListener(
                     (ListChangeListener<Integer>) change -> costLabel.setText(price()));
             retLabel.setText(String.format(format, ret, dep,dateRet));
@@ -169,11 +174,6 @@ public class ResultController implements Initializable, IControlledScreen {
             alert.setContentText("Utente non loggato!\nPrima di poter procedere effettuare il Login\nSe non si è registrato, procedere alla Registrazione");
             alert.showAndWait();
         }
-
-
-
-
-
 
     }
 

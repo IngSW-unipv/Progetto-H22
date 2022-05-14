@@ -51,7 +51,7 @@ public class LoginController implements Initializable, IControlledScreen {
     }
 
     @FXML
-    private void login(ActionEvent event) throws IOException {
+    private void login() throws IOException {
         //CONTROLLO FORMATO EMAIL
         if(checkMail()) {
             errLabel.setText("");
