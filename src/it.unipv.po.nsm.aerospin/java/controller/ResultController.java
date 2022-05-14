@@ -19,6 +19,7 @@ import model.Session;
 import model.booking.passenger.ClassType;
 import model.exception.NoMatchException;
 import model.persistence.entity.Flight;
+import model.persistence.entity.Order;
 import view.ScreenContainer;
 
 import java.io.IOException;
@@ -33,9 +34,6 @@ public class ResultController implements Initializable, IControlledScreen {
     ScreenContainer myContainer;
     Session session = Factory.getInstance().getSession();
     ResultManager methods = new ResultManager();
-
-    //controllare
-   // private final PaymentStrategy paymentStrategy = new AeroPay();
 
     @FXML private Label depLabel;
     @FXML private Label retLabel;
@@ -61,10 +59,12 @@ public class ResultController implements Initializable, IControlledScreen {
     @FXML private TextField surname;
     @FXML private DatePicker birthDate;
 
+    private final Order order = new Order();
     private final String dep = session.getDep();
     private final String ret = session.getRet();
     private final Date dateDep = session.getDateDep();
     private final Date dateRet = session.getDateRet();
+    private double price;
     private double multiplier = ClassType.ECONOMY.getPriceM();
 
     @Override
@@ -131,7 +131,8 @@ public class ResultController implements Initializable, IControlledScreen {
             tot += table2.getSelectionModel().getSelectedItem().getPrice();
         }
 
-        double price = tot * multiplier;
+        price = tot * multiplier;
+
         return String.valueOf(price);
     }
 
@@ -148,29 +149,51 @@ public class ResultController implements Initializable, IControlledScreen {
 
     @FXML
     private void checkout() throws IOException {
-        Parent root1 = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("util/Payment.fxml")));
-        Stage childStage = new Stage();
-        childStage.initModality(Modality.APPLICATION_MODAL);
-        childStage.initStyle(StageStyle.TRANSPARENT);        //oppure UTILITY
-        childStage.setScene(new Scene(root1));
-        childStage.showAndWait();
-
         errLabel.setVisible(false);
         if (session.isLogged()) {
-            if( Double.parseDouble(price()) > 0 &&
+            if( price > 0 &&
                 methods.dataCheck(name.getText(),surname.getText()) &&
                 birthDate.getValue() != null){
 
+                Parent root1 = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("util/Payment.fxml")));
+                Stage childStage = new Stage();
+                childStage.initModality(Modality.APPLICATION_MODAL);
+                childStage.initStyle(StageStyle.TRANSPARENT);
+                childStage.setScene(new Scene(root1));
+                childStage.showAndWait();
 
-                System.out.println("ok");
-//        myContainer.setScreen(Factory.getHome());
+                if(session.isPaid()) {
+                    //devo controllare se passenger già esistente e NO CONSTRUCTOR
+                //    order.setPassengerByPassengerId(new Passenger(session.getUser(), name.getText(), surname.getText()));
+//                    if(!table1.getSelectionModel().isEmpty()){
+//                        order.setFlightIdA(table1.getSelectionModel().getSelectedItem());
+//                    }
+//                    if(!table2.getSelectionModel().isEmpty()){
+//                        order.setFlightIdR(table2.getSelectionModel().getSelectedItem());
+//                    }
+                    //SERVE LA CARD number?? NO
+                    //verificare in initialize
+                    order.setFlightClass(group.getSelectedToggle().getUserData().toString());
+                    order.setOrderDate(new Date(System.currentTimeMillis()));
+                    order.setPrice(price);
+
+                    //salva order in db, o anche passenger?
+                    //gestire posto in meno, necessario??
+
+                    //PRINT TICKET
+                    session.clear();
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Ordine Completato!");
+                    alert.setContentText("Il suo acquisto è confermato, riceverà una mail con le info\nA presto!");
+                    alert.showAndWait();
+                    myContainer.setScreen(Factory.getHome());
+                }
             } else {
                 errLabel.setVisible(true);
             }
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Login Error");
-            alert.setHeaderText(null);
             alert.setContentText("Utente non loggato!\nPrima di poter procedere effettuare il Login\nSe non si è registrato, procedere alla Registrazione");
             alert.showAndWait();
         }

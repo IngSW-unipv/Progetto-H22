@@ -11,6 +11,7 @@ public class Session {
     private User user;
     private final SimpleBooleanProperty logged = new SimpleBooleanProperty();
     private boolean oneway = true;
+    private boolean paid = false;
     private String dep;
     private String ret;
     private Date dateDep;
@@ -56,6 +57,14 @@ public class Session {
         this.oneway = oneway;
     }
 
+    public boolean isPaid() {
+        return paid;
+    }
+
+    public void setPaid(boolean paid) {
+        this.paid = paid;
+    }
+
     public String getDep() {
         return dep;
     }
@@ -89,6 +98,7 @@ public class Session {
     }
 
     public void clear() {
+        paid = false;
         dep = null;
         ret = null;
         dateDep = null;

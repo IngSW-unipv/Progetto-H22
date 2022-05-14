@@ -78,8 +78,9 @@
             </StackPane>
          </children>
          <padding>
-            <Insets left="20.0" right="20.0" top="10.0" />
+            <Insets left="20.0" right="20.0" top="30.0" />
          </padding>
       </VBox>
+      <JFXButton onAction="#cancel" text="Cancella" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
    </children>
 </AnchorPane>
