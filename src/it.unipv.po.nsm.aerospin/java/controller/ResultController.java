@@ -1,5 +1,6 @@
 package controller;
 
+import com.google.zxing.WriterException;
 import controller.util.IControlledScreen;
 import controller.util.manager.ResultManager;
 import javafx.beans.property.SimpleStringProperty;
@@ -16,6 +17,8 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import model.Factory;
 import model.Session;
+import model.booking.Ticket;
+import model.booking.TicketMail;
 import model.booking.passenger.ClassType;
 import model.exception.NoMatchException;
 import model.persistence.entity.Flight;
@@ -69,6 +72,9 @@ public class ResultController implements Initializable, IControlledScreen {
     private Double price;
     private double multiplier = ClassType.ECONOMY.getPriceM();
     private static final DecimalFormat df = new DecimalFormat("0.00");
+    private Ticket ticket_andata;
+    private Ticket ticket_ritorno;
+    TicketMail emailService = new TicketMail();
 
     @Override
     public void initialize(URL url, ResourceBundle rb){
@@ -153,7 +159,7 @@ public class ResultController implements Initializable, IControlledScreen {
     }
 
     @FXML
-    private void checkout() throws IOException {
+    private void checkout() throws IOException, WriterException {
         errLabel.setVisible(false);
         if (session.isLogged()) {
             if( price > 0 &&
@@ -185,7 +191,27 @@ public class ResultController implements Initializable, IControlledScreen {
                     //salva order in db, o anche passenger?
                     //gestire posto in meno, necessario??
 
-                    //PRINT TICKET
+                    ticket_andata = new Ticket(name.getText(), surname.getText(),table1.getSelectionModel().getSelectedItem().getRouteByFlightRouteId().getAirportByDeparture().getIata(),
+                            table1.getSelectionModel().getSelectedItem().getRouteByFlightRouteId().getAirportByArrival().getIata(),
+                            table1.getSelectionModel().getSelectedItem().getFlightNumber(),table1.getSelectionModel().getSelectedItem().getScheduledDate().toString(),
+                            table1.getSelectionModel().getSelectedItem().getScheduledTime().toString());
+
+                    //ticket_andata = new Ticket("Pablo","Escobar","SUF","MXP","AES736","28/02/2022","8:00");
+                    ticket_andata.generateTicket();
+
+
+
+
+
+                    emailService.send("hamza17abbad@gmail.com", ticket_andata.getPath());
+
+
+
+
+
+
+
+
                     session.clear();
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("Ordine Completato!");

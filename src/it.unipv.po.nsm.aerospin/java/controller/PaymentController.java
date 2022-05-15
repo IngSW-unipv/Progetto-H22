@@ -8,6 +8,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.Factory;
 import model.Session;
+import model.booking.payment.AeroPay;
 
 import java.net.URL;
 import java.util.Calendar;
@@ -46,8 +47,13 @@ public class PaymentController implements Initializable {
             alert.setContentText("Controllare i dati inseriti e riprovare");
             alert.showAndWait();
         }else{
-            session.setPaid(true);
-            stage.close();
+            AeroPay paymentMethod = new AeroPay(cardName.getText(), cardNumber.getText(), expiryMonth.getValue(), expiryYear.getText(), cvv.getText());
+            paymentMethod.pay();
+            if (paymentMethod.isPayed()){
+                session.setPaid(true);
+                stage.close();
+            }
+
         }
 
 
@@ -72,6 +78,7 @@ public class PaymentController implements Initializable {
     private boolean checkCardName(){
         return cardName.getText().matches("^[a-zA-Z ]+$");
     }
+
 
 
 
