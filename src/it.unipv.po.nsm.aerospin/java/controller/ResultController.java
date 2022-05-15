@@ -21,7 +21,9 @@ import model.exception.NoMatchException;
 import model.persistence.entity.Flight;
 import model.persistence.entity.Order;
 import view.ScreenContainer;
+import java.text.DecimalFormat;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
@@ -64,8 +66,9 @@ public class ResultController implements Initializable, IControlledScreen {
     private final String ret = session.getRet();
     private final Date dateDep = session.getDateDep();
     private final Date dateRet = session.getDateRet();
-    private double price;
+    private Double price;
     private double multiplier = ClassType.ECONOMY.getPriceM();
+    private static final DecimalFormat df = new DecimalFormat("0.00");
 
     @Override
     public void initialize(URL url, ResourceBundle rb){
@@ -77,7 +80,9 @@ public class ResultController implements Initializable, IControlledScreen {
                 group.selectToggle(group.getToggles().get(2));
             }
             multiplier = ((ClassType) group.selectedToggleProperty().get().getUserData()).getPriceM();
-            costLabel.setText(price());
+            costLabel.setText(df.format(price()));
+
+
         });
     }
 
@@ -106,7 +111,7 @@ public class ResultController implements Initializable, IControlledScreen {
             table1.setItems(methods.getFlights(dep, ret, dateDep));
         } catch (NoMatchException ignored) {}
         table1.getSelectionModel().getSelectedIndices().addListener(
-                (ListChangeListener<Integer>) change -> costLabel.setText(price()));
+                (ListChangeListener<Integer>) change -> costLabel.setText(price().toString()));
         depLabel.setText(String.format(format, dep, ret, dateDep));
         if(session.isOneway()) {
             retLabel.setVisible(false);
@@ -117,13 +122,13 @@ public class ResultController implements Initializable, IControlledScreen {
                 table2.setItems(methods.getFlights(ret, dep, dateRet));
             }catch (NoMatchException ignored){}
             table2.getSelectionModel().getSelectedIndices().addListener(
-                    (ListChangeListener<Integer>) change -> costLabel.setText(price()));
+                    (ListChangeListener<Integer>) change -> costLabel.setText(price().toString()));
             retLabel.setText(String.format(format, ret, dep,dateRet));
         }
     }
 
-    private String price() {
-        double tot = 0;
+    private Double price() {
+        Double tot = 0.0;
         if(!table1.getSelectionModel().isEmpty()){
             tot += table1.getSelectionModel().getSelectedItem().getPrice();
         }
@@ -133,7 +138,7 @@ public class ResultController implements Initializable, IControlledScreen {
 
         price = tot * multiplier;
 
-        return String.valueOf(price);
+        return price;
     }
 
     @FXML

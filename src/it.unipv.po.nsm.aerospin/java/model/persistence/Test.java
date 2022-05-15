@@ -1,6 +1,7 @@
 package model.persistence;
 
 
+
 import javafx.scene.control.Alert;
 import model.persistence.entity.*;
 import model.persistence.service.*;
@@ -9,8 +10,10 @@ import net.sf.ehcache.CacheManager;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class Test {
@@ -99,12 +102,7 @@ public class Test {
 //            System.out.println(route.getRouteId());
 //        }
 
-        FlightService flightService = new FlightService();
-        List<Flight> flights = flightService.findAll();
-        for (Flight flight : flights) {
-            System.out.println(flight.getFlightNumber());
-        }
-
+        System.out.println(Calendar.getInstance().get(Calendar.MONTH));
 
 
         System.exit(0);

@@ -131,7 +131,7 @@
                                     <Font size="15.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="costLabel" alignment="CENTER" contentDisplay="CENTER">
+                              <Label fx:id="costLabel" alignment="CENTER" contentDisplay="CENTER" >
                                  <font>
                                     <Font size="15.0" />
                                  </font>

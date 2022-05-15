@@ -66,3 +66,7 @@ strategy posti: file config e salvo solo il numero
     onLogged -> cache orders
     se ho gia' ordine in db non creare un nuovo passengerID
 
+
+
+ToDO:
+    flight manyToOne
