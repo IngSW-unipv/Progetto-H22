@@ -69,7 +69,7 @@ public class ResultController implements Initializable, IControlledScreen {
     private final String ret = session.getRet();
     private final Date dateDep = session.getDateDep();
     private final Date dateRet = session.getDateRet();
-    private Double price;
+    private Double price = 0.0;
     private double multiplier = ClassType.ECONOMY.getPriceM();
     private static final DecimalFormat df = new DecimalFormat("0.00");
     private Ticket ticket_andata;
@@ -173,9 +173,10 @@ public class ResultController implements Initializable, IControlledScreen {
                 childStage.setScene(new Scene(root1));
                 childStage.showAndWait();
 
+
                 if(session.isPaid()) {
                     //devo controllare se passenger già esistente e NO CONSTRUCTOR
-                //    order.setPassengerByPassengerId(new Passenger(session.getUser(), name.getText(), surname.getText()));
+//                    order.setPassengerByPassengerId(new Passenger(session.getUser(), name.getText(), surname.getText()));
 //                    if(!table1.getSelectionModel().isEmpty()){
 //                        order.setFlightIdA(table1.getSelectionModel().getSelectedItem());
 //                    }
@@ -183,7 +184,6 @@ public class ResultController implements Initializable, IControlledScreen {
 //                        order.setFlightIdR(table2.getSelectionModel().getSelectedItem());
 //                    }
                     //SERVE LA CARD number?? NO
-                    //verificare in initialize
                     order.setFlightClass(group.getSelectedToggle().getUserData().toString());
                     order.setOrderDate(new Date(System.currentTimeMillis()));
                     order.setPrice(price);

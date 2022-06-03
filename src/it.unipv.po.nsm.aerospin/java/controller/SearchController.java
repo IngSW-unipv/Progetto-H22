@@ -5,11 +5,13 @@ import controller.util.IControlledScreen;
 import controller.util.manager.ResultManager;
 import controller.util.manager.SearchManager;
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.StageStyle;
 import model.Factory;
 import model.Session;
@@ -46,6 +48,12 @@ public class SearchController implements Initializable, IControlledScreen {
         // Se seleziono Solo Andata non posso inserire Data Ritorno
         date1.setDayCellFactory(methods.bookingRange(LocalDate.now()));
         date2.disableProperty().bind(select.selectedProperty().not().or(date1.valueProperty().isNull()));
+
+//        scbDep.setOnKeyPressed(new EventHandler<KeyEvent>() {
+//            public void handle(KeyEvent event) {
+//                scbDep.autosize();
+//            }
+//        });
 
         scbDep.setItems(methods.getDepartures());
         errLabel.visibleProperty().bind(error);
