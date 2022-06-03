@@ -85,6 +85,7 @@ public class ResultController implements Initializable, IControlledScreen {
             if(newT == null) {
                 group.selectToggle(group.getToggles().get(2));
             }
+//            if(table1.getSelectionModel().getSelectedItem().
             multiplier = ((ClassType) group.selectedToggleProperty().get().getUserData()).getPriceM();
             costLabel.setText(df.format(price()));
 

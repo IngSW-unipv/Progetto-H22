@@ -1,4 +1,4 @@
-package controller.util;
+package model.persistence;
 
 import org.apache.commons.codec.binary.Base64;
 import javax.crypto.Cipher;

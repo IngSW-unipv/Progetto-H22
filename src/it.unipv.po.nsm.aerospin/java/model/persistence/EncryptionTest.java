@@ -1,8 +1,8 @@
-package controller.util;
+package model.persistence;
 
 import java.security.Key;
 
-import static controller.util.Encryption.*;
+import static model.persistence.Encryption.*;
 
 
 public class EncryptionTest {

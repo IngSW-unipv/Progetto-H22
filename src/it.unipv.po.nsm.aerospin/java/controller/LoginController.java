@@ -13,7 +13,7 @@ import model.exception.NoMatchException;
 import model.Session;
 import model.Factory;
 import view.ScreenContainer;
-import static controller.util.Encryption.*;
+import static model.persistence.Encryption.*;
 import java.io.IOException;
 import java.net.URL;
 import java.security.Key;
