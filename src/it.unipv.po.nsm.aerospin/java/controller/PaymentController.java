@@ -50,7 +50,8 @@ public class PaymentController implements Initializable {
             AeroPay paymentMethod = new AeroPay(cardName.getText(), cardNumber.getText(), expiryMonth.getValue(), expiryYear.getText(), cvv.getText());
             paymentMethod.pay();
             if (paymentMethod.isPayed()){
-                session.setPaid(true);
+                session.getInfo().setPaid(true);
+//                session.getInfo().setCardNumber(blablabal);
                 stage.close();
             }
 
@@ -89,10 +90,6 @@ public class PaymentController implements Initializable {
     @FXML
     private void cancel(){
         Stage stage = (Stage) Stage.getWindows().get(1);
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Cancel Order");
-        alert.setContentText("Potrà tornare alla Home oppure concludere l'ordine");
-        alert.showAndWait();
         stage.close();
     }
 }

@@ -65,10 +65,10 @@ public class ResultController implements Initializable, IControlledScreen {
     @FXML private DatePicker birthDate;
 
     private final Order order = new Order();
-    private final String dep = session.getDep();
-    private final String ret = session.getRet();
-    private final Date dateDep = session.getDateDep();
-    private final Date dateRet = session.getDateRet();
+    private final String dep = session.getInfo().getDep();
+    private final String ret = session.getInfo().getRet();
+    private final Date dateDep = session.getInfo().getDateDep();
+    private final Date dateRet = session.getInfo().getDateRet();
     private Double price = 0.0;
     private double multiplier = ClassType.ECONOMY.getPriceM();
     private static final DecimalFormat df = new DecimalFormat("0.00");
@@ -120,7 +120,7 @@ public class ResultController implements Initializable, IControlledScreen {
         table1.getSelectionModel().getSelectedIndices().addListener(
                 (ListChangeListener<Integer>) change -> costLabel.setText(price().toString()));
         depLabel.setText(String.format(format, dep, ret, dateDep));
-        if(session.isOneway()) {
+        if(session.getInfo().isOneway()) {
             retLabel.setVisible(false);
             table2.setPlaceholder(new Label("Ritorno non selezionato!"));
         } else {
@@ -167,7 +167,7 @@ public class ResultController implements Initializable, IControlledScreen {
                 methods.dataCheck(name.getText(),surname.getText()) &&
                 birthDate.getValue() != null){
 
-                Parent root1 = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("util/Payment.fxml")));
+                Parent root1 = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("util/subscreen/Payment.fxml")));
                 Stage childStage = new Stage();
                 childStage.initModality(Modality.APPLICATION_MODAL);
                 childStage.initStyle(StageStyle.TRANSPARENT);
@@ -175,7 +175,7 @@ public class ResultController implements Initializable, IControlledScreen {
                 childStage.showAndWait();
 
 
-                if(session.isPaid()) {
+                if(session.getInfo().isPaid()) {
                     //devo controllare se passenger già esistente e NO CONSTRUCTOR
 //                    order.setPassengerByPassengerId(new Passenger(session.getUser(), name.getText(), surname.getText()));
 //                    if(!table1.getSelectionModel().isEmpty()){

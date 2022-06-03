@@ -105,16 +105,16 @@ public class SearchController implements Initializable, IControlledScreen {
     @FXML
     private void goToResult() throws IOException {
         if (validateFields()) {
-            session.setOneway(!select.isSelected());
+            session.getInfo().setOneway(!select.isSelected());
             session.clear();
-            session.setDep(scbDep.getSelectionModel().getSelectedItem());
-            session.setRet(scbRet.getSelectionModel().getSelectedItem());
-            session.setDateDep(date1.getValue());
-            if (!(session.isOneway())) {
-                session.setDateRet(date2.getValue());
+            session.getInfo().setDep(scbDep.getSelectionModel().getSelectedItem());
+            session.getInfo().setRet(scbRet.getSelectionModel().getSelectedItem());
+            session.getInfo().setDateDep(date1.getValue());
+            if (!(session.getInfo().isOneway())) {
+                session.getInfo().setDateRet(date2.getValue());
             }
             try {
-                results.getFlights(session.getDep(), session.getRet(), session.getDateDep());
+                results.getFlights(session.getInfo().getDep(), session.getInfo().getRet(), session.getInfo().getDateDep());
                 myContainer.setScreen(Factory.getResult());
             } catch (NoMatchException e) {
                 Alert alert = new Alert(Alert.AlertType.WARNING);
