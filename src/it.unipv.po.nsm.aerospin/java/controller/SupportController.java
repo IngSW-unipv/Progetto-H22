@@ -26,6 +26,7 @@ public class SupportController implements Initializable {
     private void send(){
         if(!options.getSelectionModel().isEmpty()){
             //send mail
+            //get object of the mail
             emailService.setText(text.getText());
 
 

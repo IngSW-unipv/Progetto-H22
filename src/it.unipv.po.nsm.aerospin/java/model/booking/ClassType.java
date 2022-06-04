@@ -1,4 +1,4 @@
-package model.booking.passenger;
+package model.booking;
 
 public enum ClassType {
     ECONOMY (1.0),

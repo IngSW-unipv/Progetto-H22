@@ -3,7 +3,7 @@ ToDO:
 	-Booking
 	-Creazione e invio biglietto
 	-User Account
-	-Richiesta Assistenza
+	-Richiesta Assistenza -- RIMANE INVIARE EMAIL
 	-Docs
 	-Rivedere managers (cercare pattern)
 	-Creare package Exceptions //Done

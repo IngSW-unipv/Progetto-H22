@@ -1,6 +1,7 @@
 package controller;
 
 import controller.util.IControlledScreen;
+import controller.util.manager.AccountManager;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.ListChangeListener;
@@ -14,6 +15,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import model.exception.NoMatchException;
 import model.persistence.entity.Flight;
 import model.persistence.entity.Orders;
 import org.controlsfx.control.MasterDetailPane;
@@ -28,6 +30,7 @@ import java.util.ResourceBundle;
 public class AccountController implements Initializable, IControlledScreen {
 
     ScreenContainer myContainer;
+    AccountManager methods = new AccountManager();
 
     @FXML private MasterDetailPane pane;
     @FXML private TextArea detail;
@@ -47,8 +50,7 @@ public class AccountController implements Initializable, IControlledScreen {
 
         table.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         table.setPlaceholder(new Label("Sto effettuando la ricerca, attendere"));
-        //query ordini
-        //DECIDERE
+
         number.setCellValueFactory(c -> new ReadOnlyStringWrapper(table.getItems().indexOf(c.getValue()) + ""));
 //        number.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Order, String>, ObservableValue<String>>() {
 //            @Override public ObservableValue<String> call(TableColumn.CellDataFeatures<Order, String> p) {
@@ -59,11 +61,11 @@ public class AccountController implements Initializable, IControlledScreen {
         id.setCellValueFactory(new PropertyValueFactory<>("id"));
         price.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getPrice() + " €"));
         //thread
-//        try {
-//            table.setItems(methods.getFlights(dep, ret, dateDep));
-//        } catch (NoMatchException e) {
-//            table.setPlaceholder(new Label("Nessun ordine trovato"));
-//        }
+        try {
+            table.setItems(methods.getOrders());
+        } catch (NoMatchException e) {
+            table.setPlaceholder(new Label("Nessun ordine trovato"));
+        }
 
         table.getSelectionModel().getSelectedIndices().addListener(
                 (ListChangeListener<Integer>) change -> detail.setText(detailText()));
@@ -71,7 +73,13 @@ public class AccountController implements Initializable, IControlledScreen {
     }
 
     private String detailText() {
-        return null;
+        return "Get busy living"
+//                + newLine
+                + "or"
+//                + newLine
+                + "get busy dying."
+//                + newLine
+                + "--Stephen King";
     }
 
     public void setScreenParent(ScreenContainer screenParent){

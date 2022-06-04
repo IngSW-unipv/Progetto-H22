@@ -19,7 +19,7 @@ import model.Factory;
 import model.Session;
 import model.booking.Ticket;
 import model.booking.TicketMail;
-import model.booking.passenger.ClassType;
+import model.booking.ClassType;
 import model.exception.NoMatchException;
 import model.persistence.entity.Flight;
 import model.persistence.entity.Orders;
