@@ -12,7 +12,15 @@ public class TicketMail {
     private static final String password = "kbeoqsm7";
     private static final String host = "smtp.gmail.com";            // We are sending through smtp.gmail.com
     private static final String subject = "Il tuo Biglietto";
-    private static final String text = "Grazie per l'acquisto effettuato! In allegato puoi trovare il tuo Biglietto da stampare";
+    private  String text;
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
 
     public void send(String to, String filePath) {
 
@@ -77,5 +85,7 @@ public class TicketMail {
         } catch (MessagingException e) {
             throw new RuntimeException(e);
         }
+
+
     }
 }

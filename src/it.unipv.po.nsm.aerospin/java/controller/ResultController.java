@@ -166,6 +166,7 @@ public class ResultController implements Initializable, IControlledScreen {
 
     @FXML
     private void checkout() throws IOException, WriterException {
+        emailService.setText("Grazie per aver scelto il Aerospin.!");
         errLabel.setVisible(false);
         if (session.isLogged()) {
             if( price > 0 &&

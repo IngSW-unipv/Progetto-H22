@@ -2,7 +2,9 @@ package model.persistence.dao;
 
 import model.persistence.Connection;
 import model.persistence.entity.Orders;
+import model.persistence.service.OrdersService;
 
+import javax.persistence.Query;
 import java.util.List;
 
 public class OrdersDao implements OrdersDaoInterface {
@@ -25,6 +27,10 @@ public class OrdersDao implements OrdersDaoInterface {
     public List<Orders> findAll() {
         return (List<Orders>) conn.getCurrentSession().createQuery("from Orders ").list();
     }
+
+
+
+
 
     @Override
     public void persist(Orders entity) {

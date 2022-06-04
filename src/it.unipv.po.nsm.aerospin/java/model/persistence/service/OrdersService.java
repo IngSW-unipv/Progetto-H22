@@ -21,6 +21,19 @@ public class OrdersService {
         return orders;
     }
 
+    public Orders findByUserId(int userId) {
+        ordersDao.getConn().openCurrentSession();
+        List<Orders> orders = ordersDao.findAll();
+        ordersDao.getConn().closeCurrentSession();
+        return orders.stream().filter(o -> o.getPassengerByPassengerId().getUserByUserId().getId() == userId).collect(java.util.stream.Collectors.toList()).get(0);
+    }
+    public Orders findByEmail(String email) {
+        ordersDao.getConn().openCurrentSession();
+        List<Orders> orders = ordersDao.findAll();
+        ordersDao.getConn().closeCurrentSession();
+        return orders.stream().filter(o -> o.getPassengerByPassengerId().getUserByUserId().getEmail() == email).collect(java.util.stream.Collectors.toList()).get(0);
+    }
+
 
     public void persist(Orders orders) {
         ordersDao.getConn().openCurrentSessionwithTransaction();

@@ -27,6 +27,12 @@ public class Orders {
     @Basic
     @Column(name = "price", nullable = false, precision = 0)
     private double price;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "PassengerId", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
+    private Passenger passengerByPassengerId;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "flightId", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
+    private Flight flightByFlightId;
 
     public int getId() {
         return id;
@@ -115,5 +121,37 @@ public class Orders {
         temp = Double.doubleToLongBits(price);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         return result;
+    }
+
+
+    public Passenger getPassengerByPassengerId() {
+        return passengerByPassengerId;
+    }
+
+    public void setPassengerByPassengerId(Passenger passengerByPassengerId) {
+        this.passengerByPassengerId = passengerByPassengerId;
+    }
+
+    public Flight getFlightByFlightId() {
+        return flightByFlightId;
+    }
+
+    public void setFlightByFlightId(Flight flightByFlightId) {
+        this.flightByFlightId = flightByFlightId;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Orders{" +
+                "id=" + id +
+                ", passengerId=" + passengerId +
+                ", flightId=" + flightId +
+                ", flightClass='" + flightClass + '\'' +
+                ", cardDetails=" + cardDetails +
+                ", orderDate=" + orderDate +
+                ", price=" + price +
+                ", passengerByPassengerId=" + passengerByPassengerId +
+                '}';
     }
 }

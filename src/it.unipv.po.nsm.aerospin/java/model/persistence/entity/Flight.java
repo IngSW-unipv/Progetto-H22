@@ -3,6 +3,7 @@ package model.persistence.entity;
 import javax.persistence.*;
 import java.sql.Date;
 import java.sql.Time;
+import java.util.Collection;
 
 @Entity
 public class Flight {
@@ -11,7 +12,7 @@ public class Flight {
     @Column(name = "id", nullable = false)
     private int id;
     @Basic
-    @Column(name = "flightNumber", nullable = true, length = 100)
+    @Column(name = "flightNumber", nullable = true, length = 45)
     private String flightNumber;
 
     @Basic
@@ -27,12 +28,22 @@ public class Flight {
     @Column(name = "arrivalTime", nullable = true)
     private Time arrivalTime;
     @Basic
-    @Column(name = "price", nullable = false, precision = 0)
+    @Column(name = "price", nullable = true, precision = 0)
     private double price;
-
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "flightRouteId", referencedColumnName = "routeId")
     private Route routeByFlightRouteId;
+    @Basic
+    @Column(name = "ECONOMY", nullable = false)
+    private short economy;
+    @Basic
+    @Column(name = "BUSINESS", nullable = false)
+    private short business;
+    @Basic
+    @Column(name = "FIRST", nullable = false)
+    private short first;
+    @OneToMany(mappedBy = "flightByFlightId")
+    private Collection<Orders> ordersById;
 
     public int getId() {
         return id;
@@ -49,9 +60,7 @@ public class Flight {
     public void setFlightNumber(String flightNumber) {
         this.flightNumber = flightNumber;
     }
-
-
-
+    
     public Integer getFlightRouteId() {
         return flightRouteId;
     }
@@ -63,7 +72,6 @@ public class Flight {
     public Date getScheduledDate() {
         return scheduledDate;
     }
-    
 
     public void setScheduledDate(Date scheduledDate) {
         this.scheduledDate = scheduledDate;
@@ -87,6 +95,10 @@ public class Flight {
 
     public double getPrice() {
         return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
     }
 
     public void setPrice(double price) {
@@ -130,12 +142,43 @@ public class Flight {
         return result;
     }
 
-
     public Route getRouteByFlightRouteId() {
         return routeByFlightRouteId;
     }
 
     public void setRouteByFlightRouteId(Route routeByFlightRouteId) {
         this.routeByFlightRouteId = routeByFlightRouteId;
+    }
+
+    public short getEconomy() {
+        return economy;
+    }
+
+    public void setEconomy(short economy) {
+        this.economy = economy;
+    }
+
+    public short getBusiness() {
+        return business;
+    }
+
+    public void setBusiness(short business) {
+        this.business = business;
+    }
+
+    public short getFirst() {
+        return first;
+    }
+
+    public void setFirst(short first) {
+        this.first = first;
+    }
+
+    public Collection<Orders> getOrdersById() {
+        return ordersById;
+    }
+
+    public void setOrdersById(Collection<Orders> ordersById) {
+        this.ordersById = ordersById;
     }
 }

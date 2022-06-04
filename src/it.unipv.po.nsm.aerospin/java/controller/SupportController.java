@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
+import model.booking.TicketMail;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -13,6 +14,7 @@ public class SupportController implements Initializable {
 
     @FXML JFXComboBox<String> options;
     @FXML TextArea text;
+    TicketMail emailService = new TicketMail();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -24,6 +26,9 @@ public class SupportController implements Initializable {
     private void send(){
         if(!options.getSelectionModel().isEmpty()){
             //send mail
+            emailService.setText(text.getText());
+
+
         }
     }
 

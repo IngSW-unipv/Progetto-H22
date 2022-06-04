@@ -16,7 +16,7 @@ public class User {
     @Basic
     @Column(name = "pwd", nullable = false, length = 45)
     private String pwd;
-    @OneToMany(mappedBy = "userByUserId")
+    @OneToMany(mappedBy = "userByUserId", fetch = FetchType.EAGER)
     private Collection<Passenger> passengersById;
 
     public int getId() {
@@ -69,5 +69,14 @@ public class User {
 
     public void setPassengersById(Collection<Passenger> passengersById) {
         this.passengersById = passengersById;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", email='" + email + '\'' +
+                ", pwd='" + pwd + '\'' +
+                '}';
     }
 }

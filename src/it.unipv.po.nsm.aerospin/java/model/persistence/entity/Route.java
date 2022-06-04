@@ -16,14 +16,14 @@ public class Route {
     @Column(name = "departure", nullable = false, length = 25, insertable = false, updatable = false)
     private String departure;
     @Basic
-    @Column(name = "waypoints", nullable = false, length = 300)
+    @Column(name = "waypoints", nullable = true, length = 300)
     private String waypoints;
     @OneToMany(mappedBy = "routeByFlightRouteId")
     private Collection<Flight> flightsByRouteId;
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne()
     @JoinColumn(name = "arrival", referencedColumnName = "ICAO", nullable = false)
     private Airport airportByArrival;
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "departure", referencedColumnName = "ICAO", nullable = false)
     private Airport airportByDeparture;
 

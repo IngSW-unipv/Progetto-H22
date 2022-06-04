@@ -1,6 +1,7 @@
 package model.persistence.entity;
 
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
@@ -10,17 +11,19 @@ public class Passenger {
     @Column(name = "id", nullable = false)
     private int id;
     @Basic
-    @Column(name = "userId")
+    @Column(name = "userId", nullable = true)
     private Integer userId;
     @Basic
-    @Column(name = "name", length = 25)
+    @Column(name = "name", length = 25, nullable = true)
     private String name;
     @Basic
-    @Column(name = "surname",length = 25)
+    @Column(name = "surname",length = 25, nullable = true)
     private String surname;
-    @ManyToOne
-    @JoinColumn(name = "userId", referencedColumnName = "id",insertable = false, updatable = false)
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "userId", referencedColumnName = "id", insertable = false, updatable = false)
     private User userByUserId;
+    @OneToMany(mappedBy = "passengerByPassengerId", fetch = FetchType.EAGER)
+    private Collection<Orders> ordersById;
 
     public int getId() {
         return id;
@@ -82,5 +85,24 @@ public class Passenger {
 
     public void setUserByUserId(User userByUserId) {
         this.userByUserId = userByUserId;
+    }
+
+    @Override
+    public String toString() {
+        return "Passenger{" +
+                "id=" + id +
+                ", userId=" + userId +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", userByUserId=" + userByUserId +
+                '}';
+    }
+
+    public Collection<Orders> getOrdersById() {
+        return ordersById;
+    }
+
+    public void setOrdersById(Collection<Orders> ordersById) {
+        this.ordersById = ordersById;
     }
 }

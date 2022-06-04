@@ -101,8 +101,12 @@ public class Test {
 //        for (Route route : routes1) {
 //            System.out.println(route.getRouteId());
 //        }
-
-        System.out.println(Calendar.getInstance().get(Calendar.MONTH));
+//
+//        OrdersService ordersService = new OrdersService();
+//        List<Orders> orders = ordersService.findByUserId(7);
+//        for (Orders order : orders) {
+//            System.out.println(order);
+//        }
 
 
         System.exit(0);
