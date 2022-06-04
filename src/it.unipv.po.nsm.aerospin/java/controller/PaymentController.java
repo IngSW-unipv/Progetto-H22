@@ -51,6 +51,7 @@ public class PaymentController implements Initializable {
             paymentMethod.pay();
             if (paymentMethod.isPayed()){
                 session.getInfo().setPaid(true);
+                session.getInfo().setCardNumber(cardNumber.getText());
 //                session.getInfo().setCardNumber(blablabal);
                 stage.close();
             }

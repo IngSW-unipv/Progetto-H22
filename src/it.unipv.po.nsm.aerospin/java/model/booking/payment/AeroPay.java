@@ -17,7 +17,7 @@ public class AeroPay implements PaymentStrategy{
 
         Random rn = new Random();
         double d = rn.nextDouble();     // random value in range 0.0 - 1.0
-        if(d<=0.8){
+        if(d<=0.2){
             //System.out.println("Payment Failed..........\n");
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Pagamento");

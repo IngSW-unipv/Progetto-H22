@@ -1,10 +1,8 @@
 package controller;
 
 import controller.util.IControlledScreen;
-import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.ListChangeListener;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,12 +14,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import javafx.util.Callback;
-import model.exception.NoMatchException;
 import model.persistence.entity.Flight;
-import model.persistence.entity.Order;
+import model.persistence.entity.Orders;
 import org.controlsfx.control.MasterDetailPane;
-import org.controlsfx.control.PropertySheet;
 import view.ScreenContainer;
 
 import java.io.IOException;
@@ -37,10 +32,10 @@ public class AccountController implements Initializable, IControlledScreen {
     @FXML private MasterDetailPane pane;
     @FXML private TextArea detail;
 
-    @FXML private TableView<Order> table;
-    @FXML private TableColumn<Order,String> number;
-    @FXML private TableColumn<Order, Time> date;
-    @FXML private TableColumn<Order, String> id;
+    @FXML private TableView<Orders> table;
+    @FXML private TableColumn<Orders,String> number;
+    @FXML private TableColumn<Orders, Time> date;
+    @FXML private TableColumn<Orders, String> id;
     @FXML private TableColumn<Flight, String> price;
 
 
@@ -76,7 +71,7 @@ public class AccountController implements Initializable, IControlledScreen {
     }
 
     private String detailText() {
-
+        return null;
     }
 
     public void setScreenParent(ScreenContainer screenParent){

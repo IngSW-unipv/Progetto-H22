@@ -2,10 +2,9 @@ package model.persistence.entity;
 
 import javax.persistence.*;
 import java.sql.Date;
-import java.util.Objects;
 
 @Entity
-public class Order {
+public class Orders {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id", nullable = false)
@@ -14,11 +13,8 @@ public class Order {
     @Column(name = "PassengerId", nullable = false)
     private int passengerId;
     @Basic
-    @Column(name = "flightIdA", nullable = false)
-    private int flightIdA;
-    @Basic
-    @Column(name = "flightIdR", nullable = false)
-    private int flightIdR;
+    @Column(name = "flightId", nullable = false)
+    private int flightId;
     @Basic
     @Column(name = "flightClass", nullable = false, length = 25)
     private String flightClass;
@@ -29,11 +25,8 @@ public class Order {
     @Column(name = "orderDate", nullable = false)
     private Date orderDate;
     @Basic
-    @Column(name = "price", nullable = false)
+    @Column(name = "price", nullable = false, precision = 0)
     private double price;
-    @ManyToOne
-    @JoinColumn(name = "PassengerId", referencedColumnName = "id", nullable = false)
-    private Passenger passengerByPassengerId;
 
     public int getId() {
         return id;
@@ -51,20 +44,12 @@ public class Order {
         this.passengerId = passengerId;
     }
 
-    public int getFlightIdA() {
-        return flightIdA;
+    public int getFlightId() {
+        return flightId;
     }
 
-    public void setFlightIdA(int flightIdA) {
-        this.flightIdA = flightIdA;
-    }
-
-    public int getFlightIdR() {
-        return flightIdR;
-    }
-
-    public void setFlightIdR(int flightIdR) {
-        this.flightIdR = flightIdR;
+    public void setFlightId(int flightId) {
+        this.flightId = flightId;
     }
 
     public String getFlightClass() {
@@ -104,16 +89,17 @@ public class Order {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Order order = (Order) o;
+        Orders orders = (Orders) o;
 
-        if (id != order.id) return false;
-        if (passengerId != order.passengerId) return false;
-        if (flightIdA != order.flightIdA) return false;
-        if (flightIdR != order.flightIdR) return false;
-        if (cardDetails != order.cardDetails) return false;
-        if (Double.compare(order.price, price) != 0) return false;
-        if (!Objects.equals(flightClass, order.flightClass)) return false;
-        return Objects.equals(orderDate, order.orderDate);
+        if (id != orders.id) return false;
+        if (passengerId != orders.passengerId) return false;
+        if (flightId != orders.flightId) return false;
+        if (cardDetails != orders.cardDetails) return false;
+        if (Double.compare(orders.price, price) != 0) return false;
+        if (flightClass != null ? !flightClass.equals(orders.flightClass) : orders.flightClass != null) return false;
+        if (orderDate != null ? !orderDate.equals(orders.orderDate) : orders.orderDate != null) return false;
+
+        return true;
     }
 
     @Override
@@ -122,21 +108,12 @@ public class Order {
         long temp;
         result = id;
         result = 31 * result + passengerId;
-        result = 31 * result + flightIdA;
-        result = 31 * result + flightIdR;
+        result = 31 * result + flightId;
         result = 31 * result + (flightClass != null ? flightClass.hashCode() : 0);
         result = 31 * result + cardDetails;
         result = 31 * result + (orderDate != null ? orderDate.hashCode() : 0);
         temp = Double.doubleToLongBits(price);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         return result;
-    }
-
-    public Passenger getPassengerByPassengerId() {
-        return passengerByPassengerId;
-    }
-
-    public void setPassengerByPassengerId(Passenger passengerByPassengerId) {
-        this.passengerByPassengerId = passengerByPassengerId;
     }
 }

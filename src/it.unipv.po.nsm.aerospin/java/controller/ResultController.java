@@ -22,11 +22,13 @@ import model.booking.TicketMail;
 import model.booking.passenger.ClassType;
 import model.exception.NoMatchException;
 import model.persistence.entity.Flight;
-import model.persistence.entity.Order;
+import model.persistence.entity.Orders;
+import model.persistence.entity.Passenger;
+import model.persistence.service.OrdersService;
+import model.persistence.service.PassengerService;
 import view.ScreenContainer;
 import java.text.DecimalFormat;
 
-import javax.persistence.criteria.CriteriaBuilder;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
@@ -64,7 +66,10 @@ public class ResultController implements Initializable, IControlledScreen {
     @FXML private TextField surname;
     @FXML private DatePicker birthDate;
 
-    private final Order order = new Order();
+    private Orders orders = new Orders();
+    private OrdersService ordersService = new OrdersService();
+    private Passenger passenger = new Passenger();
+    private PassengerService passengerService = new PassengerService();
     private final String dep = session.getInfo().getDep();
     private final String ret = session.getInfo().getRet();
     private final Date dateDep = session.getInfo().getDateDep();
@@ -185,9 +190,30 @@ public class ResultController implements Initializable, IControlledScreen {
 //                        order.setFlightIdR(table2.getSelectionModel().getSelectedItem());
 //                    }
                     //SERVE LA CARD number?? NO
-                    order.setFlightClass(group.getSelectedToggle().getUserData().toString());
-                    order.setOrderDate(new Date(System.currentTimeMillis()));
-                    order.setPrice(price);
+                    passenger.setUserId(session.getUser().getId());
+                    passenger.setName(name.getText());
+                    passenger.setSurname(surname.getText());
+                    passengerService.persist(passenger);
+
+                    orders.setPassengerId(passenger.getId());
+                    orders.setFlightId(table1.getSelectionModel().getSelectedItem().getId());
+                    orders.setFlightClass(group.getSelectedToggle().getUserData().toString());
+                    orders.setCardDetails(Integer.parseInt(session.getInfo().getCardNumber().substring(12,15)));
+                    orders.setOrderDate(new Date(System.currentTimeMillis()));
+                    orders.setPrice(price);
+                    ordersService.persist(orders);
+
+                    if (!table2.getSelectionModel().isEmpty()) {
+                        orders.setPassengerId(passenger.getId());
+                        orders.setFlightId(table2.getSelectionModel().getSelectedItem().getId());
+                        orders.setFlightClass(group.getSelectedToggle().getUserData().toString());
+                        orders.setCardDetails(Integer.parseInt(session.getInfo().getCardNumber().substring(12,15)));
+                        orders.setOrderDate(new Date(System.currentTimeMillis()));
+                        orders.setPrice(price);
+                        ordersService.persist(orders);
+                    }
+
+
 
                     //salva order in db, o anche passenger?
                     //gestire posto in meno, necessario??
