@@ -29,12 +29,12 @@ public class PassengerDao implements PassengerDaoInterface {
     }
 
     @Override
-    public List<Passenger> findById(int id) {
+    public Passenger findById(int id) {
         String hql = "from Passenger a where a.id = :id";
         Query query = conn.getCurrentSession().createQuery(hql);
         query.setParameter("id",id);
-        List<Passenger> passengers = query.list();
-        return passengers;
+        Passenger passenger = (Passenger) query.uniqueResult();
+        return passenger;
     }
 
     @Override

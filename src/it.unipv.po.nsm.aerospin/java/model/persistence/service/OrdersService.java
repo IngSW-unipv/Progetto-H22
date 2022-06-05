@@ -27,6 +27,11 @@ public class OrdersService {
         ordersDao.getConn().closeCurrentSession();
         return orders.stream().filter(o -> o.getPassengerByPassengerId().getUserByUserId().getId() == userId).collect(java.util.stream.Collectors.toList());
     }
+
+
+
+
+
     public List<Orders> findByEmail(String email) {
         ordersDao.getConn().openCurrentSession();
         List<Orders> orders = ordersDao.findAll();

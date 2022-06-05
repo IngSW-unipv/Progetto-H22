@@ -211,7 +211,7 @@ public class ResultController implements Initializable, IControlledScreen {
                         orders.setPassengerId(passenger.getId());
                         orders.setFlightId(table2.getSelectionModel().getSelectedItem().getId());
                         orders.setFlightClass(group.getSelectedToggle().getUserData().toString());
-                        orders.setCardDetails(Integer.parseInt(session.getInfo().getCardNumber().substring(12,15)));
+                        orders.setCardDetails(Integer.parseInt(session.getInfo().getCardNumber().substring(13,16)));
                         orders.setOrderDate(new Date(System.currentTimeMillis()));
                         orders.setPrice(price);
                         ordersService.persist(orders);
@@ -229,7 +229,9 @@ public class ResultController implements Initializable, IControlledScreen {
 
                     //ticket_andata = new Ticket("Pablo","Escobar","SUF","MXP","AES736","28/02/2022","8:00");
                     ticket_andata.generateTicket();
-                    emailService.send("hamza17abbad@gmail.com", ticket_andata.getPath());
+
+                    //passengerService.findById(passenger.getId()).getUserByUserId().getEmail();
+                    emailService.send(passengerService.findById(passenger.getId()).getUserByUserId().getEmail(), ticket_andata.getPath());
 
 
                     ticket_ritorno = new Ticket(name.getText(), surname.getText(),table2.getSelectionModel().getSelectedItem().getRouteByFlightRouteId().getAirportByDeparture().getIata(),
@@ -238,7 +240,7 @@ public class ResultController implements Initializable, IControlledScreen {
                             table2.getSelectionModel().getSelectedItem().getScheduledTime().toString());
 
                     ticket_ritorno.generateTicket();
-                    emailService.send("hamza17abbad@gmail.com", ticket_andata.getPath());
+                    emailService.send(passengerService.findById(passenger.getId()).getUserByUserId().getEmail(), ticket_andata.getPath());
 
 
 

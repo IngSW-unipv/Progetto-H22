@@ -20,11 +20,11 @@ public class PassengerService {
         return passengers;
     }
 
-    public List<Passenger> findById(int id) {
+    public Passenger findById(int id) {
         passengerDao.getConn().openCurrentSession();
-        List<Passenger> passengers = passengerDao.findById(id);
+        Passenger passenger = passengerDao.findById(id);
         passengerDao.getConn().closeCurrentSession();
-        return passengers;
+        return passenger;
     }
 
     public List<Passenger> findByName(String name) {

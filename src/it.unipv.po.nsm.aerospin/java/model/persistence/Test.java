@@ -104,15 +104,12 @@ public class Test {
 //            System.out.println(route.getRouteId());
 //        }
 //
-//        OrdersService ordersService = new OrdersService();
-//        List<Orders> orders = ordersService.findByUserId(7);
-//        for (Orders order : orders) {
-//            System.out.println(order);
-//        }-
+        OrdersService ordersService = new OrdersService();
+        List<Orders> orders = ordersService.findAll();
+        for (Orders order : orders) {
+            System.out.println(order.getPassengerByPassengerId().getUserByUserId().getEmail());
+        }
 
-        ResultManager resultManager = new ResultManager();
-
-        resultManager.getFlights("Edinburgh Airport","Menara Airport",new Date(2022,07,19));
 
 
         System.exit(0);
