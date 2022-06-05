@@ -66,10 +66,10 @@ public class ResultController implements Initializable, IControlledScreen {
     @FXML private TextField surname;
     @FXML private DatePicker birthDate;
 
-    private Orders orders = new Orders();
-    private OrdersService ordersService = new OrdersService();
-    private Passenger passenger = new Passenger();
-    private PassengerService passengerService = new PassengerService();
+    private final Orders orders = new Orders();
+    private final OrdersService ordersService = new OrdersService();
+    private final Passenger passenger = new Passenger();
+    private final PassengerService passengerService = new PassengerService();
     private final String dep = session.getInfo().getDep();
     private final String ret = session.getInfo().getRet();
     private final Date dateDep = session.getInfo().getDateDep();
@@ -112,9 +112,10 @@ public class ResultController implements Initializable, IControlledScreen {
         flightNumber1.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getFlightNumber()));
         flightNumber2.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getFlightNumber()));
         scheduledTime1.setCellValueFactory(new PropertyValueFactory<>("scheduledTime"));
-        scheduledTime2.setCellValueFactory(new PropertyValueFactory<>("arrivalTime"));
+        scheduledTime2.setCellValueFactory(new PropertyValueFactory<>("scheduledTime"));
         arrivalTime1.setCellValueFactory(new PropertyValueFactory<>("arrivalTime"));
-        arrivalTime2.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getArrivalTime().getHours() + ":" + c.getValue().getArrivalTime().getMinutes()));
+        arrivalTime2.setCellValueFactory(new PropertyValueFactory<>("arrivalTime"));
+        //arrivalTime2.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getArrivalTime().getHours() + ":" + c.getValue().getArrivalTime().getMinutes()));
         price1.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getPrice() + " €"));
         price2.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getPrice() + " €"));
 
@@ -125,22 +126,23 @@ public class ResultController implements Initializable, IControlledScreen {
         table1.getSelectionModel().getSelectedIndices().addListener(
                 (ListChangeListener<Integer>) change -> costLabel.setText(price().toString()));
         depLabel.setText(String.format(format, dep, ret, dateDep));
+
         if(session.getInfo().isOneway()) {
             retLabel.setVisible(false);
             table2.setPlaceholder(new Label("Ritorno non selezionato!"));
         } else {
-            table2.setPlaceholder(new Label("Volo non disponibile in questa data!"));
             try {
                 table2.setItems(methods.getFlights(ret, dep, dateRet));
             }catch (NoMatchException ignored){}
             table2.getSelectionModel().getSelectedIndices().addListener(
                     (ListChangeListener<Integer>) change -> costLabel.setText(price().toString()));
             retLabel.setText(String.format(format, ret, dep,dateRet));
+            table2.setPlaceholder(new Label("Volo non disponibile in questa data!"));
         }
     }
 
     private Double price() {
-        Double tot = 0.0;
+        double tot = 0.0;
         if(!table1.getSelectionModel().isEmpty()){
             tot += table1.getSelectionModel().getSelectedItem().getPrice();
         }
@@ -204,6 +206,7 @@ public class ResultController implements Initializable, IControlledScreen {
                     orders.setPrice(price);
                     ordersService.persist(orders);
 
+
                     if (!table2.getSelectionModel().isEmpty()) {
                         orders.setPassengerId(passenger.getId());
                         orders.setFlightId(table2.getSelectionModel().getSelectedItem().getId());
@@ -226,12 +229,17 @@ public class ResultController implements Initializable, IControlledScreen {
 
                     //ticket_andata = new Ticket("Pablo","Escobar","SUF","MXP","AES736","28/02/2022","8:00");
                     ticket_andata.generateTicket();
-
-
-
-
-
                     emailService.send("hamza17abbad@gmail.com", ticket_andata.getPath());
+
+
+                    ticket_ritorno = new Ticket(name.getText(), surname.getText(),table2.getSelectionModel().getSelectedItem().getRouteByFlightRouteId().getAirportByDeparture().getIata(),
+                            table2.getSelectionModel().getSelectedItem().getRouteByFlightRouteId().getAirportByArrival().getIata(),
+                            table2.getSelectionModel().getSelectedItem().getFlightNumber(),table2.getSelectionModel().getSelectedItem().getScheduledDate().toString(),
+                            table2.getSelectionModel().getSelectedItem().getScheduledTime().toString());
+
+                    ticket_ritorno.generateTicket();
+                    emailService.send("hamza17abbad@gmail.com", ticket_andata.getPath());
+
 
 
 

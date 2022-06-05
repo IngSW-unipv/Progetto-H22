@@ -105,8 +105,9 @@ public class SearchController implements Initializable, IControlledScreen {
     @FXML
     private void goToResult() throws IOException {
         if (validateFields()) {
+            select.isSelected();
             session.getInfo().setOneway(!select.isSelected());
-            session.clear();
+            //session.clear();
             session.getInfo().setDep(scbDep.getSelectionModel().getSelectedItem());
             session.getInfo().setRet(scbRet.getSelectionModel().getSelectedItem());
             session.getInfo().setDateDep(date1.getValue());

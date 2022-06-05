@@ -2,7 +2,9 @@ package model.persistence;
 
 
 
+import controller.util.manager.ResultManager;
 import javafx.scene.control.Alert;
+import model.exception.NoMatchException;
 import model.persistence.entity.*;
 import model.persistence.service.*;
 import net.sf.ehcache.CacheManager;
@@ -17,7 +19,7 @@ import java.util.Calendar;
 import java.util.List;
 
 public class Test {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws NoMatchException {
 
 //////////////////////////////////////////TEST ROUTE\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
@@ -106,7 +108,11 @@ public class Test {
 //        List<Orders> orders = ordersService.findByUserId(7);
 //        for (Orders order : orders) {
 //            System.out.println(order);
-//        }
+//        }-
+
+        ResultManager resultManager = new ResultManager();
+
+        resultManager.getFlights("Edinburgh Airport","Menara Airport",new Date(2022,07,19));
 
 
         System.exit(0);
