@@ -23,4 +23,22 @@ public class AccountManager {
         }
     }
 
+
+
+//    Il 29/29/2929 (ora?) hai acquistato il volo
+//    da Cava Manara Airport a Lamezia Terme Airport del 30/30/3903
+//    al prezzo di XXX € in classe STANDARD
+//    pagato con carta che termina 7458
+//    per il passeggero Davide Morano
+    public String detailText(Orders order) {
+        return "Il " + order.getOrderDate() + " hai acquistato il volo\n"
+                + "da " + order.getFlightByFlightId().getRouteByFlightRouteId().getAirportByDeparture().getAirportName()
+                + " a " + order.getFlightByFlightId().getRouteByFlightRouteId().getAirportByArrival().getAirportName()
+                + " del " + order.getFlightByFlightId().getScheduledDate() + "\n"
+                + "al prezzo di " + order.getPrice() + " € in classe " + order.getFlightClass() +"\n"
+                + "pagato con carta che termina *" + order.getCardDetails() + "\n"
+                + "per il passeggero " + order.getPassengerByPassengerId().getSurname()
+                + " " + order.getPassengerByPassengerId().getName();
+    }
+
 }

@@ -1,13 +1,13 @@
 package model.booking;
 
-public enum ClassType {
-    ECONOMY (1.0),
-    BUSINESS( 2.0),
-    FIRST(5.0);
+public enum Fares {
+    STANDARD(1.0),
+    PLUS( 2.0),
+    THEAEROSPIN(5.0);
 
     private final double priceMultiplier;
 
-    ClassType(double i) {
+    Fares(double i) {
         priceMultiplier = i;
     }
 

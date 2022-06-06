@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<?import model.booking.ClassType?>
+<?import model.booking.Fares?>
 
 <AnchorPane prefHeight="600.0" prefWidth="860.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ResultController">
    <children>
@@ -64,25 +64,25 @@
             </HBox>
             <HBox alignment="CENTER_LEFT" fillHeight="false" prefHeight="200.0">
                <children>
-                  <Label prefWidth="65.0" text="Selezionare Classe:" textAlignment="CENTER" wrapText="true" />
+                  <Label prefWidth="65.0" text="Selezionare Tariffa:" textAlignment="CENTER" wrapText="true" />
                   <VBox prefWidth="111.0">
                      <children>
-                        <JFXToggleButton alignment="CENTER_LEFT" graphicTextGap="2.0" size="7.0" text="FIRST">
+                        <JFXToggleButton alignment="CENTER_LEFT" graphicTextGap="2.0" size="7.0" text="THE AEROSPIN">
                            <toggleGroup>
                               <ToggleGroup fx:id="group" />
                            </toggleGroup>
                            <userData>
-                              <ClassType fx:constant = "FIRST" />
+                              <Fares fx:constant = "THEAEROSPIN" />
                            </userData>
                         </JFXToggleButton>
-                        <JFXToggleButton alignment="CENTER_LEFT" graphicTextGap="2.0" size="7.0" text="BUSINESS" toggleGroup="$group">
+                        <JFXToggleButton alignment="CENTER_LEFT" graphicTextGap="2.0" size="7.0" text="PLUS" toggleGroup="$group">
                             <userData>
-                                <ClassType fx:constant = "BUSINESS" />
+                                <Fares fx:constant = "PLUS" />
                             </userData>
                         </JFXToggleButton>
-                        <JFXToggleButton alignment="CENTER_LEFT" graphicTextGap="2.0" selected="true" size="7.0" text="ECONOMY" toggleGroup="$group">
+                        <JFXToggleButton alignment="CENTER_LEFT" graphicTextGap="2.0" selected="true" size="7.0" text="STANDARD" toggleGroup="$group">
                             <userData>
-                                <ClassType fx:constant = "ECONOMY" />
+                                <Fares fx:constant = "STANDARD" />
                             </userData>
                         </JFXToggleButton>
                      </children>

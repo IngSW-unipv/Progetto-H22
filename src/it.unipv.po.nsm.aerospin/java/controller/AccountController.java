@@ -39,7 +39,7 @@ public class AccountController implements Initializable, IControlledScreen {
     @FXML private TableColumn<Orders,String> number;
     @FXML private TableColumn<Orders, Time> date;
     @FXML private TableColumn<Orders, String> id;
-    @FXML private TableColumn<Flight, String> price;
+    @FXML private TableColumn<Orders, String> price;
 
 
     @Override
@@ -51,6 +51,7 @@ public class AccountController implements Initializable, IControlledScreen {
         table.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         table.setPlaceholder(new Label("Sto effettuando la ricerca, attendere"));
 
+        //CONTROLLARE
         number.setCellValueFactory(c -> new ReadOnlyStringWrapper(table.getItems().indexOf(c.getValue()) + ""));
 //        number.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Order, String>, ObservableValue<String>>() {
 //            @Override public ObservableValue<String> call(TableColumn.CellDataFeatures<Order, String> p) {
@@ -61,26 +62,20 @@ public class AccountController implements Initializable, IControlledScreen {
         id.setCellValueFactory(new PropertyValueFactory<>("id"));
         price.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getPrice() + " €"));
         //thread
-        try {
-            table.setItems(methods.getOrders());
-        } catch (NoMatchException e) {
-            table.setPlaceholder(new Label("Nessun ordine trovato"));
-        }
+        Thread t1 = new Thread(() -> {
+            try {
+                table.setItems(methods.getOrders());
+            } catch (NoMatchException e) {
+                table.setPlaceholder(new Label("Nessun ordine trovato"));
+            }
+        });
+        t1.start();
 
         table.getSelectionModel().getSelectedIndices().addListener(
-                (ListChangeListener<Integer>) change -> detail.setText(detailText()));
+                (ListChangeListener<Integer>) change -> detail.setText(methods.detailText(table.getSelectionModel().getSelectedItem())));
 
     }
 
-    private String detailText() {
-        return "Get busy living"
-//                + newLine
-                + "or"
-//                + newLine
-                + "get busy dying."
-//                + newLine
-                + "--Stephen King";
-    }
 
     public void setScreenParent(ScreenContainer screenParent){
         myContainer = screenParent;

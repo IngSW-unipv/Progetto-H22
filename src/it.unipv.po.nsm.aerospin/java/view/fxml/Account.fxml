@@ -1,21 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXTextArea?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.paint.Color?>
-<?import javafx.scene.paint.LinearGradient?>
-<?import javafx.scene.paint.Stop?>
-<?import org.controlsfx.control.MasterDetailPane?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import org.controlsfx.control.*?>
 
-<AnchorPane prefHeight="600.0" prefWidth="860.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AccountController">
+<AnchorPane prefHeight="600.0" prefWidth="860.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AccountController">
    <children>
       <JFXButton buttonType="RAISED" layoutX="651.0" layoutY="25.0" onAction="#support" prefHeight="39.0" prefWidth="150.0" text="RICHIEDI ASSISTENZA">
          <ripplerFill>
-            <LinearGradient endX="1.0" endY="1.0">
+            <LinearGradient>
                <stops>
                   <Stop>
                      <color>
@@ -39,7 +34,7 @@
           <TableColumn fx:id="price" editable="false" minWidth="0.0" prefWidth="75.0" text="Price" />
         </columns>
       </TableView>
-      <TextArea fx:id="detail" layoutX="551.0" layoutY="182.0" prefHeight="200.0" prefWidth="200.0" />
+      <TextArea fx:id="detail" layoutX="551.0" layoutY="182.0" prefHeight="200.0" prefWidth="200.0" promptText="Selezionare un volo per mostrare i dettagli" />
       <JFXTextArea layoutX="157.0" layoutY="25.0" />
    </children>
 </AnchorPane>

@@ -29,9 +29,6 @@ public class OrdersDao implements OrdersDaoInterface {
     }
 
 
-
-
-
     @Override
     public void persist(Orders entity) {
         conn.getCurrentSession().save(entity);

@@ -1,11 +1,12 @@
 ToDO:
+    -Gestione Tariffe (non CLASSI)
 	-Grafica
-	-Booking
-	-Creazione e invio biglietto
-	-User Account
 	-Richiesta Assistenza -- RIMANE INVIARE EMAIL
 	-Docs
-	-Rivedere managers (cercare pattern)
+	-------------
+	-Booking //Done
+	-Creazione e invio biglietto //Done
+	-User Account //Done
 	-Creare package Exceptions //Done
 	-cbbox con imput tastiera //Done
 	-Rivedere dep e ret in result controller...erano logicamente

@@ -19,7 +19,7 @@ import model.Factory;
 import model.Session;
 import model.booking.Ticket;
 import model.booking.TicketMail;
-import model.booking.ClassType;
+import model.booking.Fares;
 import model.exception.NoMatchException;
 import model.persistence.entity.Flight;
 import model.persistence.entity.Orders;
@@ -75,7 +75,7 @@ public class ResultController implements Initializable, IControlledScreen {
     private final Date dateDep = session.getInfo().getDateDep();
     private final Date dateRet = session.getInfo().getDateRet();
     private Double price = 0.0;
-    private double multiplier = ClassType.ECONOMY.getPriceM();
+    private double multiplier = Fares.STANDARD.getPriceM();
     private static final DecimalFormat df = new DecimalFormat("0.00");
     private Ticket ticket_andata;
     private Ticket ticket_ritorno;
@@ -91,7 +91,7 @@ public class ResultController implements Initializable, IControlledScreen {
                 group.selectToggle(group.getToggles().get(2));
             }
 //            if(table1.getSelectionModel().getSelectedItem().
-            multiplier = ((ClassType) group.selectedToggleProperty().get().getUserData()).getPriceM();
+            multiplier = ((Fares) group.selectedToggleProperty().get().getUserData()).getPriceM();
             costLabel.setText(df.format(price()));
 
 

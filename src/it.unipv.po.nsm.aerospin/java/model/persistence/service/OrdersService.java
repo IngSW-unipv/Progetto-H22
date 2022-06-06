@@ -6,6 +6,7 @@ import model.persistence.entity.Orders;
 
 
 import java.util.List;
+import java.util.Objects;
 
 public class OrdersService {
     private static OrdersDao ordersDao;
@@ -36,7 +37,7 @@ public class OrdersService {
         ordersDao.getConn().openCurrentSession();
         List<Orders> orders = ordersDao.findAll();
         ordersDao.getConn().closeCurrentSession();
-        return orders.stream().filter(o -> o.getPassengerByPassengerId().getUserByUserId().getEmail() == email).collect(java.util.stream.Collectors.toList());
+        return orders.stream().filter(o -> Objects.equals(o.getPassengerByPassengerId().getUserByUserId().getEmail(), email)).collect(java.util.stream.Collectors.toList());
     }
 
 
