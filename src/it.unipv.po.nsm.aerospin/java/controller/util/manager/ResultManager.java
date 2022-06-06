@@ -32,7 +32,7 @@ public class ResultManager {
                 .filter(o -> o.getRouteByFlightRouteId().getAirportByDeparture().equalsString(dep))
                 .filter(o -> o.getRouteByFlightRouteId().getAirportByArrival().equalsString(ret))
                 .filter(o -> o.getScheduledDate().equals(date))
-                .filter(o -> o.getEconomy()>0)
+                .filter(o -> o.getSeats()>0)
 //                .filter(o -> o.getEconomy().maggiore(0))
                 .distinct()
                 .collect(Collectors.toList());

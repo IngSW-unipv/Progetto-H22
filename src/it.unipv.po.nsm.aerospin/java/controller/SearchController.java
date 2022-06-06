@@ -121,7 +121,7 @@ public class SearchController implements Initializable, IControlledScreen {
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setTitle("No Match");
                 alert.initStyle(StageStyle.TRANSPARENT);
-                alert.setContentText("Il volo di andata non è disponibile in questa data");
+                alert.setContentText("Nessun volo dispo disponibile in questa data");
                 alert.showAndWait();
             }
         }

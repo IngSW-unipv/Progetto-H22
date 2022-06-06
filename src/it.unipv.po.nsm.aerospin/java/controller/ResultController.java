@@ -169,6 +169,7 @@ public class ResultController implements Initializable, IControlledScreen {
     @FXML
     private void checkout() throws IOException, WriterException {
         emailService.setText("Grazie per aver scelto il Aerospin.!");
+        emailService.setSubject("Il Tuo Biglietto");
         errLabel.setVisible(false);
         if (session.isLogged()) {
             if( price > 0 &&
@@ -241,12 +242,6 @@ public class ResultController implements Initializable, IControlledScreen {
 
                     ticket_ritorno.generateTicket();
                     emailService.send(passengerService.findById(passenger.getId()).getUserByUserId().getEmail(), ticket_andata.getPath());
-
-
-
-
-
-
 
 
 

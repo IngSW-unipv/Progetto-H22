@@ -34,14 +34,8 @@ public class Flight {
     @JoinColumn(name = "flightRouteId", referencedColumnName = "routeId")
     private Route routeByFlightRouteId;
     @Basic
-    @Column(name = "ECONOMY", nullable = false)
-    private short economy;
-    @Basic
-    @Column(name = "BUSINESS", nullable = false)
-    private short business;
-    @Basic
-    @Column(name = "FIRST", nullable = false)
-    private short first;
+    @Column(name = "seats", nullable = true)
+    private int seats;
     @OneToMany(mappedBy = "flightByFlightId")
     private Collection<Orders> ordersById;
 
@@ -60,11 +54,11 @@ public class Flight {
     public void setFlightNumber(String flightNumber) {
         this.flightNumber = flightNumber;
     }
-    
+
     public Integer getFlightRouteId() {
         return flightRouteId;
     }
-
+    
     public void setFlightRouteId(Integer flightRouteId) {
         this.flightRouteId = flightRouteId;
     }
@@ -150,28 +144,16 @@ public class Flight {
         this.routeByFlightRouteId = routeByFlightRouteId;
     }
 
-    public short getEconomy() {
-        return economy;
+    public int getSeats() {
+        return seats;
     }
 
-    public void setEconomy(short economy) {
-        this.economy = economy;
+    public void setSeats(Integer seats) {
+        this.seats = seats;
     }
 
-    public short getBusiness() {
-        return business;
-    }
-
-    public void setBusiness(short business) {
-        this.business = business;
-    }
-
-    public short getFirst() {
-        return first;
-    }
-
-    public void setFirst(short first) {
-        this.first = first;
+    public void setSeats(short seats) {
+        this.seats = seats;
     }
 
     public Collection<Orders> getOrdersById() {
