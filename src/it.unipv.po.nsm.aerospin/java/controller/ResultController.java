@@ -201,7 +201,7 @@ public class ResultController implements Initializable, IControlledScreen {
 
                     orders.setPassengerId(passenger.getId());
                     orders.setFlightId(table1.getSelectionModel().getSelectedItem().getId());
-                    orders.setFlightClass(group.getSelectedToggle().getUserData().toString());
+                    orders.setFaire(group.getSelectedToggle().getUserData().toString());
                     orders.setCardDetails(Integer.parseInt(session.getInfo().getCardNumber().substring(12,15)));
                     orders.setOrderDate(new Date(System.currentTimeMillis()));
                     orders.setPrice(price);
@@ -211,7 +211,7 @@ public class ResultController implements Initializable, IControlledScreen {
                     if (!table2.getSelectionModel().isEmpty()) {
                         orders.setPassengerId(passenger.getId());
                         orders.setFlightId(table2.getSelectionModel().getSelectedItem().getId());
-                        orders.setFlightClass(group.getSelectedToggle().getUserData().toString());
+                        orders.setFaire(group.getSelectedToggle().getUserData().toString());
                         orders.setCardDetails(Integer.parseInt(session.getInfo().getCardNumber().substring(13,16)));
                         orders.setOrderDate(new Date(System.currentTimeMillis()));
                         orders.setPrice(price);

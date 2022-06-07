@@ -16,8 +16,8 @@ public class Orders {
     @Column(name = "flightId", nullable = false)
     private int flightId;
     @Basic
-    @Column(name = "flightClass", nullable = false, length = 25)
-    private String flightClass;
+    @Column(name = "faire", nullable = false, length = 25)
+    private String faire;
     @Basic
     @Column(name = "cardDetails", nullable = false)
     private int cardDetails;
@@ -30,9 +30,10 @@ public class Orders {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "PassengerId", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
     private Passenger passengerByPassengerId;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "flightId", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
     private Flight flightByFlightId;
+
 
     public int getId() {
         return id;
@@ -58,13 +59,7 @@ public class Orders {
         this.flightId = flightId;
     }
 
-    public String getFlightClass() {
-        return flightClass;
-    }
 
-    public void setFlightClass(String flightClass) {
-        this.flightClass = flightClass;
-    }
 
     public int getCardDetails() {
         return cardDetails;
@@ -102,7 +97,6 @@ public class Orders {
         if (flightId != orders.flightId) return false;
         if (cardDetails != orders.cardDetails) return false;
         if (Double.compare(orders.price, price) != 0) return false;
-        if (flightClass != null ? !flightClass.equals(orders.flightClass) : orders.flightClass != null) return false;
         if (orderDate != null ? !orderDate.equals(orders.orderDate) : orders.orderDate != null) return false;
 
         return true;
@@ -115,14 +109,12 @@ public class Orders {
         result = id;
         result = 31 * result + passengerId;
         result = 31 * result + flightId;
-        result = 31 * result + (flightClass != null ? flightClass.hashCode() : 0);
         result = 31 * result + cardDetails;
         result = 31 * result + (orderDate != null ? orderDate.hashCode() : 0);
         temp = Double.doubleToLongBits(price);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         return result;
     }
-
 
     public Passenger getPassengerByPassengerId() {
         return passengerByPassengerId;
@@ -141,17 +133,12 @@ public class Orders {
     }
 
 
-    @Override
-    public String toString() {
-        return "Orders{" +
-                "id=" + id +
-                ", passengerId=" + passengerId +
-                ", flightId=" + flightId +
-                ", flightClass='" + flightClass + '\'' +
-                ", cardDetails=" + cardDetails +
-                ", orderDate=" + orderDate +
-                ", price=" + price +
-                ", passengerByPassengerId=" + passengerByPassengerId +
-                '}';
+
+    public String getFaire() {
+        return faire;
+    }
+
+    public void setFaire(String faire) {
+        this.faire = faire;
     }
 }

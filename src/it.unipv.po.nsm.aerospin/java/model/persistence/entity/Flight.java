@@ -30,13 +30,13 @@ public class Flight {
     @Basic
     @Column(name = "price", nullable = true, precision = 0)
     private double price;
-    @ManyToOne
+    @ManyToOne()
     @JoinColumn(name = "flightRouteId", referencedColumnName = "routeId")
     private Route routeByFlightRouteId;
     @Basic
     @Column(name = "seats", nullable = true)
     private int seats;
-    @OneToMany(mappedBy = "flightByFlightId")
+    @OneToMany(mappedBy = "flightByFlightId", fetch = FetchType.EAGER)
     private Collection<Orders> ordersById;
 
     public int getId() {
