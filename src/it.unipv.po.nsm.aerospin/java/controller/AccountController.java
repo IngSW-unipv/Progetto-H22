@@ -2,6 +2,7 @@ package controller;
 
 import controller.util.IControlledScreen;
 import controller.util.manager.AccountManager;
+import javafx.application.Platform;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.ListChangeListener;
@@ -41,7 +42,6 @@ public class AccountController implements Initializable, IControlledScreen {
     @FXML private TableColumn<Orders, String> id;
     @FXML private TableColumn<Orders, String> price;
 
-
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
@@ -50,29 +50,25 @@ public class AccountController implements Initializable, IControlledScreen {
 
         table.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         table.setPlaceholder(new Label("Sto effettuando la ricerca, attendere"));
+        table.getSelectionModel().getSelectedIndices().addListener(
+                (ListChangeListener<Integer>) change -> detail.setText(methods.detailText(table.getSelectionModel().getSelectedItem())));
 
         //CONTROLLARE
-        number.setCellValueFactory(c -> new ReadOnlyStringWrapper(table.getItems().indexOf(c.getValue()) + ""));
-//        number.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Order, String>, ObservableValue<String>>() {
-//            @Override public ObservableValue<String> call(TableColumn.CellDataFeatures<Order, String> p) {
-//                return new ReadOnlyObjectWrapper(table.getItems().indexOf(p.getValue()) + "");
-//            }
-//        });
+        number.setCellValueFactory(c -> new ReadOnlyStringWrapper((table.getItems().indexOf(c.getValue()) + 1) + "°"));
         date.setCellValueFactory(new PropertyValueFactory<>("orderDate"));
         id.setCellValueFactory(new PropertyValueFactory<>("id"));
         price.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getPrice() + " €"));
         //thread
         Thread t1 = new Thread(() -> {
             try {
-                table.setItems(methods.getOrders());
+                    table.setItems(methods.getOrders());
             } catch (NoMatchException e) {
-                table.setPlaceholder(new Label("Nessun ordine trovato"));
+                    Platform.runLater(
+                            () -> table.setPlaceholder(new Label("Nessun ordine trovato"))
+                    );
             }
         });
         t1.start();
-
-        table.getSelectionModel().getSelectedIndices().addListener(
-                (ListChangeListener<Integer>) change -> detail.setText(methods.detailText(table.getSelectionModel().getSelectedItem())));
 
     }
 

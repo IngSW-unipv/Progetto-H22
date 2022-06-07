@@ -90,12 +90,10 @@ public class ResultController implements Initializable, IControlledScreen {
             if(newT == null) {
                 group.selectToggle(group.getToggles().get(2));
             }
-//            if(table1.getSelectionModel().getSelectedItem().
             multiplier = ((Fares) group.selectedToggleProperty().get().getUserData()).getPriceM();
             costLabel.setText(df.format(price()));
-
-
         });
+
     }
 
     public void setScreenParent(ScreenContainer screenParent){
@@ -108,14 +106,12 @@ public class ResultController implements Initializable, IControlledScreen {
         table1.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         table2.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 
-        //DECIDERE
         flightNumber1.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getFlightNumber()));
         flightNumber2.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getFlightNumber()));
         scheduledTime1.setCellValueFactory(new PropertyValueFactory<>("scheduledTime"));
         scheduledTime2.setCellValueFactory(new PropertyValueFactory<>("scheduledTime"));
         arrivalTime1.setCellValueFactory(new PropertyValueFactory<>("arrivalTime"));
         arrivalTime2.setCellValueFactory(new PropertyValueFactory<>("arrivalTime"));
-        //arrivalTime2.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getArrivalTime().getHours() + ":" + c.getValue().getArrivalTime().getMinutes()));
         price1.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getPrice() + " €"));
         price2.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getPrice() + " €"));
 
@@ -243,6 +239,10 @@ public class ResultController implements Initializable, IControlledScreen {
                     ticket_ritorno.generateTicket();
                     emailService.send(passengerService.findById(passenger.getId()).getUserByUserId().getEmail(), ticket_andata.getPath());
 
+                    methods.bookSeat(table1.getSelectionModel().getSelectedItem());
+                    if(!table2.getSelectionModel().isEmpty()) {
+                        methods.bookSeat(table2.getSelectionModel().getSelectedItem());
+                    }
 
 
                     session.clear();

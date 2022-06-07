@@ -8,6 +8,7 @@ import javafx.util.Callback;
 import model.exception.NoMatchException;
 import model.persistence.CachedFlights;
 import model.persistence.entity.Flight;
+import model.persistence.service.FlightService;
 
 import java.sql.Date;
 import java.time.LocalDate;
@@ -20,6 +21,7 @@ import java.util.stream.Collectors;
 public class ResultManager {
 
     CachedFlights cachedFlights = CachedFlights.getInstance();
+    FlightService flightService = new FlightService();
     List<Flight> results = cachedFlights.findAll();
 
     private static final Pattern VALID_NAME_REGEX =
@@ -32,8 +34,7 @@ public class ResultManager {
                 .filter(o -> o.getRouteByFlightRouteId().getAirportByDeparture().equalsString(dep))
                 .filter(o -> o.getRouteByFlightRouteId().getAirportByArrival().equalsString(ret))
                 .filter(o -> o.getScheduledDate().equals(date))
-                .filter(o -> o.getSeats()>0)
-//                .filter(o -> o.getEconomy().maggiore(0))
+                .filter(o -> o.getSeats() > 0)
                 .distinct()
                 .collect(Collectors.toList());
         if(departures.size() == 0){
@@ -41,6 +42,11 @@ public class ResultManager {
         } else {
             return FXCollections.observableArrayList(departures);
         }
+    }
+
+    public void bookSeat(Flight flight) {
+        flight.setSeats(flight.getSeats()-1);
+        flightService.update(flight);
     }
 
     /*  Controllo se l'età selezionata è > 16
@@ -53,6 +59,7 @@ public class ResultManager {
         long years = age.getYears();
         return years < 16;
     }
+
     public Callback<DatePicker, DateCell> ageRange() {
         return new Callback<>() {
             @Override

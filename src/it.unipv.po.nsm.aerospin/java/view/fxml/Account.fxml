@@ -25,16 +25,18 @@
                </stops>
             </LinearGradient>
          </ripplerFill></JFXButton>
-      <MasterDetailPane fx:id="pane" layoutX="14.0" layoutY="64.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="80.0" />
-      <TableView fx:id="table" layoutX="64.0" layoutY="172.0" prefHeight="377.0" prefWidth="444.0">
+      <MasterDetailPane fx:id="pane" dividerPosition="0.6" layoutX="14.0" layoutY="64.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="80.0" />
+      <TableView fx:id="table" layoutX="64.0" layoutY="172.0" prefWidth="468.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="80.0">
         <columns>
-            <TableColumn fx:id="number" editable="false" prefWidth="75.0" text="Number" />
+            <TableColumn fx:id="number" editable="false" prefWidth="75.0" sortable="false" />
           <TableColumn fx:id="date" editable="false" prefWidth="134.0" text="Data" />
             <TableColumn fx:id="id" editable="false" prefWidth="91.0" sortable="false" text="ID" />
-          <TableColumn fx:id="price" editable="false" minWidth="0.0" prefWidth="75.0" text="Price" />
+          <TableColumn fx:id="price" editable="false" minWidth="0.0" prefWidth="75.0" sortable="false" text="Price" />
         </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
       </TableView>
-      <TextArea fx:id="detail" layoutX="551.0" layoutY="182.0" prefHeight="200.0" prefWidth="200.0" promptText="Selezionare un volo per mostrare i dettagli" />
-      <JFXTextArea layoutX="157.0" layoutY="25.0" />
+      <JFXTextArea fx:id="detail" editable="false" layoutX="373.0" layoutY="372.0" text="Selezionare un volo per mostrare i dettagli" />
    </children>
 </AnchorPane>

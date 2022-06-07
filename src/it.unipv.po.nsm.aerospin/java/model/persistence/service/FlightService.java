@@ -1,6 +1,5 @@
 package model.persistence.service;
 
-
 import model.persistence.dao.FlightDao;
 import model.persistence.entity.Flight;
 

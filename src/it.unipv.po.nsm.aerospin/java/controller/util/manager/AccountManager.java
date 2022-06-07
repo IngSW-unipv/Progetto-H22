@@ -32,10 +32,13 @@ public class AccountManager {
 //    per il passeggero Davide Morano
     public String detailText(Orders order) {
         return "Il " + order.getOrderDate() + " hai acquistato il volo\n"
-                + "da " + order.getFlightByFlightId().getRouteByFlightRouteId().getAirportByDeparture().getAirportName()
-                + " a " + order.getFlightByFlightId().getRouteByFlightRouteId().getAirportByArrival().getAirportName()
-                + " del " + order.getFlightByFlightId().getScheduledDate() + "\n"
-                + "al prezzo di " + order.getPrice() + " € in classe " + order.getFare() +"\n"
+                + "da "
+                + order.getFlightByFlightId().getRouteByFlightRouteId().getAirportByDeparture().getAirportName()
+                + "\na "
+                + order.getFlightByFlightId().getRouteByFlightRouteId().getAirportByArrival().getAirportName()
+                + "\ndel " + order.getFlightByFlightId().getScheduledDate() + "\n"
+                + "al prezzo di " + order.getPrice()
+                + " €\ncon la tariffa " + order.getFare() + "\n"
                 + "pagato con carta che termina *" + order.getCardDetails() + "\n"
                 + "per il passeggero " + order.getPassengerByPassengerId().getSurname()
                 + " " + order.getPassengerByPassengerId().getName();
