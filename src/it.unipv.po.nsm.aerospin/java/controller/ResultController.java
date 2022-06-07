@@ -231,16 +231,17 @@ public class ResultController implements Initializable, IControlledScreen {
                     emailService.send(passengerService.findById(passenger.getId()).getUserByUserId().getEmail(), ticket_andata.getPath());
 
 
-                    ticket_ritorno = new Ticket(name.getText(), surname.getText(),table2.getSelectionModel().getSelectedItem().getRouteByFlightRouteId().getAirportByDeparture().getIata(),
-                            table2.getSelectionModel().getSelectedItem().getRouteByFlightRouteId().getAirportByArrival().getIata(),
-                            table2.getSelectionModel().getSelectedItem().getFlightNumber(),table2.getSelectionModel().getSelectedItem().getScheduledDate().toString(),
-                            table2.getSelectionModel().getSelectedItem().getScheduledTime().toString());
 
-                    ticket_ritorno.generateTicket();
-                    emailService.send(passengerService.findById(passenger.getId()).getUserByUserId().getEmail(), ticket_andata.getPath());
 
                     methods.bookSeat(table1.getSelectionModel().getSelectedItem());
                     if(!table2.getSelectionModel().isEmpty()) {
+                        ticket_ritorno = new Ticket(name.getText(), surname.getText(),table2.getSelectionModel().getSelectedItem().getRouteByFlightRouteId().getAirportByDeparture().getIata(),
+                                table2.getSelectionModel().getSelectedItem().getRouteByFlightRouteId().getAirportByArrival().getIata(),
+                                table2.getSelectionModel().getSelectedItem().getFlightNumber(),table2.getSelectionModel().getSelectedItem().getScheduledDate().toString(),
+                                table2.getSelectionModel().getSelectedItem().getScheduledTime().toString());
+                        ticket_ritorno.generateTicket();
+                        emailService.send(passengerService.findById(passenger.getId()).getUserByUserId().getEmail(), ticket_ritorno.getPath());
+
                         methods.bookSeat(table2.getSelectionModel().getSelectedItem());
                     }
 
