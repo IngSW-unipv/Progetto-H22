@@ -53,12 +53,10 @@ public class AccountController implements Initializable, IControlledScreen {
         table.getSelectionModel().getSelectedIndices().addListener(
                 (ListChangeListener<Integer>) change -> detail.setText(methods.detailText(table.getSelectionModel().getSelectedItem())));
 
-        //CONTROLLARE
         number.setCellValueFactory(c -> new ReadOnlyStringWrapper((table.getItems().indexOf(c.getValue()) + 1) + "°"));
         date.setCellValueFactory(new PropertyValueFactory<>("orderDate"));
         id.setCellValueFactory(new PropertyValueFactory<>("id"));
         price.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getPrice() + " €"));
-        //thread
         Thread t1 = new Thread(() -> {
             try {
                     table.setItems(methods.getOrders());

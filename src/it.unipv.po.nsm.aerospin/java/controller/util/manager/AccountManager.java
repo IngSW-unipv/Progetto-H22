@@ -16,6 +16,13 @@ public class AccountManager {
     public ObservableList<Orders> getOrders() throws NoMatchException {
 
         List<Orders> orders = ordersService.findByEmail(Factory.getInstance().getSession().getUser().getEmail());
+        orders.sort((o1, o2) -> {
+            if(o1.getOrderDate().before(o2.getOrderDate())) {
+                return -1;
+            } else {
+                return 0;
+            }
+        });
         if(orders.size() == 0){
             throw new NoMatchException("Not Matched!\n");
         } else {
@@ -23,13 +30,6 @@ public class AccountManager {
         }
     }
 
-
-
-//    Il 29/29/2929 (ora?) hai acquistato il volo
-//    da Cava Manara Airport a Lamezia Terme Airport del 30/30/3903
-//    al prezzo di XXX € in classe STANDARD
-//    pagato con carta che termina 7458
-//    per il passeggero Davide Morano
     public String detailText(Orders order) {
         return "Il " + order.getOrderDate() + " hai acquistato il volo\n"
                 + "da "

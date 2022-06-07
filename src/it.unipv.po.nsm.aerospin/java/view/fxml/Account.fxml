@@ -29,7 +29,7 @@
       <TableView fx:id="table" layoutX="64.0" layoutY="172.0" prefWidth="468.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="80.0">
         <columns>
             <TableColumn fx:id="number" editable="false" prefWidth="75.0" sortable="false" />
-          <TableColumn fx:id="date" editable="false" prefWidth="134.0" text="Data" />
+          <TableColumn fx:id="date" editable="false" prefWidth="134.0" sortable="false" text="Data" />
             <TableColumn fx:id="id" editable="false" prefWidth="91.0" sortable="false" text="ID" />
           <TableColumn fx:id="price" editable="false" minWidth="0.0" prefWidth="75.0" sortable="false" text="Price" />
         </columns>
