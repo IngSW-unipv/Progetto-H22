@@ -16,7 +16,7 @@ public class User {
     @Basic
     @Column(name = "pwd", nullable = false, length = 45)
     private String pwd;
-    @OneToMany(mappedBy = "userByUserId", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "userByUserId")
     private Collection<Passenger> passengersById;
 
     public int getId() {

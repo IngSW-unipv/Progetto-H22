@@ -35,7 +35,7 @@ public class AccountManager {
                 + "da " + order.getFlightByFlightId().getRouteByFlightRouteId().getAirportByDeparture().getAirportName()
                 + " a " + order.getFlightByFlightId().getRouteByFlightRouteId().getAirportByArrival().getAirportName()
                 + " del " + order.getFlightByFlightId().getScheduledDate() + "\n"
-                + "al prezzo di " + order.getPrice() + " € in classe " + order.getFaire() +"\n"
+                + "al prezzo di " + order.getPrice() + " € in classe " + order.getFare() +"\n"
                 + "pagato con carta che termina *" + order.getCardDetails() + "\n"
                 + "per il passeggero " + order.getPassengerByPassengerId().getSurname()
                 + " " + order.getPassengerByPassengerId().getName();

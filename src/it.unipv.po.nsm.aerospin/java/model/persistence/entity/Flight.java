@@ -14,7 +14,6 @@ public class Flight {
     @Basic
     @Column(name = "flightNumber", nullable = true, length = 45)
     private String flightNumber;
-
     @Basic
     @Column(name = "flightRouteId", nullable = true, insertable = false, updatable = false)
     private Integer flightRouteId;
@@ -36,7 +35,7 @@ public class Flight {
     @Basic
     @Column(name = "seats", nullable = true)
     private int seats;
-    @OneToMany(mappedBy = "flightByFlightId", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "flightByFlightId")
     private Collection<Orders> ordersById;
 
     public int getId() {

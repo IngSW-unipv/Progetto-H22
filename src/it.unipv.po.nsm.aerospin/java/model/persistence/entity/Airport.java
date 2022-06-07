@@ -48,9 +48,9 @@ public class Airport {
     @Basic
     @Column(name = "SOURCE_A", nullable = true, length = 20)
     private String sourceA;
-    @OneToMany(mappedBy = "airportByArrival", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "airportByArrival")
     private Collection<Route> routesByIcao;
-    @OneToMany(mappedBy = "airportByDeparture", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "airportByDeparture")
     private Collection<Route> routesByIcao_0;
 
     public long getAirportId() {

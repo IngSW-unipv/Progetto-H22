@@ -19,10 +19,10 @@ public class Passenger {
     @Basic
     @Column(name = "surname",length = 25, nullable = true)
     private String surname;
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne()
     @JoinColumn(name = "userId", referencedColumnName = "id", insertable = false, updatable = false)
     private User userByUserId;
-    @OneToMany(mappedBy = "passengerByPassengerId", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "passengerByPassengerId")
     private Collection<Orders> ordersById;
 
     public int getId() {

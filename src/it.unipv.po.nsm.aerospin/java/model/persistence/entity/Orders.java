@@ -16,8 +16,8 @@ public class Orders {
     @Column(name = "flightId", nullable = false)
     private int flightId;
     @Basic
-    @Column(name = "faire", nullable = false, length = 25)
-    private String faire;
+    @Column(name = "fare", nullable = false, length = 25)
+    private String fare;
     @Basic
     @Column(name = "cardDetails", nullable = false)
     private int cardDetails;
@@ -27,10 +27,10 @@ public class Orders {
     @Basic
     @Column(name = "price", nullable = false, precision = 0)
     private double price;
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne()
     @JoinColumn(name = "PassengerId", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
     private Passenger passengerByPassengerId;
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne()
     @JoinColumn(name = "flightId", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
     private Flight flightByFlightId;
 
@@ -134,11 +134,11 @@ public class Orders {
 
 
 
-    public String getFaire() {
-        return faire;
+    public String getFare() {
+        return fare;
     }
 
-    public void setFaire(String faire) {
-        this.faire = faire;
+    public void setFare(String faire) {
+        this.fare = faire;
     }
 }

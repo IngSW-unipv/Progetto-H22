@@ -20,10 +20,10 @@ public class Route {
     private String waypoints;
     @OneToMany(mappedBy = "routeByFlightRouteId")
     private Collection<Flight> flightsByRouteId;
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne()
     @JoinColumn(name = "arrival", referencedColumnName = "ICAO", nullable = false)
     private Airport airportByArrival;
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne()
     @JoinColumn(name = "departure", referencedColumnName = "ICAO", nullable = false)
     private Airport airportByDeparture;
 
