@@ -29,7 +29,7 @@ public class Flight {
     @Basic
     @Column(name = "price", nullable = true, precision = 0)
     private double price;
-    @ManyToOne()
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "flightRouteId", referencedColumnName = "routeId")
     private Route routeByFlightRouteId;
     @Basic
