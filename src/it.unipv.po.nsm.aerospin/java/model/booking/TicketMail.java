@@ -9,7 +9,7 @@ public class TicketMail {
 
     private static final String from = "h22aerospin@gmail.com";     // Sender's email ID
     private static final String username = from;
-    private static final String password = "kbeoqsm7";
+    private static final String password = "hiufwebvzteaqxrz";
     private static final String host = "smtp.gmail.com";            // We are sending through smtp.gmail.com
     private  String subject;
     private  String text;

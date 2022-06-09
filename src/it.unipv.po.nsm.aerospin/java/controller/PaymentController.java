@@ -70,7 +70,7 @@ public class PaymentController implements Initializable {
     }
 
     private boolean checkExpiryMonth(){
-        return expiryMonth.getValue().matches("^[0-9]{2}$") && Integer.parseInt(expiryMonth.getValue()) >= Calendar.getInstance().get(Calendar.MONTH) + 1;
+        return expiryMonth.getValue().matches("^[0-9]{2}$") && Integer.parseInt(expiryMonth.getValue()) >= Calendar.getInstance().get(Calendar.MONTH) + 1 || Integer.parseInt(expiryYear.getText()) >= Calendar.getInstance().get(Calendar.YEAR);
     }
 
     private boolean checkCvv(){
