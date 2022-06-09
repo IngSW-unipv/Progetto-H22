@@ -2,14 +2,10 @@ package model.persistence.dao;
 
 import model.persistence.Connection;
 import model.persistence.entity.Orders;
-import model.persistence.service.OrdersService;
-
-import javax.persistence.Query;
 import java.util.List;
 
-public class OrdersDao implements OrdersDaoInterface {
-
-    private Connection conn;
+public class OrdersDao implements IDao<Orders> {
+    private final Connection conn;
 
     public OrdersDao() {
         this.conn = new Connection();
@@ -19,15 +15,11 @@ public class OrdersDao implements OrdersDaoInterface {
         return conn;
     }
 
-    public void setConn(Connection conn) {
-        this.conn = conn;
-    }
-
     @Override
     public List<Orders> findAll() {
         return (List<Orders>) conn.getCurrentSession().createQuery("from Orders ").list();
     }
-
+    //TODO solve warning
 
     @Override
     public void persist(Orders entity) {
@@ -50,6 +42,5 @@ public class OrdersDao implements OrdersDaoInterface {
         for (Orders entity : entityList) {
             delete(entity);
         }
-
     }
 }

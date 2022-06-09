@@ -1,21 +1,10 @@
 package model.persistence;
 
 
-
-import controller.util.manager.ResultManager;
-import javafx.scene.control.Alert;
 import model.exception.NoMatchException;
-import model.persistence.entity.*;
-import model.persistence.service.*;
-import net.sf.ehcache.CacheManager;
+import model.persistence.entity.Orders;
+import model.persistence.service.OrdersService;
 
-
-import java.sql.Date;
-import java.sql.Time;
-import java.text.DecimalFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 public class Test {
@@ -104,11 +93,11 @@ public class Test {
 //            System.out.println(route.getRouteId());
 //        }
 //
-        OrdersService ordersService = new OrdersService();
-        List<Orders> orders = ordersService.findAll();
-        for (Orders order : orders) {
-            System.out.println(order.getPassengerByPassengerId().getUserByUserId().getEmail());
-        }
+//        OrdersService ordersService = new OrdersService();
+//        List<Orders> orders = ordersService.findAll();
+//        for (Orders order : orders) {
+//            System.out.println(order.getPassengerByPassengerId().getUserByUserId().getEmail());
+//        }
 
 
 

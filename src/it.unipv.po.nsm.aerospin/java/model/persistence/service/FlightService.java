@@ -2,17 +2,16 @@ package model.persistence.service;
 
 import model.persistence.dao.FlightDao;
 import model.persistence.entity.Flight;
-
 import java.util.List;
 
-public class FlightService {
-
+public class FlightService implements IService<Flight> {
     private static FlightDao flightDao;
 
     public FlightService() {
         flightDao = new FlightDao();
     }
 
+    @Override
     public List<Flight> findAll() {
         flightDao.getConn().openCurrentSession();
         List<Flight> flights = flightDao.findAll();
@@ -20,24 +19,28 @@ public class FlightService {
         return flights;
     }
 
-
+    @Override
     public void persist(Flight flight) {
         flightDao.getConn().openCurrentSessionwithTransaction();
         flightDao.persist(flight);
         flightDao.getConn().closeCurrentSessionwithTransaction();
     }
 
+    @Override
     public void update(Flight flight) {
         flightDao.getConn().openCurrentSessionwithTransaction();
         flightDao.update(flight);
         flightDao.getConn().closeCurrentSessionwithTransaction();
     }
 
+    @Override
     public void delete(Flight flight) {
         flightDao.getConn().openCurrentSessionwithTransaction();
         flightDao.delete(flight);
         flightDao.getConn().closeCurrentSessionwithTransaction();
     }
+
+    @Override
     public void deleteAll() {
         flightDao.getConn().openCurrentSessionwithTransaction();
         flightDao.deleteAll();

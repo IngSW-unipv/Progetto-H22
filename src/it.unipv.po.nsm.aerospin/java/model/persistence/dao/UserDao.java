@@ -3,24 +3,25 @@ package model.persistence.dao;
 import model.persistence.Connection;
 import model.persistence.entity.User;
 import org.hibernate.query.Query;
-
 import java.util.List;
 
-public class UserDao implements UserDaoInterface {
-
-    private Connection conn;
+public class UserDao implements IDao<User> {
+    private final Connection conn;
 
     public UserDao() {
         this.conn = new Connection();
     }
 
-    @Override
-    public List<User> findAll() {
-        List<User> users = (List<User>) conn.getCurrentSession().createQuery("from User ").setCacheable(true).list();
-        return  users;
+    public Connection getConn() {
+        return conn;
     }
 
     @Override
+    public List<User> findAll() {
+        return (List<User>) conn.getCurrentSession().createQuery("from User ").list();
+    }
+    //TODO solve warning
+
     public User findByEmail(String email) {
         String hql = "from User a where a.email = :email";
         Query query = conn.getCurrentSession().createQuery(hql);
@@ -28,8 +29,6 @@ public class UserDao implements UserDaoInterface {
         //query.setCacheable(true);
         return (User) query.uniqueResult();
     }
-
-
 
     @Override
     public void persist(User entity) {
@@ -53,13 +52,4 @@ public class UserDao implements UserDaoInterface {
             delete(entity);
         }
     }
-
-    public Connection getConn() {
-        return conn;
-    }
-
-    public void setConn(Connection conn){
-        this.conn = conn;
-    }
-
 }

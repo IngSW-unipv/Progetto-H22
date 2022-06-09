@@ -2,12 +2,10 @@ package model.persistence.dao;
 
 import model.persistence.Connection;
 import model.persistence.entity.Flight;
-
 import java.util.List;
 
-public class FlightDao implements FlightDaoInterface {
-
-    private Connection conn;
+public class FlightDao implements IDao<Flight> {
+    private final Connection conn;
 
     public FlightDao() {
         this.conn = new Connection();
@@ -17,16 +15,11 @@ public class FlightDao implements FlightDaoInterface {
         return conn;
     }
 
-    public void setConn(Connection conn){
-        this.conn = conn;
-    }
-
-
     @Override
     public List<Flight> findAll() {
-        return (List<Flight>) conn.getCurrentSession().createQuery("from Flight ").list();
+        return(List<Flight>) conn.getCurrentSession().createQuery("from Flight ").list();
     }
-
+    //TODO solve warning
 
     @Override
     public void persist(Flight entity) {

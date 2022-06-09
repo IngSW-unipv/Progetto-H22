@@ -34,6 +34,7 @@ public class Orders {
     @JoinColumn(name = "flightId", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
     private Flight flightByFlightId;
 
+//TODO VELOCIZZA ORDER QUERY
 
     public int getId() {
         return id;

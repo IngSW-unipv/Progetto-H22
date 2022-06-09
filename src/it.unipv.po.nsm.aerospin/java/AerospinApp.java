@@ -20,7 +20,7 @@ public class AerospinApp extends Application {
         stage.setResizable(false);
         stage.show();
         stage.setOnCloseRequest(we -> System.exit(0));
-
+//TODO close popup on close
     }
 
     public static void main(String[] args) {

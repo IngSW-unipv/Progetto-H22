@@ -1,18 +1,17 @@
 package model.persistence.service;
 
-
 import model.persistence.dao.PassengerDao;
 import model.persistence.entity.Passenger;
-
 import java.util.List;
 
-public class PassengerService {
+public class PassengerService implements IService<Passenger> {
     private static PassengerDao passengerDao;
 
     public PassengerService() {
         passengerDao = new PassengerDao();
     }
 
+    @Override
     public List<Passenger> findAll() {
         passengerDao.getConn().openCurrentSession();
         List<Passenger> passengers = passengerDao.findAll();
@@ -20,45 +19,28 @@ public class PassengerService {
         return passengers;
     }
 
-    public Passenger findById(int id) {
-        passengerDao.getConn().openCurrentSession();
-        Passenger passenger = passengerDao.findById(id);
-        passengerDao.getConn().closeCurrentSession();
-        return passenger;
-    }
-
-    public List<Passenger> findByName(String name) {
-        passengerDao.getConn().openCurrentSession();
-        List<Passenger> passengers = passengerDao.findByName(name);
-        passengerDao.getConn().closeCurrentSession();
-        return passengers;
-    }
-
-    public List<Passenger> findBySurname(String surname) {
-        passengerDao.getConn().openCurrentSession();
-        List<Passenger> passengers = passengerDao.findBySurname(surname);
-        passengerDao.getConn().closeCurrentSession();
-        return passengers;
-    }
-
-
+    @Override
     public void persist(Passenger passenger) {
         passengerDao.getConn().openCurrentSessionwithTransaction();
         passengerDao.persist(passenger);
         passengerDao.getConn().closeCurrentSessionwithTransaction();
     }
 
+    @Override
     public void update(Passenger passenger) {
         passengerDao.getConn().openCurrentSessionwithTransaction();
         passengerDao.update(passenger);
         passengerDao.getConn().closeCurrentSessionwithTransaction();
     }
 
+    @Override
     public void delete(Passenger passenger) {
         passengerDao.getConn().openCurrentSessionwithTransaction();
         passengerDao.delete(passenger);
         passengerDao.getConn().closeCurrentSessionwithTransaction();
     }
+
+    @Override
     public void deleteAll() {
         passengerDao.getConn().openCurrentSessionwithTransaction();
         passengerDao.deleteAll();

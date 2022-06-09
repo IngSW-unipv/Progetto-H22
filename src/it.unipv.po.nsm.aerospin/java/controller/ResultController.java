@@ -228,7 +228,7 @@ public class ResultController implements Initializable, IControlledScreen {
                     ticket_andata.generateTicket();
 
                     //passengerService.findById(passenger.getId()).getUserByUserId().getEmail();
-                    emailService.send(passengerService.findById(passenger.getId()).getUserByUserId().getEmail(), ticket_andata.getPath());
+                    emailService.send(session.getUser().getEmail(), ticket_andata.getPath());
 
 
 
@@ -240,7 +240,7 @@ public class ResultController implements Initializable, IControlledScreen {
                                 table2.getSelectionModel().getSelectedItem().getFlightNumber(),table2.getSelectionModel().getSelectedItem().getScheduledDate().toString(),
                                 table2.getSelectionModel().getSelectedItem().getScheduledTime().toString());
                         ticket_ritorno.generateTicket();
-                        emailService.send(passengerService.findById(passenger.getId()).getUserByUserId().getEmail(), ticket_ritorno.getPath());
+                        emailService.send(session.getUser().getEmail(), ticket_ritorno.getPath());
 
                         methods.bookSeat(table2.getSelectionModel().getSelectedItem());
                     }
