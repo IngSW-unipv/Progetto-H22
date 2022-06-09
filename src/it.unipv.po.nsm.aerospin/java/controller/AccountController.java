@@ -41,6 +41,7 @@ public class AccountController implements Initializable, IControlledScreen {
     @FXML private TableColumn<Orders, Time> date;
     @FXML private TableColumn<Orders, String> id;
     @FXML private TableColumn<Orders, String> price;
+//TODO CONTROLLARE CREAZIONE ORDER ID
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {

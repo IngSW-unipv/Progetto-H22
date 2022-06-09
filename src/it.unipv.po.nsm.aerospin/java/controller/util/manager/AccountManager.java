@@ -8,21 +8,25 @@ import model.persistence.entity.Orders;
 import model.persistence.service.OrdersService;
 
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class AccountManager {
-
     OrdersService ordersService = new OrdersService();
 
     public ObservableList<Orders> getOrders() throws NoMatchException {
-
-        List<Orders> orders = ordersService.findByEmail(Factory.getInstance().getSession().getUser().getEmail());
-        orders.sort((o1, o2) -> {
-            if(o1.getOrderDate().before(o2.getOrderDate())) {
-                return -1;
-            } else {
-                return 0;
-            }
-        });
+        List<Orders> orders = ordersService.findAll();
+        orders.stream()
+            .filter(o -> Objects.equals(o.getPassengerByPassengerId().getUserByUserId().getEmail(),
+                                        Factory.getInstance().getSession().getUser().getEmail()))
+            .collect(Collectors.toList())
+            .sort((o1, o2) -> {
+                if(o1.getOrderDate().before(o2.getOrderDate())) {
+                    return -1;
+                } else {
+                    return 0;
+                }
+            });
         if(orders.size() == 0){
             throw new NoMatchException("Not Matched!\n");
         } else {
@@ -43,5 +47,4 @@ public class AccountManager {
                 + "per il passeggero " + order.getPassengerByPassengerId().getSurname()
                 + " " + order.getPassengerByPassengerId().getName();
     }
-
 }
