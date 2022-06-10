@@ -21,7 +21,6 @@ public class FlightDao implements IDao<Flight> {
         return(List<Flight>) conn.getCurrentSession().createQuery("from Flight ").list();
     }
 
-
     @Override
     public void persist(Flight entity) {
         conn.getCurrentSession().save(entity);

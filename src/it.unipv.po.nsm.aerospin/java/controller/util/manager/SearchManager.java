@@ -9,7 +9,6 @@ import model.persistence.CachedFlights;
 import model.persistence.entity.Flight;
 
 import java.time.LocalDate;
-import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -22,7 +21,7 @@ public class SearchManager {
         List<String> departures;
 
         departures = results.stream()
-                .map(o->o.getRouteByFlightRouteId().getAirportByDeparture().getAirportName()).sorted()
+                .map(o->o.getRouteById().getAirportDep().getAirportName()).sorted()
                 .distinct().collect(Collectors.toList());
 
         return FXCollections.observableArrayList(departures);
@@ -32,8 +31,8 @@ public class SearchManager {
         List<String> arrivals;
 
         arrivals = results.stream()
-                .filter(o -> o.getRouteByFlightRouteId().getAirportByDeparture().equalsString(departure))
-                .map(o->o.getRouteByFlightRouteId().getAirportByArrival().getAirportName()).sorted()
+                .filter(o -> o.getRouteById().getAirportDep().equalsString(departure))
+                .map(o->o.getRouteById().getAirportArr().getAirportName()).sorted()
                 .distinct().collect(Collectors.toList());
 
         return FXCollections.observableArrayList(arrivals);
@@ -44,8 +43,8 @@ public class SearchManager {
      */
     public boolean checkRoute(String dep, String ret) {
         List<Flight> a = results.stream()
-                .filter(o -> o.getRouteByFlightRouteId().getAirportByDeparture().equalsString(dep))
-                .filter(o -> o.getRouteByFlightRouteId().getAirportByArrival().equalsString(ret))
+                .filter(o -> o.getRouteById().getAirportDep().equalsString(dep))
+                .filter(o -> o.getRouteById().getAirportArr().equalsString(ret))
                 .distinct().toList();
 
         return a.size() > 0;

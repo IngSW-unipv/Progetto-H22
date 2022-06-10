@@ -2,7 +2,6 @@ package model.persistence.dao;
 
 import model.persistence.Connection;
 import model.persistence.entity.User;
-import org.hibernate.query.Query;
 import java.util.List;
 
 public class UserDao implements IDao<User> {
@@ -24,10 +23,8 @@ public class UserDao implements IDao<User> {
 
     public User findByEmail(String email) {
         String hql = "from User a where a.email = :email";
-        Query query = conn.getCurrentSession().createQuery(hql);
-        query.setParameter("email",email);
-        //query.setCacheable(true);
-        return (User) query.uniqueResult();
+        return (User) conn.getCurrentSession().createQuery(hql)
+                .setParameter("email", email).uniqueResult();
     }
 
     @Override

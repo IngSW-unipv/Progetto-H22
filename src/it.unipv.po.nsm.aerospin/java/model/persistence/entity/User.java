@@ -23,10 +23,6 @@ public class User {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -43,13 +39,17 @@ public class User {
         this.pwd = pwd;
     }
 
+    @SuppressWarnings("unused")
+    public Collection<Passenger> getPassengersById() {
+        return passengersById;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
         User user = (User) o;
-
         if (id != user.id) return false;
         if (!Objects.equals(email, user.email)) return false;
         return Objects.equals(pwd, user.pwd);
@@ -61,22 +61,5 @@ public class User {
         result = 31 * result + (email != null ? email.hashCode() : 0);
         result = 31 * result + (pwd != null ? pwd.hashCode() : 0);
         return result;
-    }
-
-    public Collection<Passenger> getPassengersById() {
-        return passengersById;
-    }
-
-    public void setPassengersById(Collection<Passenger> passengersById) {
-        this.passengersById = passengersById;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", email='" + email + '\'' +
-                ", pwd='" + pwd + '\'' +
-                '}';
     }
 }

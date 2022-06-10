@@ -2,6 +2,8 @@ package model.persistence.service;
 
 import model.persistence.dao.OrdersDao;
 import model.persistence.entity.Orders;
+import model.persistence.entity.User;
+
 import java.util.List;
 
 public class OrdersService implements IService<Orders> {
@@ -13,8 +15,12 @@ public class OrdersService implements IService<Orders> {
 
     @Override
     public List<Orders> findAll() {
+        return null;
+    }
+
+    public List<Orders> findByUser(User user) {
         ordersDao.getConn().openCurrentSession();
-        List<Orders> orders = ordersDao.findAll();
+        List<Orders> orders = ordersDao.findByUser(user);
         ordersDao.getConn().closeCurrentSession();
         return orders;
     }

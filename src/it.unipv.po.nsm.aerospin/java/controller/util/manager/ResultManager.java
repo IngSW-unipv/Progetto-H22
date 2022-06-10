@@ -31,8 +31,8 @@ public class ResultManager {
 
         List<Flight> departures;
         departures = results.stream()
-                .filter(o -> o.getRouteByFlightRouteId().getAirportByDeparture().equalsString(dep))
-                .filter(o -> o.getRouteByFlightRouteId().getAirportByArrival().equalsString(ret))
+                .filter(o -> o.getRouteById().getAirportDep().equalsString(dep))
+                .filter(o -> o.getRouteById().getAirportArr().equalsString(ret))
                 .filter(o -> o.getScheduledDate().equals(date))
                 .filter(o -> o.getSeats() > 0)
                 .distinct()

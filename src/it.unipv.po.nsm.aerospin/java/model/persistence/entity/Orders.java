@@ -1,7 +1,9 @@
 package model.persistence.entity;
 
+import model.booking.Fares;
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.Objects;
 
 @Entity
 public class Orders {
@@ -25,7 +27,7 @@ public class Orders {
     @Column(name = "orderDate", nullable = false)
     private Date orderDate;
     @Basic
-    @Column(name = "price", nullable = false, precision = 0)
+    @Column(name = "price", nullable = false)
     private double price;
     @ManyToOne()
     @JoinColumn(name = "PassengerId", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
@@ -34,34 +36,27 @@ public class Orders {
     @JoinColumn(name = "flightId", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
     private Flight flightByFlightId;
 
+    //TODO VELOCIZZA ORDER QUERY
+
     public String getId() {
         return id;
-    }
-
-//TODO VELOCIZZA ORDER QUERY
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-
-    public int getPassengerId() {
-        return passengerId;
     }
 
     public void setPassengerId(int passengerId) {
         this.passengerId = passengerId;
     }
 
-    public int getFlightId() {
-        return flightId;
-    }
-
     public void setFlightId(int flightId) {
         this.flightId = flightId;
     }
 
+    public String getFare() {
+        return fare;
+    }
 
+    public void setFare(Fares fare) {
+        this.fare = fare.toString();
+    }
 
     public int getCardDetails() {
         return cardDetails;
@@ -87,21 +82,26 @@ public class Orders {
         this.price = price;
     }
 
+    public Passenger getPassengerById() {
+        return passengerByPassengerId;
+    }
+
+    public Flight getFlightById() {
+        return flightByFlightId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
         Orders orders = (Orders) o;
-
-        if (id != orders.id) return false;
+        if (!Objects.equals(id, orders.id)) return false;
         if (passengerId != orders.passengerId) return false;
         if (flightId != orders.flightId) return false;
         if (cardDetails != orders.cardDetails) return false;
         if (Double.compare(orders.price, price) != 0) return false;
-        if (orderDate != null ? !orderDate.equals(orders.orderDate) : orders.orderDate != null) return false;
-
-        return true;
+        return Objects.equals(orderDate, orders.orderDate);
     }
 
     @Override
@@ -116,31 +116,5 @@ public class Orders {
         temp = Double.doubleToLongBits(price);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         return result;
-    }
-
-    public Passenger getPassengerByPassengerId() {
-        return passengerByPassengerId;
-    }
-
-    public void setPassengerByPassengerId(Passenger passengerByPassengerId) {
-        this.passengerByPassengerId = passengerByPassengerId;
-    }
-
-    public Flight getFlightByFlightId() {
-        return flightByFlightId;
-    }
-
-    public void setFlightByFlightId(Flight flightByFlightId) {
-        this.flightByFlightId = flightByFlightId;
-    }
-
-
-
-    public String getFare() {
-        return fare;
-    }
-
-    public void setFare(String faire) {
-        this.fare = faire;
     }
 }

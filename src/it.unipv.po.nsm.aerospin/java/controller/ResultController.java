@@ -197,7 +197,7 @@ public class ResultController implements Initializable, IControlledScreen {
 
                     orders.setPassengerId(passenger.getId());
                     orders.setFlightId(table1.getSelectionModel().getSelectedItem().getId());
-                    orders.setFare(group.getSelectedToggle().getUserData().toString());
+                    orders.setFare((Fares) group.getSelectedToggle().getUserData());
                     orders.setCardDetails(Integer.parseInt(session.getInfo().getCardNumber().substring(12,15)));
                     orders.setOrderDate(new Date(System.currentTimeMillis()));
                     orders.setPrice(price);
@@ -208,7 +208,7 @@ public class ResultController implements Initializable, IControlledScreen {
                     if (!table2.getSelectionModel().isEmpty()) {
                         orders.setPassengerId(passenger.getId());
                         orders.setFlightId(table2.getSelectionModel().getSelectedItem().getId());
-                        orders.setFare(group.getSelectedToggle().getUserData().toString());
+                        orders.setFare((Fares) group.getSelectedToggle().getUserData());
                         orders.setCardDetails(Integer.parseInt(session.getInfo().getCardNumber().substring(13,16)));
                         orders.setOrderDate(new Date(System.currentTimeMillis()));
                         orders.setPrice(price);
@@ -220,15 +220,15 @@ public class ResultController implements Initializable, IControlledScreen {
                     //salva order in db, o anche passenger?
                     //gestire posto in meno, necessario??
 
-                    ticket_andata = new Ticket(name.getText(), surname.getText(),table1.getSelectionModel().getSelectedItem().getRouteByFlightRouteId().getAirportByDeparture().getIata(),
-                            table1.getSelectionModel().getSelectedItem().getRouteByFlightRouteId().getAirportByArrival().getIata(),
+                    ticket_andata = new Ticket(name.getText(), surname.getText(),table1.getSelectionModel().getSelectedItem().getRouteById().getAirportDep().getIata(),
+                            table1.getSelectionModel().getSelectedItem().getRouteById().getAirportArr().getIata(),
                             table1.getSelectionModel().getSelectedItem().getFlightNumber(),table1.getSelectionModel().getSelectedItem().getScheduledDate().toString(),
                             table1.getSelectionModel().getSelectedItem().getScheduledTime().toString());
 
                     //ticket_andata = new Ticket("Pablo","Escobar","SUF","MXP","AES736","28/02/2022","8:00");
                     ticket_andata.generateTicket();
 
-                    //passengerService.findById(passenger.getId()).getUserByUserId().getEmail();
+                    //passengerService.findById(passenger.getId()).getUserById().getEmail();
                     emailService.send(session.getUser().getEmail(), ticket_andata.getPath());
 
 
@@ -236,8 +236,8 @@ public class ResultController implements Initializable, IControlledScreen {
 
                     methods.bookSeat(table1.getSelectionModel().getSelectedItem());
                     if(!table2.getSelectionModel().isEmpty()) {
-                        ticket_ritorno = new Ticket(name.getText(), surname.getText(),table2.getSelectionModel().getSelectedItem().getRouteByFlightRouteId().getAirportByDeparture().getIata(),
-                                table2.getSelectionModel().getSelectedItem().getRouteByFlightRouteId().getAirportByArrival().getIata(),
+                        ticket_ritorno = new Ticket(name.getText(), surname.getText(),table2.getSelectionModel().getSelectedItem().getRouteById().getAirportDep().getIata(),
+                                table2.getSelectionModel().getSelectedItem().getRouteById().getAirportArr().getIata(),
                                 table2.getSelectionModel().getSelectedItem().getFlightNumber(),table2.getSelectionModel().getSelectedItem().getScheduledDate().toString(),
                                 table2.getSelectionModel().getSelectedItem().getScheduledTime().toString());
                         ticket_ritorno.generateTicket();

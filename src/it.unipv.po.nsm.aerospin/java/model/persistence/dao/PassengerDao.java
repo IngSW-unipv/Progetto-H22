@@ -21,7 +21,6 @@ public class PassengerDao implements IDao<Passenger> {
         return (List<Passenger>) conn.getCurrentSession().createQuery("from Passenger ").list();
     }
 
-
     @Override
     public void persist(Passenger entity) {
         conn.getCurrentSession().save(entity);

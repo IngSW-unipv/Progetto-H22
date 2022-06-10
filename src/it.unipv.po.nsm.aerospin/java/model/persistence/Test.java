@@ -96,7 +96,7 @@ public class Test {
 //        OrdersService ordersService = new OrdersService();
 //        List<Orders> orders = ordersService.findAll();
 //        for (Orders order : orders) {
-//            System.out.println(order.getPassengerByPassengerId().getUserByUserId().getEmail());
+//            System.out.println(order.getPassengerById().getUserById().getEmail());
 //        }
 
 
