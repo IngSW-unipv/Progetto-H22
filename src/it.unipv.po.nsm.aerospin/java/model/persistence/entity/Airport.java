@@ -76,20 +76,4 @@ public class Airport {
         result = 31 * result + (icao != null ? icao.hashCode() : 0);
         return result;
     }
-
-    public Collection<Route> getRoutesByIcao() {
-        return routesByIcao;
-    }
-
-    public void setRoutesByIcao(Collection<Route> routesByIcao) {
-        this.routesByIcao = routesByIcao;
-    }
-
-    public Collection<Route> getRoutesByIcao_0() {
-        return routesByIcao_0;
-    }
-
-    public void setRoutesByIcao_0(Collection<Route> routesByIcao_0) {
-        this.routesByIcao_0 = routesByIcao_0;
-    }
 }
