@@ -17,10 +17,10 @@ public class UserDao implements IDao<User> {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public List<User> findAll() {
         return (List<User>) conn.getCurrentSession().createQuery("from User ").list();
     }
-    //TODO solve warning
 
     public User findByEmail(String email) {
         String hql = "from User a where a.email = :email";

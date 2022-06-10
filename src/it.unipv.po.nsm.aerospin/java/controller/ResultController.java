@@ -201,6 +201,7 @@ public class ResultController implements Initializable, IControlledScreen {
                     orders.setCardDetails(Integer.parseInt(session.getInfo().getCardNumber().substring(12,15)));
                     orders.setOrderDate(new Date(System.currentTimeMillis()));
                     orders.setPrice(price);
+                    //orders.setId("ASO" + );
                     ordersService.persist(orders);
 
 

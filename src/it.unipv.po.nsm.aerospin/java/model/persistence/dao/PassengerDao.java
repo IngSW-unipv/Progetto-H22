@@ -16,10 +16,11 @@ public class PassengerDao implements IDao<Passenger> {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public List<Passenger> findAll() {
         return (List<Passenger>) conn.getCurrentSession().createQuery("from Passenger ").list();
     }
-    //TODO solve warning
+
 
     @Override
     public void persist(Passenger entity) {

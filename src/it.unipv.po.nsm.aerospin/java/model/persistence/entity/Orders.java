@@ -7,8 +7,8 @@ import java.sql.Date;
 public class Orders {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "id", nullable = false)
-    private int id;
+    @Column(name = "id", nullable = false, length = 25)
+    private String id;
     @Basic
     @Column(name = "PassengerId", nullable = false)
     private int passengerId;
@@ -34,15 +34,16 @@ public class Orders {
     @JoinColumn(name = "flightId", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
     private Flight flightByFlightId;
 
-//TODO VELOCIZZA ORDER QUERY
-
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+//TODO VELOCIZZA ORDER QUERY
+
+    public void setId(String id) {
         this.id = id;
     }
+
 
     public int getPassengerId() {
         return passengerId;
@@ -107,7 +108,7 @@ public class Orders {
     public int hashCode() {
         int result;
         long temp;
-        result = id;
+        result = id != null ? id.hashCode() : 0;
         result = 31 * result + passengerId;
         result = 31 * result + flightId;
         result = 31 * result + cardDetails;

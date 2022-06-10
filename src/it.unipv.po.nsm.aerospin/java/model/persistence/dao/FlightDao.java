@@ -16,10 +16,11 @@ public class FlightDao implements IDao<Flight> {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public List<Flight> findAll() {
         return(List<Flight>) conn.getCurrentSession().createQuery("from Flight ").list();
     }
-    //TODO solve warning
+
 
     @Override
     public void persist(Flight entity) {
