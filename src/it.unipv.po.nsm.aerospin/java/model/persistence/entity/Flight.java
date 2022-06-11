@@ -6,6 +6,11 @@ import java.sql.Time;
 import java.util.Collection;
 import java.util.Objects;
 
+/**
+ * Classe generata automaticamente grazie al framework Hibernate con modifiche relative alla struttura del Database.
+ *
+ * @author GruppoNoSuchMethod
+ */
 @Entity
 public class Flight {
     @GeneratedValue(strategy = GenerationType.IDENTITY)

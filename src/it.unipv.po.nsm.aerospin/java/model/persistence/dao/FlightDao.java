@@ -4,6 +4,11 @@ import model.persistence.Connection;
 import model.persistence.entity.Flight;
 import java.util.List;
 
+/**
+ * Classe che implementa le query del database tramite dei metodi. Viene utilizzato il pattern DAO.
+ *
+ * @author GruppoNoSuchMethod
+ */
 public class FlightDao implements IDao<Flight> {
     private final Connection conn;
 

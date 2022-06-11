@@ -6,6 +6,11 @@ import model.persistence.entity.User;
 
 import java.util.List;
 
+/**
+ * Classe che implementa le query del database tramite dei metodi. Viene utilizzato il pattern DAO.
+ *
+ * @author GruppoNoSuchMethod
+ */
 public class OrdersDao implements IDao<Orders> {
     private final Connection conn;
 

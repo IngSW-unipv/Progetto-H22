@@ -4,6 +4,11 @@ import javax.persistence.*;
 import java.util.Collection;
 import java.util.Objects;
 
+/**
+ * Classe generata automaticamente grazie al framework Hibernate con modifiche relative alla struttura del Database.
+ *
+ * @author GruppoNoSuchMethod
+ */
 @Entity
 public class Route {
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -5,6 +5,11 @@ import javax.persistence.*;
 import java.sql.Date;
 import java.util.Objects;
 
+/**
+ * Classe generata automaticamente grazie al framework Hibernate con modifiche relative alla struttura del Database.
+ *
+ * @author GruppoNoSuchMethod
+ */
 @Entity
 public class Orders {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
