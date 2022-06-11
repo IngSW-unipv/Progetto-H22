@@ -7,6 +7,11 @@ import model.persistence.entity.User;
 import java.sql.Date;
 import java.time.LocalDate;
 
+/**
+ * Classe che si occupa della gestione di una sessione utente.
+ *
+ * @author GruppoNoSuchMethod
+ */
 public class Session {
 
     private User user;

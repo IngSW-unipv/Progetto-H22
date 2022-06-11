@@ -5,6 +5,11 @@ import view.ScreenContainer;
 import java.io.IOException;
 
 //Singleton
+/**
+ * Classe Singleton che si occupa della grafica tramite il pattern Factory.
+ *
+ * @author GruppoNoSuchMethod
+ */
 public class Factory {
 
     private static Factory instance = null;
@@ -16,6 +21,11 @@ public class Factory {
     }
 
     // Allow construction only once
+    /**
+     * Metodo che verifica la presenza di un solo costruttore, creandone uno se non ancora presente o restituendolo se già presente.
+     *
+     * @return instance
+     */
     public static Factory getInstance() {
         if(instance == null) {
             instance = new Factory();

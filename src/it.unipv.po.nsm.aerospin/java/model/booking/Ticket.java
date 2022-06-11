@@ -11,6 +11,11 @@ import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * Classe che si occupa della creazione e della gestione di un biglietto.
+ *
+ * @author GruppoNoSuchMethod
+ */
 public class Ticket {
     private String name;
     private String surname;
@@ -21,6 +26,17 @@ public class Ticket {
     private String time;
     private String path = "src/it.unipv.po.nsm.aerospin/resources/GeneratedPDF/Boarding Pass.pdf";
 
+    /**
+     * Costruttore dell'oggetto biglietto.
+     *
+     * @param name Nome
+     * @param surname Cognome
+     * @param departure Partenza
+     * @param arrival Arrivo
+     * @param flightNumber Numero del Volo
+     * @param date Data
+     * @param time Ora
+     */
     public Ticket(String name, String surname, String departure, String arrival, String flightNumber, String date, String time) {
         this.name = name;
         this.surname = surname;

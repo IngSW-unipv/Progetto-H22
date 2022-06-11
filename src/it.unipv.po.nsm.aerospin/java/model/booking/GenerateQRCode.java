@@ -16,6 +16,11 @@ import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 
+/**
+ * Classe che si occupa della creazione del QR Code relativo al biglietto.
+ *
+ * @author GruppoNoSuchMethod
+ */
 public class GenerateQRCode {
 
     private String qrCodeText;
@@ -27,6 +32,12 @@ public class GenerateQRCode {
         this.qrCodeText = qrCodeText;
     }
 
+    /**
+     * Metodo per la generazione di un QR Code.
+     *
+     * @throws IOException Segnala che si è verificato un errore durante le operazioni di I/O.
+     * @throws WriterException Segnala un errore nel processo di scrittura di Maven/Hibernate.
+     */
     public void generate() throws IOException, WriterException {
         File qrFile = new File(filePath);
         Hashtable<EncodeHintType, ErrorCorrectionLevel> hintMap = new Hashtable<>();

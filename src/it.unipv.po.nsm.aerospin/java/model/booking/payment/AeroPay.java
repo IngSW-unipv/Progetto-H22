@@ -4,6 +4,11 @@ import javafx.scene.control.Alert;
 
 import java.util.Random;
 
+/**
+ * Classe che si occupa di gestire il pagamento.
+ *
+ * @author GruppoNoSuchMethod
+ */
 public class AeroPay implements PaymentStrategy{
 
     private boolean payed;

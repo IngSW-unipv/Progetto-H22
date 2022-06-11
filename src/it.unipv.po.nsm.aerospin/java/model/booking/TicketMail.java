@@ -5,6 +5,11 @@ package model.booking;
     import javax.mail.*;
     import javax.mail.internet.*;
 
+/**
+ * Classe che si occupa dell'invio via E-Mail di un biglietto.
+ *
+ * @author GruppoNoSuchMethod
+ */
 public class TicketMail {
 
     private static final String from = "h22aerospin@gmail.com";     // Sender's email ID

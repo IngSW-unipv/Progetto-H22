@@ -3,6 +3,11 @@ package model.booking;
 import java.sql.Date;
 import java.time.LocalDate;
 
+/**
+ * Classe che si occupa di gestire le informazioni della prenotazione relativa al viaggio.
+ *
+ * @author GruppoNoSuchMethod
+ */
 public class Info {
 
     private boolean oneway = true;
@@ -58,7 +63,7 @@ public class Info {
     }
 
     public void setDateRet(LocalDate dateRet) {
-        this.dateRet = Date.valueOf(dateRet);;
+        this.dateRet = Date.valueOf(dateRet);
     }
 
     public String getCardNumber() {
