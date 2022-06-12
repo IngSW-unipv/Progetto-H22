@@ -37,7 +37,7 @@ public class Orders {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "PassengerId", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
     private Passenger passengerByPassengerId;
-    @ManyToOne()
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "flightId", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
     private Flight flightByFlightId;
 

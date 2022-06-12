@@ -64,6 +64,10 @@ public class Flight {
         return scheduledTime;
     }
 
+    public Time getArrivalTime() {
+        return arrivalTime;
+    }
+
     public double getPrice() {
         return price;
     }
