@@ -11,7 +11,7 @@ import java.util.Objects;
  * @author GruppoNoSuchMethod
  */
 @Entity
-public class Orders {
+public class Booking {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id", nullable = false, length = 25)
@@ -100,13 +100,13 @@ public class Orders {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Orders orders = (Orders) o;
-        if (!Objects.equals(id, orders.id)) return false;
-        if (passengerId != orders.passengerId) return false;
-        if (flightId != orders.flightId) return false;
-        if (cardDetails != orders.cardDetails) return false;
-        if (Double.compare(orders.price, price) != 0) return false;
-        return Objects.equals(orderDate, orders.orderDate);
+        Booking booking = (Booking) o;
+        if (!Objects.equals(id, booking.id)) return false;
+        if (passengerId != booking.passengerId) return false;
+        if (flightId != booking.flightId) return false;
+        if (cardDetails != booking.cardDetails) return false;
+        if (Double.compare(booking.price, price) != 0) return false;
+        return Objects.equals(orderDate, booking.orderDate);
     }
 
     @Override

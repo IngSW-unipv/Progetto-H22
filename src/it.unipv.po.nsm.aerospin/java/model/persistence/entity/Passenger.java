@@ -28,7 +28,7 @@ public class Passenger {
     @JoinColumn(name = "userId", referencedColumnName = "id", insertable = false, updatable = false)
     private User userByUserId;
     @OneToMany(mappedBy = "passengerByPassengerId")
-    private Collection<Orders> ordersById;
+    private Collection<Booking> bookingById;
 
     public int getId() {
         return id;
@@ -59,8 +59,8 @@ public class Passenger {
     }
 
     @SuppressWarnings("unused")
-    public Collection<Orders> getOrdersById() {
-        return ordersById;
+    public Collection<Booking> getOrdersById() {
+        return bookingById;
     }
 
     @Override

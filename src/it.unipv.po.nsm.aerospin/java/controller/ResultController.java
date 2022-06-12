@@ -19,12 +19,11 @@ import model.Factory;
 import model.Session;
 import model.booking.*;
 import model.exception.NoMatchException;
+import model.persistence.entity.Booking;
 import model.persistence.entity.Flight;
-import model.persistence.entity.Orders;
 import model.persistence.entity.Passenger;
 import model.persistence.service.OrdersService;
 import model.persistence.service.PassengerService;
-import net.sf.ehcache.search.expression.Or;
 import view.ScreenContainer;
 import java.text.DecimalFormat;
 
@@ -152,8 +151,8 @@ public class ResultController implements Initializable, IControlledScreen {
 
     @FXML
     private void checkout() throws IOException, WriterException {
-        Orders order1 = new Orders();
-        Orders order2 = new Orders();
+        Booking order1 = new Booking();
+        Booking order2 = new Booking();
 
         errLabel.setVisible(false);
         if (session.isLogged()) {
@@ -181,7 +180,7 @@ public class ResultController implements Initializable, IControlledScreen {
                     order1.setCardDetails(Integer.parseInt(session.getInfo().getCardNumber().substring(12,15)));
                     order1.setOrderDate(new Date(System.currentTimeMillis()));
                     order1.setPrice(price);
-                    //orders.setId("ASO" + );
+                    //booking.setId("ASO" + );
                     ordersService.persist(order1);
 
 

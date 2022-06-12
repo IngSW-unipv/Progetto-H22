@@ -1,7 +1,7 @@
 package model.persistence.dao;
 
 import model.persistence.Connection;
-import model.persistence.entity.Orders;
+import model.persistence.entity.Booking;
 import model.persistence.entity.User;
 
 import java.util.List;
@@ -11,7 +11,7 @@ import java.util.List;
  *
  * @author GruppoNoSuchMethod
  */
-public class OrdersDao implements IDao<Orders> {
+public class OrdersDao implements IDao<Booking> {
     private final Connection conn;
 
     public OrdersDao() {
@@ -24,36 +24,36 @@ public class OrdersDao implements IDao<Orders> {
 
     @Override
     @SuppressWarnings("unchecked")
-    public List<Orders> findAll() {
-        return (List<Orders>) conn.getCurrentSession().createQuery("from Orders ").list();
+    public List<Booking> findAll() {
+        return (List<Booking>) conn.getCurrentSession().createQuery("from Booking ").list();
     }
 
     @SuppressWarnings("unchecked")
-    public List<Orders> findByUser(User user) {
-        String hql = "from Orders o where o.passengerByPassengerId.userByUserId = :user";
-        return (List<Orders>) conn.getCurrentSession().createQuery(hql)
+    public List<Booking> findByUser(User user) {
+        String hql = "from Booking o where o.passengerByPassengerId.userByUserId = :user";
+        return (List<Booking>) conn.getCurrentSession().createQuery(hql)
                 .setParameter("user", user).list();
     }
 
     @Override
-    public void persist(Orders entity) {
+    public void persist(Booking entity) {
         conn.getCurrentSession().save(entity);
     }
 
     @Override
-    public void update(Orders entity) {
+    public void update(Booking entity) {
         conn.getCurrentSession().update(entity);
     }
 
     @Override
-    public void delete(Orders entity) {
+    public void delete(Booking entity) {
         conn.getCurrentSession().delete(entity);
     }
 
     @Override
     public void deleteAll() {
-        List<Orders> entityList = findAll();
-        for (Orders entity : entityList) {
+        List<Booking> entityList = findAll();
+        for (Booking entity : entityList) {
             delete(entity);
         }
     }

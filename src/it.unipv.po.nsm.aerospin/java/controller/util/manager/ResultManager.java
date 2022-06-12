@@ -1,19 +1,17 @@
 package controller.util.manager;
 
 import com.google.zxing.WriterException;
-import com.sun.prism.impl.BaseMesh;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.util.Callback;
-import model.Factory;
 import model.booking.Ticket;
 import model.booking.TicketMail;
 import model.exception.NoMatchException;
 import model.persistence.CachedFlights;
+import model.persistence.entity.Booking;
 import model.persistence.entity.Flight;
-import model.persistence.entity.Orders;
 import model.persistence.service.FlightService;
 
 import java.io.IOException;
@@ -84,19 +82,19 @@ public class ResultManager {
         service.update(flight);
     }
 
-    public void sendTicket(Orders orders) throws IOException, WriterException {
+    public void sendTicket(Booking booking) throws IOException, WriterException {
         TicketMail service = new TicketMail();
         Ticket ticket;
         service.setText("Grazie per aver scelto il Aerospin.!");
         service.setSubject("Il Tuo Biglietto");
 
-        ticket = new Ticket(orders.getPassengerById().getName(), orders.getPassengerById().getSurname(),
-                            orders.getFlightById().getRouteById().getAirportDep().getIata(),
-                            orders.getFlightById().getRouteById().getAirportArr().getIata(),
-                            orders.getFlightById().getFlightNumber(), orders.getFlightById().getScheduledDate().toString(),
-                            orders.getFlightById().getScheduledTime().toString(),
-                            orders.getFlightById().getArrivalTime().toString());
+        ticket = new Ticket(booking.getPassengerById().getName(), booking.getPassengerById().getSurname(),
+                            booking.getFlightById().getRouteById().getAirportDep().getIata(),
+                            booking.getFlightById().getRouteById().getAirportArr().getIata(),
+                            booking.getFlightById().getFlightNumber(), booking.getFlightById().getScheduledDate().toString(),
+                            booking.getFlightById().getScheduledTime().toString(),
+                            booking.getFlightById().getArrivalTime().toString());
         ticket.generateTicket();
-        service.send(orders.getPassengerById().getUserById().getEmail(), ticket.getPath());
+        service.send(booking.getPassengerById().getUserById().getEmail(), ticket.getPath());
     }
 }

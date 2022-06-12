@@ -17,7 +17,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import model.exception.NoMatchException;
-import model.persistence.entity.Orders;
+import model.persistence.entity.Booking;
 import org.controlsfx.control.MasterDetailPane;
 import view.ScreenContainer;
 import java.io.IOException;
@@ -31,11 +31,11 @@ public class AccountController implements Initializable, IControlledScreen {
 
     @FXML private MasterDetailPane pane;
     @FXML private TextArea detail;
-    @FXML private TableView<Orders> table;
-    @FXML private TableColumn<Orders,String> number;
-    @FXML private TableColumn<Orders, Time> date;
-    @FXML private TableColumn<Orders, String> id;
-    @FXML private TableColumn<Orders, String> price;
+    @FXML private TableView<Booking> table;
+    @FXML private TableColumn<Booking,String> number;
+    @FXML private TableColumn<Booking, Time> date;
+    @FXML private TableColumn<Booking, String> id;
+    @FXML private TableColumn<Booking, String> price;
 //TODO CONTROLLARE CREAZIONE ORDER ID
 
     @Override

@@ -17,7 +17,7 @@
         <mapping class="model.persistence.entity.Passenger"/>
         <mapping class="model.persistence.entity.User"/>
         <mapping class="model.persistence.entity.Flight"/>
-        <mapping class="model.persistence.entity.Orders"/>
+        <mapping class="model.persistence.entity.Booking"/>
 
     </session-factory>
 

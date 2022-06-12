@@ -42,7 +42,7 @@ public class Flight {
     @JoinColumn(name = "flightRouteId", referencedColumnName = "routeId")
     private Route routeByFlightRouteId;
     @OneToMany(mappedBy = "flightByFlightId")
-    private Collection<Orders> ordersById;
+    private Collection<Booking> bookingById;
 
     public int getId() {
         return id;
@@ -85,8 +85,8 @@ public class Flight {
     }
 
     @SuppressWarnings("unused")
-    public Collection<Orders> getOrdersById() {
-        return ordersById;
+    public Collection<Booking> getOrdersById() {
+        return bookingById;
     }
 
     @Override
