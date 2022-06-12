@@ -19,9 +19,7 @@ public class OrdersService implements IService<Orders> {
 
     public List<Orders> findByUser(User user) {
         ordersDao.getConn().openCurrentSession();
-        List<Orders> orders = ordersDao.findByUser(user);
-        ordersDao.getConn().closeCurrentSession();
-        return orders;
+        return ordersDao.findByUser(user);
     }
 
     @Override

@@ -34,7 +34,7 @@ public class Orders {
     @Basic
     @Column(name = "price", nullable = false)
     private double price;
-    @ManyToOne()
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "PassengerId", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
     private Passenger passengerByPassengerId;
     @ManyToOne()
