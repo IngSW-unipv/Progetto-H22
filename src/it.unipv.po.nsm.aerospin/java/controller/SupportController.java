@@ -41,13 +41,8 @@ public class SupportController implements Initializable {
             alert.setHeaderText("La richiesta è stata inoltrata con successo");
             alert.setContentText("Verrà contattato dal nostro supporto al più presto possibile\nA presto!");
             alert.showAndWait();
-
-
-
-
         }
     }
-
 
     @FXML
     private void cancel(){

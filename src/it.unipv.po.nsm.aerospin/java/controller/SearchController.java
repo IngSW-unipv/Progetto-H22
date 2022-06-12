@@ -21,7 +21,6 @@ import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class SearchController implements Initializable, IControlledScreen {
-
     private ScreenContainer myContainer;
     private final SearchManager methods = new SearchManager();
     private final ResultManager results = new ResultManager();

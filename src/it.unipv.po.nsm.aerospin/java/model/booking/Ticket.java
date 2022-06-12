@@ -23,7 +23,8 @@ public class Ticket {
     private String arrival;
     private String flightNumber;
     private String date;
-    private String time;
+    private String depTime;
+    private String arrTime;
     private String path = "src/it.unipv.po.nsm.aerospin/resources/GeneratedPDF/Boarding Pass.pdf";
 
     /**
@@ -35,16 +36,18 @@ public class Ticket {
      * @param arrival Arrivo
      * @param flightNumber Numero del Volo
      * @param date Data
-     * @param time Ora
+     * @param depTime Ora Partenza
+     * @param arrTime Ora Arrivo
      */
-    public Ticket(String name, String surname, String departure, String arrival, String flightNumber, String date, String time) {
+    public Ticket(String name, String surname, String departure, String arrival, String flightNumber, String date, String depTime, String arrTime) {
         this.name = name;
         this.surname = surname;
         this.departure = departure;
         this.arrival = arrival;
         this.flightNumber = flightNumber;
         this.date = date;
-        this.time = time;
+        this.depTime = depTime;
+        this.arrTime = arrTime;
     }
 
     public void generateTicket() throws IOException, WriterException {
@@ -72,7 +75,9 @@ public class Ticket {
         contentStream.newLineAtOffset(125,0);
         contentStream.drawString(date);
         contentStream.newLineAtOffset(175,0);
-        contentStream.drawString(time);
+        contentStream.drawString(depTime);
+        contentStream.newLineAtOffset(200,0);
+        contentStream.drawString(arrTime);
         contentStream.endText();
 
 

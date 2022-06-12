@@ -17,16 +17,14 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import model.Factory;
 import model.Session;
-import model.booking.Info;
-import model.booking.Ticket;
-import model.booking.TicketMail;
-import model.booking.Fares;
+import model.booking.*;
 import model.exception.NoMatchException;
 import model.persistence.entity.Flight;
 import model.persistence.entity.Orders;
 import model.persistence.entity.Passenger;
 import model.persistence.service.OrdersService;
 import model.persistence.service.PassengerService;
+import net.sf.ehcache.search.expression.Or;
 import view.ScreenContainer;
 import java.text.DecimalFormat;
 
@@ -62,7 +60,9 @@ public class ResultController implements Initializable, IControlledScreen {
     @FXML private TextField surname;
     @FXML private DatePicker birthDate;
 
-    private final Orders orders = new Orders();
+    private Double price = 0.0;
+    private double multiplier = Fares.STANDARD.getPriceM();
+
     private final OrdersService ordersService = new OrdersService();
     private final Passenger passenger = new Passenger();
     private final PassengerService passengerService = new PassengerService();
@@ -70,11 +70,6 @@ public class ResultController implements Initializable, IControlledScreen {
     private final String ret = session.getInfo().getRet();
     private final Date dateDep = session.getInfo().getDateDep();
     private final Date dateRet = session.getInfo().getDateRet();
-    private Double price = 0.0;
-    private double multiplier = Fares.STANDARD.getPriceM();
-    private Ticket ticket_andata;
-    private Ticket ticket_ritorno;
-    TicketMail emailService = new TicketMail();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -157,8 +152,9 @@ public class ResultController implements Initializable, IControlledScreen {
 
     @FXML
     private void checkout() throws IOException, WriterException {
-        emailService.setText("Grazie per aver scelto il Aerospin.!");
-        emailService.setSubject("Il Tuo Biglietto");
+        Orders order1 = new Orders();
+        Orders order2 = new Orders();
+
         errLabel.setVisible(false);
         if (session.isLogged()) {
             if( price > 0 &&
@@ -173,72 +169,38 @@ public class ResultController implements Initializable, IControlledScreen {
                 childStage.showAndWait();
 
 
-                if(session.getInfo().isPaid()) {
-                    //devo controllare se passenger già esistente e NO CONSTRUCTOR
-//                    order.setPassengerByPassengerId(new Passenger(session.getUser(), name.getText(), surname.getText()));
-//                    if(!table1.getSelectionModel().isEmpty()){
-//                        order.setFlightIdA(table1.getSelectionModel().getSelectedItem());
-//                    }
-//                    if(!table2.getSelectionModel().isEmpty()){
-//                        order.setFlightIdR(table2.getSelectionModel().getSelectedItem());
-//                    }
-                    //SERVE LA CARD number?? NO
+                if(info.isPaid()) {
                     passenger.setUserId(session.getUser().getId());
                     passenger.setName(name.getText());
                     passenger.setSurname(surname.getText());
                     passengerService.persist(passenger);
 
-                    orders.setPassengerId(passenger.getId());
-                    orders.setFlightId(table1.getSelectionModel().getSelectedItem().getId());
-                    orders.setFare((Fares) group.getSelectedToggle().getUserData());
-                    orders.setCardDetails(Integer.parseInt(session.getInfo().getCardNumber().substring(12,15)));
-                    orders.setOrderDate(new Date(System.currentTimeMillis()));
-                    orders.setPrice(price);
+                    order1.setPassengerId(passenger.getId());
+                    order1.setFlightId(table1.getSelectionModel().getSelectedItem().getId());
+                    order1.setFare((Fares) group.getSelectedToggle().getUserData());
+                    order1.setCardDetails(Integer.parseInt(session.getInfo().getCardNumber().substring(12,15)));
+                    order1.setOrderDate(new Date(System.currentTimeMillis()));
+                    order1.setPrice(price);
                     //orders.setId("ASO" + );
-                    ordersService.persist(orders);
+                    ordersService.persist(order1);
 
 
                     if (!table2.getSelectionModel().isEmpty()) {
-                        orders.setPassengerId(passenger.getId());
-                        orders.setFlightId(table2.getSelectionModel().getSelectedItem().getId());
-                        orders.setFare((Fares) group.getSelectedToggle().getUserData());
-                        orders.setCardDetails(Integer.parseInt(session.getInfo().getCardNumber().substring(13,16)));
-                        orders.setOrderDate(new Date(System.currentTimeMillis()));
-                        orders.setPrice(price);
-                        ordersService.persist(orders);
+                        order2.setPassengerId(passenger.getId());
+                        order2.setFlightId(table2.getSelectionModel().getSelectedItem().getId());
+                        order2.setFare((Fares) group.getSelectedToggle().getUserData());
+                        order2.setCardDetails(Integer.parseInt(session.getInfo().getCardNumber().substring(13,16)));
+                        order2.setOrderDate(new Date(System.currentTimeMillis()));
+                        order2.setPrice(price);
+                        ordersService.persist(order2);
                     }
 
-
-
-                    //salva order in db, o anche passenger?
-                    //gestire posto in meno, necessario??
-
-                    ticket_andata = new Ticket(name.getText(), surname.getText(),table1.getSelectionModel().getSelectedItem().getRouteById().getAirportDep().getIata(),
-                            table1.getSelectionModel().getSelectedItem().getRouteById().getAirportArr().getIata(),
-                            table1.getSelectionModel().getSelectedItem().getFlightNumber(),table1.getSelectionModel().getSelectedItem().getScheduledDate().toString(),
-                            table1.getSelectionModel().getSelectedItem().getScheduledTime().toString());
-
-                    //ticket_andata = new Ticket("Pablo","Escobar","SUF","MXP","AES736","28/02/2022","8:00");
-                    ticket_andata.generateTicket();
-
-                    //passengerService.findById(passenger.getId()).getUserById().getEmail();
-                    emailService.send(session.getUser().getEmail(), ticket_andata.getPath());
-
-
-
-
+                    methods.sendTicket(order1);
                     methods.bookSeat(table1.getSelectionModel().getSelectedItem());
                     if(!table2.getSelectionModel().isEmpty()) {
-                        ticket_ritorno = new Ticket(name.getText(), surname.getText(),table2.getSelectionModel().getSelectedItem().getRouteById().getAirportDep().getIata(),
-                                table2.getSelectionModel().getSelectedItem().getRouteById().getAirportArr().getIata(),
-                                table2.getSelectionModel().getSelectedItem().getFlightNumber(),table2.getSelectionModel().getSelectedItem().getScheduledDate().toString(),
-                                table2.getSelectionModel().getSelectedItem().getScheduledTime().toString());
-                        ticket_ritorno.generateTicket();
-                        emailService.send(session.getUser().getEmail(), ticket_ritorno.getPath());
-
+                            methods.sendTicket(order1);
                         methods.bookSeat(table2.getSelectionModel().getSelectedItem());
                     }
-
 //TODO REFRESHCACHE
                     session.clear();
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);

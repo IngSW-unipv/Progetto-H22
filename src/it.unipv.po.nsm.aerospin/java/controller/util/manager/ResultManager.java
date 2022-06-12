@@ -1,15 +1,22 @@
 package controller.util.manager;
 
+import com.google.zxing.WriterException;
+import com.sun.prism.impl.BaseMesh;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.util.Callback;
+import model.Factory;
+import model.booking.Ticket;
+import model.booking.TicketMail;
 import model.exception.NoMatchException;
 import model.persistence.CachedFlights;
 import model.persistence.entity.Flight;
+import model.persistence.entity.Orders;
 import model.persistence.service.FlightService;
 
+import java.io.IOException;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.time.Period;
@@ -75,5 +82,21 @@ public class ResultManager {
     public void bookSeat(Flight flight) {
         flight.setSeats(flight.getSeats()-1);
         service.update(flight);
+    }
+
+    public void sendTicket(Orders orders) throws IOException, WriterException {
+        TicketMail service = new TicketMail();
+        Ticket ticket;
+        service.setText("Grazie per aver scelto il Aerospin.!");
+        service.setSubject("Il Tuo Biglietto");
+
+        ticket = new Ticket(orders.getPassengerById().getName(), orders.getPassengerById().getSurname(),
+                            orders.getFlightById().getRouteById().getAirportDep().getIata(),
+                            orders.getFlightById().getRouteById().getAirportArr().getIata(),
+                            orders.getFlightById().getFlightNumber(), orders.getFlightById().getScheduledDate().toString(),
+                            orders.getFlightById().getScheduledTime().toString(),
+                            orders.getFlightById().getArrivalTime().toString());
+        ticket.generateTicket();
+        service.send(orders.getPassengerById().getUserById().getEmail(), ticket.getPath());
     }
 }
