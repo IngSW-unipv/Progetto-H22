@@ -19,21 +19,17 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class ResultManager {
-
-    CachedFlights cachedFlights = CachedFlights.getInstance();
-    FlightService flightService = new FlightService();
-    List<Flight> results = cachedFlights.findAll();
+    private final FlightService service = new FlightService();
+    private final List<Flight> results = CachedFlights.getInstance().findAll();
 
     private static final Pattern VALID_NAME_REGEX =
             Pattern.compile("^[a-zA-z]{2,15}$");
 
-    public ObservableList<Flight> getFlights(String dep, String ret, Date date) throws NoMatchException {
-
-        List<Flight> departures;
-        departures = results.stream()
-                .filter(o -> o.getRouteById().getAirportDep().equalsString(dep))
-                .filter(o -> o.getRouteById().getAirportArr().equalsString(ret))
-                .filter(o -> o.getScheduledDate().equals(date))
+    public ObservableList<Flight> getList(String s1, String s2, Date s3) throws NoMatchException {
+        List<Flight> departures = results.stream()
+                .filter(o -> o.getRouteById().getAirportDep().equalsString(s1))
+                .filter(o -> o.getRouteById().getAirportArr().equalsString(s2))
+                .filter(o -> o.getScheduledDate().equals(s3))
                 .filter(o -> o.getSeats() > 0)
                 .distinct()
                 .collect(Collectors.toList());
@@ -44,11 +40,6 @@ public class ResultManager {
         }
     }
 
-    public void bookSeat(Flight flight) {
-        flight.setSeats(flight.getSeats()-1);
-        flightService.update(flight);
-    }
-
     /*  Controllo se l'età selezionata è > 16
      *  e permetto di selezionare solo date passate
      *  come data di nascita
@@ -56,10 +47,8 @@ public class ResultManager {
     public boolean isMinor(LocalDate birthDate){
         LocalDate today = LocalDate.now();
         Period age = Period.between(birthDate, today);
-        long years = age.getYears();
-        return years < 16;
+        return age.getYears() < 16;
     }
-
     public Callback<DatePicker, DateCell> ageRange() {
         return new Callback<>() {
             @Override
@@ -81,5 +70,10 @@ public class ResultManager {
         Matcher matcher2 = VALID_NAME_REGEX.matcher(surname);
 
         return matcher1.find() && matcher2.find();
+    }
+
+    public void bookSeat(Flight flight) {
+        flight.setSeats(flight.getSeats()-1);
+        service.update(flight);
     }
 }

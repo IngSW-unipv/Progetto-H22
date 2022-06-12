@@ -65,8 +65,7 @@ public class AccountController implements Initializable, IControlledScreen {
         t1.start();
     }
 
-    public void setScreenParent(ScreenContainer screenParent){
-    }
+    public void setScreenParent(ScreenContainer screenParent) {}
 
     @FXML
     private void support() throws IOException {

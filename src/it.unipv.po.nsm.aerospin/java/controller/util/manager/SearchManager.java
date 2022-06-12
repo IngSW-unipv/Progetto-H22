@@ -7,34 +7,25 @@ import javafx.scene.control.DatePicker;
 import javafx.util.Callback;
 import model.persistence.CachedFlights;
 import model.persistence.entity.Flight;
-
 import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class SearchManager {
-
-    CachedFlights cachedFlights = CachedFlights.getInstance();
-    List<Flight> results = cachedFlights.findAll();
+    private final List<Flight> results = CachedFlights.getInstance().findAll();
 
     public ObservableList<String> getDepartures() {
-        List<String> departures;
-
-        departures = results.stream()
-                .map(o->o.getRouteById().getAirportDep().getAirportName()).sorted()
-                .distinct().collect(Collectors.toList());
-
+        List<String> departures = results.stream()
+                .map(o->o.getRouteById().getAirportDep().getAirportName())
+                .sorted().distinct().collect(Collectors.toList());
         return FXCollections.observableArrayList(departures);
     }
 
     public ObservableList<String> getArrivals(String departure) {
-        List<String> arrivals;
-
-        arrivals = results.stream()
+        List<String> arrivals = results.stream()
                 .filter(o -> o.getRouteById().getAirportDep().equalsString(departure))
-                .map(o->o.getRouteById().getAirportArr().getAirportName()).sorted()
-                .distinct().collect(Collectors.toList());
-
+                .map(o->o.getRouteById().getAirportArr().getAirportName())
+                .sorted().distinct().collect(Collectors.toList());
         return FXCollections.observableArrayList(arrivals);
     }
 
@@ -46,15 +37,14 @@ public class SearchManager {
                 .filter(o -> o.getRouteById().getAirportDep().equalsString(dep))
                 .filter(o -> o.getRouteById().getAirportArr().equalsString(ret))
                 .distinct().toList();
-
         return a.size() > 0;
     }
 
     /*  Mantengo le date selezionabili tra
      *  Oggi e i prossimi 4 Mesi
      */
-    private static final int maxMonth = 4;
     public Callback<DatePicker, DateCell> bookingRange(LocalDate from) {
+        int maxMonth = 4;
         return new Callback<>() {
             @Override
             public DateCell call(final DatePicker param) {
@@ -69,5 +59,4 @@ public class SearchManager {
             }
         };
     }
-
 }

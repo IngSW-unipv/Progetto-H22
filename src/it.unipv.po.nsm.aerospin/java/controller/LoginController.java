@@ -76,7 +76,7 @@ public class LoginController implements Initializable, IControlledScreen {
     }
 
     //CONTROLLO SE UTENTE REGISTRATO E PWD CORRETTA
-    private boolean isRegistered(){
+    private boolean isRegistered() {
         errLabel.setText("");
         try{
                 checkMail();

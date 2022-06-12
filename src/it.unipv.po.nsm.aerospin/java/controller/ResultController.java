@@ -17,6 +17,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import model.Factory;
 import model.Session;
+import model.booking.Info;
 import model.booking.Ticket;
 import model.booking.TicketMail;
 import model.booking.Fares;
@@ -37,31 +38,26 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class ResultController implements Initializable, IControlledScreen {
-
-    ScreenContainer myContainer;
-    Session session = Factory.getInstance().getSession();
-    ResultManager methods = new ResultManager();
+    private ScreenContainer myContainer;
+    private final Session session = Factory.getInstance().getSession();
+    private final ResultManager methods = new ResultManager();
+    private final Info info = Factory.getInstance().getSession().getInfo();
 
     @FXML private Label depLabel;
     @FXML private Label retLabel;
     @FXML private Label errLabel;
-
     @FXML private TableView<Flight> table1;
     @FXML private TableColumn<Flight,String> flightNumber1;
     @FXML private TableColumn<Flight, Time> scheduledTime1;
     @FXML private TableColumn<Flight, Time> arrivalTime1;
     @FXML private TableColumn<Flight, String> price1;
-
     @FXML private TableView<Flight> table2;
     @FXML private TableColumn<Flight,String> flightNumber2;
     @FXML private TableColumn<Flight, Time> scheduledTime2;
-    @FXML private TableColumn<Flight, String> arrivalTime2;
+    @FXML private TableColumn<Flight, Time> arrivalTime2;
     @FXML private TableColumn<Flight, String> price2;
-
     @FXML private ToggleGroup group;
-
     @FXML private Label costLabel;
-
     @FXML private TextField name;
     @FXML private TextField surname;
     @FXML private DatePicker birthDate;
@@ -76,13 +72,12 @@ public class ResultController implements Initializable, IControlledScreen {
     private final Date dateRet = session.getInfo().getDateRet();
     private Double price = 0.0;
     private double multiplier = Fares.STANDARD.getPriceM();
-    private static final DecimalFormat df = new DecimalFormat("0.00");
     private Ticket ticket_andata;
     private Ticket ticket_ritorno;
     TicketMail emailService = new TicketMail();
 
     @Override
-    public void initialize(URL url, ResourceBundle rb){
+    public void initialize(URL url, ResourceBundle rb) {
         initTable();
         birthDate.setDayCellFactory(methods.ageRange());
 
@@ -91,64 +86,61 @@ public class ResultController implements Initializable, IControlledScreen {
                 group.selectToggle(group.getToggles().get(2));
             }
             multiplier = ((Fares) group.selectedToggleProperty().get().getUserData()).getPriceM();
-            costLabel.setText(df.format(price()));
+            price();
         });
-
     }
 
-    public void setScreenParent(ScreenContainer screenParent){
+    public void setScreenParent(ScreenContainer screenParent) {
         myContainer = screenParent;
     }
 
     private void initTable() {
-        String format = "Da %s\nA %s il %s";
-
         table1.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         table2.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
-
-        flightNumber1.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getFlightNumber()));
-        flightNumber2.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getFlightNumber()));
+        flightNumber1.setCellValueFactory(
+                c -> new SimpleStringProperty(c.getValue().getFlightNumber()));
+        flightNumber2.setCellValueFactory(
+                c -> new SimpleStringProperty(c.getValue().getFlightNumber()));
         scheduledTime1.setCellValueFactory(new PropertyValueFactory<>("scheduledTime"));
         scheduledTime2.setCellValueFactory(new PropertyValueFactory<>("scheduledTime"));
         arrivalTime1.setCellValueFactory(new PropertyValueFactory<>("arrivalTime"));
         arrivalTime2.setCellValueFactory(new PropertyValueFactory<>("arrivalTime"));
         price1.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getPrice() + " €"));
         price2.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getPrice() + " €"));
-
-        table1.setPlaceholder(new Label("Volo non disponibile in questa data!"));
-        try {
-            table1.setItems(methods.getFlights(dep, ret, dateDep));
-        } catch (NoMatchException ignored) {}
         table1.getSelectionModel().getSelectedIndices().addListener(
-                (ListChangeListener<Integer>) change -> costLabel.setText(price().toString()));
-        depLabel.setText(String.format(format, dep, ret, dateDep));
+                (ListChangeListener<Integer>) change -> price());
+        table2.getSelectionModel().getSelectedIndices().addListener(
+                (ListChangeListener<Integer>) change -> price());
 
-        if(session.getInfo().isOneway()) {
-            retLabel.setVisible(false);
-            table2.setPlaceholder(new Label("Ritorno non selezionato!"));
+        String format = "Da %s\nA %s il %s";
+        depLabel.setText(String.format(format, dep, ret, dateDep));
+        table2.setPlaceholder(new Label("Volo non disponibile in questa data!"));
+        try {
+                table1.setItems(methods.getList(dep, ret, dateDep));
+        } catch (NoMatchException ignored) {
+        }
+        if(info.isOneway()) {
+                retLabel.setVisible(false);
+                table2.setPlaceholder(new Label("Ritorno non selezionato!"));
         } else {
-            try {
-                table2.setItems(methods.getFlights(ret, dep, dateRet));
-            }catch (NoMatchException ignored){}
-            table2.getSelectionModel().getSelectedIndices().addListener(
-                    (ListChangeListener<Integer>) change -> costLabel.setText(price().toString()));
-            retLabel.setText(String.format(format, ret, dep,dateRet));
-            table2.setPlaceholder(new Label("Volo non disponibile in questa data!"));
+                try {
+                        table2.setItems(methods.getList(ret, dep, dateRet));
+                } catch (NoMatchException ignored){
+                }
+                retLabel.setText(String.format(format, ret, dep,dateRet));
         }
     }
 
-    private Double price() {
-        double tot = 0.0;
+    private void price() {
+        double tot = 0;
         if(!table1.getSelectionModel().isEmpty()){
             tot += table1.getSelectionModel().getSelectedItem().getPrice();
         }
         if(!table2.getSelectionModel().isEmpty()){
             tot += table2.getSelectionModel().getSelectedItem().getPrice();
         }
-
         price = tot * multiplier;
-
-        return price;
+        costLabel.setText(new DecimalFormat("0.00").format(price));
     }
 
     @FXML
@@ -157,7 +149,8 @@ public class ResultController implements Initializable, IControlledScreen {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Reminder");
             alert.setHeaderText(null);
-            alert.setContentText("Le ricordiamo che i passeggeri di età inferiore ai 16 anni devono viaggiare accompagnati");
+            alert.setContentText("Le ricordiamo che i passeggeri di età inferiore ai 16 anni " +
+                    "devono viaggiare accompagnati");
             alert.showAndWait();
         }
     }
@@ -265,6 +258,4 @@ public class ResultController implements Initializable, IControlledScreen {
         }
 
     }
-
-
 }

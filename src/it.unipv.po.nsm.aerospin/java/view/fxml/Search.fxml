@@ -11,7 +11,7 @@
         <DatePicker fx:id="date1" layoutX="430.0" layoutY="261.0" onAction="#returnDate" promptText="Scegli la data" />
       <SearchableComboBox fx:id="scbDep" layoutX="104.0" layoutY="169.0" onAction="#findArrivals" prefHeight="30.0" prefWidth="250.0" promptText="Partenza" />
       <SearchableComboBox fx:id="scbRet" layoutX="104.0" layoutY="256.0" onAction="#checkRoute" prefHeight="30.0" prefWidth="250.0" promptText="Destinazione" />
-      <JFXToggleButton fx:id="select" disable="true" ellipsisString="" layoutX="495.0" layoutY="109.0" prefHeight="87.0" prefWidth="234.0" size="12.0" text="Solo Andata" textAlignment="CENTER">
+      <JFXToggleButton fx:id="selectToggle" disable="true" ellipsisString="" layoutX="495.0" layoutY="109.0" prefHeight="87.0" prefWidth="234.0" size="12.0" text="Solo Andata" textAlignment="CENTER">
          <font>
             <Font size="15.0" />
          </font>
