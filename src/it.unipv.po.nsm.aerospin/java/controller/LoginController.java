@@ -30,6 +30,8 @@ public class LoginController implements Initializable, IControlledScreen {
 
     private static final Pattern VALID_EMAIL_ADDRESS_REGEX =
             Pattern.compile("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,6}$");
+    private static final Pattern VALID_PWD_REGEX =
+            Pattern.compile("^[0-9a-zA-Z!@#&–:;',?/*~$^+=<>]{8,20}$");
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {}
@@ -45,73 +47,48 @@ public class LoginController implements Initializable, IControlledScreen {
         } else {
             pwd.clear();
         }
-
-
-//        //CONTROLLO FORMATO EMAIL
-//        if(checkMail()) {
-//            errLabel.setText("");
-//            //CONTROLLO SE UTENTE REGISTRATO E PWD CORRETTA
-//            if (isRegistered()) {
-//                myContainer.setScreen(Factory.getAccount());
-//            }
-//        }
-//        email.clear();
-//        pwd.clear();
     }
 
     @FXML
     private void register() {
+        errLabel.setText("");
         try {
-            checkMail();
-        } catch (NoMatchException e) {
-
+                checkMail();
+                checkPwd();
+                try {
+                        userService.findByEmail(email.getText());
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setTitle("Invalid Input");
+                        alert.setHeaderText(null);
+                        alert.setContentText("Utente già esistente!");
+                        alert.showAndWait();
+                } catch (NoMatchException e) {
+                        User newUser = new User();
+                        newUser.setEmail(email.getText());
+                        newUser.setPwd(encryption.encrypt(pwd.getText()));
+                        userService.persist(newUser);
+                        session.setUser(newUser);
+                        myContainer.setScreen(Factory.getAccount());
+                }
+        } catch (NoMatchException | IOException e) {
+            e.printStackTrace();
+            pwd.clear();
         }
-
-
-
-//        if(checkMail()) {
-//            errLabel.setText("");
-//            int i = pwd.getText().length();
-//            if(i > 3 && i < 13) {
-//                if (userService.findByEmail(email.getText()) == null) {
-//                    User newUser = new User();
-//                    newUser.setEmail(email.getText());
-//                    //NO VINCOLI SU PASSWORD
-//
-//                    String encrypted = encrypt(pwd.getText());
-//                    newUser.setPwd(encrypted);
-//                    userService.persist(newUser);
-//
-//                    session.setUser(newUser);
-//                    myContainer.setScreen(Factory.getAccount());
-//                } else {
-//                    Alert alert = new Alert(Alert.AlertType.ERROR);
-//                    alert.setTitle("Invalid Input");
-//                    alert.setHeaderText(null);
-//                    alert.setContentText("Utente già esistente!");
-//                    alert.showAndWait();
-//                }
-//            } else {
-//                errLabel.setText("Inserire Password da 4-12 Caratteri");
-//            }
-//        }
-//        email.clear();
-//        pwd.clear();
-
     }
 
+    //CONTROLLO SE UTENTE REGISTRATO E PWD CORRETTA
     public boolean isRegistered(){
         errLabel.setText("");
         try{
-            checkMail();
-            User logged = userService.findByEmail(email.getText());
-            String decrypted = encryption.decrypt(logged.getPwd());
-            if(decrypted.equals(pwd.getText()))  {
-                session.setUser(logged);
-                return true;
-            } else {
-                throw new NoMatchException("Not Matched!\n");
-            }
+                checkMail();
+                User logged = userService.findByEmail(email.getText());
+                String decrypted = encryption.decrypt(logged.getPwd());
+                if(decrypted.equals(pwd.getText()))  {
+                        session.setUser(logged);
+                        return true;
+                } else {
+                        throw new NoMatchException("Not Matched!\n");
+                }
         }catch (NoMatchException e){
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setTitle("Validate Fields");
@@ -122,12 +99,20 @@ public class LoginController implements Initializable, IControlledScreen {
         }
     }
 
-    public boolean checkMail() throws NoMatchException {
+    //CONTROLLO FORMATO EMAIL
+    private void checkMail() throws NoMatchException {
         Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(email.getText());
-        if(matcher.find()){
-            return true;
-        } else {
-            errLabel.setText("Formato email non valido!");
+        if(!matcher.find()){
+                errLabel.setText("Formato email non valido!");
+                throw new NoMatchException("Not Matched!\n");
+        }
+    }
+
+    //CONTROLLO FORMATO PWD
+    private void checkPwd() throws NoMatchException {
+        Matcher matcher = VALID_PWD_REGEX.matcher(pwd.getText());
+        if(!matcher.find()){
+            errLabel.setText("Inserire Password da 8-20 caratteri!");
             throw new NoMatchException("Not Matched!\n");
         }
     }
