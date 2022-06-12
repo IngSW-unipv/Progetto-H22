@@ -13,7 +13,7 @@ public class UserDao implements IDao<User> {
     private final Connection conn;
 
     public UserDao() {
-        this.conn = new Connection();
+        this.conn = Connection.getInstance();
     }
 
     public Connection getConn() {

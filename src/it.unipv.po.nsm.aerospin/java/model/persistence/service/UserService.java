@@ -1,5 +1,6 @@
 package model.persistence.service;
 
+import model.exception.NoMatchException;
 import model.persistence.dao.UserDao;
 import model.persistence.entity.User;
 import java.util.List;
@@ -16,38 +17,42 @@ public class UserService implements IService<User> {
         return null;
     }
 
-    public User findByEmail(String email) {
+    public User findByEmail(String email) throws NoMatchException {
         userDao.getConn().openCurrentSession();
         User user = userDao.findByEmail(email);
         userDao.getConn().closeCurrentSession();
-        return user;
+        if(user != null) {
+            return user;
+        } else {
+            throw new NoMatchException("Not Matched!\n");
+        }
     }
 
     @Override
     public void persist(User user) {
-        userDao.getConn().openCurrentSessionwithTransaction();
+        userDao.getConn().openCurrentSessionWithTransaction();
         userDao.persist(user);
-        userDao.getConn().closeCurrentSessionwithTransaction();
+        userDao.getConn().closeCurrentSessionWithTransaction();
     }
 
     @Override
     public void update(User user) {
-        userDao.getConn().openCurrentSessionwithTransaction();
+        userDao.getConn().openCurrentSessionWithTransaction();
         userDao.update(user);
-        userDao.getConn().closeCurrentSessionwithTransaction();
+        userDao.getConn().closeCurrentSessionWithTransaction();
     }
 
     @Override
     public void delete(User user) {
-        userDao.getConn().openCurrentSessionwithTransaction();
+        userDao.getConn().openCurrentSessionWithTransaction();
         userDao.delete(user);
-        userDao.getConn().closeCurrentSessionwithTransaction();
+        userDao.getConn().closeCurrentSessionWithTransaction();
     }
 
     @Override
     public void deleteAll() {
-        userDao.getConn().openCurrentSessionwithTransaction();
+        userDao.getConn().openCurrentSessionWithTransaction();
         userDao.deleteAll();
-        userDao.getConn().closeCurrentSessionwithTransaction();
+        userDao.getConn().closeCurrentSessionWithTransaction();
     }
 }

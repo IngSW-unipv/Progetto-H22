@@ -6,46 +6,14 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
-import model.exception.NetworkException;
+import model.exception.DBException;
 
 public class Connection {
     private Session currentSession;
     private Transaction currentTransaction;
     private static Connection instance = null;
 
-    public Session openCurrentSession() {
-        currentSession = getSessionFactory().openSession();
-        return currentSession;
-    }
-
-    public Session openCurrentSessionwithTransaction() {
-        currentSession = getSessionFactory().openSession();
-        currentTransaction = currentSession.beginTransaction();
-        return currentSession;
-    }
-
-    public void closeCurrentSession() {
-        currentSession.close();
-    }
-
-    public void closeCurrentSessionwithTransaction() {
-        currentTransaction.commit();
-        currentSession.close();
-    }
-
-    private static SessionFactory getSessionFactory() throws NetworkException {
-
-        SessionFactory sessionFactory = null;
-        try {
-            Configuration configuration = new Configuration().configure();
-            StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder().configure();
-            sessionFactory = configuration.buildSessionFactory(builder.build());
-            return sessionFactory;
-        } catch (HibernateException e) {
-            System.out.println(e.getLocalizedMessage());
-            throw new NetworkException(e.getLocalizedMessage());
-        }
-    }
+    private Connection() {}
 
     public static Connection getInstance() {
         if (instance == null) {
@@ -54,19 +22,37 @@ public class Connection {
         return instance;
     }
 
-    public void setCurrentSession(Session currentSession) {
-        this.currentSession = currentSession;
+    public void openCurrentSession() {
+        currentSession = getSessionFactory().openSession();
+    }
+
+    public void openCurrentSessionWithTransaction() {
+        currentSession = getSessionFactory().openSession();
+        currentTransaction = currentSession.beginTransaction();
+    }
+
+    public void closeCurrentSession() {
+        currentSession.close();
+    }
+
+    public void closeCurrentSessionWithTransaction() {
+        currentTransaction.commit();
+        currentSession.close();
+    }
+
+    private static SessionFactory getSessionFactory() throws DBException {
+        SessionFactory sessionFactory;
+        try {
+            Configuration configuration = new Configuration().configure();
+            StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder().configure();
+            sessionFactory = configuration.buildSessionFactory(builder.build());
+            return sessionFactory;
+        } catch (HibernateException e) {
+            throw new DBException(e.getLocalizedMessage());
+        }
     }
 
     public Session getCurrentSession() {
         return currentSession;
-    }
-
-    public Transaction getCurrentTransaction() {
-        return currentTransaction;
-    }
-
-    public void setCurrentTransaction(Transaction currentTransaction) {
-        this.currentTransaction = currentTransaction;
     }
 }

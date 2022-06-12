@@ -13,7 +13,7 @@ public class PassengerDao implements IDao<Passenger> {
     private final Connection conn;
 
     public PassengerDao() {
-        this.conn = new Connection();
+        this.conn = Connection.getInstance();
     }
 
     public Connection getConn(){

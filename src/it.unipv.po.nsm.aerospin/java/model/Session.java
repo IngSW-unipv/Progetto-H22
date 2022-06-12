@@ -4,20 +4,15 @@ import javafx.beans.property.SimpleBooleanProperty;
 import model.booking.Info;
 import model.persistence.entity.User;
 
-import java.sql.Date;
-import java.time.LocalDate;
-
 /**
  * Classe che si occupa della gestione di una sessione utente.
  *
  * @author GruppoNoSuchMethod
  */
 public class Session {
-
     private User user;
     private final SimpleBooleanProperty logged = new SimpleBooleanProperty();
     private Info info;
-
 
     public Session () {
         logged.set(false);
@@ -25,8 +20,10 @@ public class Session {
 
         logged.addListener((observable, oldValue, newValue) -> {
             logged.set(newValue);
-            if(!newValue)
+            if(!newValue) {
                 user = null;
+                clear();
+            }
         });
     }
 

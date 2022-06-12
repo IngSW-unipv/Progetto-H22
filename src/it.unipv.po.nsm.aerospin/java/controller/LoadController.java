@@ -6,57 +6,49 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import model.persistence.CachedFlights;
-import model.exception.NetworkException;
+import model.exception.DBException;
 import model.Factory;
 import view.ScreenContainer;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.concurrent.TimeUnit;
 
 public class LoadController implements Initializable, IControlledScreen {
-
-    ScreenContainer myContainer;
-    CachedFlights searchResult = CachedFlights.getInstance();
+    private ScreenContainer myContainer;
+    private final CachedFlights searchResult = CachedFlights.getInstance();
 
     @FXML private Label loading;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         Task<Void> task = new Task<>() {
-
             @Override
-            public Void call() throws InterruptedException, NetworkException {
+            public Void call() throws InterruptedException, DBException {
                 try {
-
-                    updateMessage("Loading flights...");
-                    searchResult.findAll();
-
-                } catch (NetworkException e) {
-                    loading.setStyle("-fx-text-fill: #d70000");
-                    updateMessage("Errore nel Caricamento");
-                    TimeUnit.SECONDS.sleep(5);
-                    System.exit(1);
+                        updateMessage("Loading flights...");
+                        searchResult.findAll();
+                } catch (DBException e) {
+                        loading.setStyle("-fx-text-fill: #d70000");
+                        updateMessage("Errore nel Caricamento");
+                        TimeUnit.SECONDS.sleep(5);
+                        System.exit(1);
                 }
-
                 return null;
             }
         };
 
         task.setOnSucceeded(e -> {
             try {
-                myContainer.setScreen(Factory.getHome());
-            } catch (IOException ex) {
-                ex.printStackTrace();
+                    myContainer.setScreen(Factory.getHome());
+            } catch (IOException exception) {
+                    exception.printStackTrace();
             }
         });
 
         task.messageProperty().addListener((obs, oldVal, newVal) -> loading.setText(newVal));
 
         new Thread(task).start();
-
     }
 
     @Override

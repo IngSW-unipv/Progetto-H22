@@ -246,7 +246,7 @@ public class ResultController implements Initializable, IControlledScreen {
                         methods.bookSeat(table2.getSelectionModel().getSelectedItem());
                     }
 
-
+//TODO REFRESHCACHE
                     session.clear();
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("Ordine Completato!");

@@ -15,7 +15,7 @@ public class OrdersDao implements IDao<Orders> {
     private final Connection conn;
 
     public OrdersDao() {
-        this.conn = new Connection();
+        this.conn = Connection.getInstance();
     }
 
     public Connection getConn() {

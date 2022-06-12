@@ -21,29 +21,29 @@ public class PassengerService implements IService<Passenger> {
 
     @Override
     public void persist(Passenger passenger) {
-        passengerDao.getConn().openCurrentSessionwithTransaction();
+        passengerDao.getConn().openCurrentSessionWithTransaction();
         passengerDao.persist(passenger);
-        passengerDao.getConn().closeCurrentSessionwithTransaction();
+        passengerDao.getConn().closeCurrentSessionWithTransaction();
     }
 
     @Override
     public void update(Passenger passenger) {
-        passengerDao.getConn().openCurrentSessionwithTransaction();
+        passengerDao.getConn().openCurrentSessionWithTransaction();
         passengerDao.update(passenger);
-        passengerDao.getConn().closeCurrentSessionwithTransaction();
+        passengerDao.getConn().closeCurrentSessionWithTransaction();
     }
 
     @Override
     public void delete(Passenger passenger) {
-        passengerDao.getConn().openCurrentSessionwithTransaction();
+        passengerDao.getConn().openCurrentSessionWithTransaction();
         passengerDao.delete(passenger);
-        passengerDao.getConn().closeCurrentSessionwithTransaction();
+        passengerDao.getConn().closeCurrentSessionWithTransaction();
     }
 
     @Override
     public void deleteAll() {
-        passengerDao.getConn().openCurrentSessionwithTransaction();
+        passengerDao.getConn().openCurrentSessionWithTransaction();
         passengerDao.deleteAll();
-        passengerDao.getConn().closeCurrentSessionwithTransaction();
+        passengerDao.getConn().closeCurrentSessionWithTransaction();
     }
 }

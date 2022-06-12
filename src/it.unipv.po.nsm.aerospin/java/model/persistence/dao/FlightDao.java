@@ -13,7 +13,7 @@ public class FlightDao implements IDao<Flight> {
     private final Connection conn;
 
     public FlightDao() {
-        this.conn = new Connection();
+        this.conn = Connection.getInstance();
     }
 
     public Connection getConn() {

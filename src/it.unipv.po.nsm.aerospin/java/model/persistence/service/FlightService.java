@@ -21,29 +21,29 @@ public class FlightService implements IService<Flight> {
 
     @Override
     public void persist(Flight flight) {
-        flightDao.getConn().openCurrentSessionwithTransaction();
+        flightDao.getConn().openCurrentSessionWithTransaction();
         flightDao.persist(flight);
-        flightDao.getConn().closeCurrentSessionwithTransaction();
+        flightDao.getConn().closeCurrentSessionWithTransaction();
     }
 
     @Override
     public void update(Flight flight) {
-        flightDao.getConn().openCurrentSessionwithTransaction();
+        flightDao.getConn().openCurrentSessionWithTransaction();
         flightDao.update(flight);
-        flightDao.getConn().closeCurrentSessionwithTransaction();
+        flightDao.getConn().closeCurrentSessionWithTransaction();
     }
 
     @Override
     public void delete(Flight flight) {
-        flightDao.getConn().openCurrentSessionwithTransaction();
+        flightDao.getConn().openCurrentSessionWithTransaction();
         flightDao.delete(flight);
-        flightDao.getConn().closeCurrentSessionwithTransaction();
+        flightDao.getConn().closeCurrentSessionWithTransaction();
     }
 
     @Override
     public void deleteAll() {
-        flightDao.getConn().openCurrentSessionwithTransaction();
+        flightDao.getConn().openCurrentSessionWithTransaction();
         flightDao.deleteAll();
-        flightDao.getConn().closeCurrentSessionwithTransaction();
+        flightDao.getConn().closeCurrentSessionWithTransaction();
     }
 }

@@ -7,27 +7,21 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
 import javafx.scene.SubScene;
-import model.Factory;
-import model.Session;
+import model.*;
 import view.ScreenContainer;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
-
-    ScreenContainer myContainer = Factory.getInstance().createContainer();
-    Session session = Factory.getInstance().getSession();
+    private final ScreenContainer myContainer = Factory.getInstance().createContainer();
+    private final Session session = Factory.getInstance().getSession();
 
     @FXML private SubScene subscene;
-
     @FXML private JFXButton home;
     @FXML private JFXButton search;
     @FXML private JFXButton login;
     @FXML private JFXButton logout;
-
-    public MainController() throws IOException {}
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -36,7 +30,7 @@ public class MainController implements Initializable {
         subscene.setRoot(root);
 
         logout.visibleProperty().bind(session.loggedProperty());
-        myContainer.getScreen().addListener(listener);
+        myContainer.getScreen().addListener(loadListener);
     }
 
     @FXML
@@ -66,16 +60,15 @@ public class MainController implements Initializable {
     }
 
     //commentare
-    ChangeListener<String> listener = new ChangeListener<>() {
+    private final ChangeListener<String> loadListener = new ChangeListener<>() {
         @Override
-        public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-            if (newValue.equals(Factory.getHome())) {
-                home.setDisable(false);
-                search.setDisable(false);
-                login.setDisable(false);
-                myContainer.getScreen().removeListener(listener);
+        public void changed(ObservableValue<? extends String> o, String s1, String s2) {
+            if (s2.equals(Factory.getHome())) {
+                    home.setDisable(false);
+                    search.setDisable(false);
+                    login.setDisable(false);
+                    myContainer.getScreen().removeListener(loadListener);
             }
         }
     };
-
 }

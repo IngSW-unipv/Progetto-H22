@@ -7,7 +7,6 @@ import java.util.List;
 public class CachedFlights {
     private static CachedFlights instance = null;
     private static FlightService flightService;
-
     // Lista che conterrà tutti i risultati che verranno trovati da database
     private List<Flight> cachedFindAll = null;
 
@@ -29,9 +28,8 @@ public class CachedFlights {
         return cachedFindAll;
     }
 
-
     // Metodo che pone a null la lista cachedFindAll
-    public void clearCache() {
-        cachedFindAll = null;
+    public void refreshCache() {
+        cachedFindAll = flightService.findAll();
     }
 }
