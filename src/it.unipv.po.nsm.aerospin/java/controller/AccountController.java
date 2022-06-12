@@ -17,11 +17,9 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import model.exception.NoMatchException;
-import model.persistence.entity.Flight;
 import model.persistence.entity.Orders;
 import org.controlsfx.control.MasterDetailPane;
 import view.ScreenContainer;
-
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Time;
@@ -29,13 +27,10 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class AccountController implements Initializable, IControlledScreen {
-
-    ScreenContainer myContainer;
-    AccountManager methods = new AccountManager();
+    private final AccountManager methods = new AccountManager();
 
     @FXML private MasterDetailPane pane;
     @FXML private TextArea detail;
-
     @FXML private TableView<Orders> table;
     @FXML private TableColumn<Orders,String> number;
     @FXML private TableColumn<Orders, Time> date;
@@ -45,16 +40,16 @@ public class AccountController implements Initializable, IControlledScreen {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
         pane.setMasterNode(table);
         pane.setDetailNode(detail);
 
         table.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         table.setPlaceholder(new Label("Sto effettuando la ricerca, attendere"));
         table.getSelectionModel().getSelectedIndices().addListener(
-                (ListChangeListener<Integer>) change -> detail.setText(methods.detailText(table.getSelectionModel().getSelectedItem())));
-
-        number.setCellValueFactory(c -> new ReadOnlyStringWrapper((table.getItems().indexOf(c.getValue()) + 1) + "°"));
+                (ListChangeListener<Integer>) change -> detail.setText(
+                        methods.getDetailText(table.getSelectionModel().getSelectedItem())));
+        number.setCellValueFactory(c -> new ReadOnlyStringWrapper(
+                (table.getItems().indexOf(c.getValue()) + 1) + "°"));
         date.setCellValueFactory(new PropertyValueFactory<>("orderDate"));
         id.setCellValueFactory(new PropertyValueFactory<>("id"));
         price.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getPrice() + " €"));
@@ -68,22 +63,19 @@ public class AccountController implements Initializable, IControlledScreen {
             }
         });
         t1.start();
-
     }
 
-
     public void setScreenParent(ScreenContainer screenParent){
-        myContainer = screenParent;
     }
 
     @FXML
     private void support() throws IOException {
-        Parent root1 = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("util/subscreen/Support.fxml")));
+        Parent root1 = FXMLLoader.load(
+                Objects.requireNonNull(getClass().getResource("util/subscreen/Support.fxml")));
         Stage childStage = new Stage();
         childStage.initModality(Modality.APPLICATION_MODAL);
         childStage.initStyle(StageStyle.TRANSPARENT);
         childStage.setScene(new Scene(root1));
         childStage.showAndWait();
     }
-
 }

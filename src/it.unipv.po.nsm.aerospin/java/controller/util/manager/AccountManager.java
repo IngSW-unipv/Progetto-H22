@@ -9,7 +9,7 @@ import model.persistence.service.OrdersService;
 import java.util.List;
 
 public class AccountManager {
-    OrdersService service = new OrdersService();
+    private final OrdersService service = new OrdersService();
 
     public ObservableList<Orders> getOrders() throws NoMatchException {
         List<Orders> orders = service.findByUser(Factory.getInstance().getSession().getUser());
@@ -27,17 +27,16 @@ public class AccountManager {
         }
     }
 
-    public String detailText(Orders order) {
-        return "Il " + order.getOrderDate() + " hai acquistato il volo\n"
-                + "da "
-                + order.getFlightById().getRouteById().getAirportDep().getAirportName()
-                + "\na "
-                + order.getFlightById().getRouteById().getAirportArr().getAirportName()
-                + "\ndel " + order.getFlightById().getScheduledDate() + "\n"
-                + "al prezzo di " + order.getPrice()
-                + " €\ncon la tariffa " + order.getFare() + "\n"
-                + "pagato con carta che termina *" + order.getCardDetails() + "\n"
-                + "per il passeggero " + order.getPassengerById().getSurname()
+    public String getDetailText(Orders order) {
+        return "Il " + order.getOrderDate()
+                + " hai acquistato il volo " + order.getFlightById().getFlightNumber()
+                + "\nda " + order.getFlightById().getRouteById().getAirportDep().getAirportName()
+                + "\na " + order.getFlightById().getRouteById().getAirportArr().getAirportName()
+                + "\ndel " + order.getFlightById().getScheduledDate()
+                + "\nal prezzo di " + order.getPrice()
+                + " €\ncon la tariffa " + order.getFare()
+                + "\npagato con carta che termina *" + order.getCardDetails()
+                + "\nper il passeggero " + order.getPassengerById().getSurname()
                 + " " + order.getPassengerById().getName();
     }
 }

@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit;
 
 public class LoadController implements Initializable, IControlledScreen {
     private ScreenContainer myContainer;
-    private final CachedFlights searchResult = CachedFlights.getInstance();
+    private final CachedFlights service = CachedFlights.getInstance();
 
     @FXML private Label loading;
 
@@ -27,7 +27,7 @@ public class LoadController implements Initializable, IControlledScreen {
             public Void call() throws InterruptedException, DBException {
                 try {
                         updateMessage("Loading flights...");
-                        searchResult.findAll();
+                        service.findAll();
                 } catch (DBException e) {
                         loading.setStyle("-fx-text-fill: #d70000");
                         updateMessage("Errore nel Caricamento");

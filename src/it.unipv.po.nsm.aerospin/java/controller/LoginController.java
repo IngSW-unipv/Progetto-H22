@@ -21,7 +21,7 @@ import java.util.regex.Pattern;
 public class LoginController implements Initializable, IControlledScreen {
     private ScreenContainer myContainer;
     private final Session session = Factory.getInstance().getSession();
-    private final UserService userService = new UserService();
+    private final UserService service = new UserService();
     private final Encryption encryption = new Encryption();
 
     @FXML private TextField email;
@@ -56,7 +56,7 @@ public class LoginController implements Initializable, IControlledScreen {
                 checkMail();
                 checkPwd();
                 try {
-                        userService.findByEmail(email.getText());
+                        service.findByEmail(email.getText());
                         Alert alert = new Alert(Alert.AlertType.ERROR);
                         alert.setTitle("Invalid Input");
                         alert.setHeaderText(null);
@@ -66,22 +66,21 @@ public class LoginController implements Initializable, IControlledScreen {
                         User newUser = new User();
                         newUser.setEmail(email.getText());
                         newUser.setPwd(encryption.encrypt(pwd.getText()));
-                        userService.persist(newUser);
+                        service.persist(newUser);
                         session.setUser(newUser);
                         myContainer.setScreen(Factory.getAccount());
                 }
         } catch (NoMatchException | IOException e) {
-            e.printStackTrace();
             pwd.clear();
         }
     }
 
     //CONTROLLO SE UTENTE REGISTRATO E PWD CORRETTA
-    public boolean isRegistered(){
+    private boolean isRegistered(){
         errLabel.setText("");
         try{
                 checkMail();
-                User logged = userService.findByEmail(email.getText());
+                User logged = service.findByEmail(email.getText());
                 String decrypted = encryption.decrypt(logged.getPwd());
                 if(decrypted.equals(pwd.getText()))  {
                         session.setUser(logged);
