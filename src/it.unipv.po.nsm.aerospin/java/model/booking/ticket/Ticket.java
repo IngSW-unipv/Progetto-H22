@@ -1,4 +1,4 @@
-package model.booking;
+package model.booking.ticket;
 
 import com.google.zxing.WriterException;
 import model.persistence.entity.Booking;
@@ -8,6 +8,7 @@ import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDFont;
 import org.apache.pdfbox.pdmodel.font.PDType0Font;
 import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
+
 import java.io.File;
 import java.io.IOException;
 
@@ -27,8 +28,9 @@ public class Ticket {
     private final String depTime;
     private final String arrTime;
     private final String path =
-            "src/it.unipv.po.nsm.aerospin/resources/GeneratedPDF/BoardingPass%s.pdf";
+            "src/it.unipv.po.nsm.aerospin/resources/GeneratedPDF/BoardingPass.pdf";
 
+    //TODO RIVEDERE DOPO MODIFICHE
 //    /**
 //     * Costruttore dell'oggetto biglietto.
 //     *
@@ -87,22 +89,21 @@ public class Ticket {
         contentStream.endText();
         //TODO VEDERE STYLE TICKET
 
-        GenerateQRCode qr = new GenerateQRCode(flightNumber+ "" + name + "" + surname);
         try {
-            qr.generate();
+            QRCode.generate(bookingId + " " + flightNumber);
         } catch (WriterException e) {
             e.printStackTrace();
         }
 
-        PDImageXObject pdImage = PDImageXObject.createFromFile("src/it.unipv.po.nsm.aerospin/resources/GeneratedQr/qr.png", document);
+        PDImageXObject pdImage = PDImageXObject.createFromFile(
+                "src/it.unipv.po.nsm.aerospin/resources/GeneratedQr/qr.png", document);
         contentStream.drawImage(pdImage, 50, 50);
-        System.out.println("Image inserted");
         contentStream.close();
-        document.save(String.format(path, bookingId));
+        document.save(path);
         document.close();
     }
 
     public String getPath(){
-        return String.format(path, bookingId);
+        return path;
     }
 }

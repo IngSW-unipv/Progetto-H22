@@ -1,4 +1,4 @@
-package model.booking;
+package model.booking.ticket;
 
 import java.util.Properties;
 import javax.activation.*;

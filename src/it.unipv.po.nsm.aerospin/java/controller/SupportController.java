@@ -6,16 +6,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
-import model.booking.TicketMail;
-
+import model.booking.ticket.TicketMail;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class SupportController implements Initializable {
-
-    @FXML JFXComboBox<String> options;
-    @FXML TextArea text;
-    TicketMail mail = new TicketMail();
+    @FXML private JFXComboBox<String> options;
+    @FXML private TextArea text;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -28,13 +25,15 @@ public class SupportController implements Initializable {
         Stage stage = (Stage) Stage.getWindows().get(1);
         if(!options.getSelectionModel().isEmpty() && !text.getText().isEmpty()) {
             try {
+                    TicketMail mail = new TicketMail();
                     mail.setSubject(options.getSelectionModel().getSelectedItem());
                     mail.setText(text.getText());
                     mail.send("h22aerospin@gmail.com", null);
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("Support");
                     alert.setHeaderText("La richiesta è stata inoltrata con successo");
-                    alert.setContentText("Verrà contattato dal nostro supporto al più presto possibile\nA presto!");
+                    alert.setContentText(
+                            "Verrà contattato dal nostro supporto al più presto possibile");
                     alert.showAndWait();
                     stage.close();
             } catch (RuntimeException e) {

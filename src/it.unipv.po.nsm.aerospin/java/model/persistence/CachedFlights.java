@@ -31,6 +31,5 @@ public class CachedFlights {
     // Metodo che resetta la lista cachedFindAll
     public void refreshCache() {
         cachedFindAll = null;
-        findAll();
     }
 }

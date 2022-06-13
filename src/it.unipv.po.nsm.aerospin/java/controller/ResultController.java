@@ -2,6 +2,7 @@ package controller;
 
 import controller.util.IControlledScreen;
 import controller.util.manager.ResultManager;
+import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.ListChangeListener;
 import javafx.fxml.FXML;
@@ -178,7 +179,7 @@ public class ResultController implements Initializable, IControlledScreen {
         }
     }
 
-    private void checkout() throws IOException {
+    private void checkout() throws RuntimeException {
         Alert alert = new Alert(Alert.AlertType.NONE);
         alert.setTitle("Ordine in Elaborazione!");
         alert.setContentText("Stiamo elaborando il suo ordine, la preghiamo di attendere");
@@ -207,9 +208,15 @@ public class ResultController implements Initializable, IControlledScreen {
             alert1.setTitle("Ordine Completato!");
             alert1.setContentText("Il suo acquisto è confermato, riceverà una mail con le info\nA presto!");
             alert1.showAndWait();
+            Platform.runLater(() -> {
+                try {
+                    myContainer.setScreen(Factory.getLoad());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
         });
         t1.start();
-        myContainer.setScreen(Factory.getHome());
     }
 
     public void validateFields() throws LoginException, IllegalArgumentException {

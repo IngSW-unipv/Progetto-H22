@@ -39,7 +39,6 @@ public class Encryption {
         }
     }
 
-
     public static Key generateKey() {
         return new SecretKeySpec(keyValue, ALGORITHM);
     }

@@ -7,8 +7,8 @@ import javafx.scene.control.DatePicker;
 import javafx.util.Callback;
 import model.Factory;
 import model.booking.Fares;
-import model.booking.Ticket;
-import model.booking.TicketMail;
+import model.booking.ticket.Ticket;
+import model.booking.ticket.TicketMail;
 import model.exception.NoMatchException;
 import model.persistence.CachedFlights;
 import model.persistence.entity.Booking;
@@ -84,7 +84,7 @@ public class ResultManager {
     }
 
     public void fetchOrder(Passenger passenger, Fares fare,
-                           int flightId, double price) {
+                           int flightId, double price) throws RuntimeException {
         Booking booking = new Booking();
         booking.setPassengerId(passenger.getId());
         booking.setFlightId(flightId);

@@ -63,11 +63,14 @@ public class MainController implements Initializable {
     private final ChangeListener<String> loadListener = new ChangeListener<>() {
         @Override
         public void changed(ObservableValue<? extends String> o, String s1, String s2) {
-            if (s2.equals(Factory.getHome())) {
+            if (s2.equals(Factory.getLoad())) {
+                    home.setDisable(true);
+                    search.setDisable(true);
+                    login.setDisable(true);
+            } else {
                     home.setDisable(false);
                     search.setDisable(false);
                     login.setDisable(false);
-                    myContainer.getScreen().removeListener(loadListener);
             }
         }
     };

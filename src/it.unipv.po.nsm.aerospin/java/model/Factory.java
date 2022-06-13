@@ -62,6 +62,10 @@ public class Factory {
         }
     }
 
+    public static String getLoad() {
+        return load;
+    }
+
     public static String getHome() {
         return home;
     }

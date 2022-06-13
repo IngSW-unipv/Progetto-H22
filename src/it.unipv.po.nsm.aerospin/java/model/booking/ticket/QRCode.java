@@ -1,4 +1,4 @@
-package model.booking;
+package model.booking.ticket;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
@@ -6,9 +6,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.Hashtable;
-
 import javax.imageio.ImageIO;
-
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
 import com.google.zxing.WriterException;
@@ -21,16 +19,9 @@ import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
  *
  * @author GruppoNoSuchMethod
  */
-public class GenerateQRCode {
-
-    private String qrCodeText;
-    private String filePath;
-
-
-    public GenerateQRCode(String qrCodeText) {
-        this.filePath = "src/it.unipv.po.nsm.aerospin/resources/GeneratedQr/qr.png";
-        this.qrCodeText = qrCodeText;
-    }
+public class QRCode {
+    private static final String filePath =
+            "src/it.unipv.po.nsm.aerospin/resources/GeneratedQr/qr.png";
 
     /**
      * Metodo per la generazione di un QR Code.
@@ -38,32 +29,29 @@ public class GenerateQRCode {
      * @throws IOException Segnala che si è verificato un errore durante le operazioni di I/O.
      * @throws WriterException Segnala un errore nel processo di scrittura di Maven/Hibernate.
      */
-    public void generate() throws IOException, WriterException {
+    public static void generate(String text) throws IOException, WriterException {
         File qrFile = new File(filePath);
         Hashtable<EncodeHintType, ErrorCorrectionLevel> hintMap = new Hashtable<>();
         hintMap.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
         QRCodeWriter qrCodeWriter = new QRCodeWriter();
-        BitMatrix byteMatrix = qrCodeWriter.encode(qrCodeText, BarcodeFormat.QR_CODE, 125, 125, hintMap);
+        BitMatrix byteMatrix = qrCodeWriter.encode(text, BarcodeFormat.QR_CODE, 125, 125, hintMap);
         // Make the BufferedImage that are to hold the QRCode
-        int matrixWidth = byteMatrix.getWidth();
-        BufferedImage image = new BufferedImage(matrixWidth, matrixWidth, BufferedImage.TYPE_INT_RGB);
+        int matrixEdge = byteMatrix.getWidth();
+        BufferedImage image = new BufferedImage(matrixEdge, matrixEdge, BufferedImage.TYPE_INT_RGB);
         image.createGraphics();
-
         Graphics2D graphics = (Graphics2D) image.getGraphics();
         graphics.setColor(Color.WHITE);
-        graphics.fillRect(0, 0, matrixWidth, matrixWidth);
+        graphics.fillRect(0, 0, matrixEdge, matrixEdge);
         // Paint and save the image using the ByteMatrix
         graphics.setColor(Color.BLACK);
 
-        for (int i = 0; i < matrixWidth; i++) {
-            for (int j = 0; j < matrixWidth; j++) {
+        for (int i = 0; i < matrixEdge; i++) {
+            for (int j = 0; j < matrixEdge; j++) {
                 if (byteMatrix.get(i, j)) {
-                    graphics.fillRect(i, j, 1, 1);
+                        graphics.fillRect(i, j, 1, 1);
                 }
             }
         }
         ImageIO.write(image, "png", qrFile);
-
     }
-
 }
