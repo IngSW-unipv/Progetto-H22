@@ -6,8 +6,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
+import model.Factory;
 import model.booking.ticket.TicketMail;
 import java.net.URL;
+import java.sql.Date;
 import java.util.ResourceBundle;
 
 public class SupportController implements Initializable {
@@ -26,8 +28,12 @@ public class SupportController implements Initializable {
         if(!options.getSelectionModel().isEmpty() && !text.getText().isEmpty()) {
             try {
                     TicketMail mail = new TicketMail();
-                    mail.setSubject(options.getSelectionModel().getSelectedItem());
-                    mail.setText(text.getText());
+                    mail.setSubject("Support Request: "
+                            + options.getSelectionModel().getSelectedItem());
+                    mail.setText(Factory.getInstance().getSession().getUser().getEmail()
+                            + "\n" + new Date(System.currentTimeMillis())
+                            + "\n----------------------------------------\n"
+                            + text.getText());
                     mail.send("h22aerospin@gmail.com", null);
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("Support");

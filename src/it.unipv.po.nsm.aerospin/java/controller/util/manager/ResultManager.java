@@ -107,8 +107,9 @@ public class ResultManager {
     public void sendTicket(Booking booking) throws IOException, RuntimeException {
         Ticket ticket = new Ticket(booking);
         TicketMail mail = new TicketMail();
-        mail.setSubject("Il Tuo Biglietto");
-        mail.setText("Grazie per aver scelto Aerospin!");
+        mail.setSubject("Il Tuo Biglietto [" + booking.getId() + "]");
+        mail.setText("Grazie " + booking.getPassengerById().getName()
+                + " per averci scelto!\nIn allegato trovi il tuo biglietto\nA presto!");
         mail.send(booking.getPassengerById().getUserById().getEmail(), ticket.getPath());
     }
 

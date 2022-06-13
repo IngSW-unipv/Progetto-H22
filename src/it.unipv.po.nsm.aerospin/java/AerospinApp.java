@@ -18,7 +18,7 @@ public class AerospinApp extends Application {
         stage.setResizable(false);
         stage.show();
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Chiusura Applicazione!");
+        alert.setTitle("Closing");
         alert.setContentText("Grazie e a presto!");
         stage.setOnCloseRequest(we -> System.exit(0));
         stage.setOnCloseRequest(we -> alert.showAndWait());
