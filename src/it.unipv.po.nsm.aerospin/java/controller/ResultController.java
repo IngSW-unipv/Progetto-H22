@@ -31,8 +31,6 @@ import java.sql.Date;
 import java.sql.Time;
 import java.text.DecimalFormat;
 import java.time.LocalDate;
-import java.time.format.DateTimeParseException;
-import java.util.InputMismatchException;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -60,7 +58,6 @@ public class ResultController implements Initializable, IControlledScreen {
     @FXML private TextField name;
     @FXML private TextField surname;
     @FXML private DatePicker birthDate;
-//TODO se scrivo la data da tastiera viene rilevata == null
 
     private Double price = 0.0;
     private double multiplier = Fares.STANDARD.getPriceM();
