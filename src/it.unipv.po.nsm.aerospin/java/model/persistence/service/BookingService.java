@@ -19,7 +19,9 @@ public class BookingService implements IService<Booking> {
 
     public List<Booking> findByUser(User user) {
         bookingDao.getConn().openCurrentSession();
-        return bookingDao.findByUser(user);
+        List<Booking> orders = bookingDao.findByUser(user);
+        bookingDao.getConn().closeCurrentSession();
+        return orders;
     }
 
     @Override
