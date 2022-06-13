@@ -30,9 +30,9 @@ public class BookingDao implements IDao<Booking> {
 
     @SuppressWarnings("unchecked")
     public List<Booking> findByUser(User user) {
-        String hql = "from Booking o where o.passengerByPassengerId.userByUserId = :user";
+        String hql = "from Booking o where o.passengerByPassengerId.userByUserId.id = :user";
         return (List<Booking>) conn.getCurrentSession().createQuery(hql)
-                .setParameter("user", user).list();
+                .setParameter("user", user.getId()).list();
     }
 
     @Override

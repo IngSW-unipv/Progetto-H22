@@ -84,17 +84,19 @@ public class ResultManager {
     }
 
     public void fetchOrder(Passenger passenger, Fares fare,
-                           int flightId, double price) throws RuntimeException {
+                           Flight flight, double price) throws RuntimeException {
+        passengerService.persist(passenger);
+
         Booking booking = new Booking();
         booking.setPassengerId(passenger.getId());
-        booking.setFlightId(flightId);
+        booking.setFlightId(flight.getId());
         booking.setFare(fare);
         booking.setCardDetails(Integer.parseInt(
                 Factory.getInstance().getSession().getInfo().getCardNumber()));
         booking.setOrderDate(new Date(System.currentTimeMillis()));
         booking.setPrice(price);
-
-        passengerService.persist(passenger);
+        booking.setPassengerById(passenger);
+        booking.setFlightById(flight);
         bookingService.persist(booking);
         try {
                 sendTicket(booking);

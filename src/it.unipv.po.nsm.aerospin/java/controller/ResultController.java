@@ -152,8 +152,8 @@ public class ResultController implements Initializable, IControlledScreen {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Reminder");
                 alert.setHeaderText(null);
-                alert.setContentText("Le ricordiamo che i passeggeri di età inferiore ai 16 anni " +
-                        "devono viaggiare accompagnati");
+                alert.setContentText("Le ricordiamo che i passeggeri di età inferiore ai 16 anni "
+                        + "devono viaggiare accompagnati");
                 alert.showAndWait();
         }
     }
@@ -191,36 +191,39 @@ public class ResultController implements Initializable, IControlledScreen {
         }
     }
 
-    private void checkout() throws RuntimeException {
+    private void checkout() throws RuntimeException, IOException {
+        myContainer.setScreen(Factory.getHome());
         Alert alert = new Alert(Alert.AlertType.NONE);
         alert.setTitle("Ordine in Elaborazione!");
         alert.setContentText("Stiamo elaborando il suo ordine, la preghiamo di attendere");
-        alert.initStyle(StageStyle.TRANSPARENT);
         alert.show();
-        Passenger passenger = new Passenger();
-        passenger.setUserId(session.getUser().getId());
-        passenger.setName(name.getText());
-        passenger.setSurname(surname.getText());
-        Fares fare = (Fares) group.getSelectedToggle().getUserData();
+
         Thread t1 = new Thread(() -> {
+            Passenger passenger = new Passenger();
+            passenger.setUserId(session.getUser().getId());
+            passenger.setName(name.getText());
+            passenger.setSurname(surname.getText());
+            passenger.setUserById(session.getUser());
+            Fares fare = (Fares) group.getSelectedToggle().getUserData();
             if (!table1.getSelectionModel().isEmpty()) {
                 methods.fetchOrder(passenger, fare,
-                        table1.getSelectionModel().getSelectedItem().getId(),
+                        table1.getSelectionModel().getSelectedItem(),
                         (table1.getSelectionModel().getSelectedItem().getPrice() * multiplier));
             }
             if (!table2.getSelectionModel().isEmpty()) {
                 methods.fetchOrder(passenger, fare,
-                        table2.getSelectionModel().getSelectedItem().getId(),
+                        table2.getSelectionModel().getSelectedItem(),
                         (table2.getSelectionModel().getSelectedItem().getPrice() * multiplier));
             }
             session.clear();
-            CachedFlights.getInstance().refreshCache();
-            alert.close();
-            Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
-            alert1.setTitle("Ordine Completato!");
-            alert1.setContentText("Il suo acquisto è confermato, riceverà una mail con le info\nA presto!");
-            alert1.showAndWait();
+            CachedFlights.getInstance().clearCache();
             Platform.runLater(() -> {
+                alert.close();
+                Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
+                alert1.setTitle("Ordine Completato!");
+                alert1.setContentText(
+                        "Il suo acquisto è confermato, riceverà una mail con le info\nA presto!");
+                alert1.showAndWait();
                 try {
                     myContainer.setScreen(Factory.getLoad());
                 } catch (IOException e) {

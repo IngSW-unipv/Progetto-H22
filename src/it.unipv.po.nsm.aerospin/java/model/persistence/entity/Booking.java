@@ -41,14 +41,24 @@ public class Booking {
     @JoinColumn(name = "flightId", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
     private Flight flightByFlightId;
 
-    //TODO VELOCIZZA ORDER QUERY
-
     public String getId() {
         return id;
     }
 
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public int getPassengerId() {
+        return passengerId;
+    }
+
     public void setPassengerId(int passengerId) {
         this.passengerId = passengerId;
+    }
+
+    public int getFlightId() {
+        return flightId;
     }
 
     public void setFlightId(int flightId) {
@@ -91,8 +101,16 @@ public class Booking {
         return passengerByPassengerId;
     }
 
+    public void setPassengerById(Passenger passengerByPassengerId) {
+        this.passengerByPassengerId = passengerByPassengerId;
+    }
+
     public Flight getFlightById() {
         return flightByFlightId;
+    }
+
+    public void setFlightById(Flight flightByFlightId) {
+        this.flightByFlightId = flightByFlightId;
     }
 
     @Override

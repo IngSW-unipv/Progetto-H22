@@ -56,20 +56,48 @@ public class Flight {
         return flightNumber;
     }
 
+    public void setFlightNumber(String flightNumber) {
+        this.flightNumber = flightNumber;
+    }
+
+    public Integer getFlightRouteId() {
+        return flightRouteId;
+    }
+
+    public void setFlightRouteId(Integer flightRouteId) {
+        this.flightRouteId = flightRouteId;
+    }
+
     public Date getScheduledDate() {
         return scheduledDate;
+    }
+
+    public void setScheduledDate(Date scheduledDate) {
+        this.scheduledDate = scheduledDate;
     }
 
     public Time getScheduledTime() {
         return scheduledTime;
     }
 
+    public void setScheduledTime(Time scheduledTime) {
+        this.scheduledTime = scheduledTime;
+    }
+
     public Time getArrivalTime() {
         return arrivalTime;
     }
 
+    public void setArrivalTime(Time arrivalTime) {
+        this.arrivalTime = arrivalTime;
+    }
+
     public double getPrice() {
         return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 
     public int getSeats() {
@@ -84,9 +112,16 @@ public class Flight {
         return routeByFlightRouteId;
     }
 
-    @SuppressWarnings("unused")
+    public void setRouteById(Route routeByFlightRouteId) {
+        this.routeByFlightRouteId = routeByFlightRouteId;
+    }
+
     public Collection<Booking> getBookingById() {
         return bookingById;
+    }
+
+    public void setBookingById(Collection<Booking> bookingById) {
+        this.bookingById = bookingById;
     }
 
     @Override

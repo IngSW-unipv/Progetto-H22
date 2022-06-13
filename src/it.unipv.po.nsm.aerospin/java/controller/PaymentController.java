@@ -70,7 +70,7 @@ public class PaymentController implements Initializable {
     }
 
     private void checkExpiryMonth() throws IllegalArgumentException {
-        if(!expiryMonth.getText().matches("^[0-9]{2}$") || isExpired()) {
+        if(!expiryMonth.getText().matches("^[0-9]{1,2}$") || isExpired()) {
                 throw new IllegalArgumentException();
         }
     }
@@ -88,14 +88,14 @@ public class PaymentController implements Initializable {
     }
 
     private boolean isExpired() {
-        int year = Calendar.getInstance().get(Calendar.YEAR);
-        int month = Calendar.getInstance().get(Calendar.MONTH);
+        int thisYear = Calendar.getInstance().get(Calendar.YEAR);
+        int thisMonth = Calendar.getInstance().get(Calendar.MONTH);
         int yearEx = Integer.parseInt(expiryYear.getText());
         int monthEx = Integer.parseInt(expiryMonth.getText());
-        if(yearEx > year) {
-                return false;
-        } else if(yearEx == year){
-                return monthEx > 12 || monthEx < 1 || monthEx <= month;
+        if((yearEx - thisYear) > 0 && (yearEx - thisYear) < 7) {
+                return monthEx < 1 || monthEx > 12;
+        } else if(yearEx == thisYear){
+                return monthEx < 1 || monthEx > 12 || monthEx <= thisMonth + 1;
         } else {
                 return true;
         }

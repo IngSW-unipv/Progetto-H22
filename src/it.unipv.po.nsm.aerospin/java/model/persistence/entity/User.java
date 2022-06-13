@@ -28,6 +28,10 @@ public class User {
         return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -44,9 +48,12 @@ public class User {
         this.pwd = pwd;
     }
 
-    @SuppressWarnings("unused")
     public Collection<Passenger> getPassengersById() {
         return passengersById;
+    }
+
+    public void setPassengersById(Collection<Passenger> passengersById) {
+        this.passengersById = passengersById;
     }
 
     @Override

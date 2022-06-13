@@ -34,6 +34,14 @@ public class Passenger {
         return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
     public void setUserId(Integer userId) {
         this.userId = userId;
     }
@@ -58,9 +66,16 @@ public class Passenger {
         return userByUserId;
     }
 
-    @SuppressWarnings("unused")
-    public Collection<Booking> getOrdersById() {
+    public void setUserById(User userByUserId) {
+        this.userByUserId = userByUserId;
+    }
+
+    public Collection<Booking> getBookingById() {
         return bookingById;
+    }
+
+    public void setBookingById(Collection<Booking> bookingById) {
+        this.bookingById = bookingById;
     }
 
     @Override
