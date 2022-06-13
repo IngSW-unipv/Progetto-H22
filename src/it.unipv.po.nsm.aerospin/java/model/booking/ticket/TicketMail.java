@@ -62,7 +62,7 @@ public class TicketMail {
             if(filePath != null) {
                 // Part two is attachment
                 messageBodyPart = new MimeBodyPart();
-                String fileName = "Boarding Pass.pdf";
+                String fileName = "BoardingPass.pdf";
                 DataSource source = new FileDataSource(filePath);
                 messageBodyPart.setDataHandler(new DataHandler(source));
                 messageBodyPart.setFileName(fileName);

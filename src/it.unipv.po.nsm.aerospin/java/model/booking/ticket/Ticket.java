@@ -28,7 +28,7 @@ public class Ticket {
     private final String depTime;
     private final String arrTime;
     private final String path =
-            "src/it.unipv.po.nsm.aerospin/resources/GeneratedPDF/BoardingPass.pdf";
+            "src/it.unipv.po.nsm.aerospin/resources/GeneratedDoc/BoardingPass.pdf";
 
     //TODO RIVEDERE DOPO MODIFICHE
 //    /**
@@ -58,7 +58,7 @@ public class Ticket {
 
     private void generateTicket() throws IOException {
         File file = new File(
-                "src/it.unipv.po.nsm.aerospin/resources/GeneratedPDF/BoardingPassTemplate.pdf");
+                "src/it.unipv.po.nsm.aerospin/resources/GeneratedDoc/BoardingPassTemplate.pdf");
         PDDocument document =  PDDocument.load(file);
         PDPage page = document.getPage(0);
         PDFont font = PDType0Font.load(document,
@@ -96,7 +96,7 @@ public class Ticket {
         }
 
         PDImageXObject pdImage = PDImageXObject.createFromFile(
-                "src/it.unipv.po.nsm.aerospin/resources/GeneratedQr/qr.png", document);
+                "src/it.unipv.po.nsm.aerospin/resources/GeneratedDoc/qr.png", document);
         contentStream.drawImage(pdImage, 50, 50);
         contentStream.close();
         document.save(path);

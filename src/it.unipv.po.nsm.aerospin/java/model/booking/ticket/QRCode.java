@@ -21,7 +21,7 @@ import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
  */
 public class QRCode {
     private static final String filePath =
-            "src/it.unipv.po.nsm.aerospin/resources/GeneratedQr/qr.png";
+            "src/it.unipv.po.nsm.aerospin/resources/GeneratedDoc/qr.png";
 
     /**
      * Metodo per la generazione di un QR Code.
