@@ -30,6 +30,8 @@ import java.net.URL;
 import java.sql.Date;
 import java.sql.Time;
 import java.text.DecimalFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.InputMismatchException;
 import java.util.Objects;
 import java.util.ResourceBundle;
@@ -72,6 +74,19 @@ public class ResultController implements Initializable, IControlledScreen {
         initTable();
         birthDate.setDayCellFactory(methods.ageRange());
 
+        birthDate.getEditor().focusedProperty().addListener((o, o1, o2)->{
+            if (!o2) {
+                    if(birthDate.getConverter().fromString(birthDate.getEditor().getText())
+                            .isAfter(LocalDate.now().minusDays(1))) {
+                                birthDate.getEditor().clear();
+                                birthDate.setValue(null);
+                    } else {
+                                errLabel.setVisible(false);
+                                birthDate.setValue(birthDate.getConverter()
+                                    .fromString(birthDate.getEditor().getText()));
+                    }
+            }
+        });
         group.selectedToggleProperty().addListener((ov, oldT, newT) -> {
             if(newT == null) {
                     group.selectToggle(group.getToggles().get(2));
