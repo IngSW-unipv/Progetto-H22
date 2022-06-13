@@ -1,6 +1,5 @@
 package controller;
 
-import com.google.zxing.WriterException;
 import controller.util.IControlledScreen;
 import controller.util.manager.ResultManager;
 import javafx.beans.property.SimpleStringProperty;
@@ -17,20 +16,20 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import model.Factory;
 import model.Session;
-import model.booking.*;
+import model.booking.Fares;
+import model.booking.Info;
 import model.exception.NoMatchException;
-import model.persistence.entity.Booking;
+import model.persistence.CachedFlights;
 import model.persistence.entity.Flight;
 import model.persistence.entity.Passenger;
-import model.persistence.service.OrdersService;
-import model.persistence.service.PassengerService;
 import view.ScreenContainer;
-import java.text.DecimalFormat;
-
+import javax.security.auth.login.LoginException;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.sql.Time;
+import java.text.DecimalFormat;
+import java.util.InputMismatchException;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -58,13 +57,10 @@ public class ResultController implements Initializable, IControlledScreen {
     @FXML private TextField name;
     @FXML private TextField surname;
     @FXML private DatePicker birthDate;
+//TODO se scrivo la data da tastiera viene rilevata == null
 
     private Double price = 0.0;
     private double multiplier = Fares.STANDARD.getPriceM();
-
-    private final OrdersService ordersService = new OrdersService();
-    private final Passenger passenger = new Passenger();
-    private final PassengerService passengerService = new PassengerService();
     private final String dep = session.getInfo().getDep();
     private final String ret = session.getInfo().getRet();
     private final Date dateDep = session.getInfo().getDateDep();
@@ -77,7 +73,7 @@ public class ResultController implements Initializable, IControlledScreen {
 
         group.selectedToggleProperty().addListener((ov, oldT, newT) -> {
             if(newT == null) {
-                group.selectToggle(group.getToggles().get(2));
+                    group.selectToggle(group.getToggles().get(2));
             }
             multiplier = ((Fares) group.selectedToggleProperty().get().getUserData()).getPriceM();
             price();
@@ -128,10 +124,10 @@ public class ResultController implements Initializable, IControlledScreen {
     private void price() {
         double tot = 0;
         if(!table1.getSelectionModel().isEmpty()){
-            tot += table1.getSelectionModel().getSelectedItem().getPrice();
+                tot += table1.getSelectionModel().getSelectedItem().getPrice();
         }
         if(!table2.getSelectionModel().isEmpty()){
-            tot += table2.getSelectionModel().getSelectedItem().getPrice();
+                tot += table2.getSelectionModel().getSelectedItem().getPrice();
         }
         price = tot * multiplier;
         costLabel.setText(new DecimalFormat("0.00").format(price));
@@ -140,83 +136,90 @@ public class ResultController implements Initializable, IControlledScreen {
     @FXML
     private void ageCheck() {
         if (methods.isMinor(birthDate.getValue())) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Reminder");
-            alert.setHeaderText(null);
-            alert.setContentText("Le ricordiamo che i passeggeri di età inferiore ai 16 anni " +
-                    "devono viaggiare accompagnati");
-            alert.showAndWait();
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Reminder");
+                alert.setHeaderText(null);
+                alert.setContentText("Le ricordiamo che i passeggeri di età inferiore ai 16 anni " +
+                        "devono viaggiare accompagnati");
+                alert.showAndWait();
         }
     }
 
     @FXML
-    private void checkout() throws IOException, WriterException {
-        Booking order1 = new Booking();
-        Booking order2 = new Booking();
-
-        errLabel.setVisible(false);
-        if (session.isLogged()) {
-            if( price > 0 &&
-                methods.dataCheck(name.getText(),surname.getText()) &&
-                birthDate.getValue() != null){
-
-                Parent root1 = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("util/subscreen/Payment.fxml")));
+    private void execute() {
+        try {
+                validateFields();
+                Parent root1 = FXMLLoader.load(Objects.requireNonNull(
+                        getClass().getResource("util/subscreen/Payment.fxml")));
                 Stage childStage = new Stage();
                 childStage.initModality(Modality.APPLICATION_MODAL);
                 childStage.initStyle(StageStyle.TRANSPARENT);
                 childStage.setScene(new Scene(root1));
                 childStage.showAndWait();
-
-
-                if(info.isPaid()) {
-                    passenger.setUserId(session.getUser().getId());
-                    passenger.setName(name.getText());
-                    passenger.setSurname(surname.getText());
-                    passengerService.persist(passenger);
-
-                    order1.setPassengerId(passenger.getId());
-                    order1.setFlightId(table1.getSelectionModel().getSelectedItem().getId());
-                    order1.setFare((Fares) group.getSelectedToggle().getUserData());
-                    order1.setCardDetails(Integer.parseInt(session.getInfo().getCardNumber().substring(12,15)));
-                    order1.setOrderDate(new Date(System.currentTimeMillis()));
-                    order1.setPrice(price);
-                    //booking.setId("ASO" + );
-                    ordersService.persist(order1);
-
-
-                    if (!table2.getSelectionModel().isEmpty()) {
-                        order2.setPassengerId(passenger.getId());
-                        order2.setFlightId(table2.getSelectionModel().getSelectedItem().getId());
-                        order2.setFare((Fares) group.getSelectedToggle().getUserData());
-                        order2.setCardDetails(Integer.parseInt(session.getInfo().getCardNumber().substring(13,16)));
-                        order2.setOrderDate(new Date(System.currentTimeMillis()));
-                        order2.setPrice(price);
-                        ordersService.persist(order2);
-                    }
-
-                    methods.sendTicket(order1);
-                    methods.bookSeat(table1.getSelectionModel().getSelectedItem());
-                    if(!table2.getSelectionModel().isEmpty()) {
-                            methods.sendTicket(order1);
-                        methods.bookSeat(table2.getSelectionModel().getSelectedItem());
-                    }
-//TODO REFRESHCACHE
-                    session.clear();
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Ordine Completato!");
-                    alert.setContentText("Il suo acquisto è confermato, riceverà una mail con le info\nA presto!");
-                    alert.showAndWait();
-                    myContainer.setScreen(Factory.getHome());
+                if (info.isPaid()) {
+                        checkout();
                 }
-            } else {
+        } catch (LoginException e) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Login Error");
+                alert.setContentText("""
+                        Utente non loggato!
+                        Prima di poter procedere effettuare il Login
+                        Se non si è registrato, procedere alla Registrazione""");
+                alert.showAndWait();
+        } catch (IllegalArgumentException e) {
                 errLabel.setVisible(true);
-            }
-        } else {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Login Error");
-            alert.setContentText("Utente non loggato!\nPrima di poter procedere effettuare il Login\nSe non si è registrato, procedere alla Registrazione");
-            alert.showAndWait();
+        } catch (IOException | RuntimeException e) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Generic Error");
+                alert.setContentText("Qualcosa è andato storto\n" +
+                        "Può tentare nuovamente oppure contatti il nostro supporto");
+                alert.showAndWait();
         }
+    }
 
+    private void checkout() throws IOException {
+        Alert alert = new Alert(Alert.AlertType.NONE);
+        alert.setTitle("Ordine in Elaborazione!");
+        alert.setContentText("Stiamo elaborando il suo ordine, la preghiamo di attendere");
+        alert.initStyle(StageStyle.TRANSPARENT);
+        alert.show();
+        Passenger passenger = new Passenger();
+        passenger.setUserId(session.getUser().getId());
+        passenger.setName(name.getText());
+        passenger.setSurname(surname.getText());
+        Fares fare = (Fares) group.getSelectedToggle().getUserData();
+        Thread t1 = new Thread(() -> {
+            if (!table1.getSelectionModel().isEmpty()) {
+                methods.fetchOrder(passenger, fare,
+                        table1.getSelectionModel().getSelectedItem().getId(),
+                        (table1.getSelectionModel().getSelectedItem().getPrice() * multiplier));
+            }
+            if (!table2.getSelectionModel().isEmpty()) {
+                methods.fetchOrder(passenger, fare,
+                        table2.getSelectionModel().getSelectedItem().getId(),
+                        (table2.getSelectionModel().getSelectedItem().getPrice() * multiplier));
+            }
+            session.clear();
+            CachedFlights.getInstance().refreshCache();
+            alert.close();
+            Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
+            alert1.setTitle("Ordine Completato!");
+            alert1.setContentText("Il suo acquisto è confermato, riceverà una mail con le info\nA presto!");
+            alert1.showAndWait();
+        });
+        t1.start();
+        myContainer.setScreen(Factory.getHome());
+    }
+
+    public void validateFields() throws LoginException, IllegalArgumentException {
+        errLabel.setVisible(false);
+        if(!session.isLogged()) {
+                throw new LoginException();
+        }
+        methods.fieldsCheck(name.getText(), surname.getText());
+        if(birthDate.getValue() == null || price.equals(0.0)) {
+                throw new IllegalArgumentException();
+        }
     }
 }

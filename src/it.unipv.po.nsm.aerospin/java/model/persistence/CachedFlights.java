@@ -23,13 +23,14 @@ public class CachedFlights {
 
     public List<Flight> findAll() {
         if (cachedFindAll == null) {
-            cachedFindAll = flightService.findAll();
+                cachedFindAll = flightService.findAll();
         }
         return cachedFindAll;
     }
 
-    // Metodo che pone a null la lista cachedFindAll
+    // Metodo che resetta la lista cachedFindAll
     public void refreshCache() {
-        cachedFindAll = flightService.findAll();
+        cachedFindAll = null;
+        findAll();
     }
 }

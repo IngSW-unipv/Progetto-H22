@@ -1,7 +1,6 @@
 package model.booking.payment;
 
-import javafx.scene.control.Alert;
-
+import model.exception.PaymentException;
 import java.util.Random;
 
 /**
@@ -9,44 +8,15 @@ import java.util.Random;
  *
  * @author GruppoNoSuchMethod
  */
-public class AeroPay implements PaymentStrategy{
-
-    private boolean payed;
-
-
-    public AeroPay(String cardName, String cardNumber, String expiryMonth, String expiryYear, String cvv) {
-    }
-
+public class AeroPay implements PaymentStrategy {
     @Override
-    public void pay() {
-
+    public boolean pay() throws PaymentException {
         Random rn = new Random();
         double d = rn.nextDouble();     // random value in range 0.0 - 1.0
         if(d<=0.2){
-            //System.out.println("Payment Failed..........\n");
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Pagamento");
-            alert.setHeaderText(null);
-            alert.setContentText("Il pagamento non è andato a buon fine....riprovare");
-            alert.showAndWait();
-            payed=false;
+                throw new PaymentException("The card was declined");
         }else {
-            //System.out.println("Payment Succeded!\n");
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Pagamento");
-            alert.setHeaderText(null);
-            alert.setContentText("Pagamento andato a buon fine!");
-            alert.showAndWait();
-            payed=true;
+                return true;
         }
-
-    }
-
-    public boolean isPayed() {
-        return payed;
-    }
-
-    public void setPayed(boolean payed) {
-        this.payed = payed;
     }
 }

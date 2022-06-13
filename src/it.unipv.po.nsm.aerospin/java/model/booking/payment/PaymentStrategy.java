@@ -1,7 +1,6 @@
 package model.booking.payment;
 
-import java.util.HashMap;
-import java.util.Random;
+import model.exception.PaymentException;
 
 /**
  * Interfaccia per la Strategy della richiesta di effettuare un pagamento.
@@ -9,5 +8,5 @@ import java.util.Random;
  * @author GruppoNoSuchMethod
  */
 public interface PaymentStrategy {
-    public void pay();
+    boolean pay() throws PaymentException;
 }

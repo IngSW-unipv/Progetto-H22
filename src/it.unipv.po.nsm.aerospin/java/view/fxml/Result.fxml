@@ -134,7 +134,7 @@
                               <Insets left="20.0" />
                            </padding>
                         </HBox>
-                        <JFXButton onAction="#checkout" prefHeight="50.0" prefWidth="200.0" text="ACQUISTA" textAlignment="CENTER">
+                        <JFXButton onAction="#execute" prefHeight="50.0" prefWidth="200.0" text="ACQUISTA" textAlignment="CENTER">
                            <font>
                               <Font name="Comic Sans MS" size="15.0" />
                            </font>

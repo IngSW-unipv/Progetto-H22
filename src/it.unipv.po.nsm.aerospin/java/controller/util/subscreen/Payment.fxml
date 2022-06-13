@@ -39,8 +39,8 @@
                         <Label text="Data Scadenza" />
                         <HBox>
                            <children>
-                              <ChoiceBox fx:id="expiryMonth" prefHeight="26.0" prefWidth="76.0" />
-                              <TextField fx:id="expiryYear" prefHeight="26.0" prefWidth="70.0" />
+                              <TextField fx:id="expiryMonth" />
+                              <TextField fx:id="expiryYear" layoutX="83.0" layoutY="10.0" />
                            </children>
                         </HBox>
                      </children>
@@ -51,7 +51,7 @@
                   <VBox>
                      <children>
                         <Label text="CVV" />
-                        <TextField fx:id="cvv" />
+                        <TextField fx:id="cvv" onAction="#execute" />
                      </children>
                   </VBox>
                </children>

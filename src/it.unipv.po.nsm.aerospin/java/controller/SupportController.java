@@ -15,32 +15,33 @@ public class SupportController implements Initializable {
 
     @FXML JFXComboBox<String> options;
     @FXML TextArea text;
-    TicketMail emailService = new TicketMail();
+    TicketMail mail = new TicketMail();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        options.getItems().addAll("Rimborsi", "Tariffe", "Reclami", "Termini e Condizioni Generali di Trasporto", "Altro...");
-
+        options.getItems().addAll("Rimborsi", "Tariffe", "Reclami",
+                "Termini e Condizioni Generali di Trasporto", "Altro...");
     }
 
     @FXML
-    private void send(){
-        if(!options.getSelectionModel().isEmpty()){
-            //send mail
-            //get object of the mail
-
-            Thread t1 = new Thread(() -> {
-                emailService.setSubject(options.getSelectionModel().getSelectedItem());
-                emailService.setText(text.getText());
-                emailService.send("h22aerospin@gmail.com");
-            });
-            t1.start();
-
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Supporto");
-            alert.setHeaderText("La richiesta è stata inoltrata con successo");
-            alert.setContentText("Verrà contattato dal nostro supporto al più presto possibile\nA presto!");
-            alert.showAndWait();
+    private void execute(){
+        Stage stage = (Stage) Stage.getWindows().get(1);
+        if(!options.getSelectionModel().isEmpty() && !text.getText().isEmpty()) {
+            try {
+                    mail.setSubject(options.getSelectionModel().getSelectedItem());
+                    mail.setText(text.getText());
+                    mail.send("h22aerospin@gmail.com", null);
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Support");
+                    alert.setHeaderText("La richiesta è stata inoltrata con successo");
+                    alert.setContentText("Verrà contattato dal nostro supporto al più presto possibile\nA presto!");
+                    alert.showAndWait();
+                    stage.close();
+            } catch (RuntimeException e) {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("NetworkError");
+                    alert.setHeaderText("La richiesta non è stata inoltrata, riprovare");
+            }
         }
     }
 

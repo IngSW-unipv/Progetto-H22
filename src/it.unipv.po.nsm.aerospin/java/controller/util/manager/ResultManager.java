@@ -1,19 +1,22 @@
 package controller.util.manager;
 
-import com.google.zxing.WriterException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.util.Callback;
+import model.Factory;
+import model.booking.Fares;
 import model.booking.Ticket;
 import model.booking.TicketMail;
 import model.exception.NoMatchException;
 import model.persistence.CachedFlights;
 import model.persistence.entity.Booking;
 import model.persistence.entity.Flight;
+import model.persistence.entity.Passenger;
+import model.persistence.service.BookingService;
 import model.persistence.service.FlightService;
-
+import model.persistence.service.PassengerService;
 import java.io.IOException;
 import java.sql.Date;
 import java.time.LocalDate;
@@ -25,6 +28,8 @@ import java.util.stream.Collectors;
 
 public class ResultManager {
     private final FlightService service = new FlightService();
+    private final PassengerService passengerService = new PassengerService();
+    private final BookingService bookingService = new BookingService();
     private final List<Flight> results = CachedFlights.getInstance().findAll();
 
     private static final Pattern VALID_NAME_REGEX =
@@ -70,31 +75,45 @@ public class ResultManager {
         };
     }
 
-    public boolean dataCheck(String name, String surname) {
+    public void fieldsCheck(String name, String surname) throws IllegalArgumentException {
         Matcher matcher1 = VALID_NAME_REGEX.matcher(name);
         Matcher matcher2 = VALID_NAME_REGEX.matcher(surname);
+        if(!(matcher1.find() && matcher2.find())) {
+                throw new IllegalArgumentException();
+        }
+    }
 
-        return matcher1.find() && matcher2.find();
+    public void fetchOrder(Passenger passenger, Fares fare,
+                           int flightId, double price) {
+        Booking booking = new Booking();
+        booking.setPassengerId(passenger.getId());
+        booking.setFlightId(flightId);
+        booking.setFare(fare);
+        booking.setCardDetails(Integer.parseInt(
+                Factory.getInstance().getSession().getInfo().getCardNumber()));
+        booking.setOrderDate(new Date(System.currentTimeMillis()));
+        booking.setPrice(price);
+
+        passengerService.persist(passenger);
+        bookingService.persist(booking);
+        try {
+                sendTicket(booking);
+        } catch (IOException e) {
+                e.printStackTrace();
+        }
+        bookSeat(booking.getFlightById());
+    }
+
+    public void sendTicket(Booking booking) throws IOException, RuntimeException {
+        Ticket ticket = new Ticket(booking);
+        TicketMail mail = new TicketMail();
+        mail.setSubject("Il Tuo Biglietto");
+        mail.setText("Grazie per aver scelto Aerospin!");
+        mail.send(booking.getPassengerById().getUserById().getEmail(), ticket.getPath());
     }
 
     public void bookSeat(Flight flight) {
         flight.setSeats(flight.getSeats()-1);
         service.update(flight);
-    }
-
-    public void sendTicket(Booking booking) throws IOException, WriterException {
-        TicketMail service = new TicketMail();
-        Ticket ticket;
-        service.setText("Grazie per aver scelto il Aerospin.!");
-        service.setSubject("Il Tuo Biglietto");
-
-        ticket = new Ticket(booking.getPassengerById().getName(), booking.getPassengerById().getSurname(),
-                            booking.getFlightById().getRouteById().getAirportDep().getIata(),
-                            booking.getFlightById().getRouteById().getAirportArr().getIata(),
-                            booking.getFlightById().getFlightNumber(), booking.getFlightById().getScheduledDate().toString(),
-                            booking.getFlightById().getScheduledTime().toString(),
-                            booking.getFlightById().getArrivalTime().toString());
-        ticket.generateTicket();
-        service.send(booking.getPassengerById().getUserById().getEmail(), ticket.getPath());
     }
 }

@@ -85,7 +85,7 @@ public class Flight {
     }
 
     @SuppressWarnings("unused")
-    public Collection<Booking> getOrdersById() {
+    public Collection<Booking> getBookingById() {
         return bookingById;
     }
 

@@ -5,11 +5,11 @@ import javafx.collections.ObservableList;
 import model.Factory;
 import model.exception.NoMatchException;
 import model.persistence.entity.Booking;
-import model.persistence.service.OrdersService;
+import model.persistence.service.BookingService;
 import java.util.List;
 
 public class AccountManager {
-    private final OrdersService service = new OrdersService();
+    private final BookingService service = new BookingService();
 
     public ObservableList<Booking> getOrders() throws NoMatchException {
         List<Booking> booking = service.findByUser(Factory.getInstance().getSession().getUser());

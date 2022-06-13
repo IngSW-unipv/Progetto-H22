@@ -11,10 +11,10 @@ import java.util.List;
  *
  * @author GruppoNoSuchMethod
  */
-public class OrdersDao implements IDao<Booking> {
+public class BookingDao implements IDao<Booking> {
     private final Connection conn;
 
-    public OrdersDao() {
+    public BookingDao() {
         this.conn = Connection.getInstance();
     }
 

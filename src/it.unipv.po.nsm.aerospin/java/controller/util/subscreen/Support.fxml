@@ -26,7 +26,7 @@
                </VBox.margin>
             </JFXComboBox>
             <TextArea fx:id="text" prefHeight="167.0" prefWidth="326.0" />
-            <JFXButton onAction="#send" prefWidth="150.0" text="INVIA">
+            <JFXButton onAction="#execute" prefWidth="150.0" text="INVIA">
                <font>
                   <Font size="21.0" />
                </font>

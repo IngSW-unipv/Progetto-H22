@@ -9,7 +9,6 @@ import java.time.LocalDate;
  * @author GruppoNoSuchMethod
  */
 public class Info {
-
     private boolean oneway = true;
     private boolean paid = false;
     private String dep;
@@ -73,5 +72,4 @@ public class Info {
     public void setCardNumber(String cardNumber) {
         this.cardNumber = cardNumber;
     }
-
 }
