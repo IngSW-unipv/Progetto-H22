@@ -39,6 +39,10 @@ public class Airport {
         return airportName;
     }
 
+    public String getCity() {
+        return city;
+    }
+
     public String getIata() {
         return iata;
     }

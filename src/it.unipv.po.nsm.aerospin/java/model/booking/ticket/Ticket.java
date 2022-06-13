@@ -9,6 +9,7 @@ import org.apache.pdfbox.pdmodel.font.PDFont;
 import org.apache.pdfbox.pdmodel.font.PDType0Font;
 import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
 
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
@@ -21,8 +22,10 @@ public class Ticket {
     private final String bookingId;
     private final String name;
     private final String surname;
-    private final String departure;
-    private final String arrival;
+    private final String iataDep;
+    private final String iataArr;
+    private final String cityDep;
+    private final String cityArr;
     private final String flightNumber;
     private final String date;
     private final String depTime;
@@ -36,8 +39,8 @@ public class Ticket {
 //     *
 //     * @param name Nome
 //     * @param surname Cognome
-//     * @param departure Partenza
-//     * @param arrival Arrivo
+//     * @param iataDep Partenza
+//     * @param iataArr Arrivo
 //     * @param flightNumber Numero del Volo
 //     * @param date Data
 //     * @param depTime Ora Partenza
@@ -47,8 +50,10 @@ public class Ticket {
         this.bookingId = booking.getId();
         this.name = booking.getPassengerById().getName();
         this.surname = booking.getPassengerById().getSurname();
-        this.departure = booking.getFlightById().getRouteById().getAirportDep().getIata();
-        this.arrival = booking.getFlightById().getRouteById().getAirportArr().getIata();
+        this.iataDep = booking.getFlightById().getRouteById().getAirportDep().getIata();
+        this.iataArr = booking.getFlightById().getRouteById().getAirportArr().getIata();
+        this.cityDep = booking.getFlightById().getRouteById().getAirportDep().getCity();
+        this.cityArr = booking.getFlightById().getRouteById().getAirportArr().getCity();
         this.flightNumber = booking.getFlightById().getFlightNumber();
         this.date = booking.getFlightById().getScheduledDate().toString();
         this.depTime = booking.getFlightById().getScheduledTime().toString();
@@ -62,26 +67,28 @@ public class Ticket {
         PDDocument document =  PDDocument.load(file);
         PDPage page = document.getPage(0);
         PDFont font = PDType0Font.load(document,
-                new File("src/it.unipv.po.nsm.aerospin/resources/fonts/Roboto-Thin.ttf"));
+                new File("src/it.unipv.po.nsm.aerospin/resources/fonts/Kollektif.ttf"));
         PDPageContentStream contentStream = new PDPageContentStream(
                 document, page, PDPageContentStream.AppendMode.APPEND, true, true);
         contentStream.beginText();
-        contentStream.setFont(font,25);
-        contentStream.setNonStrokingColor(255,255,255);
-        contentStream.newLineAtOffset(113, 215);
-        contentStream.drawString(name);
+        contentStream.setFont(font,20);
+        float rgb = 0;
+        contentStream.setStrokingColor(Color.blue);
+
+        contentStream.newLineAtOffset(360, 720);
+            contentStream.showText(name);
         contentStream.newLineAtOffset(250,0);
-        contentStream.drawString(surname);
+            contentStream.showText(surname);
         contentStream.setFont(font,70);
         contentStream.newLineAtOffset(-275,275);
-        contentStream.drawString(departure);
+        contentStream.showText(iataDep);
         contentStream.newLineAtOffset(300,0);
-        contentStream.drawString(arrival);
+        contentStream.showText(iataArr);
         contentStream.setFont(font,25);
         contentStream.newLineAtOffset(-275,-190);
-        contentStream.drawString(flightNumber);
+        contentStream.showText(flightNumber);
         contentStream.newLineAtOffset(125,0);
-        contentStream.drawString(date);
+        contentStream.showText(date);
         contentStream.newLineAtOffset(175,0);
         contentStream.drawString(depTime);
         contentStream.newLineAtOffset(200,0);
