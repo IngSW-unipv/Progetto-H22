@@ -18,7 +18,7 @@ public class SupportController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        options.getItems().addAll("Rimborsi", "Tariffe", "Reclami",
+        options.getItems().addAll("Accesso", "Rimborsi", "Tariffe", "Reclami",
                 "Termini e Condizioni Generali di Trasporto", "Altro...");
     }
 
