@@ -1,6 +1,7 @@
 package model;
 
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleStringProperty;
 import model.booking.Info;
 import model.persistence.entity.User;
 
@@ -12,17 +13,22 @@ import model.persistence.entity.User;
 public class Session {
     private User user;
     private final SimpleBooleanProperty logged = new SimpleBooleanProperty();
+    private final SimpleStringProperty loggedButton = new SimpleStringProperty();
     private Info info;
 
     public Session () {
         logged.set(false);
+        loggedButton.set("LOGIN");
         info = new Info();
 
         logged.addListener((observable, oldValue, newValue) -> {
             logged.set(newValue);
             if(!newValue) {
-                user = null;
-                clear();
+                    user = null;
+                    loggedButton.set("LOGIN");
+                    clear();
+            } else {
+                    loggedButton.set("ACCOUNT");
             }
         });
     }
@@ -37,6 +43,10 @@ public class Session {
 
     public SimpleBooleanProperty loggedProperty() {
         return logged;
+    }
+
+    public SimpleStringProperty getLoggedButton() {
+        return loggedButton;
     }
 
     public User getUser() {

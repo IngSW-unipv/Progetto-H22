@@ -19,7 +19,7 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </JFXButton>
-            <JFXButton fx:id="login" disable="true" onAction="#goToLogin" prefHeight="45.0" prefWidth="120.0" text="ACCOUNT" textAlignment="CENTER" textFill="#f8dd94">
+            <JFXButton fx:id="login" disable="true" onAction="#goToLogin" prefHeight="45.0" prefWidth="120.0" text="LOGIN" textAlignment="CENTER" textFill="#f8dd94">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>

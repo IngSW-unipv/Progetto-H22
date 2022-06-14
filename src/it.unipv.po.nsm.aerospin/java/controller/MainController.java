@@ -29,6 +29,7 @@ public class MainController implements Initializable {
         root.getChildren().addAll(myContainer);
         subscene.setRoot(root);
 
+        login.textProperty().bind(session.getLoggedButton());
         logout.visibleProperty().bind(session.loggedProperty());
         myContainer.getScreen().addListener(loadListener);
     }

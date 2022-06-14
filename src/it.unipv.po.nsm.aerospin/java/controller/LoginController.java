@@ -68,6 +68,11 @@ public class LoginController implements Initializable, IControlledScreen {
                         newUser.setPwd(encryption.encrypt(pwd.getText()));
                         service.persist(newUser);
                         session.setUser(newUser);
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("Register Confirmation");
+                        alert.setHeaderText("Abbiamo completato la sua registrazione!");
+                        alert.setContentText("Potrà ora usare la sua area Account");
+                        alert.showAndWait();
                         myContainer.setScreen(Factory.getAccount());
                 }
         } catch (NoMatchException | IOException e) {
