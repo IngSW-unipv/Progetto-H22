@@ -2,9 +2,9 @@ package controller;
 
 import controller.util.IControlledScreen;
 import controller.util.manager.ResultManager;
-import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.ListChangeListener;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -24,6 +24,7 @@ import model.persistence.CachedFlights;
 import model.persistence.entity.Flight;
 import model.persistence.entity.Passenger;
 import view.ScreenContainer;
+
 import javax.security.auth.login.LoginException;
 import java.io.IOException;
 import java.net.URL;
@@ -194,44 +195,47 @@ public class ResultController implements Initializable, IControlledScreen {
     private void checkout() throws RuntimeException, IOException {
         myContainer.setScreen(Factory.getHome());
         Alert alert = new Alert(Alert.AlertType.NONE);
-        alert.setTitle("Ordine in Elaborazione!");
+        alert.setTitle("Processing Order");
         alert.setContentText("Stiamo elaborando il suo ordine, la preghiamo di attendere");
         alert.show();
-
-        Thread t1 = new Thread(() -> {
-            Passenger passenger = new Passenger();
-            passenger.setUserId(session.getUser().getId());
-            passenger.setName(name.getText());
-            passenger.setSurname(surname.getText());
-            passenger.setUserById(session.getUser());
-            Fares fare = (Fares) group.getSelectedToggle().getUserData();
-            if (!table1.getSelectionModel().isEmpty()) {
-                methods.fetchOrder(passenger, fare,
-                        table1.getSelectionModel().getSelectedItem(),
-                        (table1.getSelectionModel().getSelectedItem().getPrice() * multiplier));
-            }
-            if (!table2.getSelectionModel().isEmpty()) {
-                methods.fetchOrder(passenger, fare,
-                        table2.getSelectionModel().getSelectedItem(),
-                        (table2.getSelectionModel().getSelectedItem().getPrice() * multiplier));
-            }
-            session.clear();
-            CachedFlights.getInstance().clearCache();
-            Platform.runLater(() -> {
-                alert.close();
-                Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
-                alert1.setTitle("Ordine Completato!");
-                alert1.setContentText(
-                        "Il suo acquisto è confermato, riceverà una mail con le info\nA presto!");
-                alert1.showAndWait();
-                try {
-                    myContainer.setScreen(Factory.getLoad());
-                } catch (IOException e) {
-                    e.printStackTrace();
+        Task<Void> task = new Task<>() {
+            @Override
+            public Void call()  {
+                Passenger passenger = new Passenger();
+                passenger.setUserId(session.getUser().getId());
+                passenger.setName(name.getText());
+                passenger.setSurname(surname.getText());
+                passenger.setUserById(session.getUser());
+                Fares fare = (Fares) group.getSelectedToggle().getUserData();
+                if (!table1.getSelectionModel().isEmpty()) {
+                    methods.fetchOrder(passenger, fare,
+                            table1.getSelectionModel().getSelectedItem());
                 }
-            });
+                if (!table2.getSelectionModel().isEmpty()) {
+                    methods.fetchOrder(passenger, fare,
+                            table2.getSelectionModel().getSelectedItem());
+                }
+                session.clear();
+                CachedFlights.getInstance().clearCache();
+                return null;
+            }
+        };
+
+        task.setOnSucceeded(t -> {
+            alert.setResult(ButtonType.FINISH);
+            alert.close();
+            Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
+            alert1.setTitle("Order Completed!");
+            alert1.setContentText(
+                    "Il suo acquisto è confermato, riceverà una mail con le info\nA presto!");
+            alert1.showAndWait();
+            try {
+                myContainer.setScreen(Factory.getLoad());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         });
-        t1.start();
+        new Thread(task).start();
     }
 
     public void validateFields() throws LoginException, IllegalArgumentException {

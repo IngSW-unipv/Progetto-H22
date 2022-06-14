@@ -83,19 +83,18 @@ public class ResultManager {
         }
     }
 
-    public void fetchOrder(Passenger passenger, Fares fare,
-                           Flight flight, double price) throws RuntimeException {
-        passengerService.persist(passenger);
+    public void fetchOrder(Passenger p, Fares fare, Flight flight) throws RuntimeException {
+        passengerService.persist(p);
 
         Booking booking = new Booking();
-        booking.setPassengerId(passenger.getId());
+        booking.setPassengerId(p.getId());
         booking.setFlightId(flight.getId());
         booking.setFare(fare);
         booking.setCardDetails(Integer.parseInt(
                 Factory.getInstance().getSession().getInfo().getCardNumber()));
         booking.setOrderDate(new Date(System.currentTimeMillis()));
-        booking.setPrice(price);
-        booking.setPassengerById(passenger);
+        booking.setPrice(flight.getPrice() * fare.getPriceM());
+        booking.setPassengerById(p);
         booking.setFlightById(flight);
         bookingService.persist(booking);
         try {
@@ -109,7 +108,7 @@ public class ResultManager {
     public void sendTicket(Booking booking) throws IOException, RuntimeException {
         Ticket ticket = new Ticket(booking);
         TicketMail mail = new TicketMail();
-        mail.setSubject("Il Tuo Biglietto [" + booking.getId() + "]");
+        mail.setSubject("Il Tuo Biglietto [" + "APN" + booking.getId() + "]");
         mail.setText("Grazie " + booking.getPassengerById().getName()
                 + " per averci scelto!\nIn allegato trovi il tuo biglietto\nA presto!");
         mail.send(booking.getPassengerById().getUserById().getEmail(), ticket.getPath());

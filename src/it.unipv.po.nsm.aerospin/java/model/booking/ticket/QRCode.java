@@ -34,7 +34,7 @@ public class QRCode {
         Hashtable<EncodeHintType, ErrorCorrectionLevel> hintMap = new Hashtable<>();
         hintMap.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
         QRCodeWriter qrCodeWriter = new QRCodeWriter();
-        BitMatrix byteMatrix = qrCodeWriter.encode(text, BarcodeFormat.QR_CODE, 125, 125, hintMap);
+        BitMatrix byteMatrix = qrCodeWriter.encode(text, BarcodeFormat.QR_CODE, 300, 300, hintMap);
         // Make the BufferedImage that are to hold the QRCode
         int matrixEdge = byteMatrix.getWidth();
         BufferedImage image = new BufferedImage(matrixEdge, matrixEdge, BufferedImage.TYPE_INT_RGB);

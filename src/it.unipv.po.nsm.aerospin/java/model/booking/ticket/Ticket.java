@@ -47,7 +47,7 @@ public class Ticket {
 //     * @param arrTime Ora Arrivo
 //     */
     public Ticket(Booking booking) throws IOException {
-        this.bookingId = booking.getId();
+        this.bookingId = "APN" + booking.getId();
         this.name = booking.getPassengerById().getName();
         this.surname = booking.getPassengerById().getSurname();
         this.iataDep = booking.getFlightById().getRouteById().getAirportDep().getIata();
@@ -64,50 +64,53 @@ public class Ticket {
     private void generateTicket() throws IOException {
         File file = new File(
                 "src/it.unipv.po.nsm.aerospin/resources/GeneratedDoc/BoardingPassTemplate.pdf");
-        PDDocument document =  PDDocument.load(file);
-        PDPage page = document.getPage(0);
-        PDFont font = PDType0Font.load(document,
+        PDDocument doc =  PDDocument.load(file);
+        PDPage page = doc.getPage(0);
+        PDFont font = PDType0Font.load(doc,
                 new File("src/it.unipv.po.nsm.aerospin/resources/fonts/Kollektif.ttf"));
+        PDFont bold = PDType0Font.load(doc,
+                new File("src/it.unipv.po.nsm.aerospin/resources/fonts/Kollektif-Bold.ttf"));
         PDPageContentStream contentStream = new PDPageContentStream(
-                document, page, PDPageContentStream.AppendMode.APPEND, true, true);
+                doc, page, PDPageContentStream.AppendMode.APPEND, true, true);
+
         contentStream.beginText();
+        contentStream.setFont(font,75);
+        contentStream.setNonStrokingColor(new Color(0,92,185));
+        contentStream.newLineAtOffset(205,942);
+            contentStream.showText(iataDep);
+        contentStream.newLineAtOffset(265, 0);
+            contentStream.showText(iataArr);
+
         contentStream.setFont(font,20);
-        float rgb = 0;
-        contentStream.setStrokingColor(Color.blue);
+        contentStream.setNonStrokingColor(Color.black);
+        contentStream.newLineAtOffset(-252, -50);
+            contentStream.showText(cityDep);
+        contentStream.newLineAtOffset(285, 0);
+            contentStream.showText(cityArr);
 
-        contentStream.newLineAtOffset(360, 720);
-            contentStream.showText(name);
-        contentStream.newLineAtOffset(250,0);
-            contentStream.showText(surname);
-        contentStream.setFont(font,70);
-        contentStream.newLineAtOffset(-275,275);
-        contentStream.showText(iataDep);
-        contentStream.newLineAtOffset(300,0);
-        contentStream.showText(iataArr);
-        contentStream.setFont(font,25);
-        contentStream.newLineAtOffset(-275,-190);
-        contentStream.showText(flightNumber);
-        contentStream.newLineAtOffset(125,0);
-        contentStream.showText(date);
-        contentStream.newLineAtOffset(175,0);
-        contentStream.drawString(depTime);
-        contentStream.newLineAtOffset(200,0);
-        contentStream.drawString(arrTime);
+        contentStream.setFont(bold,22);
+        contentStream.newLineAtOffset(-150,-140);
+            contentStream.showText(surname + " " + name);
+        contentStream.newLineAtOffset(-102,-90);
+            contentStream.showText(flightNumber);
+        contentStream.newLineAtOffset(193,0);
+            contentStream.showText(date);
+        contentStream.newLineAtOffset(-193,-85);
+            contentStream.showText(depTime);
+        contentStream.newLineAtOffset(193,0);
+            contentStream.showText(arrTime);
         contentStream.endText();
-        //TODO VEDERE STYLE TICKET
-
         try {
             QRCode.generate(bookingId + " " + flightNumber);
         } catch (WriterException e) {
             e.printStackTrace();
         }
-
         PDImageXObject pdImage = PDImageXObject.createFromFile(
-                "src/it.unipv.po.nsm.aerospin/resources/GeneratedDoc/qr.png", document);
-        contentStream.drawImage(pdImage, 50, 50);
+                "src/it.unipv.po.nsm.aerospin/resources/GeneratedDoc/qr.png", doc);
+        contentStream.drawImage(pdImage, 255, 250);
         contentStream.close();
-        document.save(path);
-        document.close();
+        doc.save(path);
+        doc.close();
     }
 
     public String getPath(){

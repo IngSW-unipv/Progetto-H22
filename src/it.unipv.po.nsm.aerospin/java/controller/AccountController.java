@@ -36,7 +36,6 @@ public class AccountController implements Initializable, IControlledScreen {
     @FXML private TableColumn<Booking, Time> date;
     @FXML private TableColumn<Booking, String> id;
     @FXML private TableColumn<Booking, String> price;
-//TODO CONTROLLARE CREAZIONE ORDER ID
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -51,7 +50,7 @@ public class AccountController implements Initializable, IControlledScreen {
         number.setCellValueFactory(c -> new ReadOnlyStringWrapper(
                 (table.getItems().indexOf(c.getValue()) + 1) + "°"));
         date.setCellValueFactory(new PropertyValueFactory<>("orderDate"));
-        id.setCellValueFactory(new PropertyValueFactory<>("id"));
+        id.setCellValueFactory(c -> new SimpleStringProperty("APN" + c.getValue().getId()));
         price.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getPrice() + " €"));
         Thread t1 = new Thread(() -> {
             try {
