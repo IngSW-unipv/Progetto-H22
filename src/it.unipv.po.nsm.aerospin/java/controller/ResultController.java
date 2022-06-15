@@ -115,7 +115,7 @@ public class ResultController implements Initializable, IControlledScreen {
                 (ListChangeListener<Integer>) change -> price());
         table2.getSelectionModel().getSelectedIndices().addListener(
                 (ListChangeListener<Integer>) change -> price());
-        //TODO:
+
         String format = "Da %s\nA %s il %s";
         depLabel.setText(String.format(format, dep, ret, dateDep));
         table2.setPlaceholder(new Label("Volo non disponibile in questa data!"));

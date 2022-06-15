@@ -48,7 +48,7 @@ public class LoginController implements Initializable, IControlledScreen {
             pwd.clear();
         }
     }
-//TODO: conferma avvenuta registrazione
+
     @FXML
     private void register() {
         errLabel.setText("");
