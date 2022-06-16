@@ -59,8 +59,7 @@ public class LoginController implements Initializable, IControlledScreen {
                         service.findByEmail(email.getText());
                         Alert alert = new Alert(Alert.AlertType.ERROR);
                         alert.setTitle("Invalid Input");
-                        alert.setHeaderText(null);
-                        alert.setContentText("Utente già esistente!");
+                        alert.setHeaderText("Utente già esistente");
                         alert.showAndWait();
                 } catch (NoMatchException e) {
                         User newUser = new User();
@@ -85,21 +84,25 @@ public class LoginController implements Initializable, IControlledScreen {
         errLabel.setText("");
         try{
                 checkMail();
-                User logged = service.findByEmail(email.getText());
-                String decrypted = encryption.decrypt(logged.getPwd());
-                if(decrypted.equals(pwd.getText()))  {
-                        session.setUser(logged);
-                        return true;
-                } else {
-                        throw new NoMatchException("Not Matched!\n");
+                try {
+                        User logged = service.findByEmail(email.getText());
+                        String decrypted = encryption.decrypt(logged.getPwd());
+                        if (decrypted.equals(pwd.getText())) {
+                                session.setUser(logged);
+                                return true;
+                        } else {
+                                throw new NoMatchException("Not Matched!\n");
+                        }
+                } catch (NoMatchException e) {
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setTitle("Wrong Login");
+                        alert.setHeaderText("Controllare accessi o Registrarsi");
+                        alert.showAndWait();
+                        return false;
                 }
-        }catch (NoMatchException e){
-                Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setTitle("Validate Fields");
-                alert.setHeaderText(null);
-                alert.setContentText("Login Errato!\nControllare accessi o Registrarsi");
-                alert.showAndWait();
-            return false;
+        } catch (NoMatchException e){
+                pwd.clear();
+                return false;
         }
     }
 
@@ -116,7 +119,7 @@ public class LoginController implements Initializable, IControlledScreen {
     private void checkPwd() throws NoMatchException {
         Matcher matcher = VALID_PWD_REGEX.matcher(pwd.getText());
         if(!matcher.find()){
-            errLabel.setText("Inserire Password da 8-20 caratteri!");
+            errLabel.setText("Inserire Password da 8-20 caratteri");
             throw new NoMatchException("Not Matched!\n");
         }
     }

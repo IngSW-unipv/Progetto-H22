@@ -1,27 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.SubScene?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainController">
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainController">
    <children>
       <VBox prefHeight="600.0" prefWidth="140.0" spacing="10.0" style="-fx-background-color: #3675ad;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <JFXButton fx:id="home" disable="true" onAction="#goToHome" prefHeight="45.0" prefWidth="120.0" text="HOME" textAlignment="CENTER" textFill="#f8dd94">
+            <JFXButton fx:id="home" cancelButton="true" disable="true" onAction="#goToHome" prefHeight="45.0" prefWidth="120.0" text="HOME" textAlignment="CENTER" textFill="WHITE">
                <font>
-                  <Font name="System Bold" size="18.0" />
+                  <Font name="Verdana Bold" size="18.0" />
                </font></JFXButton>
-            <JFXButton fx:id="search" disable="true" onAction="#goToSearch" prefHeight="45.0" prefWidth="120.0" text="RICERCA" textAlignment="CENTER" textFill="#f8dd94">
+            <JFXButton fx:id="search" disable="true" onAction="#goToSearch" prefHeight="45.0" prefWidth="120.0" text="RICERCA" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </JFXButton>
-            <JFXButton fx:id="login" disable="true" onAction="#goToLogin" prefHeight="45.0" prefWidth="120.0" text="LOGIN" textAlignment="CENTER" textFill="#f8dd94">
+            <JFXButton fx:id="login" disable="true" onAction="#goToLogin" prefHeight="45.0" prefWidth="120.0" text="LOGIN" textAlignment="CENTER" textFill="WHITE">
                <font>
-                  <Font name="System Bold" size="18.0" />
+                  <Font name="Verdana Bold" size="17.0" />
                </font>
             </JFXButton>
          </children>
@@ -31,9 +34,9 @@
       </VBox>
       <HBox layoutY="500.0" prefHeight="65.0" prefWidth="140.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
          <children>
-            <JFXButton fx:id="logout" onAction="#logout" prefHeight="45.0" prefWidth="120.0" text="LOGOUT" textAlignment="CENTER" textFill="#f8dd94">
+            <JFXButton fx:id="logout" onAction="#logout" prefHeight="45.0" prefWidth="120.0" text="LOGOUT" textAlignment="CENTER" textFill="WHITE">
                <font>
-                  <Font name="System Bold" size="18.0" />
+                  <Font name="Verdana Bold" size="20.0" />
                </font>
             </JFXButton>
          </children>

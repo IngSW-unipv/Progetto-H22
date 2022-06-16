@@ -24,7 +24,10 @@
                <children>
                   <VBox prefWidth="355.0" spacing="5.0">
                      <children>
-                        <Label fx:id="depLabel" alignment="TOP_LEFT" prefHeight="40.0" prefWidth="340.0" text="Andata" wrapText="true" />
+                        <Label fx:id="depLabel" alignment="TOP_LEFT" prefHeight="40.0" prefWidth="340.0" text="Andata" textFill="WHITE">
+                           <font>
+                              <Font name="Verdana" size="13.0" />
+                           </font></Label>
                         <TableView fx:id="table1" prefHeight="255.0">
                           <columns>
                             <TableColumn fx:id="flightNumber1" editable="false" prefWidth="85.0" resizable="false" sortable="false" text="Numero Volo" />
@@ -46,7 +49,10 @@
                   </VBox>
                   <VBox prefWidth="355.0" spacing="5.0">
                      <children>
-                        <Label fx:id="retLabel" alignment="TOP_LEFT" prefHeight="40.0" prefWidth="340.0" text="Ritorno" />
+                        <Label fx:id="retLabel" alignment="TOP_LEFT" prefHeight="40.0" prefWidth="340.0" text="Ritorno" textFill="WHITE">
+                           <font>
+                              <Font name="Verdana" size="13.0" />
+                           </font></Label>
                         <TableView fx:id="table2" prefHeight="255.0">
                            <columns>
                               <TableColumn fx:id="flightNumber2" editable="false" prefWidth="85.0" resizable="false" sortable="false" text="Numero Volo" />
@@ -62,53 +68,74 @@
                   </VBox>
                </children>
             </HBox>
-            <HBox alignment="CENTER_LEFT" fillHeight="false" prefHeight="200.0" spacing="60.0">
+            <HBox alignment="CENTER_LEFT" fillHeight="false" prefHeight="200.0" spacing="30.0">
                <children>
-                  <VBox spacing="20.0">
+                  <VBox prefWidth="280.0" spacing="20.0">
                      <children>
                         <HBox alignment="CENTER_RIGHT" spacing="10.0">
                            <children>
-                              <Label text="Nome" />
+                              <Label text="Nome" textFill="WHITE">
+                                 <font>
+                                    <Font name="Verdana" size="15.0" />
+                                 </font></Label>
                               <TextField fx:id="name" prefWidth="150.0" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER_RIGHT" spacing="10.0">
                            <children>
-                              <Label text="Cognome" />
+                              <Label text="Cognome" textFill="WHITE">
+                                 <font>
+                                    <Font name="Verdana" size="15.0" />
+                                 </font></Label>
                               <TextField fx:id="surname" prefWidth="150.0" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER_RIGHT" spacing="10.0">
                            <children>
-                              <Label text="Data di Nascita" textAlignment="CENTER" wrapText="true" />
+                              <Label text="Data di Nascita" textAlignment="CENTER" textFill="WHITE">
+                                 <font>
+                                    <Font name="Verdana" size="15.0" />
+                                 </font></Label>
                               <DatePicker fx:id="birthDate" onAction="#ageCheck" prefWidth="150.0" />
                            </children>
                         </HBox>
                      </children>
                      <HBox.margin>
-                        <Insets left="10.0" />
+                        <Insets />
                      </HBox.margin>
                   </VBox>
                   <VBox>
                      <children>
-                        <Label alignment="CENTER" prefWidth="133.0" text="Selezionare Tariffa:" textAlignment="RIGHT" wrapText="true" />
-                        <JFXToggleButton alignment="CENTER_LEFT" graphicTextGap="2.0" size="7.0" text="THE AEROSPIN">
+                        <Label alignment="CENTER" prefWidth="140.0" text="Scegli Tariffa:" textAlignment="RIGHT" textFill="WHITE">
+                           <font>
+                              <Font name="Verdana" size="15.0" />
+                           </font></Label>
+                        <JFXToggleButton alignment="CENTER_LEFT" graphicTextGap="2.0" size="7.0" text="THE AEROSPIN" textFill="WHITE" toggleColor="WHITE" toggleLineColor="#f8dd94">
                            <toggleGroup>
                               <ToggleGroup fx:id="group" />
                            </toggleGroup>
+                           <font>
+                              <Font name="Verdana" size="14.0" />
+                           </font>
                            <userData>
                               <Fares fx:constant = "THEAEROSPIN" />
                            </userData>
                         </JFXToggleButton>
-                        <JFXToggleButton alignment="CENTER_LEFT" graphicTextGap="2.0" size="7.0" text="PLUS" toggleGroup="$group">
-                            <userData>
-                                <Fares fx:constant = "PLUS" />
-                            </userData>
+                        <JFXToggleButton alignment="CENTER_LEFT" graphicTextGap="2.0" size="7.0" text="PLUS" textFill="WHITE" toggleColor="WHITE" toggleGroup="$group" toggleLineColor="#f8dd94">
+                           <font>
+                              <Font name="Verdana" size="14.0" />
+                           </font>
+                           <userData>
+                              <Fares fx:constant = "THEAEROSPIN" />
+                           </userData>
                         </JFXToggleButton>
-                        <JFXToggleButton alignment="CENTER_LEFT" graphicTextGap="2.0" selected="true" size="7.0" text="STANDARD" toggleGroup="$group">
-                            <userData>
-                                <Fares fx:constant = "STANDARD" />
-                            </userData>
+                        <JFXToggleButton alignment="CENTER_LEFT" graphicTextGap="2.0" selected="true" size="7.0" text="STANDARD" textFill="WHITE" toggleColor="WHITE" toggleGroup="$group" toggleLineColor="#f8dd94">
+                           <font>
+                              <Font name="Verdana" size="14.0" />
+                           </font>
+                           <userData>
+                              <Fares fx:constant = "THEAEROSPIN" />
+                           </userData>
                         </JFXToggleButton>
                      </children>
                   </VBox>
@@ -116,12 +143,12 @@
                      <children>
                         <HBox alignment="CENTER_LEFT" spacing="10.0">
                            <children>
-                              <Label text="Costo:   €">
+                              <Label text="Costo:   €" textFill="WHITE">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="costLabel" alignment="CENTER" contentDisplay="CENTER">
+                              <Label fx:id="costLabel" alignment="CENTER" contentDisplay="CENTER" textFill="WHITE">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
@@ -134,16 +161,13 @@
                               <Insets left="20.0" />
                            </padding>
                         </HBox>
-                        <JFXButton onAction="#execute" prefHeight="50.0" prefWidth="200.0" text="ACQUISTA" textAlignment="CENTER">
+                        <JFXButton onAction="#execute" prefHeight="50.0" prefWidth="200.0" text="ACQUISTA" textAlignment="CENTER" textFill="WHITE">
                            <font>
-                              <Font name="Comic Sans MS" size="15.0" />
+                              <Font name="Verdana" size="24.0" />
                            </font>
                         </JFXButton>
                         <Label fx:id="errLabel" text="Completare prima tutti i campi!" textFill="RED" visible="false" />
                      </children>
-                     <padding>
-                        <Insets left="10.0" />
-                     </padding>
                   </VBox>
                </children>
                <padding>
