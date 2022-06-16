@@ -7,7 +7,7 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Objects;
-//TODO CONTROLLARE TUTTI GLI HEADER DEI ALERT
+
 public class AerospinApp extends Application {
     @Override
     public void start(Stage stage) throws IOException {
