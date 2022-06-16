@@ -176,10 +176,9 @@ public class ResultController implements Initializable, IControlledScreen {
         } catch (LoginException e) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Login Error");
-                alert.setContentText("""
-                        Utente non loggato!
-                        Prima di poter procedere effettuare il Login
-                        Se non si è registrato, procedere alla Registrazione""");
+                alert.setHeaderText("Utente non loggato!");
+                alert.setContentText("Prima di poter procedere effettuare il Login\n" +
+                        "Se non si è registrato, procedere alla Registrazione");
                 alert.showAndWait();
         } catch (IllegalArgumentException e) {
                 errLabel.setVisible(true);
