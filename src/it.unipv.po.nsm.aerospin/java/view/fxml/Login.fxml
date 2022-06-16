@@ -10,65 +10,59 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="860.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
-    <children>
-      <HBox prefHeight="600.0" prefWidth="860.0" spacing="50.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <VBox alignment="CENTER" spacing="20.0">
-               <children>
-                  <HBox alignment="CENTER_RIGHT" spacing="5.0">
-                     <children>
-                          <Label text="ID" textFill="WHITE">
-                           <font>
-                              <Font name="Verdana" size="20.0" />
-                           </font>
-                        </Label>
-                          <TextField fx:id="email" cacheShape="false" prefWidth="250.0" promptText="example@domain.com">
-                           <font>
-                              <Font name="Verdana" size="18.0" />
-                           </font>
-                        </TextField>
-                     </children>
-                  </HBox>
-                  <Label fx:id="errLabel" alignment="CENTER" contentDisplay="CENTER" textAlignment="CENTER" textFill="#f8dd94">
-                     <font>
-                        <Font name="Verdana" size="14.0" />
-                     </font>
-                  </Label>
-                  <HBox alignment="CENTER_RIGHT" spacing="5.0">
-                     <children>
-                          <Label text="Password" textFill="WHITE">
-                           <font>
-                              <Font name="Verdana" size="20.0" />
-                           </font>
-                        </Label>
-                          <PasswordField fx:id="pwd" onAction="#login" prefWidth="250.0" promptText="password">
-                           <font>
-                              <Font name="Verdana" size="18.0" />
-                           </font>
-                        </PasswordField>
-                     </children>
-                  </HBox>
-               </children>
-            </VBox>
-            <VBox alignment="CENTER" spacing="30.0">
-               <children>
-                  <JFXButton defaultButton="true" onAction="#login" prefHeight="65.0" prefWidth="250.0" text="LOGIN" textFill="WHITE">
-                     <font>
-                        <Font name="Verdana Bold" size="24.0" />
-                     </font>
-                  </JFXButton>
-                  <JFXButton onAction="#register" prefHeight="65.0" prefWidth="250.0" text="REGISTRATI" textFill="WHITE">
-                     <font>
-                        <Font name="Verdana Bold" size="24.0" />
-                     </font>
-                  </JFXButton>
-               </children>
-            </VBox>
-         </children>
-         <padding>
-            <Insets bottom="150.0" left="100.0" right="100.0" top="150.0" />
-         </padding>
-      </HBox>
-    </children>
+<AnchorPane prefHeight="600.0" prefWidth="860.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controller.LoginController">
+    <HBox prefHeight="600.0" prefWidth="860.0" spacing="50.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+          AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <padding>
+            <Insets bottom="150.0" left="100.0" right="100.0" top="150.0"/>
+        </padding>
+        <VBox alignment="CENTER" spacing="20.0">
+            <HBox alignment="CENTER_RIGHT" spacing="5.0">
+                <Label text="ID" textFill="WHITE">
+                    <font>
+                        <Font name="Verdana" size="20.0"/>
+                    </font>
+                </Label>
+                <TextField fx:id="email" cacheShape="false" prefWidth="250.0"
+                           promptText="example@domain.com">
+                    <font>
+                        <Font name="Verdana" size="18.0"/>
+                    </font>
+                </TextField>
+            </HBox>
+            <Label fx:id="errLabel" alignment="CENTER" contentDisplay="CENTER" textAlignment="CENTER"
+                   textFill="#f8dd94">
+                <font>
+                    <Font name="Verdana" size="14.0"/>
+                </font>
+            </Label>
+            <HBox alignment="CENTER_RIGHT" spacing="5.0">
+                <Label text="Password" textFill="WHITE">
+                    <font>
+                        <Font name="Verdana" size="20.0"/>
+                    </font>
+                </Label>
+                <PasswordField fx:id="pwd" onAction="#login" prefWidth="250.0" promptText="password">
+                    <font>
+                        <Font name="Verdana" size="18.0"/>
+                    </font>
+                </PasswordField>
+            </HBox>
+        </VBox>
+        <VBox alignment="CENTER" spacing="30.0">
+            <JFXButton defaultButton="true" onAction="#login" prefHeight="65.0" prefWidth="250.0" text="LOGIN"
+                       textFill="WHITE">
+                <font>
+                    <Font name="Verdana Bold" size="24.0"/>
+                </font>
+            </JFXButton>
+            <JFXButton onAction="#register" prefHeight="65.0" prefWidth="250.0" text="REGISTRATI"
+                       textFill="WHITE">
+                <font>
+                    <Font name="Verdana Bold" size="24.0"/>
+                </font>
+            </JFXButton>
+        </VBox>
+    </HBox>
 </AnchorPane>

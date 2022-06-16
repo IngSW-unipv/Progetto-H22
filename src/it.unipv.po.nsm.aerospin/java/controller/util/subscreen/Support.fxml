@@ -9,48 +9,53 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SupportController">
-   <children>
-      <VBox alignment="CENTER" prefHeight="300.0" prefWidth="400.0" style="-fx-background-color: #3675ad;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <Label prefWidth="400.0" text="Richiesta Assistenza" textFill="WHITE">
-               <font>
-                  <Font name="Verdana" size="24.0" />
-               </font>
-            </Label>
-            <Label prefWidth="400.0" text="Descrivere il problema nel form e poi fare click su &quot;INVIA&quot;" textFill="WHITE">
-               <VBox.margin>
-                  <Insets bottom="10.0" />
-               </VBox.margin>
-               <font>
-                  <Font name="Verdana" size="12.0" />
-               </font>
-            </Label>
-            <JFXComboBox fx:id="options" focusColor="WHITE" prefWidth="400.0" promptText="Selezionare argomento" unFocusColor="WHITE">
-               <VBox.margin>
-                  <Insets right="100.0" />
-               </VBox.margin>
-            </JFXComboBox>
-            <TextArea fx:id="text" promptText="Descrivere qui il problema">
-               <font>
-                  <Font name="Verdana" size="14.0" />
-               </font></TextArea>
-            <JFXButton defaultButton="true" onAction="#execute" prefHeight="65.0" prefWidth="250.0" text="INVIA" textFill="WHITE">
-               <font>
-                  <Font name="Verdana Bold" size="24.0" />
-               </font>
-               <VBox.margin>
-                  <Insets top="10.0" />
-               </VBox.margin>
-            </JFXButton>
-         </children>
-         <padding>
-            <Insets bottom="10.0" left="20.0" right="20.0" top="20.0" />
-         </padding>
-      </VBox>
-      <JFXButton cancelButton="true" layoutX="334.0" layoutY="19.0" onAction="#cancel" text="ANNULLA" textFill="WHITE" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+<AnchorPane prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controller.SupportController">
+   <VBox alignment="CENTER" prefHeight="300.0" prefWidth="400.0" style="-fx-background-color: #3675ad;"
+         AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+         AnchorPane.topAnchor="0.0">
+      <padding>
+         <Insets bottom="10.0" left="20.0" right="20.0" top="20.0"/>
+      </padding>
+      <Label prefWidth="400.0" text="Richiesta Assistenza" textFill="WHITE">
          <font>
-            <Font name="Verdana Bold" size="15.0" />
-         </font></JFXButton>
-   </children>
+            <Font name="Verdana" size="24.0"/>
+         </font>
+      </Label>
+      <Label prefWidth="400.0" text="Descrivere il problema nel form e poi fare click su &quot;INVIA&quot;"
+             textFill="WHITE">
+         <VBox.margin>
+            <Insets bottom="10.0"/>
+         </VBox.margin>
+         <font>
+            <Font name="Verdana" size="12.0"/>
+         </font>
+      </Label>
+      <JFXComboBox fx:id="options" focusColor="WHITE" prefWidth="400.0" promptText="Selezionare argomento"
+                   unFocusColor="WHITE">
+         <VBox.margin>
+            <Insets right="100.0"/>
+         </VBox.margin>
+      </JFXComboBox>
+      <TextArea fx:id="text" promptText="Descrivere qui il problema">
+         <font>
+            <Font name="Verdana" size="14.0"/>
+         </font>
+      </TextArea>
+      <JFXButton defaultButton="true" onAction="#execute" prefHeight="65.0" prefWidth="250.0" text="INVIA"
+                 textFill="WHITE">
+         <font>
+            <Font name="Verdana Bold" size="24.0"/>
+         </font>
+         <VBox.margin>
+            <Insets top="10.0"/>
+         </VBox.margin>
+      </JFXButton>
+   </VBox>
+   <JFXButton cancelButton="true" layoutX="334.0" layoutY="19.0" onAction="#cancel" text="ANNULLA" textFill="WHITE"
+              AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+      <font>
+         <Font name="Verdana Bold" size="15.0"/>
+      </font>
+   </JFXButton>
 </AnchorPane>
