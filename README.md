@@ -42,7 +42,7 @@ L'implementazione consiste di un'interfaccia grafica attraverso la quale il clie
 Per poter utilizzare l'applicazione è sufficiente scaricare ed eseguire il file [.jar](https://github.com/IngSW-unipv/Progetto-H22/releases/download/Final/Aerospin.jar) \
 Per sfruttare tutte le funzionalità è necessario registrarsi dalla pagina `Login`. \
 Successivamente sarà possibile accedere con le credenziali inserite in fase di registrazione. \
-Inserire un indirizzo email valido per poter poi ricevere il proprio biglietto direttamente nella propria casella di posta. 
+Inserire un indirizzo email valido per ricevere il proprio biglietto direttamente nella propria casella di posta. 
 
 ### Screenshots
 Home\
