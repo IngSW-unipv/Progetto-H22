@@ -162,6 +162,8 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+*.iml
+
 target
 src/it.unipv.po.nsm.aerospin/resources/GeneratedDoc/BoardingPass.pdf
 src/it.unipv.po.nsm.aerospin/resources/GeneratedDoc/qr.png
