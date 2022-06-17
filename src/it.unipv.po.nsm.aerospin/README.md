@@ -1,89 +1,59 @@
-# Project Name
-> Outline a brief description of your project.
-> Live demo [_here_](https://www.example.com). <!-- If you have the project hosted somewhere, include the link here. -->
+# Progetto-H22 `Aerospin`
+![malaysia](https://user-images.githubusercontent.com/66534866/174287514-c3d9d0b8-d2e4-41d2-b7da-ea3d67e040f2.jpg)
+## Gruppo NoSuchMethod
 
-## Table of Contents
+### Table of Contents
 * [General Info](#general-information)
 * [Technologies Used](#technologies-used)
 * [Features](#features)
-* [Screenshots](#screenshots)
 * [Setup](#setup)
-* [Usage](#usage)
+* [Screenshots](#screenshots)
 * [Project Status](#project-status)
-* [Room for Improvement](#room-for-improvement)
-* [Acknowledgements](#acknowledgements)
-* [Contact](#contact)
-<!-- * [License](#license) -->
+* [License](#license)
 
+***
 
-## General Information
-- Provide general information about your project here.
-- What problem does it (intend to) solve?
-- What is the purpose of your project?
-- Why did you undertake it?
-<!-- You don't have to answer all the questions - just the ones relevant to your project. -->
+### General Information
+> Abbiamo sviluppato un'applicazione per la compagnia aerea Aerospin.\
+Siamo andati alla ricerca di una soluzione che permetta di gestire, da parte di un cliente, ogni possibile aspetto della sua prenotazione - dalla ricerca voli alla gestione degli ordini effettuati.\
+Una volta completata la prenotazione (oppure una volta richiesta l’assistenza) i biglietti (o eventuali informazioni utili) verranno inviati via email.\
+L'implementazione consiste di un'interfaccia grafica attraverso la quale il cliente, dopo essersi autenticato, potrà effettuare una serie di operazioni e visualizzare particolari risultati.
 
+### Technologies Used
+- Java JDK 17
+- JavaFX 17
+- JFoenix 9
+- ControlFX 11
+- JavaMail API (com.sun.mail)
+- Apache PDFBox (org.apache.pdfbox)
+- Google ZXing (com.google.zxing)
+- MySQL 8
+- Google Cloud Platform
 
-## Technologies Used
-- Tech 1 - version 1.0
-- Tech 2 - version 2.0
-- Tech 3 - version 3.0
+### Features
+- Ricerca volo
+- Registra account
+- Acquista volo
+- Ricevi biglietto via email
+- Consulta prenotazioni
+- Richiedi assistenza
 
-
-## Features
-List the ready features here:
-- Awesome feature 1
-- Awesome feature 2
-- Awesome feature 3
-
-
-## Screenshots
-![Example screenshot](./img/screenshot.png)
-<!-- If you have screenshots you'd like to share, include them here. -->
-
-
-## Setup
+### Setup
 What are the project requirements/dependencies? Where are they listed? A requirements.txt or a Pipfile.lock file perhaps? Where is it located?
 
 Proceed to describe how to install / setup one's local environment / get started with the project.
 
+### Screenshots
+Home\
+![fcb3ae81-a299-45b4-96fa-6ecd36e2c00a](https://user-images.githubusercontent.com/66534866/174296210-9ca4af72-cc61-4588-ba7a-5a6504b789cd.jpg)\
+Search\
+![3d3a599e-498c-4939-a5bb-ca601b1a9cce](https://user-images.githubusercontent.com/66534866/174296346-b016e3f9-148d-41e9-9784-e99bbd86ed94.jpg)\
+Login\
+![bdebc149-3b27-4f35-9f7d-f616f68a4225](https://user-images.githubusercontent.com/66534866/174296359-a188d3c8-d6c7-4007-a4e6-d758ff25d5cf.jpg)
 
-## Usage
-How does one go about using it?
-Provide various use cases and code examples here.
+### Project Status
+Project is _complete_
+<!--_no longer being worked on_-->
 
-`write-your-code-here`
-
-
-## Project Status
-Project is: _in progress_ / _complete_ / _no longer being worked on_. If you are no longer working on it, provide reasons why.
-
-
-## Room for Improvement
-Include areas you believe need improvement / could be improved. Also add TODOs for future development.
-
-Room for improvement:
-- Improvement to be done 1
-- Improvement to be done 2
-
-To do:
-- Feature to be added 1
-- Feature to be added 2
-
-
-## Acknowledgements
-Give credit here.
-- This project was inspired by...
-- This project was based on [this tutorial](https://www.example.com).
-- Many thanks to...
-
-
-## Contact
-Created by [@flynerdpl](https://www.flynerd.pl/) - feel free to contact me!
-
-
-<!-- Optional -->
-<!-- ## License -->
-<!-- This project is open source and available under the [... License](). -->
-
-<!-- You don't have to include all sections - just the one's relevant to your project -->
+### License
+This project is licensed under the terms of the MIT license.to your project
