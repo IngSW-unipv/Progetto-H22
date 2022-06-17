@@ -39,9 +39,7 @@ L'implementazione consiste di un'interfaccia grafica attraverso la quale il clie
 - Richiedi assistenza
 
 ### Setup
-What are the project requirements/dependencies? Where are they listed? A requirements.txt or a Pipfile.lock file perhaps? Where is it located?
-
-Proceed to describe how to install / setup one's local environment / get started with the project.
+Per poter usare l'applicazione è sufficiente scaricare ed eseguire il file jar presente al seguente link: https://github.com/IngSW-unipv/Progetto-H22/releases/download/Final/Aerospin.jar
 
 ### Screenshots
 Home\
