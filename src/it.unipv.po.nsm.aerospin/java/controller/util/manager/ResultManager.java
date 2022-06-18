@@ -40,6 +40,15 @@ public class ResultManager {
     private static final Pattern VALID_NAME_REGEX =
             Pattern.compile("^[a-zA-z]{2,15}$");
 
+    /**
+     * Metodo che rende visibili i voli disponibili per tratta e per disponibilità di posti.
+     *
+     * @param s1 Aeroporto di partenza.
+     * @param s2 Aeroporto di arrivo.
+     * @param s3 Data del volo.
+     * @return Vengono fornite le partenze disponibili.
+     * @throws NoMatchException Segnala se il confronto non è andato a buon fine.
+     */
     public ObservableList<Flight> getList(String s1, String s2, Date s3) throws NoMatchException {
         List<Flight> departures = results.stream()
                 .filter(o -> o.getRouteById().getAirportDep().equalsString(s1))
@@ -59,11 +68,23 @@ public class ResultManager {
      *  e permetto di selezionare solo date passate
      *  come data di nascita
      */
+    /**
+     * Metodo che fornita in ingresso la data di nascita restituisce true se l'età è maggiore di 16.
+     *
+     * @param birthDate Data di nascita del cliente.
+     * @return true se il cliente ha più di 16 anni, false altrimenti.
+     */
     public boolean isMinor(LocalDate birthDate){
         LocalDate today = LocalDate.now();
         Period age = Period.between(birthDate, today);
         return age.getYears() < 16;
     }
+
+    /**
+     * Metodo che permette di selezionare solo date di nascita passate.
+     *
+     * @return Oggetto Callback relativo alla GUI.
+     */
     public Callback<DatePicker, DateCell> ageRange() {
         return new Callback<>() {
             @Override
@@ -80,6 +101,13 @@ public class ResultManager {
         };
     }
 
+    /**
+     * Metodo per la verifica tramite REGEX delle informazioni fornite dal cliente.
+     *
+     * @param name Nome.
+     * @param surname Cognome.
+     * @throws IllegalArgumentException Segnala un errore nelle informazioni fornite dal cliente.
+     */
     public void fieldsCheck(String name, String surname) throws IllegalArgumentException {
         Matcher matcher1 = VALID_NAME_REGEX.matcher(name);
         Matcher matcher2 = VALID_NAME_REGEX.matcher(surname);
@@ -88,6 +116,14 @@ public class ResultManager {
         }
     }
 
+    /**
+     * Metodo per la scansione degli ordini di un passeggero.
+     *
+     * @param p Passeggero.
+     * @param fare Tariffa di viaggio.
+     * @param flight Numero del volo.
+     * @throws RuntimeException Segnala un errore durante l'esecuzione del processo.
+     */
     public void fetchOrder(Passenger p, Fares fare, Flight flight) throws RuntimeException {
         passengerService.persist(p);
 
@@ -110,6 +146,13 @@ public class ResultManager {
         bookSeat(booking.getFlightById());
     }
 
+    /**
+     * Metodo per l'invio tramite e-mail del biglietto.
+     *
+     * @param booking Viene passata come argomento la prenotazione.
+     * @throws IOException Segnala che si è verificato un errore durante le operazioni di I/O.
+     * @throws RuntimeException Segnala un errore durante l'esecuzione del processo.
+     */
     public void sendTicket(Booking booking) throws IOException, RuntimeException {
         Ticket ticket = new Ticket(booking);
         TicketMail mail = new TicketMail();
@@ -119,6 +162,11 @@ public class ResultManager {
         mail.send(booking.getPassengerById().getUserById().getEmail(), ticket.getPath());
     }
 
+    /**
+     * Metodo che tiene traccia dei posti disponibili a bordo di un volo.
+     *
+     * @param flight Numero del volo.
+     */
     public void bookSeat(Flight flight) {
         flight.setSeats(flight.getSeats()-1);
         service.update(flight);

@@ -19,6 +19,11 @@ import java.util.stream.Collectors;
 public class SearchManager {
     private final List<Flight> results = CachedFlights.getInstance().findAll();
 
+    /**
+     * Metodo che ottiene gli aeroporti di partenza.
+     *
+     * @return Aeroporti di partenza.
+     */
     public ObservableList<String> getDepartures() {
         List<String> departures = results.stream()
                 .map(o->o.getRouteById().getAirportDep().getAirportName())
@@ -26,6 +31,12 @@ public class SearchManager {
         return FXCollections.observableArrayList(departures);
     }
 
+    /**
+     * Metodo che ottiene gli aeroporti di arrivo dato in ingresso l'aeroporto di partenza.
+     *
+     * @param departure Aeroporto di partenza.
+     * @return Aeroporti di arrivo.
+     */
     public ObservableList<String> getArrivals(String departure) {
         List<String> arrivals = results.stream()
                 .filter(o -> o.getRouteById().getAirportDep().equalsString(departure))
@@ -37,6 +48,14 @@ public class SearchManager {
     /*  Controllo se posso selezionare a/r
      *  in base agli aereoporti selezionati
      */
+
+    /**
+     * Metodo che verifica se è possibile selezionare un viaggio andata/ritorno in base agli aeroporti di partenza/destinazione selezionati.
+     *
+     * @param dep Aeroporto di partenza.
+     * @param ret Aeroporto di arrivo.
+     * @return true se andata/ritorno del viaggio disponibile, false altrimenti.
+     */
     public boolean checkRoute(String dep, String ret) {
         List<Flight> a = results.stream()
                 .filter(o -> o.getRouteById().getAirportDep().equalsString(dep))
@@ -47,6 +66,13 @@ public class SearchManager {
 
     /*  Mantengo le date selezionabili tra
      *  Oggi e i prossimi 4 Mesi
+     */
+
+    /**
+     * Metodo che rende selezionabili le date a partire da oggi per i prossimi 4 mesi.
+     *
+     * @param from Data attuale.
+     * @return Oggetto Callback relativo alla GUI.
      */
     public Callback<DatePicker, DateCell> bookingRange(LocalDate from) {
         int maxMonth = 4;

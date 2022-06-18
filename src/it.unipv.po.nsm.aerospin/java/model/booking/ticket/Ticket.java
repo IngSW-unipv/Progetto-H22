@@ -33,19 +33,13 @@ public class Ticket {
     private final String path =
             "src/it.unipv.po.nsm.aerospin/resources/GeneratedDoc/BoardingPass.pdf";
 
-    //TODO RIVEDERE DOPO MODIFICHE
-//    /**
-//     * Costruttore dell'oggetto biglietto.
-//     *
-//     * @param name Nome
-//     * @param surname Cognome
-//     * @param iataDep Partenza
-//     * @param iataArr Arrivo
-//     * @param flightNumber Numero del Volo
-//     * @param date Data
-//     * @param depTime Ora Partenza
-//     * @param arrTime Ora Arrivo
-//     */
+
+    /**
+     * Costruttore dell'oggetto biglietto.
+     *
+     * @param booking Viene passata la prenotazione.
+     * @throws IOException Segnala che si è verificato un errore durante le operazioni di I/O.
+     */
     public Ticket(Booking booking) throws IOException {
         this.bookingId = "APN" + booking.getId();
         this.name = booking.getPassengerById().getName();
@@ -61,6 +55,11 @@ public class Ticket {
         generateTicket();
     }
 
+    /**
+     * Metodo per la generazione di un biglietto.
+     *
+     * @throws IOException Segnala che si è verificato un errore durante le operazioni di I/O.
+     */
     private void generateTicket() throws IOException {
         File file = new File(
                 "src/it.unipv.po.nsm.aerospin/resources/GeneratedDoc/BoardingPassTemplate.pdf");
@@ -113,6 +112,11 @@ public class Ticket {
         doc.close();
     }
 
+    /**
+     * Metodo per ottenere un indirizzo di memoria.
+     *
+     * @return Indirizzo.
+     */
     public String getPath(){
         return path;
     }

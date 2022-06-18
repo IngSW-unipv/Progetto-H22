@@ -16,6 +16,12 @@ import java.util.List;
 public class AccountManager {
     private final BookingService service = new BookingService();
 
+    /**
+     * Metodo per ordinare le prenotazioni di un cliente.
+     *
+     * @return -1 Se l'ordinamento tramite confronto è riuscito, 0 altrimenti.
+     * @throws NoMatchException Segnala se il confronto non è andato a buon fine.
+     */
     public ObservableList<Booking> getOrders() throws NoMatchException {
         List<Booking> booking = service.findByUser(Factory.getInstance().getSession().getUser());
         booking.sort((o1, o2) -> {
@@ -32,6 +38,12 @@ public class AccountManager {
         }
     }
 
+    /**
+     * Metodo per la creazione di una stringa relativa ai dati della prenotazione.
+     *
+     * @param booking Viene passata come argomento la prenotazione.
+     * @return Viene generata una stringa che contiene tutti i dettagli della prenotazione.
+     */
     public String getDetailText(Booking booking) {
         return "Il " + booking.getOrderDate()
                 + " hai acquistato il volo " + booking.getFlightById().getFlightNumber()
