@@ -13,6 +13,12 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Classe Controller, relativa al Pattern MVC, che si occupa di gestire la logica dell'applicativo e le richieste del cliente.
+ * Classe contenente l'interazione con JavaFX.
+ *
+ * @author GruppoNoSuchMethod
+ */
 public class MainController implements Initializable {
     private final ScreenContainer myContainer = Factory.getInstance().createContainer();
     private final Session session = Factory.getInstance().getSession();

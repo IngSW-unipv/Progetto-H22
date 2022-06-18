@@ -18,6 +18,12 @@ import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Classe Controller, relativa al Pattern MVC, che si occupa di gestire la logica dell'applicativo e le richieste del cliente.
+ * Classe contenente l'interazione con JavaFX.
+ *
+ * @author GruppoNoSuchMethod
+ */
 public class LoginController implements Initializable, IControlledScreen {
     private ScreenContainer myContainer;
     private final Session session = Factory.getInstance().getSession();

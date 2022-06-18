@@ -13,6 +13,12 @@ import java.net.URL;
 import java.util.Calendar;
 import java.util.ResourceBundle;
 
+/**
+ * Classe Controller, relativa al Pattern MVC, che si occupa di gestire la logica dell'applicativo e le richieste del cliente.
+ * Classe contenente l'interazione con JavaFX.
+ *
+ * @author GruppoNoSuchMethod
+ */
 public class PaymentController implements Initializable {
     private final Session session = Factory.getInstance().getSession();
 

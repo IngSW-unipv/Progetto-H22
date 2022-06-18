@@ -12,6 +12,12 @@ import java.net.URL;
 import java.sql.Date;
 import java.util.ResourceBundle;
 
+/**
+ * Classe Controller, relativa al Pattern MVC, che si occupa di gestire la logica dell'applicativo e le richieste del cliente.
+ * Classe contenente l'interazione con JavaFX.
+ *
+ * @author GruppoNoSuchMethod
+ */
 public class SupportController implements Initializable {
     @FXML private JFXComboBox<String> options;
     @FXML private TextArea text;

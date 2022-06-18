@@ -6,6 +6,11 @@ import view.ScreenContainer;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Classe Controller, relativa al Pattern MVC, che si occupa di gestire la logica dell'applicativo.
+ *
+ * @author GruppoNoSuchMethod
+ */
 public class HomeController implements Initializable, IControlledScreen {
 
     @Override

@@ -35,6 +35,12 @@ import java.time.LocalDate;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
+/**
+ * Classe Controller, relativa al Pattern MVC, che si occupa di gestire la logica dell'applicativo e le richieste del cliente.
+ * Classe contenente l'interazione con JavaFX.
+ *
+ * @author GruppoNoSuchMethod
+ */
 public class ResultController implements Initializable, IControlledScreen {
     private ScreenContainer myContainer;
     private final Session session = Factory.getInstance().getSession();

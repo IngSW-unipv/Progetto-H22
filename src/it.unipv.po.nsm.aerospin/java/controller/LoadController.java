@@ -14,6 +14,12 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * Classe Controller, relativa al Pattern MVC, che si occupa di gestire la logica dell'applicativo e le richieste del cliente.
+ * Classe contenente l'interazione con JavaFX.
+ *
+ * @author GruppoNoSuchMethod
+ */
 public class LoadController implements Initializable, IControlledScreen {
     private ScreenContainer myContainer;
     private final CachedFlights service = CachedFlights.getInstance();
