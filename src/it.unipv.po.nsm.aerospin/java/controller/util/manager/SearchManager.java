@@ -11,6 +11,11 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Classe Manager che si occupa di gestire la logica dell'applicativo, relativa alla Search.
+ *
+ * @author GruppoNoSuchMethod
+ */
 public class SearchManager {
     private final List<Flight> results = CachedFlights.getInstance().findAll();
 

@@ -8,6 +8,11 @@ import model.persistence.entity.Booking;
 import model.persistence.service.BookingService;
 import java.util.List;
 
+/**
+ * Classe Manager che si occupa di gestire la logica dell'applicativo, relativa all'Account.
+ *
+ * @author GruppoNoSuchMethod
+ */
 public class AccountManager {
     private final BookingService service = new BookingService();
 

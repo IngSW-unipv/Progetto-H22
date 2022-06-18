@@ -26,6 +26,11 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
+/**
+ * Classe Manager che si occupa di gestire la logica dell'applicativo, relativa al Result.
+ *
+ * @author GruppoNoSuchMethod
+ */
 public class ResultManager {
     private final FlightService service = new FlightService();
     private final PassengerService passengerService = new PassengerService();
