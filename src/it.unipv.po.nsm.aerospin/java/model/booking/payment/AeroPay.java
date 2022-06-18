@@ -9,6 +9,13 @@ import java.util.Random;
  * @author GruppoNoSuchMethod
  */
 public class AeroPay implements PaymentStrategy {
+
+    /**
+     * Metodo che effettua il processo di pagamento.
+     *
+     * @return true se il pagamento è riuscito, altrimenti genera un messaggio di errore tramite l'eccezione PaymentException
+     * @throws PaymentException Segnala che il pagamento non è andato a buon fine.
+     */
     @Override
     public boolean pay() throws PaymentException {
         Random rn = new Random();

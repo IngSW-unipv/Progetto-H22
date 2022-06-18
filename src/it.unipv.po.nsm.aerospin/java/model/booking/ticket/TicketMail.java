@@ -26,6 +26,13 @@ public class TicketMail {
         this.subject = subject;
     }
 
+    /**
+     * Metodo per la generazione e l'invio della e-mail relativa alla prenotazione.
+     *
+     * @param to Destinatario e-mail.
+     * @param filePath Indirizzo in memoria del file da inviare.
+     * @throws RuntimeException Segnala un errore durante l'esecuzione del processo.
+     */
     public void send(String to, String filePath) throws RuntimeException {
         Properties props = new Properties();
         props.put("mail.smtp.ssl.protocols", "TLSv1.2");

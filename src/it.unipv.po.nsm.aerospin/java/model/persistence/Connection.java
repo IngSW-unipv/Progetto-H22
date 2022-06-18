@@ -8,6 +8,11 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import model.exception.DBException;
 
+/**
+ * Classe che si occupa di gestire la connessione, la sessione e la transazione.
+ *
+ * @author GruppoNoSuchMethod
+ */
 public class Connection {
     private Session currentSession;
     private Transaction currentTransaction;

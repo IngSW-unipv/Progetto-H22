@@ -4,6 +4,11 @@ import model.persistence.entity.Flight;
 import model.persistence.service.FlightService;
 import java.util.List;
 
+/**
+ * Classe che si occupa di memorizzare in locale i voli disponibili sul database.
+ *
+ * @author GruppoNoSuchMethod
+ */
 public class CachedFlights {
     private static CachedFlights instance = null;
     private static FlightService flightService;
