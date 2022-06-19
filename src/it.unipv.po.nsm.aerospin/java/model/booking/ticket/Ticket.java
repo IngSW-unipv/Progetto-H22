@@ -61,14 +61,13 @@ public class Ticket {
      * @throws IOException Segnala che si è verificato un errore durante le operazioni di I/O.
      */
     private void generateTicket() throws IOException {
-        File file = new File(
-                "src/it.unipv.po.nsm.aerospin/resources/GeneratedDoc/BoardingPassTemplate.pdf");
+        File file = new File(getClass().getClassLoader().getResource("GeneratedDoc/BoardingPassTemplate.pdf").getFile());
         PDDocument doc =  PDDocument.load(file);
         PDPage page = doc.getPage(0);
         PDFont font = PDType0Font.load(doc,
-                new File("src/it.unipv.po.nsm.aerospin/resources/fonts/Kollektif.ttf"));
+                new File(getClass().getClassLoader().getResource("fonts/Kollektif.ttf").getFile()));
         PDFont bold = PDType0Font.load(doc,
-                new File("src/it.unipv.po.nsm.aerospin/resources/fonts/Kollektif-Bold.ttf"));
+                new File(getClass().getClassLoader().getResource("fonts/Kollektif-Bold.ttf").getFile()));
         PDPageContentStream contentStream = new PDPageContentStream(
                 doc, page, PDPageContentStream.AppendMode.APPEND, true, true);
 
@@ -105,7 +104,7 @@ public class Ticket {
             e.printStackTrace();
         }
         PDImageXObject pdImage = PDImageXObject.createFromFile(
-                "src/it.unipv.po.nsm.aerospin/resources/GeneratedDoc/qr.png", doc);
+                getClass().getClassLoader().getResource("GeneratedDoc/qr.png").getFile(), doc);
         contentStream.drawImage(pdImage, 255, 250);
         contentStream.close();
         doc.save(path);
