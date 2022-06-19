@@ -4,6 +4,11 @@ import model.persistence.dao.PassengerDao;
 import model.persistence.entity.Passenger;
 import java.util.List;
 
+/**
+ * Classe Service che si occupa di gestire la logica delle azioni richieste dal cliente nell'applicativo.
+ *
+ * @author GruppoNoSuchMethod
+ */
 public class PassengerService implements IService<Passenger> {
     private static PassengerDao passengerDao;
 

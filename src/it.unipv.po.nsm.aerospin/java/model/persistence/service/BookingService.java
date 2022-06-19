@@ -5,6 +5,11 @@ import model.persistence.entity.Booking;
 import model.persistence.entity.User;
 import java.util.List;
 
+/**
+ * Classe Service che si occupa di gestire la logica delle azioni richieste dal cliente nell'applicativo.
+ *
+ * @author GruppoNoSuchMethod
+ */
 public class BookingService implements IService<Booking> {
     private static BookingDao bookingDao;
 

@@ -5,6 +5,11 @@ import model.persistence.dao.UserDao;
 import model.persistence.entity.User;
 import java.util.List;
 
+/**
+ * Classe Service che si occupa di gestire la logica delle azioni richieste dal cliente nell'applicativo.
+ *
+ * @author GruppoNoSuchMethod
+ */
 public class UserService implements IService<User> {
     private static UserDao userDao;
 
