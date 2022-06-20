@@ -9,26 +9,28 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class ResultManagerTest {
 
+    ResultManger resultManger = new ResultManager();
+
     @Test
     public void testIsMinor() {
         LocalDate y15 = LocalDate.now().minusYears(15);
         LocalDate y16 = LocalDate.now().minusYears(16);
         LocalDate y17 = LocalDate.now().minusYears(17);
 
-        assertTrue(ResultManager.isMinor(y15));
+        assertTrue(resultManger.isMinor(y15));
 
-        assertFalse(ResultManager.isMinor(y16));
-        assertFalse(ResultManager.isMinor(y17));
+        assertFalse(resultManger.isMinor(y16));
+        assertFalse(resultManger.isMinor(y17));
     }
 
     @Test
     public void testFieldsCheck() {
-        assertDoesNotThrow(() -> ResultManager.fieldsCheck("ab","cd"));
-        assertThrows(IllegalArgumentException.class, () -> ResultManager.fieldsCheck("a","cd"));
+        assertDoesNotThrow(() -> resultManger.fieldsCheck("ab","cd"));
+        assertThrows(IllegalArgumentException.class, () -> resultManger.fieldsCheck("a","cd"));
 
-        assertThrows(IllegalArgumentException.class, () -> ResultManager.fieldsCheck("abc", null));
-        assertThrows(IllegalArgumentException.class, () -> ResultManager.fieldsCheck(null, "abc"));
-        assertThrows(IllegalArgumentException.class, () -> ResultManager.fieldsCheck(null, null));
+        assertThrows(IllegalArgumentException.class, () -> resultManger.fieldsCheck("abc", null));
+        assertThrows(IllegalArgumentException.class, () -> resultManger.fieldsCheck(null, "abc"));
+        assertThrows(IllegalArgumentException.class, () -> resultManger.fieldsCheck(null, null));
     }
 
 }

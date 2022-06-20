@@ -74,7 +74,7 @@ public class ResultManager {
      * @param birthDate Data di nascita del cliente.
      * @return true se il cliente ha più di 16 anni, false altrimenti.
      */
-    public static boolean isMinor(LocalDate birthDate){
+    public boolean isMinor(LocalDate birthDate){
         LocalDate today = LocalDate.now();
         Period age = Period.between(birthDate, today);
         return age.getYears() < 16;
@@ -108,9 +108,7 @@ public class ResultManager {
      * @param surname Cognome.
      * @throws IllegalArgumentException Segnala un errore nelle informazioni fornite dal cliente.
      */
-    public static void fieldsCheck(String name, String surname) throws IllegalArgumentException {
-        if (name == null || surname == null) throw new IllegalArgumentException();
-
+    public void fieldsCheck(String name, String surname) throws IllegalArgumentException {
         Matcher matcher1 = VALID_NAME_REGEX.matcher(name);
         Matcher matcher2 = VALID_NAME_REGEX.matcher(surname);
         if(!(matcher1.find() && matcher2.find())) {
