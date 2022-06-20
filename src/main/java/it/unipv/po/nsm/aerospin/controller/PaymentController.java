@@ -20,7 +20,7 @@ import java.util.ResourceBundle;
  * @author GruppoNoSuchMethod
  */
 public class PaymentController implements Initializable {
-    private final Session session = Factory.getInstance().getSession();
+    private final Info info = Factory.getInstance().getSession().getInfo();
 
     @FXML private TextField cardNumber;
     @FXML private TextField cardName;

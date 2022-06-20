@@ -1,7 +1,7 @@
 package model.exception;
 
 /**
- * Classe che si occupa di gestire l'eccezione NoMatchException.
+ * Classe che si occupa di gestire il non rispetto dei formati di input richiesti
  *
  * @author GruppoNoSuchMethod
  */

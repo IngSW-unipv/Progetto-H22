@@ -22,27 +22,16 @@ public class Factory {
     private static final String screen4File = "fxml/Login.fxml";
     private static final String account = "account";
     private static final String screen5File = "fxml/Account.fxml";
-    private final Session session;
 
-    // Hide the contructor
     private Factory() {
-        session = new Session();
+        Session.getInstance();
     }
 
-    /**
-     * Metodo che verifica la presenza di un solo costruttore, creandone uno se non ancora presente o restituendolo se già presente.
-     *
-     * @return instance
-     */
     public static Factory getInstance() {
         if(instance == null) {
             instance = new Factory();
         }
         return instance;
-    }
-
-    public Session getSession() {
-        return session;
     }
 
     /**

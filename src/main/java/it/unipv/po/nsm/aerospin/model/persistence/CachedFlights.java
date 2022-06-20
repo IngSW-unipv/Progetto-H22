@@ -5,7 +5,7 @@ import model.persistence.service.FlightService;
 import java.util.List;
 
 /**
- * Classe che si occupa di memorizzare in locale i voli disponibili sul database.
+ * Classe Singleton che si occupa di memorizzare in locale i voli disponibili sul database
  *
  * @author GruppoNoSuchMethod
  */

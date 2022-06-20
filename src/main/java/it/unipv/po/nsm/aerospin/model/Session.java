@@ -6,11 +6,12 @@ import model.persistence.entity.User;
 import java.sql.Date;
 
 /**
- * Classe che si occupa della gestione di una sessione utente.
+ * Classe Singleton che si occupa della sessione utente
  *
  * @author GruppoNoSuchMethod
  */
 public class Session {
+    private static Session instance = null;
     private User user;
     private final SimpleBooleanProperty logged = new SimpleBooleanProperty();
     private final SimpleStringProperty loggedButton = new SimpleStringProperty();
@@ -23,7 +24,7 @@ public class Session {
     private double price;
     private String cardNumber;
 
-    public Session () {
+    private Session() {
         logged.set(false);
         loggedButton.set("LOGIN");
 
@@ -39,6 +40,23 @@ public class Session {
         });
     }
 
+    public static Session getInstance() {
+        if(instance == null) {
+            instance = new Session();
+        }
+        return instance;
+    }
+
+    public void clear() {
+        oneway = true;
+        paid = false;
+        dep = null;
+        ret = null;
+        dateDep = null;
+        dateRet = null;
+        cardNumber = null;
+    }
+
     public User getUser() {
         return user;
     }
@@ -50,6 +68,10 @@ public class Session {
 
     public boolean isLogged() {
         return logged.get();
+    }
+
+    public void setLogged(boolean logged) {
+        this.logged.set(logged);
     }
 
     public SimpleBooleanProperty loggedProperty() {

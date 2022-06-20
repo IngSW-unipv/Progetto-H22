@@ -186,6 +186,7 @@ public class ResultController implements Initializable, IControlledScreen {
     private void execute() {
         try {
                 validateFields();
+                info.setPrice(price);
                 Parent root1 = FXMLLoader.load(Objects.requireNonNull(
                         getClass().getResource("util/subscreen/Payment.fxml")));
                 Stage childStage = new Stage();

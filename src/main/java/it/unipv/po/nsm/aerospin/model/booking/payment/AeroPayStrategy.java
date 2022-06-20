@@ -4,14 +4,14 @@ import model.exception.PaymentException;
 import java.util.Random;
 
 /**
- * Classe che si occupa di gestire il pagamento.
+ * Classe che si occupa di gestire il pagamento
  *
  * @author GruppoNoSuchMethod
  */
 public class AeroPayStrategy implements IPaymentStrategy {
 
     /**
-     * Metodo che effettua il processo di pagamento.
+     * Metodo che effettua il processo di pagamento con probabilità di successo variabile
      *
      * @return true se il pagamento è riuscito, altrimenti propaga una PaymentException Exception
      * @throws PaymentException Segnala che il pagamento non è andato a buon fine

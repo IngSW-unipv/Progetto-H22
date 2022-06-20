@@ -21,14 +21,10 @@ import java.util.HashMap;
  */
 public class ScreenContainer extends StackPane {
     //Contiene gli screen da mostrare
-    /**
-     * Costruttore della struttura dati che contiene le schermate dell'applicativo.
-     */
     private final HashMap<String, String> screens = new HashMap<>();
     private final SimpleStringProperty actualScreen = new SimpleStringProperty();
 
 
-    //Ritorna il nome dello Screen attuale
     /**
      * Metodo che permette di ottenere lo Screen attuale
      *
@@ -38,13 +34,11 @@ public class ScreenContainer extends StackPane {
         return actualScreen;
     }
 
-    //Carica il file fxml, aggiunge lo screen alla collection e
-    //infine recupero il controller.
     /**
      * Metodo che carica nella HashMap il nome dello Screen e il suo path
      *
-     * @param name Nome schermata.
-     * @param resource Indirizzo di memoria.
+     * @param name Screen name
+     * @param path resource path
      */
     public void loadScreen(String name, String path) {
         try {

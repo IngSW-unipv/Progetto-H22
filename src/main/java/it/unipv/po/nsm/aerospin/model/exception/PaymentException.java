@@ -1,7 +1,7 @@
 package model.exception;
 
 /**
- * Classe che si occupa di gestire l'eccezione PaymentException.
+ * Classe che si occupa di gestire problemi durante il pagamento
  *
  * @author GruppoNoSuchMethod
  */

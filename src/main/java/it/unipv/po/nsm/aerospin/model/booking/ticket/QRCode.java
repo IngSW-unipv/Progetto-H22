@@ -20,11 +20,12 @@ import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
  * @author GruppoNoSuchMethod
  */
 public class QRCode {
+
     /**
-     * Metodo per la generazione di un QR Code.
+     * Metodo per la generazione del QR Code
      *
-     * @throws IOException Segnala che si è verificato un errore durante le operazioni di I/O.
-     * @throws WriterException Segnala un errore nel processo di scrittura di Maven/Hibernate.
+     * @throws IOException Segnala che si è verificato un errore durante il salvataggio del file
+     * @throws WriterException Segnala un errore nella codifica del file
      */
     public static void generate(String text) throws IOException, WriterException {
         File qrFile = new File("src/main/resources/GeneratedDoc/qr.png");

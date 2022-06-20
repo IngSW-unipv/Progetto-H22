@@ -15,8 +15,8 @@ import java.io.IOException;
 import java.util.Objects;
 
 /**
- * Classe che si occupa della creazione e della gestione di un biglietto.
- *
+ * Classe che si occupa della generazione del Ticket acquistato
+
  * @author GruppoNoSuchMethod
  */
 public class Ticket {
@@ -34,12 +34,11 @@ public class Ticket {
     private final String path =
             "src/main/resources/GeneratedDoc/BoardingPass.pdf";
 
-
     /**
-     * Costruttore dell'oggetto biglietto.
+     * Costruttore della classe Ticket
      *
-     * @param booking Viene passata la prenotazione.
-     * @throws IOException Segnala che si è verificato un errore durante le operazioni di I/O.
+     * @param booking Viene data in input la prenotazione effettuata
+     * @throws IOException Segnala che si è verificato un errore durante le operazioni di I/O
      */
     public Ticket(Booking booking) throws IOException {
         this.bookingId = "APN" + booking.getId();
@@ -57,9 +56,9 @@ public class Ticket {
     }
 
     /**
-     * Metodo per la generazione di un biglietto.
+     * Metodo per la generazione del Ticket
      *
-     * @throws IOException Segnala che si è verificato un errore durante le operazioni di I/O.
+     * @throws IOException Segnala che si è verificato un errore durante le operazioni di I/O
      */
     private void generateTicket() throws IOException {
         File file = new File(Objects.requireNonNull(getClass().getClassLoader().getResource(
@@ -118,7 +117,7 @@ public class Ticket {
     /**
      * Metodo per ottenere il path del Ticket generato
      *
-     * @return Indirizzo.
+     * @return path
      */
     public String getPath(){
         return path;
