@@ -15,8 +15,7 @@ import java.util.ResourceBundle;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Classe Controller, relativa al Pattern MVC, che si occupa di gestire la logica dell'applicativo e le richieste del cliente.
- * Classe contenente l'interazione con JavaFX.
+ * Controller dello screen Load, effettua le operazioni di caricamento iniziale
  *
  * @author GruppoNoSuchMethod
  */
@@ -26,12 +25,6 @@ public class LoadController implements Initializable, IControlledScreen {
 
     @FXML private Label loading;
 
-    /**
-     * Metodo che si occupa di gestire le operazioni dell'interfaccia grafica di caricamento dei voli disponibili.
-     *
-     * @param url URL della risorsa.
-     * @param resourceBundle Oggetto locale.
-     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Task<Void> task = new Task<>() {

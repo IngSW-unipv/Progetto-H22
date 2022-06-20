@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * Classe Manager che si occupa di gestire la logica dell'applicativo, relativa alla Search.
+ * Classe che si occupa di gestire alcune logiche del SearchController, abbassando l'accoppiamento
  *
  * @author GruppoNoSuchMethod
  */
@@ -20,9 +20,9 @@ public class SearchManager {
     private final List<Flight> results = CachedFlights.getInstance().findAll();
 
     /**
-     * Metodo che ottiene gli aeroporti di partenza.
+     * Metodo che restituisce gli aeroporti da cui parte almeno una qualsiasi rotta
      *
-     * @return Aeroporti di partenza.
+     * @return Lista di aeroporti di partenza
      */
     public ObservableList<String> getDepartures() {
         List<String> departures = results.stream()
@@ -32,10 +32,10 @@ public class SearchManager {
     }
 
     /**
-     * Metodo che ottiene gli aeroporti di arrivo dato in ingresso l'aeroporto di partenza.
+     * Metodo che restituisce gli aeroporti raggiungibili da un dato aeroporto di partenza
      *
-     * @param departure Aeroporto di partenza.
-     * @return Aeroporti di arrivo.
+     * @param departure Aeroporto di partenza
+     * @return Lista di aeroporti di arrivo
      */
     public ObservableList<String> getArrivals(String departure) {
         List<String> arrivals = results.stream()
@@ -45,16 +45,12 @@ public class SearchManager {
         return FXCollections.observableArrayList(arrivals);
     }
 
-    /*  Controllo se posso selezionare a/r
-     *  in base agli aereoporti selezionati
-     */
-
     /**
-     * Metodo che verifica se è possibile selezionare un viaggio andata/ritorno in base agli aeroporti di partenza/destinazione selezionati.
+     * Metodo che verifica l'esistenza di un volo di ritorno tra gli aereoporti selezionati
      *
-     * @param dep Aeroporto di partenza.
-     * @param ret Aeroporto di arrivo.
-     * @return true se andata/ritorno del viaggio disponibile, false altrimenti.
+     * @param dep Aeroporto di partenza
+     * @param ret Aeroporto di arrivo
+     * @return true se andata/ritorno disponibile, false altrimenti.
      */
     public boolean checkRoute(String dep, String ret) {
         List<Flight> a = results.stream()
@@ -64,15 +60,11 @@ public class SearchManager {
         return a.size() > 0;
     }
 
-    /*  Mantengo le date selezionabili tra
-     *  Oggi e i prossimi 4 Mesi
-     */
-
     /**
-     * Metodo che rende selezionabili le date a partire da oggi per i prossimi 4 mesi.
+     * Metodo che rende selezionabili le date da una data e per i futuri 4 mesi
      *
-     * @param from Data attuale.
-     * @return Oggetto Callback relativo alla GUI.
+     * @param from Data di partenza
+     * @return Callback Object per il DatePicker
      */
     public Callback<DatePicker, DateCell> bookingRange(LocalDate from) {
         int maxMonth = 4;

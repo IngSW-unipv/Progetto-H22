@@ -35,7 +35,7 @@ public class ScreenContainer extends StackPane {
     }
 
     /**
-     * Metodo che carica nella HashMap il nome dello Screen e il suo path
+     * Metodo che aggiunge nella HashMap il nome dello Screen e il suo path
      *
      * @param name Screen name
      * @param path resource path
@@ -49,9 +49,9 @@ public class ScreenContainer extends StackPane {
     }
 
     /**
-     * Metodo per mostrare lo Screen richiamato.
+     * Metodo che carica lo Screen richiamato.
      * Se è già presente uno Screen, viene sostituito
-     * Altrimenti viene caricato direttamente
+     * altrimenti viene caricato direttamente
      *
      * @param name Screen name
      * @throws IOException Segnala che si è verificato un errore nel caricamento dello Screen

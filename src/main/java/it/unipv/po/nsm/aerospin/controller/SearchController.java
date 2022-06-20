@@ -11,6 +11,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import model.Factory;
+import model.Session;
 import model.exception.NoMatchException;
 import org.controlsfx.control.SearchableComboBox;
 import view.ScreenContainer;
@@ -20,8 +21,7 @@ import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 /**
- * Classe Controller, relativa al Pattern MVC, che si occupa di gestire la logica dell'applicativo e le richieste del cliente.
- * Classe contenente l'interazione con JavaFX.
+ * Controller dello screen Search
  *
  * @author GruppoNoSuchMethod
  */
@@ -29,7 +29,7 @@ public class SearchController implements Initializable, IControlledScreen {
     private ScreenContainer myContainer;
     private final SearchManager methods = new SearchManager();
     private final ResultManager results = new ResultManager();
-    private final Info info = Factory.getInstance().getSession().getInfo();
+    private final Session session = Session.getInstance();
 
     @FXML private SearchableComboBox<String> scbDep;
     @FXML private SearchableComboBox<String> scbRet;
@@ -40,12 +40,6 @@ public class SearchController implements Initializable, IControlledScreen {
 
     private final SimpleBooleanProperty error = new SimpleBooleanProperty(false);
 
-    /**
-     * Metodo che si occupa di gestire le operazioni dell'interfaccia grafica di selezione della ricerca solo andata o andata/ritorno.
-     *
-     * @param url URL della risorsa.
-     * @param rb Oggetto locale.
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         date1.setDayCellFactory(methods.bookingRange(LocalDate.now()));
@@ -70,7 +64,7 @@ public class SearchController implements Initializable, IControlledScreen {
     }
 
     /**
-     * Metodo che si occupa di verificare la presenza di un aeroporto di arrivo.
+     * Metodo che carica nella ComboBox la lista di aereoporti raggiungibili da quello di partenza selezionato
      */
     @FXML
     private void findArrivals() {
@@ -82,7 +76,7 @@ public class SearchController implements Initializable, IControlledScreen {
     }
 
     /**
-     * Metodo che si occupa di verificare la presenza di una rotta fra gli aeroporti selezionati.
+     * Metodo gestisce la disponibilità o meno dell'opzione Andata/Ritorno
      */
     @FXML
     private void checkRoute() {
@@ -96,9 +90,8 @@ public class SearchController implements Initializable, IControlledScreen {
         }
     }
 
-    //Gestisco date2>>date1
     /**
-     * Metodo che si occupa di gestire date di ritorno successive a quelle di andata.
+     * Metodo che filtra le date selezionabili per il volo di ritorno
      */
     @FXML
     private void returnDate() {
@@ -107,20 +100,20 @@ public class SearchController implements Initializable, IControlledScreen {
     }
 
     /**
-     * Metodo che si occupa di gestire le operazioni dell'interfaccia grafica di ricerca del volo.
+     * Metodo che carica la schermata Result se la ricerca di voli disponibili ha ottenuto dei risultati
      */
     @FXML
     private void goToResult() {
         try {
                 validateFields();
-                info.setOneway(!selectToggle.isSelected());
-                info.setDep(scbDep.getSelectionModel().getSelectedItem());
-                info.setRet(scbRet.getSelectionModel().getSelectedItem());
-                info.setDateDep(date1.getValue());
+                session.setOneway(!selectToggle.isSelected());
+                session.setDep(scbDep.getSelectionModel().getSelectedItem());
+                session.setRet(scbRet.getSelectionModel().getSelectedItem());
+                session.setDateDep(date1.getValue());
                 if(selectToggle.isSelected()) {
-                    info.setDateRet(date2.getValue());
+                    session.setDateRet(date2.getValue());
                 }
-                results.getList(info.getDep(), info.getRet(), info.getDateDep());
+                results.getList(session.getDep(), session.getRet(), session.getDateDep());
                 myContainer.setScreen(Factory.getResult());
         } catch (IOException e) {
                 Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -136,9 +129,9 @@ public class SearchController implements Initializable, IControlledScreen {
     }
 
     /**
-     * Metodo che si occupa di verificare la validità dei campi inseriti.
+     * Metodo che si occupa di verificare la validità dei campi inseriti
      *
-     * @throws IOException Segnala che si è verificato un errore durante le operazioni di I/O.
+     * @throws IOException Segnala che si è verificato un errore di input
      */
     public void validateFields() throws IOException {
         if( scbRet.getSelectionModel().isEmpty() || date1.getValue() == null

@@ -14,14 +14,13 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
- * Classe Controller, relativa al Pattern MVC, che si occupa di gestire la logica dell'applicativo e le richieste del cliente.
- * Classe contenente l'interazione con JavaFX.
+ * Controller dello screen Main, contiene gli Screens in una SubScene e permette lo spostamento tra questi
  *
  * @author GruppoNoSuchMethod
  */
 public class MainController implements Initializable {
     private final ScreenContainer myContainer = Factory.getInstance().createContainer();
-    private final Session session = Factory.getInstance().getSession();
+    private final Session session = Session.getInstance();
 
     @FXML private SubScene subscene;
     @FXML private JFXButton home;
@@ -29,12 +28,6 @@ public class MainController implements Initializable {
     @FXML private JFXButton login;
     @FXML private JFXButton logout;
 
-    /**
-     * Metodo che si occupa di gestire le sessioni dell'interfaccia grafica.
-     *
-     * @param url URL della risorsa.
-     * @param rb Oggetto locale.
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         Group root = new Group();
@@ -47,9 +40,9 @@ public class MainController implements Initializable {
     }
 
     /**
-     * Metodo che si occupa del ritorno alla schermata home dell'interfaccia grafica.
+     * Metodo che carica la schermata Home
      *
-     * @throws IOException Segnala che si è verificato un errore durante le operazioni di I/O.
+     * @throws IOException Segnala che si è verificato un errore durante le operazioni di I/O
      */
     @FXML
     private void goToHome() throws IOException {
@@ -57,9 +50,9 @@ public class MainController implements Initializable {
     }
 
     /**
-     * Metodo che si occupa del ritorno alla schermata di ricerca dell'interfaccia grafica.
+     * Metodo che carica la schermata Search
      *
-     * @throws IOException Segnala che si è verificato un errore durante le operazioni di I/O.
+     * @throws IOException Segnala che si è verificato un errore durante le operazioni di I/O
      */
     @FXML
     private void goToSearch() throws IOException {
@@ -67,9 +60,9 @@ public class MainController implements Initializable {
     }
 
     /**
-     * Metodo che si occupa del ritorno alla schermata di login dell'interfaccia grafica.
+     * Metodo che carica la schermata Login o Account, in base alla condizione di logged
      *
-     * @throws IOException Segnala che si è verificato un errore durante le operazioni di I/O.
+     * @throws IOException Segnala che si è verificato un errore durante le operazioni di I/O
      */
     @FXML
     private void goToLogin() throws IOException {
@@ -81,20 +74,18 @@ public class MainController implements Initializable {
     }
 
     /**
-     * Metodo che si occupa del logout utente nell'interfaccia grafica.
+     * Metodo che effettua il logout utente e carica schermata Home
      *
-     * @throws IOException Segnala che si è verificato un errore durante le operazioni di I/O.
+     * @throws IOException Segnala che si è verificato un errore durante le operazioni di I/O
      */
     @FXML
     private void logout() throws IOException {
-        //cambia stato come non loggato
         session.setLogged(false);
         myContainer.setScreen(Factory.getHome());
     }
 
-    //commentare
     /**
-     * Costruttore dell'oggetto Listener, con relativo aggiornamento al successivo oggetto Observable.
+     * Metodo che istanzia il ChangeListener al variare dello Screen caricato
      */
     private final ChangeListener<String> loadListener = new ChangeListener<>() {
         @Override

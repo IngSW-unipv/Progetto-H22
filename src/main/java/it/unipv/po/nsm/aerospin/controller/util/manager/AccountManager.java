@@ -2,14 +2,14 @@ package controller.util.manager;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import model.Factory;
+import model.Session;
 import model.exception.NoMatchException;
 import model.persistence.entity.Booking;
 import model.persistence.service.BookingService;
 import java.util.List;
 
 /**
- * Classe Manager che si occupa di gestire la logica dell'applicativo, relativa all'Account.
+ * Classe che si occupa di gestire alcune logiche del AccountController, abbassando l'accoppiamento
  *
  * @author GruppoNoSuchMethod
  */
@@ -17,13 +17,13 @@ public class AccountManager {
     private final BookingService service = new BookingService();
 
     /**
-     * Metodo per ordinare le prenotazioni di un cliente.
+     * Metodo che restituisce le prenotazioni effettuate dall'utente loggato
      *
-     * @return -1 Se l'ordinamento tramite confronto è riuscito, 0 altrimenti.
-     * @throws NoMatchException Segnala se il confronto non è andato a buon fine.
+     * @return Lista di prenotazioni
+     * @throws NoMatchException Segnala che non è stata trovata alcuna prenotaione
      */
     public ObservableList<Booking> getOrders() throws NoMatchException {
-        List<Booking> booking = service.findByUser(Factory.getInstance().getSession().getUser());
+        List<Booking> booking = service.findByUser(Session.getInstance().getUser());
         booking.sort((o1, o2) -> {
                 if(o1.getOrderDate().before(o2.getOrderDate())) {
                     return -1;
@@ -39,10 +39,11 @@ public class AccountManager {
     }
 
     /**
-     * Metodo per la creazione di una stringa relativa ai dati della prenotazione.
+     * Metodo per la creazione di una stringa contentente i dettagli della prenotazione,
+     * da utilizzare come dettaglio della prenotazione effettuata
      *
-     * @param booking Viene passata come argomento la prenotazione.
-     * @return Viene generata una stringa che contiene tutti i dettagli della prenotazione.
+     * @param booking Prenotazione effettuata
+     * @return Stringa con dettagli
      */
     public String getDetailText(Booking booking) {
         return "Il " + booking.getOrderDate()

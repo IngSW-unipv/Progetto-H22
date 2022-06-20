@@ -4,6 +4,7 @@ import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import model.persistence.entity.User;
 import java.sql.Date;
+import java.time.LocalDate;
 
 /**
  * Classe Singleton che si occupa della sessione utente
@@ -118,16 +119,16 @@ public class Session {
         return dateDep;
     }
 
-    public void setDateDep(Date dateDep) {
-        this.dateDep = dateDep;
+    public void setDateDep(LocalDate dateDep) {
+        this.dateDep = Date.valueOf(dateDep);
     }
 
     public Date getDateRet() {
         return dateRet;
     }
 
-    public void setDateRet(Date dateRet) {
-        this.dateRet = dateRet;
+    public void setDateRet(LocalDate dateRet) {
+        this.dateRet = Date.valueOf(dateRet);
     }
 
     public double getPrice() {
