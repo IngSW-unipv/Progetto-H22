@@ -29,6 +29,12 @@ public class MainController implements Initializable {
     @FXML private JFXButton login;
     @FXML private JFXButton logout;
 
+    /**
+     * Metodo che si occupa di gestire le sessioni dell'interfaccia grafica.
+     *
+     * @param url URL della risorsa.
+     * @param rb Oggetto locale.
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         Group root = new Group();
@@ -40,16 +46,31 @@ public class MainController implements Initializable {
         myContainer.getScreen().addListener(loadListener);
     }
 
+    /**
+     * Metodo che si occupa del ritorno alla schermata home dell'interfaccia grafica.
+     *
+     * @throws IOException Segnala che si è verificato un errore durante le operazioni di I/O.
+     */
     @FXML
     private void goToHome() throws IOException {
         myContainer.setScreen(Factory.getHome());
     }
 
+    /**
+     * Metodo che si occupa del ritorno alla schermata di ricerca dell'interfaccia grafica.
+     *
+     * @throws IOException Segnala che si è verificato un errore durante le operazioni di I/O.
+     */
     @FXML
     private void goToSearch() throws IOException {
         myContainer.setScreen(Factory.getSearch());
     }
 
+    /**
+     * Metodo che si occupa del ritorno alla schermata di login dell'interfaccia grafica.
+     *
+     * @throws IOException Segnala che si è verificato un errore durante le operazioni di I/O.
+     */
     @FXML
     private void goToLogin() throws IOException {
         if(session.isLogged()) {
@@ -59,6 +80,11 @@ public class MainController implements Initializable {
         }
     }
 
+    /**
+     * Metodo che si occupa del logout utente nell'interfaccia grafica.
+     *
+     * @throws IOException Segnala che si è verificato un errore durante le operazioni di I/O.
+     */
     @FXML
     private void logout() throws IOException {
         //cambia stato come non loggato
@@ -67,6 +93,9 @@ public class MainController implements Initializable {
     }
 
     //commentare
+    /**
+     * Costruttore dell'oggetto Listener, con relativo aggiornamento al successivo oggetto Observable.
+     */
     private final ChangeListener<String> loadListener = new ChangeListener<>() {
         @Override
         public void changed(ObservableValue<? extends String> o, String s1, String s2) {

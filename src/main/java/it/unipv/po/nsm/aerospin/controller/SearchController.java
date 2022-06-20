@@ -41,6 +41,12 @@ public class SearchController implements Initializable, IControlledScreen {
 
     private final SimpleBooleanProperty error = new SimpleBooleanProperty(false);
 
+    /**
+     * Metodo che si occupa di gestire le operazioni dell'interfaccia grafica di selezione della ricerca solo andata o andata/ritorno.
+     *
+     * @param url URL della risorsa.
+     * @param rb Oggetto locale.
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         date1.setDayCellFactory(methods.bookingRange(LocalDate.now()));
@@ -64,6 +70,9 @@ public class SearchController implements Initializable, IControlledScreen {
         myContainer = screenParent;
     }
 
+    /**
+     * Metodo che si occupa di verificare la presenza di un aeroporto di arrivo.
+     */
     @FXML
     private void findArrivals() {
         scbRet.getSelectionModel().clearSelection();
@@ -73,6 +82,9 @@ public class SearchController implements Initializable, IControlledScreen {
         error.set(false);
     }
 
+    /**
+     * Metodo che si occupa di verificare la presenza di una rotta fra gli aeroporti selezionati.
+     */
     @FXML
     private void checkRoute() {
         selectToggle.setSelected(false);
@@ -86,12 +98,18 @@ public class SearchController implements Initializable, IControlledScreen {
     }
 
     //Gestisco date2>>date1
+    /**
+     * Metodo che si occupa di gestire date di ritorno successive a quelle di andata.
+     */
     @FXML
     private void returnDate() {
         date2.setValue(null);
         date2.setDayCellFactory(methods.bookingRange(date1.getValue().plusDays(1)));
     }
 
+    /**
+     * Metodo che si occupa di gestire le operazioni dell'interfaccia grafica di ricerca del volo.
+     */
     @FXML
     private void goToResult() {
         try {
@@ -118,6 +136,11 @@ public class SearchController implements Initializable, IControlledScreen {
         }
     }
 
+    /**
+     * Metodo che si occupa di verificare la validità dei campi inseriti.
+     *
+     * @throws IOException Segnala che si è verificato un errore durante le operazioni di I/O.
+     */
     public void validateFields() throws IOException {
         if( scbRet.getSelectionModel().isEmpty() || date1.getValue() == null
             || (date2.getValue() == null && selectToggle.isSelected())) {

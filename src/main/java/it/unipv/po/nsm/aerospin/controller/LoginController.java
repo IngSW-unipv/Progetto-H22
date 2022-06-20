@@ -54,6 +54,11 @@ public class LoginController implements Initializable, IControlledScreen {
         myContainer = screenParent;
     }
 
+    /**
+     * Metodo che verifica il login di un account.
+     *
+     * @throws IOException Segnala che si è verificato un errore durante le operazioni di I/O.
+     */
     @FXML
     private void login() throws IOException {
         if(isRegistered()) {
@@ -63,6 +68,9 @@ public class LoginController implements Initializable, IControlledScreen {
         }
     }
 
+    /**
+     * Metodo che si occupa della registrazione di un utente, verificando se è gia registrato.
+     */
     @FXML
     private void register() {
         errLabel.setText("");
@@ -93,6 +101,11 @@ public class LoginController implements Initializable, IControlledScreen {
         }
     }
 
+    /**
+     * Metodo che si occupa di gestire le operazioni dell'interfaccia grafica di supporto.
+     *
+     * @throws IOException Segnala che si è verificato un errore durante le operazioni di I/O.
+     */
     @FXML
     private void support() throws IOException {
         Parent root1 = FXMLLoader.load(
@@ -105,6 +118,11 @@ public class LoginController implements Initializable, IControlledScreen {
     }
 
     //CONTROLLO SE UTENTE REGISTRATO E PWD CORRETTA
+    /**
+     * Metodo che si occupa di verificare se l'utente è registrato e la password corrispondente è corretta.
+     *
+     * @return true se accesso eseguito correttamente, false altrimenti.
+     */
     private boolean isRegistered() {
         errLabel.setText("");
         try{
@@ -132,6 +150,11 @@ public class LoginController implements Initializable, IControlledScreen {
     }
 
     //CONTROLLO FORMATO EMAIL
+    /**
+     * Metodo che verifica il formato dell'e-mail inserita.
+     *
+     * @throws NoMatchException Segnala se il confronto non è andato a buon fine.
+     */
     private void checkMail() throws NoMatchException {
         Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(email.getText());
         if(!matcher.find()){
@@ -141,6 +164,11 @@ public class LoginController implements Initializable, IControlledScreen {
     }
 
     //CONTROLLO FORMATO PWD
+    /**
+     * Metodo che verifica il formato della password inserita.
+     *
+     * @throws NoMatchException Segnala se il confronto non è andato a buon fine.
+     */
     private void checkPwd() throws NoMatchException {
         Matcher matcher = VALID_PWD_REGEX.matcher(pwd.getText());
         if(!matcher.find()){

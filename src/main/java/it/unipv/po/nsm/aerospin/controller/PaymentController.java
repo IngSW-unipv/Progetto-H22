@@ -31,6 +31,9 @@ public class PaymentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {}
 
+    /**
+     * Metodo che si occupa di gestire le operazioni dell'interfaccia grafica di pagamento.
+     */
     @FXML
     private void execute() {
         Stage stage = (Stage) Stage.getWindows().get(1);
@@ -63,36 +66,66 @@ public class PaymentController implements Initializable {
         }
     }
 
+    /**
+     * Metodo che si occupa di verificare se il numero della carta di pagamento è valido.
+     *
+     * @throws IllegalArgumentException Segnala un errore nelle informazioni fornite dal cliente.
+     */
     private void checkCardNumber() throws IllegalArgumentException {
         if(!cardNumber.getText().matches("^[0-9]{16}$")) {
                 throw new IllegalArgumentException();
         }
     }
 
+    /**
+     * Metodo che si occupa di verificare se l'intestatario della carta di pagamento è valido.
+     *
+     * @throws IllegalArgumentException Segnala un errore nelle informazioni fornite dal cliente.
+     */
     private void checkCardName() throws IllegalArgumentException {
         if(!cardName.getText().matches("^[a-zA-Z ]+$")) {
                 throw new IllegalArgumentException();
         }
     }
 
+    /**
+     * Metodo che si occupa di verificare se il mese di scadenza della carta di pagamento è valido.
+     *
+     * @throws IllegalArgumentException Segnala un errore nelle informazioni fornite dal cliente.
+     */
     private void checkExpiryMonth() throws IllegalArgumentException {
         if(!expiryMonth.getText().matches("^[0-9]{1,2}$") || isExpired()) {
                 throw new IllegalArgumentException();
         }
     }
 
+    /**
+     * Metodo che si occupa di verificare se l'anno di scadenza della carta di pagamento è valido.
+     *
+     * @throws IllegalArgumentException Segnala un errore nelle informazioni fornite dal cliente.
+     */
     private void checkExpiryYear() throws IllegalArgumentException {
         if (!expiryYear.getText().matches("^[0-9]{4}$") || isExpired()) {
             throw new IllegalArgumentException();
         }
     }
 
+    /**
+     * Metodo che si occupa di verificare se il codice CVV della carta di pagamento è valido.
+     *
+     * @throws IllegalArgumentException Segnala un errore nelle informazioni fornite dal cliente.
+     */
     private void checkCvv() throws IllegalArgumentException {
         if(!cvv.getText().matches("^[0-9]{3}$")) {
             throw new IllegalArgumentException();
         }
     }
 
+    /**
+     * Metodo che si occupa di verificare se la carta di pagamento è in corso di validità.
+     *
+     * @return true se la carta di pagamento è in corso di validità, false altrimenti.
+     */
     private boolean isExpired() {
         int thisYear = Calendar.getInstance().get(Calendar.YEAR);
         int thisMonth = Calendar.getInstance().get(Calendar.MONTH);
@@ -107,6 +140,9 @@ public class PaymentController implements Initializable {
         }
     }
 
+    /**
+     * Metodo che si occupa della chiusura dell'interfaccia grafica di pagamento.
+     */
     @FXML
     private void cancel(){
         Stage stage = (Stage) Stage.getWindows().get(1);

@@ -73,6 +73,12 @@ public class ResultController implements Initializable, IControlledScreen {
     private final Date dateDep = session.getInfo().getDateDep();
     private final Date dateRet = session.getInfo().getDateRet();
 
+    /**
+     * Metodo che si occupa di gestire le operazioni dell'interfaccia grafica di caricamento delle informazioni riguardo i voli disponibili.
+     *
+     * @param url URL della risorsa.
+     * @param rb Oggetto locale.
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         initTable();
@@ -104,6 +110,9 @@ public class ResultController implements Initializable, IControlledScreen {
         myContainer = screenParent;
     }
 
+    /**
+     * Metodo che si occupa di gestire le operazioni dell'interfaccia grafica, relative al caricamento della tabella con le informazioni sui voli disponibili.
+     */
     private void initTable() {
         table1.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         table2.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
@@ -141,6 +150,9 @@ public class ResultController implements Initializable, IControlledScreen {
         }
     }
 
+    /**
+     * Metodo che si occupa di gestire le operazioni dell'interfaccia grafica di caricamento delle tariffe di viaggio.
+     */
     private void price() {
         double tot = 0;
         if(!table1.getSelectionModel().isEmpty()){
@@ -153,6 +165,9 @@ public class ResultController implements Initializable, IControlledScreen {
         costLabel.setText(new DecimalFormat("0.00").format(price));
     }
 
+    /**
+     * Metodo che si occupa di gestire le operazioni dell'interfaccia grafica di verifica dell'età del passeggero.
+     */
     @FXML
     private void ageCheck() {
         if (methods.isMinor(birthDate.getValue())) {
@@ -165,6 +180,9 @@ public class ResultController implements Initializable, IControlledScreen {
         }
     }
 
+    /**
+     * Metodo che si occupa di gestire le operazioni dell'interfaccia grafica di accesso all'area di pagamento.
+     */
     @FXML
     private void execute() {
         try {
@@ -197,6 +215,12 @@ public class ResultController implements Initializable, IControlledScreen {
         }
     }
 
+    /**
+     * Metodo che si occupa di gestire le operazioni dell'interfaccia grafica di checkout dell'acquisto.
+     *
+     * @throws RuntimeException Segnala un errore durante l'esecuzione del processo.
+     * @throws IOException Segnala che si è verificato un errore durante le operazioni di I/O.
+     */
     private void checkout() throws RuntimeException, IOException {
         myContainer.setScreen(Factory.getHome());
         Alert alert = new Alert(Alert.AlertType.NONE);
@@ -243,6 +267,12 @@ public class ResultController implements Initializable, IControlledScreen {
         new Thread(task).start();
     }
 
+    /**
+     * Metodo che si occupa di verificare la validità dei campi di login.
+     *
+     * @throws LoginException Segnala un errore nel processo di login.
+     * @throws IllegalArgumentException Segnala un errore nelle informazioni fornite dal cliente.
+     */
     public void validateFields() throws LoginException, IllegalArgumentException {
         errLabel.setVisible(false);
         if(!session.isLogged()) {

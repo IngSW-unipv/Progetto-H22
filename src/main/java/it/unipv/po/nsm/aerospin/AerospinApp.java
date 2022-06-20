@@ -8,7 +8,19 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Objects;
 
+/**
+ * Classe relativa al main del progetto, utilizzata per il lancio dell'applicativo.
+ *
+ * @author GruppoNoSuchMethod
+ */
 public class AerospinApp extends Application {
+
+    /**
+     * Metodo che si occupa dell'avvio dell'applicativo.
+     *
+     * @param stage Finestra grafica che contiene l'applicativo.
+     * @throws IOException Segnala che si è verificato un errore durante le operazioni di I/O.
+     */
     @Override
     public void start(Stage stage) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("view/fxml/Main.fxml")));
