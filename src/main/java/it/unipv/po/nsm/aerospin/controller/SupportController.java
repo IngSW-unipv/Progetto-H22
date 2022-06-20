@@ -25,12 +25,21 @@ public class SupportController implements Initializable {
     @FXML private JFXComboBox<String> options;
     @FXML private TextArea text;
 
+    /**
+     * Metodo che si occupa di reperire le informazioni necessarie all'apertura di una richiesta di supporto.
+     *
+     * @param location URL della risorsa.
+     * @param resources Risorse necessarie per l'apertura della richiesta di supporto.
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         options.getItems().addAll("Accesso", "Rimborsi", "Tariffe", "Reclami",
                 "Termini e Condizioni Generali di Trasporto", "Altro...");
     }
 
+    /**
+     * Metodo che si occupa di gestire le operazioni dell'interfaccia grafica di richiesta del supporto.
+     */
     @FXML
     private void execute(){
         Stage stage = (Stage) Stage.getWindows().get(1);
@@ -66,6 +75,9 @@ public class SupportController implements Initializable {
         }
     }
 
+    /**
+     * Metodo che si occupa della chiusura dell'interfaccia grafica di supporto.
+     */
     @FXML
     private void cancel(){
         Stage stage = (Stage) Stage.getWindows().get(1);

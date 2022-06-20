@@ -26,6 +26,12 @@ public class LoadController implements Initializable, IControlledScreen {
 
     @FXML private Label loading;
 
+    /**
+     * Metodo che si occupa di gestire le operazioni dell'interfaccia grafica di caricamento dei voli disponibili.
+     *
+     * @param url URL della risorsa.
+     * @param resourceBundle Oggetto locale.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Task<Void> task = new Task<>() {
