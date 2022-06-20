@@ -13,6 +13,7 @@ public class ResultManagerTest {
 
     @Test
     public void testIsMinor() {
+
         LocalDate y15 = LocalDate.now().minusYears(15);
         LocalDate y16 = LocalDate.now().minusYears(16);
         LocalDate y17 = LocalDate.now().minusYears(17);
@@ -25,13 +26,15 @@ public class ResultManagerTest {
 
     @Test
     public void testFieldsCheck() {
-        assertDoesNotThrow(() -> resultManager.fieldsCheck("aBc","cDe"));
-        assertThrows(IllegalArgumentException.class, () -> resultManager.fieldsCheck("aaa","PIUDIQUINDICICAR"));
-        assertThrows(IllegalArgumentException.class, () -> resultManager.fieldsCheck("PIUDIQUINDICICAR","aaa"));
-        assertThrows(IllegalArgumentException.class, () -> resultManager.fieldsCheck("Caratterispeciali/","aaa"));
-        //Fix
-        //assertDoesNotThrow(() -> resultManager.fieldsCheck("aAa","COGNOME CON SPAZI"));
+        String[] notAllowedVal = {"a", "A", "PIUDIQUINDICICAR", "CaratteriSpeciali/$"};
+        String[] allowedVal = {"aBc", "QUINDICICARATTE", "Campo con spazi"};
 
+        for (String s : notAllowedVal){
+            assertThrows(IllegalArgumentException.class, () -> resultManager.fieldsCheck(s,s));
+        }
+        for (String s : allowedVal){
+            assertDoesNotThrow(()->resultManager.fieldsCheck(s,s));
+        }
     }
 
 }
