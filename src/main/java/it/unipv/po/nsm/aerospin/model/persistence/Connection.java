@@ -9,7 +9,7 @@ import org.hibernate.cfg.Configuration;
 import model.exception.DBException;
 
 /**
- * Classe che si occupa di gestire la connessione, la sessione e la transazione.
+ * Classe Singleton che si occupa della connessione e interazione con il database
  *
  * @author GruppoNoSuchMethod
  */

@@ -4,7 +4,7 @@ import view.ScreenContainer;
 import java.io.IOException;
 
 /**
- * Classe Singleton che si occupa della grafica tramite il pattern Factory.
+ * Classe Singleton che si occupa di istanziare la sessione e lo ScreenContainer
  *
  * @author GruppoNoSuchMethod
  */
@@ -45,6 +45,11 @@ public class Factory {
         return session;
     }
 
+    /**
+     * Metodo che istanzia lo ScreenContainer contenente le schermate dell'applicazione
+     *
+     * @return ScreenContainer
+     */
     public ScreenContainer createContainer() {
         ScreenContainer mainContainer = new ScreenContainer();
         mainContainer.loadScreen(load, screen0File);

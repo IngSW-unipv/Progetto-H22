@@ -5,7 +5,7 @@ import java.util.Collection;
 import java.util.Objects;
 
 /**
- * Classe generata automaticamente grazie al framework Hibernate con modifiche relative alla struttura del Database.
+ * Classe che definisce l'entità Route tramite ORM
  *
  * @author GruppoNoSuchMethod
  */

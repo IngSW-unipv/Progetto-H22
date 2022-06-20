@@ -15,7 +15,7 @@ import com.google.zxing.qrcode.QRCodeWriter;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 
 /**
- * Classe che si occupa della creazione del QR Code relativo al biglietto.
+ * Classe che si occupa della creazione del QR Code con informazioni riguardanti il biglietto
  *
  * @author GruppoNoSuchMethod
  */

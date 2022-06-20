@@ -3,7 +3,7 @@ package model.persistence.dao;
 import java.util.List;
 
 /**
- * Interfaccia per richiamare i metodi implementati nelle classi di gestione delle query del Database. Viene utilizzato il pattern DAO.
+ * Interfaccia che descrive i metodi utilizzati dalle classi DAO
  *
  * @author GruppoNoSuchMethod
  */

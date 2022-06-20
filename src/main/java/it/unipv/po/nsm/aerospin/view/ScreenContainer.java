@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.util.HashMap;
 
 /**
- * Classe relativa alle schermate che sono utilizzate nella GUI.
+ * Classe container che raccoglie i vari Screen in uno stack
  *
  * @author GruppoNoSuchMethod
  */
@@ -27,22 +27,12 @@ public class ScreenContainer extends StackPane {
     private final HashMap<String, String> screens = new HashMap<>();
     private final SimpleStringProperty actualScreen = new SimpleStringProperty();
 
-    //Aggiunge lo screen allo Stack
-    /**
-     * Metodo che si occupa di aggiungere una nuova schermata allo Stack.
-     *
-     * @param name Nome schermata.
-     * @param path Indirizzo di memoria.
-     */
-    public void addScreen(String name, String path) {
-        screens.put(name, path);
-    }
 
     //Ritorna il nome dello Screen attuale
     /**
-     * Metodo che permette di ottenere la schermata attuale.
+     * Metodo che permette di ottenere lo Screen attuale
      *
-     * @return Schermata attuale.
+     * @return Screen attuale
      */
     public StringProperty getScreen() {
         return actualScreen;
@@ -51,32 +41,26 @@ public class ScreenContainer extends StackPane {
     //Carica il file fxml, aggiunge lo screen alla collection e
     //infine recupero il controller.
     /**
-     * Metodo che carica il file fxml relativo alla schermata.
-     * Successivamente aggiunge la schermata alla struttura dati Collection.
-     * Infine richiama il relativo controller.
+     * Metodo che carica nella HashMap il nome dello Screen e il suo path
      *
      * @param name Nome schermata.
      * @param resource Indirizzo di memoria.
      */
-    public void loadScreen(String name, String resource) {
+    public void loadScreen(String name, String path) {
         try {
-                addScreen(name, resource);
+            screens.put(name, path);
         } catch (Exception e) {
                 e.printStackTrace();
         }
     }
 
-    //Questo metodo mostra lo screen con un determinato nome.
-    //Prima controllo se ho uno screen caricato.
-    //In caso positivo rimuovo lo screen attuale e carico il nuovo;
-    //altrimenti carico direttamente lo screen.
     /**
-     * Metodo per mostrare la schermata richiamata tramite il nome.
-     * Se è già presente una schermata, la rimuovo e carico la schermata richiamata.
-     * Altrimenti carico direttamente la schermata richiamata.
+     * Metodo per mostrare lo Screen richiamato.
+     * Se è già presente uno Screen, viene sostituito
+     * Altrimenti viene caricato direttamente
      *
-     * @param name Nome schermata.
-     * @throws IOException Segnala che si è verificato un errore durante le operazioni di I/O.
+     * @param name Screen name
+     * @throws IOException Segnala che si è verificato un errore nel caricamento dello Screen
      */
     public void setScreen(final String name) throws IOException {
         if (screens.get(name) != null) {   //screen caricato

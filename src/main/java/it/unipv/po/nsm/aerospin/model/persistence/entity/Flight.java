@@ -7,7 +7,7 @@ import java.util.Collection;
 import java.util.Objects;
 
 /**
- * Classe generata automaticamente grazie al framework Hibernate con modifiche relative alla struttura del Database.
+ * Classe che definisce l'entità Flight tramite ORM
  *
  * @author GruppoNoSuchMethod
  */

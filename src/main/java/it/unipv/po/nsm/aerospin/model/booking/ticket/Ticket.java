@@ -116,7 +116,7 @@ public class Ticket {
     }
 
     /**
-     * Metodo per ottenere un indirizzo di memoria.
+     * Metodo per ottenere il path del Ticket generato
      *
      * @return Indirizzo.
      */

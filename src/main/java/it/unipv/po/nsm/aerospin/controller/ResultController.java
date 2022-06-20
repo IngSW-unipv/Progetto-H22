@@ -18,7 +18,6 @@ import javafx.stage.StageStyle;
 import model.Factory;
 import model.Session;
 import model.booking.Fares;
-import model.booking.Info;
 import model.exception.NoMatchException;
 import model.persistence.CachedFlights;
 import model.persistence.entity.Flight;

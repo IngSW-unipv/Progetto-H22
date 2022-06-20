@@ -11,7 +11,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import model.Factory;
-import model.booking.Info;
 import model.exception.NoMatchException;
 import org.controlsfx.control.SearchableComboBox;
 import view.ScreenContainer;

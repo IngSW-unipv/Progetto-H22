@@ -1,18 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="Aerospin Local" uuid="8e39b9a4-e836-4890-9662-27aa5ceecc26">
+    <data-source source="LOCAL" name="Aerospin GCP" uuid="bc4e8246-940d-4de3-8954-15ae90e39e0a">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/aerospin_db</jdbc-url>
-      <working-dir>$ProjectFileDir$</working-dir>
-    </data-source>
-    <data-source source="LOCAL" name="Aerospin GCP " uuid="329f7513-30b4-44b6-83cd-054c327046ec">
-      <driver-ref>mysql.8</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://34.154.11.180:3306/aerospin_db</jdbc-url>
+      <jdbc-url>jdbc:mysql://34.154.11.180:3306</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>

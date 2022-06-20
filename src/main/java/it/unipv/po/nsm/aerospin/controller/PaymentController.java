@@ -6,8 +6,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.Factory;
-import model.Session;
-import model.booking.payment.AeroPay;
+import model.booking.payment.IPaymentStrategy;
+import model.booking.payment.PaymentFactory;
 import model.exception.PaymentException;
 import java.net.URL;
 import java.util.Calendar;
@@ -43,14 +43,17 @@ public class PaymentController implements Initializable {
             checkExpiryMonth();
             checkExpiryYear();
             checkCvv();
-            AeroPay paymentMethod = new AeroPay();
-            if (paymentMethod.pay()){
+
+            PaymentFactory paymentFactory = new PaymentFactory();
+            IPaymentStrategy payment = paymentFactory.getPaymentStrategy();
+
+            if (payment.pay(info.getPrice())){
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("Payment");
                     alert.setContentText("Pagamento andato a buon fine!");
                     alert.showAndWait();
-                    session.getInfo().setPaid(true);
-                    session.getInfo().setCardNumber(cardNumber.getText().substring(12,15));
+                    info.setPaid(true);
+                    info.setCardNumber(cardNumber.getText().substring(12,15));
                     stage.close();
             }
         } catch (IllegalArgumentException e) {
