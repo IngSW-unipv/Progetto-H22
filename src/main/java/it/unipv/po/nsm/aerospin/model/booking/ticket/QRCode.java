@@ -20,9 +20,6 @@ import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
  * @author GruppoNoSuchMethod
  */
 public class QRCode {
-    private static final String filePath =
-            "src/it.unipv.po.nsm.aerospin/resources/GeneratedDoc/qr.png";
-
     /**
      * Metodo per la generazione di un QR Code.
      *
@@ -30,7 +27,7 @@ public class QRCode {
      * @throws WriterException Segnala un errore nel processo di scrittura di Maven/Hibernate.
      */
     public static void generate(String text) throws IOException, WriterException {
-        File qrFile = new File(filePath);
+        File qrFile = new File("src/main/resources/GeneratedDoc/qr.png");
         Hashtable<EncodeHintType, ErrorCorrectionLevel> hintMap = new Hashtable<>();
         hintMap.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
         QRCodeWriter qrCodeWriter = new QRCodeWriter();

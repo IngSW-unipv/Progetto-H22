@@ -12,6 +12,7 @@ import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.util.Objects;
 
 /**
  * Classe che si occupa della creazione e della gestione di un biglietto.
@@ -31,7 +32,7 @@ public class Ticket {
     private final String depTime;
     private final String arrTime;
     private final String path =
-            "src/it.unipv.po.nsm.aerospin/resources/GeneratedDoc/BoardingPass.pdf";
+            "src/main/resources/GeneratedDoc/BoardingPass.pdf";
 
 
     /**
@@ -61,13 +62,16 @@ public class Ticket {
      * @throws IOException Segnala che si è verificato un errore durante le operazioni di I/O.
      */
     private void generateTicket() throws IOException {
-        File file = new File(getClass().getClassLoader().getResource("GeneratedDoc/BoardingPassTemplate.pdf").getFile());
+        File file = new File(Objects.requireNonNull(getClass().getClassLoader().getResource(
+                "GeneratedDoc/BoardingPassTemplate.pdf")).getFile());
         PDDocument doc =  PDDocument.load(file);
         PDPage page = doc.getPage(0);
         PDFont font = PDType0Font.load(doc,
-                new File(getClass().getClassLoader().getResource("fonts/Kollektif.ttf").getFile()));
+                new File(Objects.requireNonNull(getClass().getClassLoader().getResource(
+                        "fonts/Kollektif.ttf")).getFile()));
         PDFont bold = PDType0Font.load(doc,
-                new File(getClass().getClassLoader().getResource("fonts/Kollektif-Bold.ttf").getFile()));
+                new File(Objects.requireNonNull(getClass().getClassLoader().getResource(
+                        "fonts/Kollektif-Bold.ttf")).getFile()));
         PDPageContentStream contentStream = new PDPageContentStream(
                 doc, page, PDPageContentStream.AppendMode.APPEND, true, true);
 
@@ -103,8 +107,8 @@ public class Ticket {
         } catch (WriterException e) {
             e.printStackTrace();
         }
-        PDImageXObject pdImage = PDImageXObject.createFromFile(
-                getClass().getClassLoader().getResource("GeneratedDoc/qr.png").getFile(), doc);
+        PDImageXObject pdImage = PDImageXObject.createFromFile(Objects.requireNonNull(
+                getClass().getClassLoader().getResource("GeneratedDoc/qr.png")).getFile(), doc);
         contentStream.drawImage(pdImage, 255, 250);
         contentStream.close();
         doc.save(path);

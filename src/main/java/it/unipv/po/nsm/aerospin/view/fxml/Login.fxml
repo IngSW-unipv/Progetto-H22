@@ -55,4 +55,9 @@
             </JFXButton>
         </VBox>
     </HBox>
+    <JFXButton layoutX="577.0" layoutY="14.0" onAction="#support" prefHeight="65.0" prefWidth="250.0" text="ASSISTENZA" textFill="WHITE" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="20.0">
+        <font>
+            <Font name="Verdana Bold" size="24.0" />
+        </font>
+    </JFXButton>
 </AnchorPane>

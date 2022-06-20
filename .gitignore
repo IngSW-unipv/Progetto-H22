@@ -165,7 +165,7 @@ $RECYCLE.BIN/
 *.iml
 
 target
-src/it.unipv.po.nsm.aerospin/resources/GeneratedDoc/BoardingPass.pdf
-src/it.unipv.po.nsm.aerospin/resources/GeneratedDoc/qr.png
+src/main/resources/GeneratedDoc/BoardingPass.pdf
+src/main/resources/GeneratedDoc/qr.png
 
 # End of https://www.toptal.com/developers/gitignore/api/windows,intellij,java

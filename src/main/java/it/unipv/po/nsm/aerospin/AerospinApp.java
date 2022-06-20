@@ -14,7 +14,7 @@ public class AerospinApp extends Application {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("view/fxml/Main.fxml")));
         stage.setTitle("Aerospin");
         stage.setScene(new Scene(root));
-        stage.getIcons().add(new Image("file:src/it.unipv.po.nsm.aerospin/resources/img/icon.png"));
+        stage.getIcons().add(new Image("img/icon.png"));
         stage.setResizable(false);
         stage.show();
         Alert alert = new Alert(Alert.AlertType.INFORMATION);

@@ -1,5 +1,11 @@
 package controller;
 
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import model.persistence.Encryption;
 import controller.util.IControlledScreen;
 import javafx.fxml.FXML;
@@ -7,13 +13,15 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import model.*;
+import model.Factory;
+import model.Session;
 import model.exception.NoMatchException;
 import model.persistence.entity.User;
 import model.persistence.service.UserService;
 import view.ScreenContainer;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -83,6 +91,17 @@ public class LoginController implements Initializable, IControlledScreen {
         } catch (NoMatchException | IOException e) {
             pwd.clear();
         }
+    }
+
+    @FXML
+    private void support() throws IOException {
+        Parent root1 = FXMLLoader.load(
+                Objects.requireNonNull(getClass().getResource("util/subscreen/Support.fxml")));
+        Stage childStage = new Stage();
+        childStage.initModality(Modality.APPLICATION_MODAL);
+        childStage.initStyle(StageStyle.TRANSPARENT);
+        childStage.setScene(new Scene(root1));
+        childStage.showAndWait();
     }
 
     //CONTROLLO SE UTENTE REGISTRATO E PWD CORRETTA

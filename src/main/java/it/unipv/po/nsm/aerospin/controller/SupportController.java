@@ -7,6 +7,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 import model.Factory;
+import model.Session;
 import model.booking.ticket.TicketMail;
 import java.net.URL;
 import java.sql.Date;
@@ -19,6 +20,8 @@ import java.util.ResourceBundle;
  * @author GruppoNoSuchMethod
  */
 public class SupportController implements Initializable {
+    private final Session session = Factory.getInstance().getSession();
+
     @FXML private JFXComboBox<String> options;
     @FXML private TextArea text;
 
@@ -36,10 +39,17 @@ public class SupportController implements Initializable {
                     TicketMail mail = new TicketMail();
                     mail.setSubject("Support Request: "
                             + options.getSelectionModel().getSelectedItem());
-                    mail.setText(Factory.getInstance().getSession().getUser().getEmail()
-                            + "\n" + new Date(System.currentTimeMillis())
-                            + "\n----------------------------------------\n"
-                            + text.getText());
+                    if(session.isLogged()) {
+                            mail.setText(session.getUser().getEmail()
+                                    + "\n" + new Date(System.currentTimeMillis())
+                                    + "\n----------------------------------------\n"
+                                    + text.getText());
+                    } else {
+                            mail.setText("Not Logged User - Assistenza da pagina di LOGIN\n"
+                                    + new Date(System.currentTimeMillis())
+                                    + "\n----------------------------------------\n"
+                                    + text.getText());
+                    }
                     mail.send("h22aerospin@gmail.com", null);
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("Support");
