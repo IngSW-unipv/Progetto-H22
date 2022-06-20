@@ -1,4 +1,4 @@
-package it.unipv.po.nsm.aerospin;
+package it.unipv.po.nsm.aerospin.controller.util.manager;
 
 import controller.util.manager.ResultManager;
 import org.junit.jupiter.api.Test;
@@ -25,12 +25,13 @@ public class ResultManagerTest {
 
     @Test
     public void testFieldsCheck() {
-        assertDoesNotThrow(() -> resultManager.fieldsCheck("ab","cd"));
-        assertThrows(IllegalArgumentException.class, () -> resultManager.fieldsCheck("a","cd"));
+        assertDoesNotThrow(() -> resultManager.fieldsCheck("aBc","cDe"));
+        assertThrows(IllegalArgumentException.class, () -> resultManager.fieldsCheck("aaa","PIUDIQUINDICICAR"));
+        assertThrows(IllegalArgumentException.class, () -> resultManager.fieldsCheck("PIUDIQUINDICICAR","aaa"));
+        assertThrows(IllegalArgumentException.class, () -> resultManager.fieldsCheck("Caratterispeciali/","aaa"));
+        //Fix
+        //assertDoesNotThrow(() -> resultManager.fieldsCheck("aAa","COGNOME CON SPAZI"));
 
-        assertThrows(IllegalArgumentException.class, () -> resultManager.fieldsCheck("abc", null));
-        assertThrows(IllegalArgumentException.class, () -> resultManager.fieldsCheck(null, "abc"));
-        assertThrows(IllegalArgumentException.class, () -> resultManager.fieldsCheck(null, null));
     }
 
 }
