@@ -38,7 +38,7 @@ public class ResultManager {
     private final List<Flight> results = CachedFlights.getInstance().findAll();
 
     private static final Pattern VALID_NAME_REGEX =
-            Pattern.compile("^[a-zA-z ]{2,15}$");
+            Pattern.compile("^([a-zA-Z]){2,15}(?:[\\s]+[a-zA-Z]+)*$");
 
     /**
      * Metodo che rende visibili i voli disponibili per tratta e per disponibilità di posti.
