@@ -14,23 +14,16 @@ import java.sql.Date;
 import java.util.ResourceBundle;
 
 /**
- * Classe Controller, relativa al Pattern MVC, che si occupa di gestire la logica dell'applicativo e le richieste del cliente.
- * Classe contenente l'interazione con JavaFX.
+ * Controller dello screen Support
  *
  * @author GruppoNoSuchMethod
  */
 public class SupportController implements Initializable {
-    private final Session session = Factory.getInstance().getSession();
+    private final Session session = Session.getInstance();
 
     @FXML private JFXComboBox<String> options;
     @FXML private TextArea text;
 
-    /**
-     * Metodo che si occupa di reperire le informazioni necessarie all'apertura di una richiesta di supporto.
-     *
-     * @param location URL della risorsa.
-     * @param resources Risorse necessarie per l'apertura della richiesta di supporto.
-     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         options.getItems().addAll("Accesso", "Rimborsi", "Tariffe", "Reclami",
@@ -38,7 +31,7 @@ public class SupportController implements Initializable {
     }
 
     /**
-     * Metodo che si occupa di gestire le operazioni dell'interfaccia grafica di richiesta del supporto.
+     * Metodo che invia la richiesta di supporto con le informazioni inserite dall'utente
      */
     @FXML
     private void execute(){
@@ -76,7 +69,7 @@ public class SupportController implements Initializable {
     }
 
     /**
-     * Metodo che si occupa della chiusura dell'interfaccia grafica di supporto.
+     * Metodo che si occupa della chiusura dello screen Support
      */
     @FXML
     private void cancel(){

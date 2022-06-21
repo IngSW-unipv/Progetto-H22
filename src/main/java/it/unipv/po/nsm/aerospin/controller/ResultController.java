@@ -18,13 +18,11 @@ import javafx.stage.StageStyle;
 import model.Factory;
 import model.Session;
 import model.booking.Fares;
-import model.booking.Info;
 import model.exception.NoMatchException;
 import model.persistence.CachedFlights;
 import model.persistence.entity.Flight;
 import model.persistence.entity.Passenger;
 import view.ScreenContainer;
-
 import javax.security.auth.login.LoginException;
 import java.io.IOException;
 import java.net.URL;
@@ -36,16 +34,14 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 /**
- * Classe Controller, relativa al Pattern MVC, che si occupa di gestire la logica dell'applicativo e le richieste del cliente.
- * Classe contenente l'interazione con JavaFX.
+ * Controller dello screen Result
  *
  * @author GruppoNoSuchMethod
  */
 public class ResultController implements Initializable, IControlledScreen {
     private ScreenContainer myContainer;
-    private final Session session = Factory.getInstance().getSession();
+    private final Session session = Session.getInstance();
     private final ResultManager methods = new ResultManager();
-    private final Info info = Factory.getInstance().getSession().getInfo();
 
     @FXML private Label depLabel;
     @FXML private Label retLabel;
@@ -68,17 +64,11 @@ public class ResultController implements Initializable, IControlledScreen {
 
     private Double price = 0.0;
     private double multiplier = Fares.STANDARD.getPriceM();
-    private final String dep = session.getInfo().getDep();
-    private final String ret = session.getInfo().getRet();
-    private final Date dateDep = session.getInfo().getDateDep();
-    private final Date dateRet = session.getInfo().getDateRet();
+    private final String dep = session.getDep();
+    private final String ret = session.getRet();
+    private final Date dateDep = session.getDateDep();
+    private final Date dateRet = session.getDateRet();
 
-    /**
-     * Metodo che si occupa di gestire le operazioni dell'interfaccia grafica di caricamento delle informazioni riguardo i voli disponibili.
-     *
-     * @param url URL della risorsa.
-     * @param rb Oggetto locale.
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         initTable();
@@ -111,7 +101,7 @@ public class ResultController implements Initializable, IControlledScreen {
     }
 
     /**
-     * Metodo che si occupa di gestire le operazioni dell'interfaccia grafica, relative al caricamento della tabella con le informazioni sui voli disponibili.
+     * Metodo che inizializza le table con i risultati dei voli disponibili
      */
     private void initTable() {
         table1.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
@@ -138,7 +128,7 @@ public class ResultController implements Initializable, IControlledScreen {
                 table1.setItems(methods.getList(dep, ret, dateDep));
         } catch (NoMatchException ignored) {
         }
-        if(info.isOneway()) {
+        if(session.isOneway()) {
                 retLabel.setVisible(false);
                 table2.setPlaceholder(new Label("Ritorno non selezionato!"));
         } else {
@@ -151,7 +141,7 @@ public class ResultController implements Initializable, IControlledScreen {
     }
 
     /**
-     * Metodo che si occupa di gestire le operazioni dell'interfaccia grafica di caricamento delle tariffe di viaggio.
+     * Metodo che calcola il costo totale della prenotazione e lo carica sulla GUI
      */
     private void price() {
         double tot = 0;
@@ -166,7 +156,7 @@ public class ResultController implements Initializable, IControlledScreen {
     }
 
     /**
-     * Metodo che si occupa di gestire le operazioni dell'interfaccia grafica di verifica dell'età del passeggero.
+     * Metodo che verifica l'età del passeggero e in caso avvisa l'utente
      */
     @FXML
     private void ageCheck() {
@@ -181,12 +171,13 @@ public class ResultController implements Initializable, IControlledScreen {
     }
 
     /**
-     * Metodo che si occupa di gestire le operazioni dell'interfaccia grafica di accesso all'area di pagamento.
+     * Metodo che, dopo veriche e conferma del pagamento, lancia il checkout della prenotazione
      */
     @FXML
     private void execute() {
         try {
                 validateFields();
+                session.setPrice(price);
                 Parent root1 = FXMLLoader.load(Objects.requireNonNull(
                         getClass().getResource("util/subscreen/Payment.fxml")));
                 Stage childStage = new Stage();
@@ -194,7 +185,7 @@ public class ResultController implements Initializable, IControlledScreen {
                 childStage.initStyle(StageStyle.TRANSPARENT);
                 childStage.setScene(new Scene(root1));
                 childStage.showAndWait();
-                if (info.isPaid()) {
+                if (session.isPaid()) {
                         checkout();
                 }
         } catch (LoginException e) {
@@ -216,10 +207,10 @@ public class ResultController implements Initializable, IControlledScreen {
     }
 
     /**
-     * Metodo che si occupa di gestire le operazioni dell'interfaccia grafica di checkout dell'acquisto.
+     * Metodo che effettua la prenotazione una volta che il pagamento ha dato esito positivo
      *
-     * @throws RuntimeException Segnala un errore durante l'esecuzione del processo.
-     * @throws IOException Segnala che si è verificato un errore durante le operazioni di I/O.
+     * @throws RuntimeException Segnala un errore durante l'esecuzione del processo
+     * @throws IOException Segnala che si è verificato un errore durante le operazioni di I/O
      */
     private void checkout() throws RuntimeException, IOException {
         myContainer.setScreen(Factory.getHome());
@@ -268,10 +259,10 @@ public class ResultController implements Initializable, IControlledScreen {
     }
 
     /**
-     * Metodo che si occupa di verificare la validità dei campi di login.
+     * Metodo che verifica la correttezza dei dati del passeggero inseriti
      *
-     * @throws LoginException Segnala un errore nel processo di login.
-     * @throws IllegalArgumentException Segnala un errore nelle informazioni fornite dal cliente.
+     * @throws LoginException Segnala un errore nel processo di login
+     * @throws IllegalArgumentException Segnala un errore nelle informazioni fornite dall'utente
      */
     public void validateFields() throws LoginException, IllegalArgumentException {
         errLabel.setVisible(false);

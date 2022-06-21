@@ -6,7 +6,7 @@ import javax.mail.*;
 import javax.mail.internet.*;
 
 /**
- * Classe che si occupa dell'invio via E-Mail di un biglietto.
+ * Classe che si occupa dell'invio di e-mail con eventuali allegati
  *
  * @author GruppoNoSuchMethod
  */
@@ -27,11 +27,11 @@ public class TicketMail {
     }
 
     /**
-     * Metodo per la generazione e l'invio della e-mail relativa alla prenotazione.
+     * Metodo per la generazione e l'invio della e-mail
      *
-     * @param to Destinatario e-mail.
-     * @param filePath Indirizzo in memoria del file da inviare.
-     * @throws RuntimeException Segnala un errore durante l'esecuzione del processo.
+     * @param to Destinatario e-mail
+     * @param filePath Path dell'allegato
+     * @throws RuntimeException Segnala un errore durante l'invio del messaggio
      */
     public void send(String to, String filePath) throws RuntimeException {
         Properties props = new Properties();

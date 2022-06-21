@@ -3,7 +3,7 @@ package model.exception;
 import org.hibernate.HibernateException;
 
 /**
- * Classe che si occupa di gestire l'eccezione DBException.
+ * Classe che si occupa di gestire l'eccezione DBException
  *
  * @author GruppoNoSuchMethod
  */

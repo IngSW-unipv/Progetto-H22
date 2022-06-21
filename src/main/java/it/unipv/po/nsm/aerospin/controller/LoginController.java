@@ -27,14 +27,13 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Classe Controller, relativa al Pattern MVC, che si occupa di gestire la logica dell'applicativo e le richieste del cliente.
- * Classe contenente l'interazione con JavaFX.
+ * Controller dello screen Login
  *
  * @author GruppoNoSuchMethod
  */
 public class LoginController implements Initializable, IControlledScreen {
     private ScreenContainer myContainer;
-    private final Session session = Factory.getInstance().getSession();
+    private final Session session = Session.getInstance();
     private final UserService service = new UserService();
     private final Encryption encryption = new Encryption();
 
@@ -55,9 +54,9 @@ public class LoginController implements Initializable, IControlledScreen {
     }
 
     /**
-     * Metodo che verifica il login di un account.
+     * Metodo che effettua il login dell'utente
      *
-     * @throws IOException Segnala che si è verificato un errore durante le operazioni di I/O.
+     * @throws IOException Segnala che si è verificato un errore durante le operazioni di I/O
      */
     @FXML
     private void login() throws IOException {
@@ -69,7 +68,7 @@ public class LoginController implements Initializable, IControlledScreen {
     }
 
     /**
-     * Metodo che si occupa della registrazione di un utente, verificando se è gia registrato.
+     * Metodo che la registrazione di un nuovo ytente, dopo averne verificato le credenziali
      */
     @FXML
     private void register() {
@@ -102,9 +101,9 @@ public class LoginController implements Initializable, IControlledScreen {
     }
 
     /**
-     * Metodo che si occupa di gestire le operazioni dell'interfaccia grafica di supporto.
+     * Metodo che si occupa di caricare la schermata Support
      *
-     * @throws IOException Segnala che si è verificato un errore durante le operazioni di I/O.
+     * @throws IOException Segnala che si è verificato un errore durante le operazioni di I/O
      */
     @FXML
     private void support() throws IOException {
@@ -117,11 +116,10 @@ public class LoginController implements Initializable, IControlledScreen {
         childStage.showAndWait();
     }
 
-    //CONTROLLO SE UTENTE REGISTRATO E PWD CORRETTA
     /**
-     * Metodo che si occupa di verificare se l'utente è registrato e la password corrispondente è corretta.
+     * Metodo che si occupa di verificare se l'utente è registrato e la password inserita è corretta
      *
-     * @return true se accesso eseguito correttamente, false altrimenti.
+     * @return true se accesso eseguito correttamente, false altrimenti
      */
     private boolean isRegistered() {
         errLabel.setText("");
@@ -149,11 +147,10 @@ public class LoginController implements Initializable, IControlledScreen {
         }
     }
 
-    //CONTROLLO FORMATO EMAIL
     /**
-     * Metodo che verifica il formato dell'e-mail inserita.
+     * Metodo che verifica il formato dell'e-mail inserita
      *
-     * @throws NoMatchException Segnala se il confronto non è andato a buon fine.
+     * @throws NoMatchException Segnala se il confronto non è andato a buon fine
      */
     private void checkMail() throws NoMatchException {
         Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(email.getText());
@@ -163,11 +160,10 @@ public class LoginController implements Initializable, IControlledScreen {
         }
     }
 
-    //CONTROLLO FORMATO PWD
     /**
-     * Metodo che verifica il formato della password inserita.
+     * Metodo che verifica il formato della password inserita
      *
-     * @throws NoMatchException Segnala se il confronto non è andato a buon fine.
+     * @throws NoMatchException Segnala se il confronto non è andato a buon fine
      */
     private void checkPwd() throws NoMatchException {
         Matcher matcher = VALID_PWD_REGEX.matcher(pwd.getText());

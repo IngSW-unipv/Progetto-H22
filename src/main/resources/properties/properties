@@ -1,0 +1,2 @@
+payment.strategy.class.name = model.booking.payment.AeroPayStrategy
+#payment.strategy.class.name = model.booking.payment.PaypalStrategy

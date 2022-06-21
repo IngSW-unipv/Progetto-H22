@@ -7,20 +7,20 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.Factory;
 import model.Session;
-import model.booking.payment.AeroPay;
+import model.booking.payment.IPaymentStrategy;
+import model.booking.payment.PaymentFactory;
 import model.exception.PaymentException;
 import java.net.URL;
 import java.util.Calendar;
 import java.util.ResourceBundle;
 
 /**
- * Classe Controller, relativa al Pattern MVC, che si occupa di gestire la logica dell'applicativo e le richieste del cliente.
- * Classe contenente l'interazione con JavaFX.
+ * Controller dello screen Payment
  *
  * @author GruppoNoSuchMethod
  */
 public class PaymentController implements Initializable {
-    private final Session session = Factory.getInstance().getSession();
+    private final Session session = Session.getInstance();
 
     @FXML private TextField cardNumber;
     @FXML private TextField cardName;
@@ -32,7 +32,7 @@ public class PaymentController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {}
 
     /**
-     * Metodo che si occupa di gestire le operazioni dell'interfaccia grafica di pagamento.
+     * Metodo che effettua il pagamento utilizzando la PaymentStrategy adatta
      */
     @FXML
     private void execute() {
@@ -43,14 +43,16 @@ public class PaymentController implements Initializable {
             checkExpiryMonth();
             checkExpiryYear();
             checkCvv();
-            AeroPay paymentMethod = new AeroPay();
-            if (paymentMethod.pay()){
+
+            PaymentFactory paymentFactory = new PaymentFactory();
+            IPaymentStrategy payment = paymentFactory.getPaymentStrategy();
+            if (payment.pay(session.getPrice())){
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("Payment");
                     alert.setContentText("Pagamento andato a buon fine!");
                     alert.showAndWait();
-                    session.getInfo().setPaid(true);
-                    session.getInfo().setCardNumber(cardNumber.getText().substring(12,15));
+                    session.setPaid(true);
+                    session.setCardNumber(cardNumber.getText().substring(12,15));
                     stage.close();
             }
         } catch (IllegalArgumentException e) {
@@ -67,9 +69,9 @@ public class PaymentController implements Initializable {
     }
 
     /**
-     * Metodo che si occupa di verificare se il numero della carta di pagamento è valido.
+     * Metodo che si occupa di verificare se il CardNumber inserito è valido
      *
-     * @throws IllegalArgumentException Segnala un errore nelle informazioni fornite dal cliente.
+     * @throws IllegalArgumentException Segnala un errore nelle informazioni fornite dal cliente
      */
     private void checkCardNumber() throws IllegalArgumentException {
         if(!cardNumber.getText().matches("^[0-9]{16}$")) {
@@ -78,9 +80,9 @@ public class PaymentController implements Initializable {
     }
 
     /**
-     * Metodo che si occupa di verificare se l'intestatario della carta di pagamento è valido.
+     * Metodo che si occupa di verificare se il nome sulla carta inserito è valido
      *
-     * @throws IllegalArgumentException Segnala un errore nelle informazioni fornite dal cliente.
+     * @throws IllegalArgumentException Segnala un errore nelle informazioni fornite dal cliente
      */
     private void checkCardName() throws IllegalArgumentException {
         if(!cardName.getText().matches("^[a-zA-Z ]+$")) {
@@ -89,9 +91,9 @@ public class PaymentController implements Initializable {
     }
 
     /**
-     * Metodo che si occupa di verificare se il mese di scadenza della carta di pagamento è valido.
+     * Metodo che si occupa di verificare se il mese di scadenza inserito è valido
      *
-     * @throws IllegalArgumentException Segnala un errore nelle informazioni fornite dal cliente.
+     * @throws IllegalArgumentException Segnala un errore nelle informazioni fornite dal cliente
      */
     private void checkExpiryMonth() throws IllegalArgumentException {
         if(!expiryMonth.getText().matches("^[0-9]{1,2}$") || isExpired()) {
@@ -100,9 +102,9 @@ public class PaymentController implements Initializable {
     }
 
     /**
-     * Metodo che si occupa di verificare se l'anno di scadenza della carta di pagamento è valido.
+     * Metodo che si occupa di verificare se l'anno di scadenza inserito è valido
      *
-     * @throws IllegalArgumentException Segnala un errore nelle informazioni fornite dal cliente.
+     * @throws IllegalArgumentException Segnala un errore nelle informazioni fornite dal cliente
      */
     private void checkExpiryYear() throws IllegalArgumentException {
         if (!expiryYear.getText().matches("^[0-9]{4}$") || isExpired()) {
@@ -111,9 +113,9 @@ public class PaymentController implements Initializable {
     }
 
     /**
-     * Metodo che si occupa di verificare se il codice CVV della carta di pagamento è valido.
+     * Metodo che si occupa di verificare se il codice CVV inserito è valido
      *
-     * @throws IllegalArgumentException Segnala un errore nelle informazioni fornite dal cliente.
+     * @throws IllegalArgumentException Segnala un errore nelle informazioni fornite dal cliente
      */
     private void checkCvv() throws IllegalArgumentException {
         if(!cvv.getText().matches("^[0-9]{3}$")) {
@@ -122,9 +124,9 @@ public class PaymentController implements Initializable {
     }
 
     /**
-     * Metodo che si occupa di verificare se la carta di pagamento è in corso di validità.
+     * Metodo che si occupa di verificare se la carta di pagamento è in corso di validità
      *
-     * @return true se la carta di pagamento è in corso di validità, false altrimenti.
+     * @return true se la carta di pagamento NON è in corso di validità, false altrimenti
      */
     private boolean isExpired() {
         int thisYear = Calendar.getInstance().get(Calendar.YEAR);
@@ -141,7 +143,7 @@ public class PaymentController implements Initializable {
     }
 
     /**
-     * Metodo che si occupa della chiusura dell'interfaccia grafica di pagamento.
+     * Metodo che si occupa della chiusura dello screen Payment
      */
     @FXML
     private void cancel(){

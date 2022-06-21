@@ -1,0 +1,15 @@
+unnamed package
+controller
+controller.util
+controller.util.manager
+it.unipv.po.nsm.aerospin
+model
+model.booking
+model.booking.payment
+model.booking.ticket
+model.exception
+model.persistence
+model.persistence.dao
+model.persistence.entity
+model.persistence.service
+view

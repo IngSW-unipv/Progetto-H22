@@ -5,7 +5,7 @@ import model.persistence.entity.Flight;
 import java.util.List;
 
 /**
- * Classe che implementa le query del database tramite dei metodi. Viene utilizzato il pattern DAO.
+ * Classe che implementa le query sql nella table Flight
  *
  * @author GruppoNoSuchMethod
  */

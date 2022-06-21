@@ -3,7 +3,7 @@ package model.persistence.service;
 import java.util.List;
 
 /**
- * Interfaccia Service che richiama le principali azioni disponibili nell'applicativo.
+ * Interfaccia che descrive i metodi utilizzati dai Servizi
  *
  * @author GruppoNoSuchMethod
  */

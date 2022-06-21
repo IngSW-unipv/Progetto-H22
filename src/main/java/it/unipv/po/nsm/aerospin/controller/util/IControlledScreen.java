@@ -3,7 +3,7 @@ package controller.util;
 import view.ScreenContainer;
 
 /**
- * Interfaccia che richiama i Controller per la gestione della GUI.
+ * Interfaccia che permette di mantenere la gerarchia tra Screen
  *
  * @author GruppoNoSuchMethod
  */

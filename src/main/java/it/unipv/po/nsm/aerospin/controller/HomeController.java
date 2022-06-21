@@ -7,7 +7,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
- * Classe Controller, relativa al Pattern MVC, che si occupa di gestire la logica dell'applicativo.
+ * Controller dello screen Home, homepage del programma
  *
  * @author GruppoNoSuchMethod
  */

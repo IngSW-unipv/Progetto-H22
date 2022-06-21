@@ -27,8 +27,7 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 /**
- * Classe Controller, relativa al Pattern MVC, che si occupa di gestire la logica dell'applicativo e le richieste del cliente.
- * Classe contenente l'interazione con JavaFX.
+ * Controller dello screen Account
  *
  * @author GruppoNoSuchMethod
  */
@@ -43,12 +42,6 @@ public class AccountController implements Initializable, IControlledScreen {
     @FXML private TableColumn<Booking, String> id;
     @FXML private TableColumn<Booking, String> price;
 
-    /**
-     * Metodo che si occupa di gestire le operazioni dell'interfaccia grafica di ricerca degli ordini relativi all'account.
-     *
-     * @param url URL della risorsa.
-     * @param rb Oggetto locale.
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         pane.setMasterNode(table);
@@ -79,9 +72,9 @@ public class AccountController implements Initializable, IControlledScreen {
     public void setScreenParent(ScreenContainer screenParent) {}
 
     /**
-     * Metodo che si occupa di gestire le operazioni dell'interfaccia grafica di supporto.
+     * Metodo che si occupa di caricare la schermata Support
      *
-     * @throws IOException Segnala che si è verificato un errore durante le operazioni di I/O.
+     * @throws IOException Segnala che si è verificato un errore durante le operazioni di I/O
      */
     @FXML
     private void support() throws IOException {

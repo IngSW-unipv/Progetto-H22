@@ -1,7 +1,7 @@
 package model.booking;
 
 /**
- * Enumeration per la gestione dei moltiplicatori relativi alle differenti tariffe di viaggio.
+ * Enumeration delle tariffe di volo con relativo moltiplicatore di costo
  *
  * @author GruppoNoSuchMethod
  */

@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class ResultManagerTest {
 
-    ResultManager resultManager = new ResultManager();
+    private final ResultManager resultManager = new ResultManager();
 
     @Test
     public void testIsMinor() {

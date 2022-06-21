@@ -6,7 +6,7 @@ import javax.crypto.spec.SecretKeySpec;
 import java.security.Key;
 
 /**
- * Classe che si occupa di gestire la cifratura delle stringhe.
+ * Classe che si occupa di gestire la cifratura delle password
  *
  * @author GruppoNoSuchMethod
  */
@@ -15,11 +15,11 @@ public class Encryption {
     private static final byte[] keyValue = "hbftrsgyknbhcvfg".getBytes();
 
     /**
-     * Metodo per cifrare una stringa.
+     * Metodo per criptare una stringa
      *
-     * @param valueToEnc Stringa in ingresso da cifrare.
-     * @return Stringa cifrata.
-     * @exception RuntimeException Segnala un errore durante l'esecuzione del processo.
+     * @param valueToEnc Stringa da cifrare
+     * @return Stringa cifrata
+     * @exception RuntimeException Segnala un errore durante la cifratura
      */
     public String encrypt(String valueToEnc) {
         try {
@@ -37,11 +37,11 @@ public class Encryption {
     }
 
     /**
-     * Metodo per decifrare una stringa.
+     * Metodo per decifrare una stringa
      *
-     * @param valueToDec Stringa in ingresso da decifrare.
-     * @return Stringa decifrata.
-     * @exception RuntimeException Segnala un errore durante l'esecuzione del processo.
+     * @param valueToDec Stringa da decifrare
+     * @return Stringa decifrata
+     * @exception RuntimeException Segnala un errore durante l'esecuzione dela decifratura
      */
     public String decrypt(String valueToDec) {
         try {
@@ -58,11 +58,6 @@ public class Encryption {
         }
     }
 
-    /**
-     * Metodo per la generazione della chiave di cifratura.
-     *
-     * @return Chiave di cifratura.
-     */
     public static Key generateKey() {
         return new SecretKeySpec(keyValue, ALGORITHM);
     }

@@ -5,7 +5,7 @@ import model.persistence.entity.Passenger;
 import java.util.List;
 
 /**
- * Classe Service che si occupa di gestire la logica delle azioni richieste dal cliente nell'applicativo.
+ * Servizio che astrae la complessità del servizio sottostante di Passenger
  *
  * @author GruppoNoSuchMethod
  */

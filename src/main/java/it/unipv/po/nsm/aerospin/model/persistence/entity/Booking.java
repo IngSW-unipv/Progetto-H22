@@ -6,7 +6,7 @@ import java.sql.Date;
 import java.util.Objects;
 
 /**
- * Classe generata automaticamente grazie al framework Hibernate con modifiche relative alla struttura del Database.
+ * Classe che definisce l'entità Booking tramite ORM
  *
  * @author GruppoNoSuchMethod
  */
