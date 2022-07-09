@@ -2,7 +2,7 @@ unnamed package
 controller
 controller.util
 controller.util.manager
-it.unipv.po.nsm.aerospin
+it.unipv.po.nsm.aerospin.controller.util.manager
 model
 model.booking
 model.booking.payment
