@@ -24,6 +24,17 @@ public class User {
     @OneToMany(mappedBy = "userByUserId")
     private Collection<Passenger> passengersById;
 
+    @Column(name = "userType", nullable = false)
+    private Integer userType;
+
+    public Integer getUserType() {
+        return userType;
+    }
+
+    public void setUserType(Integer userType) {
+        this.userType = userType;
+    }
+
     public int getId() {
         return id;
     }

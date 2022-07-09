@@ -60,8 +60,16 @@ public class LoginController implements Initializable, IControlledScreen {
      */
     @FXML
     private void login() throws IOException {
-        if(isRegistered()) {
-            myContainer.setScreen(Factory.getAccount());
+        User user = getRegisteredUser();
+        String[] screens = { Factory.getAccount(), Factory.getAdmin() };
+
+        if(user != null) {
+            String screen = null;
+            Integer userType = user.getUserType();
+            if (userType > screens.length - 1) screen = Factory.getAccount(); // TODO: Inve farà un eccezione qui
+            else screen = screens[userType];
+
+            myContainer.setScreen(screen);
         } else {
             pwd.clear();
         }
@@ -74,8 +82,8 @@ public class LoginController implements Initializable, IControlledScreen {
     private void register() {
         errLabel.setText("");
         try {
-                checkMail();
-                checkPwd();
+                checkMail(email.getText());
+                checkPwd(pwd.getText());
                 try {
                         service.findByEmail(email.getText());
                         Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -121,16 +129,16 @@ public class LoginController implements Initializable, IControlledScreen {
      *
      * @return true se accesso eseguito correttamente, false altrimenti
      */
-    private boolean isRegistered() {
+    private User getRegisteredUser() {
         errLabel.setText("");
         try{
-                checkMail();
+                checkMail(email.getText());
                 try {
                         User logged = service.findByEmail(email.getText());
                         String decrypted = encryption.decrypt(logged.getPwd());
                         if (decrypted.equals(pwd.getText())) {
                                 session.setUser(logged);
-                                return true;
+                                return logged;
                         } else {
                                 throw new NoMatchException("Not Matched!\n");
                         }
@@ -139,11 +147,11 @@ public class LoginController implements Initializable, IControlledScreen {
                         alert.setTitle("Wrong Login");
                         alert.setHeaderText("Controllare accessi o Registrarsi");
                         alert.showAndWait();
-                        return false;
+                        return null;
                 }
         } catch (NoMatchException e){
                 pwd.clear();
-                return false;
+                return null;
         }
     }
 
@@ -152,8 +160,8 @@ public class LoginController implements Initializable, IControlledScreen {
      *
      * @throws NoMatchException Segnala se il confronto non è andato a buon fine
      */
-    private void checkMail() throws NoMatchException {
-        Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(email.getText());
+    private void checkMail(String text) throws NoMatchException {
+        Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(text);
         if(!matcher.find()){
                 errLabel.setText("Formato email non valido!");
                 throw new NoMatchException("Not Matched!\n");
@@ -165,8 +173,8 @@ public class LoginController implements Initializable, IControlledScreen {
      *
      * @throws NoMatchException Segnala se il confronto non è andato a buon fine
      */
-    private void checkPwd() throws NoMatchException {
-        Matcher matcher = VALID_PWD_REGEX.matcher(pwd.getText());
+    private void checkPwd(String text) throws NoMatchException {
+        Matcher matcher = VALID_PWD_REGEX.matcher(text);
         if(!matcher.find()){
             errLabel.setText("Inserire Password da 8-20 caratteri");
             throw new NoMatchException("Not Matched!\n");

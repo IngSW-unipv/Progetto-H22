@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminController">
+   <children>
+      <VBox prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <HBox prefHeight="234.0" prefWidth="600.0">
+               <children>
+                  <TableView prefHeight="234.0" prefWidth="934.0">
+                    <columns>
+                      <TableColumn prefWidth="111.0" text="Username" />
+                      <TableColumn prefWidth="102.0" text="Password" />
+                        <TableColumn prefWidth="113.0" text="Tipo utente" />
+                    </columns>
+                  </TableView>
+               </children>
+            </HBox>
+            <HBox prefHeight="185.0" prefWidth="100.0">
+               <children>
+                  <TextField translateX="70.0" translateY="60.0" />
+                  <TextField translateX="100.0" translateY="60.0" />
+               </children></HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

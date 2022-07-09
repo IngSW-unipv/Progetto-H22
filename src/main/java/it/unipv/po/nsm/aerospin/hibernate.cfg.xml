@@ -7,11 +7,12 @@
 <hibernate-configuration>
     <session-factory>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-        <property name="connection.url">jdbc:mysql://34.154.11.180:3306/aerospin_db</property>
+        <property name="connection.url">jdbc:mysql://34.154.97.123:3306/aerospin_db</property>
         <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
         <property name="connection.username">root</property>
         <property name="connection.password">FC5Lk!5@</property>
         <property name="show_sql">true</property>
+        <!-- Auto Generated Database (migrations) -->
         <mapping class="model.persistence.entity.Airport"/>
         <mapping class="model.persistence.entity.Route"/>
         <mapping class="model.persistence.entity.Passenger"/>
