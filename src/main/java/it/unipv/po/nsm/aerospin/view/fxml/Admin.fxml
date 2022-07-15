@@ -1,27 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminController">
+<AnchorPane prefHeight="600.0" prefWidth="860.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminController">
    <children>
-      <VBox prefHeight="400.0" prefWidth="600.0">
+      <VBox prefHeight="600.0" prefWidth="860.0">
          <children>
-            <HBox prefHeight="234.0" prefWidth="600.0">
+            <HBox prefHeight="343.0" prefWidth="860.0">
                <children>
-                  <TableView prefHeight="234.0" prefWidth="934.0">
-                    <columns>
-                      <TableColumn prefWidth="111.0" text="Username" />
-                      <TableColumn prefWidth="102.0" text="Password" />
-                        <TableColumn prefWidth="113.0" text="Tipo utente" />
-                    </columns>
-                  </TableView>
+                  <VBox prefHeight="289.0" prefWidth="713.0">
+                     <children>
+                        <TableView fx:id="table" prefHeight="290.0" prefWidth="681.0">
+                          <columns>
+                            <TableColumn fx:id="username" prefWidth="245.0" text="Username" />
+                            <TableColumn fx:id="password" prefWidth="271.0" text="Password" />
+                              <TableColumn fx:id="userType" prefWidth="172.0" text="Tipo utente" />
+                          </columns>
+                        </TableView>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="225.0" prefWidth="148.0">
+                     <children>
+                        <Button fx:id="removeButton" mnemonicParsing="false" onAction="#clickRemoveButton" prefHeight="84.0" prefWidth="131.0" text="Rimuovi" />
+                     </children>
+                  </VBox>
                </children>
             </HBox>
-            <HBox prefHeight="185.0" prefWidth="100.0">
+            <HBox prefHeight="365.0" prefWidth="860.0">
                <children>
-                  <TextField translateX="70.0" translateY="60.0" />
-                  <TextField translateX="100.0" translateY="60.0" />
+                  <VBox alignment="CENTER" prefHeight="311.0" prefWidth="357.0">
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="RIGHT" prefHeight="16.0" prefWidth="59.0" text="Email" textFill="WHITE" />
+                              <TextField fx:id="emailTextBox" prefHeight="24.0" prefWidth="196.0" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Label prefHeight="16.0" prefWidth="73.0" text="Password" textFill="WHITE" />
+                              <TextField fx:id="passwordTextBox" prefHeight="24.0" prefWidth="192.0" />
+                           </children>
+                        </HBox>
+                        <Label fx:id="errLabel" textFill="RED" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="311.0" prefWidth="402.0">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="48.0" prefWidth="113.0" text="Tipo di Account" textFill="WHITE" />
+                        <RadioButton fx:id="radio1" mnemonicParsing="false" prefHeight="35.0" prefWidth="105.0" text="Voli e Rotte" textFill="WHITE">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="AccountType" />
+                           </toggleGroup></RadioButton>
+                        <RadioButton fx:id="radio2" mnemonicParsing="false" prefHeight="40.0" prefWidth="105.0" text="Prenotazioni" textFill="WHITE" toggleGroup="$AccountType" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="176.0" prefWidth="158.0">
+                     <children>
+                        <Button fx:id="addButton" alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#clickAddButton" prefHeight="100.0" prefWidth="129.0" text="Aggiungi" />
+                     </children>
+                  </VBox>
                </children></HBox>
          </children>
       </VBox>

@@ -25,6 +25,7 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import controller.util.manager.UserManager;
 
 /**
  * Controller dello screen Login
@@ -40,11 +41,6 @@ public class LoginController implements Initializable, IControlledScreen {
     @FXML private TextField email;
     @FXML private TextField pwd;
     @FXML private Label errLabel;
-
-    private static final Pattern VALID_EMAIL_ADDRESS_REGEX =
-            Pattern.compile("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,6}$");
-    private static final Pattern VALID_PWD_REGEX =
-            Pattern.compile("^[0-9a-zA-Z!@#&–:;',?/*~$^+=<>]{8,20}$");
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {}
@@ -76,24 +72,26 @@ public class LoginController implements Initializable, IControlledScreen {
     }
 
     /**
-     * Metodo che la registrazione di un nuovo ytente, dopo averne verificato le credenziali
+     * Metodo che la registrazione di un nuovo utente, dopo averne verificato le credenziali
      */
     @FXML
     private void register() {
         errLabel.setText("");
         try {
-                checkMail(email.getText());
-                checkPwd(pwd.getText());
+            UserManager.checkMail(email.getText());
                 try {
+                    UserManager.checkPwd(pwd.getText());
+                    try {
                         service.findByEmail(email.getText());
                         Alert alert = new Alert(Alert.AlertType.ERROR);
                         alert.setTitle("Invalid Input");
                         alert.setHeaderText("Utente già esistente");
                         alert.showAndWait();
-                } catch (NoMatchException e) {
+                    } catch (NoMatchException e) {
                         User newUser = new User();
                         newUser.setEmail(email.getText());
                         newUser.setPwd(encryption.encrypt(pwd.getText()));
+                        newUser.setUserType(0);//TODO: Creare l'enum
                         service.persist(newUser);
                         session.setUser(newUser);
                         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -102,9 +100,14 @@ public class LoginController implements Initializable, IControlledScreen {
                         alert.setContentText("Potrà ora usare la sua area Account");
                         alert.showAndWait();
                         myContainer.setScreen(Factory.getAccount());
+                    }
+                } catch (NoMatchException e){
+                    pwd.clear();
+                    errLabel.setText("Inserire Password da 8-20 caratteri");
                 }
         } catch (NoMatchException | IOException e) {
             pwd.clear();
+            errLabel.setText("Formato email non valido!");
         }
     }
 
@@ -132,7 +135,7 @@ public class LoginController implements Initializable, IControlledScreen {
     private User getRegisteredUser() {
         errLabel.setText("");
         try{
-                checkMail(email.getText());
+                UserManager.checkMail(email.getText());
                 try {
                         User logged = service.findByEmail(email.getText());
                         String decrypted = encryption.decrypt(logged.getPwd());
@@ -151,33 +154,10 @@ public class LoginController implements Initializable, IControlledScreen {
                 }
         } catch (NoMatchException e){
                 pwd.clear();
+                errLabel.setText("Formato email non valido!");
                 return null;
         }
     }
 
-    /**
-     * Metodo che verifica il formato dell'e-mail inserita
-     *
-     * @throws NoMatchException Segnala se il confronto non è andato a buon fine
-     */
-    private void checkMail(String text) throws NoMatchException {
-        Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(text);
-        if(!matcher.find()){
-                errLabel.setText("Formato email non valido!");
-                throw new NoMatchException("Not Matched!\n");
-        }
-    }
 
-    /**
-     * Metodo che verifica il formato della password inserita
-     *
-     * @throws NoMatchException Segnala se il confronto non è andato a buon fine
-     */
-    private void checkPwd(String text) throws NoMatchException {
-        Matcher matcher = VALID_PWD_REGEX.matcher(text);
-        if(!matcher.find()){
-            errLabel.setText("Inserire Password da 8-20 caratteri");
-            throw new NoMatchException("Not Matched!\n");
-        }
-    }
 }

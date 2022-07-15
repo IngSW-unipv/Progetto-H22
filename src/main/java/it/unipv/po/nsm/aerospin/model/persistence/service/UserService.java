@@ -19,7 +19,10 @@ public class UserService implements IService<User> {
 
     @Override
     public List<User> findAll() {
-        return null;
+        userDao.getConn().openCurrentSession();
+        List<User> user = userDao.findAll();
+        userDao.getConn().closeCurrentSession();
+        return user;
     }
 
     public User findByEmail(String email) throws NoMatchException {
