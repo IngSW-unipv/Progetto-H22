@@ -189,7 +189,7 @@ public class FlightManController implements Initializable, IControlledScreen {
 
     private void validationFields() throws NoMatchException,NumberFormatException{
             Matcher matcher = VALID_NUM2_REGEX.matcher(hDep.getText());
-            if (!matcher.find() && Integer.parseInt(hDep.getText()) <= 23) {
+            if (!matcher.find() && Integer.parseInt(hDep.getText()) <= 22 && Integer.parseInt(hDep.getText()) >= 6) {
                 throw new NoMatchException("Not Matched filed 1!\n");
             }
             matcher = VALID_NUM2_REGEX.matcher(mDep.getText());
@@ -197,7 +197,7 @@ public class FlightManController implements Initializable, IControlledScreen {
                 throw new NoMatchException("Not Matched filed 2!\n");
             }
             matcher = VALID_NUM2_REGEX.matcher(hArr.getText());
-            if (!matcher.find() && Integer.parseInt(hArr.getText()) <= 23) {
+            if (!matcher.find() && Integer.parseInt(hArr.getText()) <= 22 && Integer.parseInt(hArr.getText()) >= 6) {
                 throw new NoMatchException("Not Matched filed 3!\n");
             }
             matcher = VALID_NUM2_REGEX.matcher(mArr.getText());
