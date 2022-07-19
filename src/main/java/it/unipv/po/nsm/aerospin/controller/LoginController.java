@@ -62,7 +62,7 @@ public class LoginController implements Initializable, IControlledScreen {
         if(user != null) {
             String screen = null;
             Integer userType = user.getUserType();
-            if (userType > screens.length - 1) screen = Factory.getAccount(); // TODO: Inve farà un eccezione qui
+            if (userType > screens.length - 1) screen = Factory.getAccount();
             else screen = screens[userType];
 
             myContainer.setScreen(screen);
@@ -91,7 +91,7 @@ public class LoginController implements Initializable, IControlledScreen {
                         User newUser = new User();
                         newUser.setEmail(email.getText());
                         newUser.setPwd(encryption.encrypt(pwd.getText()));
-                        newUser.setUserType(0);//TODO: Creare l'enum
+                        newUser.setUserType(0);
                         service.persist(newUser);
                         session.setUser(newUser);
                         Alert alert = new Alert(Alert.AlertType.INFORMATION);
