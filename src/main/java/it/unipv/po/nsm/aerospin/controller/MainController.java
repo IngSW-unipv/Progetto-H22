@@ -67,7 +67,16 @@ public class MainController implements Initializable {
     @FXML
     private void goToLogin() throws IOException {
         if(session.isLogged()) {
-            myContainer.setScreen(Factory.getAccount());
+            String[] screens = { Factory.getAccount(), Factory.getAdmin() };
+
+            if(session.getUser() != null) {
+                String screen = null;
+                Integer userType = session.getUser().getUserType();
+                if (userType > screens.length - 1) screen = Factory.getAccount();
+                else screen = screens[userType];
+
+                myContainer.setScreen(screen);
+            }
         } else {
             myContainer.setScreen(Factory.getLogin());
         }

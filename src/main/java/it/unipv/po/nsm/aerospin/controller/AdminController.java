@@ -31,17 +31,9 @@ public class AdminController implements Initializable, IControlledScreen {
     private List<User> cachedUsers;
     ObservableList<User> oUsersLoaded = FXCollections.observableArrayList();
 
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
 
     @FXML
     private ToggleGroup AccountType;
-
-    @FXML
-    private Button addButton;
 
     @FXML
     private TextField passwordTextBox;
@@ -51,9 +43,6 @@ public class AdminController implements Initializable, IControlledScreen {
 
     @FXML
     private RadioButton radio2;
-
-    @FXML
-    private Button removeButton;
 
     @FXML
     private TableView<User> table;
@@ -72,7 +61,6 @@ public class AdminController implements Initializable, IControlledScreen {
 
     @FXML
     private TableColumn<User, String> password;
-
 
     @Override
     public void setScreenParent(ScreenContainer screenParent) {
@@ -129,10 +117,7 @@ public class AdminController implements Initializable, IControlledScreen {
                     alert.setContentText("Utente nuovo aggiunto");
                     alert.showAndWait();
                 }
-
-                cachedUsers = manager.getEmployees(service.findAll());
-                oUsersLoaded.clear();
-                oUsersLoaded.addAll(cachedUsers);
+                refreshTable();
             }
             catch (NoMatchException e){
                 passwordTextBox.clear();
@@ -145,6 +130,17 @@ public class AdminController implements Initializable, IControlledScreen {
     }
     @FXML
     void clickRemoveButton(ActionEvent event) {
-
+        service.delete(table.getSelectionModel().getSelectedItem());
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Removal Confirmation");
+        alert.setHeaderText("Utente rimosso correttamente");
+        alert.setContentText("Utente rimosso correttamente");
+        alert.showAndWait();
+        refreshTable();
+    }
+    private void refreshTable(){
+        cachedUsers = manager.getEmployees(service.findAll());
+        oUsersLoaded.clear();
+        oUsersLoaded.addAll(cachedUsers);
     }
 }

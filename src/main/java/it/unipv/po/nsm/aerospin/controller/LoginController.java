@@ -57,7 +57,7 @@ public class LoginController implements Initializable, IControlledScreen {
     @FXML
     private void login() throws IOException {
         User user = getRegisteredUser();
-        String[] screens = { Factory.getAccount(), Factory.getAdmin() };
+        String[] screens = { Factory.getAccount(), Factory.getAdmin(), Factory.getFlightMan()};
 
         if(user != null) {
             String screen = null;

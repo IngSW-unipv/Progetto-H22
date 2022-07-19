@@ -24,6 +24,8 @@ public class Factory {
     private static final String screen5File = "fxml/Account.fxml";
     private static final String admin = "admin";
     private static final String screen6File = "fxml/Admin.fxml";
+    private static final String flightMan = "flightMan";
+    private static final String screen7File = "fxml/FlightMan.fxml";
 
     private Factory() {
         Session.getInstance();
@@ -50,6 +52,7 @@ public class Factory {
         mainContainer.loadScreen(login, screen4File);
         mainContainer.loadScreen(account, screen5File);
         mainContainer.loadScreen(admin, screen6File);
+        mainContainer.loadScreen(flightMan, screen7File);
         try {
             mainContainer.setScreen(load);
             return mainContainer;
@@ -86,4 +89,6 @@ public class Factory {
     public static String getAdmin() {
         return admin;
     }
+
+    public static String getFlightMan(){return flightMan;}
 }

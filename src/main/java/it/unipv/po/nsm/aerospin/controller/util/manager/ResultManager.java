@@ -49,7 +49,7 @@ public class ResultManager {
      * @return Lista di voli disponibili
      * @throws NoMatchException Segnala che non ha trovato alcun volo disponibile
      */
-    public ObservableList<Flight> getList(String s1, String s2, Date s3) throws NoMatchException {
+    public ObservableList<Flight>  getList(String s1, String s2, Date s3) throws NoMatchException {
         List<Flight> departures = results.stream()
                 .filter(o -> o.getRouteById().getAirportDep().equalsString(s1))
                 .filter(o -> o.getRouteById().getAirportArr().equalsString(s2))
@@ -62,6 +62,10 @@ public class ResultManager {
         } else {
             return FXCollections.observableArrayList(departures);
         }
+    }
+    public void reloadFlight(){
+        CachedFlights.getInstance().clearCache();
+        CachedFlights.getInstance().findAll();
     }
 
     /**
