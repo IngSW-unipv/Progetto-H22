@@ -81,10 +81,10 @@
                      <children>
                         <Label alignment="CENTER" prefHeight="50.0" prefWidth="42.0" text="Posti" textFill="WHITE" />
                         <TextField fx:id="seats" alignment="CENTER" maxWidth="-Infinity" prefHeight="24.0" prefWidth="108.0" />
-                        <Label prefHeight="34.0" prefWidth="93.0" text="Numero Volo" />
+                        <Label prefHeight="34.0" prefWidth="93.0" text="Numero Volo" textFill="WHITE" />
                         <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <Label prefHeight="23.0" prefWidth="28.0" text="AES" />
+                              <Label prefHeight="23.0" prefWidth="28.0" text="AES" textFill="WHITE" />
                               <TextField fx:id="flightNumber" maxWidth="-Infinity" prefHeight="24.0" prefWidth="74.0" />
                            </children>
                         </HBox>
