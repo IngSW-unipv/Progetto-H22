@@ -89,17 +89,25 @@ public class AdminController implements Initializable, IControlledScreen {
                 UserManager.checkPwd(passwordTextBox.getText());
                 try{
                     User oldUser = service.findByEmail(emailTextBox.getText());
-                    oldUser.setPwd(encryption.encrypt(passwordTextBox.getText()));
-                    if (AccountType.getSelectedToggle().equals(radio1))
-                        oldUser.setUserType(2);
-                    else if(AccountType.getSelectedToggle().equals(radio2))
-                        oldUser.setUserType(3);
-                    service.update(oldUser);
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Register Modification");
-                    alert.setHeaderText("Utente modificato");
-                    alert.setContentText("Utente modificato");
-                    alert.showAndWait();
+                    if (oldUser.getUserType() > 1){
+                        oldUser.setPwd(encryption.encrypt(passwordTextBox.getText()));
+                        if (AccountType.getSelectedToggle().equals(radio1))
+                            oldUser.setUserType(2);
+                        else if(AccountType.getSelectedToggle().equals(radio2))
+                            oldUser.setUserType(3);
+                        service.update(oldUser);
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("Register Modification");
+                        alert.setHeaderText("Utente modificato");
+                        alert.setContentText("Utente modificato");
+                        alert.showAndWait();
+                    } else {
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setTitle("Register Error");
+                        alert.setContentText("Non è ancora possibile aggiornare la password dell'admin");
+                        alert.showAndWait();
+                    }
+
                 } catch (NoMatchException e){
                     User newUser = new User();
                     newUser.setEmail(emailTextBox.getText());
@@ -130,13 +138,22 @@ public class AdminController implements Initializable, IControlledScreen {
     }
     @FXML
     void clickRemoveButton(ActionEvent event) {
-        service.delete(table.getSelectionModel().getSelectedItem());
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Removal Confirmation");
-        alert.setHeaderText("Utente rimosso correttamente");
-        alert.setContentText("Utente rimosso correttamente");
-        alert.showAndWait();
-        refreshTable();
+        if(table.getSelectionModel().getSelectedItem().getUserType() > 1){
+            service.delete(table.getSelectionModel().getSelectedItem());
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Removal Confirmation");
+            alert.setHeaderText("Utente rimosso correttamente");
+            alert.setContentText("Utente rimosso correttamente");
+            alert.showAndWait();
+            refreshTable();
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Removal Error");
+            alert.setContentText("L'utente admin non può essere rimosso");
+            alert.showAndWait();
+        }
+
+
     }
     private void refreshTable(){
         cachedUsers = manager.getEmployees(service.findAll());

@@ -35,9 +35,9 @@ public class FlightManController implements Initializable, IControlledScreen {
 
     private final SearchManager methods = new SearchManager();
     private final RouteManager routeMan = new RouteManager();
-    private final RouteService routeService = new RouteService();
     private final FlightService flightService = new FlightService();
     private final ResultManager result = new ResultManager();
+    private Boolean alreadyAdded = false;
 
     private static final Pattern VALID_NUM2_REGEX =
             Pattern.compile("^[0-9]{2}$");
@@ -124,12 +124,17 @@ public class FlightManController implements Initializable, IControlledScreen {
             alert.setHeaderText("Nuovo volo aggiunto correttamente!");
             alert.setContentText("Attendere qualche secondo per l'aggiornamento dei voli");
             alert.showAndWait();
-            result.reloadFlight();
+            alreadyAdded = true;
             loadTable();
-        } catch (NoMatchException e){
+        } catch (NoMatchException e ){
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Validate Fields");
             alert.setContentText("Controllare l'inserimento corretto dei parametri!");
+            alert.showAndWait();
+        } catch (NumberFormatException e){
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Validate Fields");
+            alert.setContentText("Non lasciare campi vuoti!");
             alert.showAndWait();
         }
     }
@@ -167,7 +172,9 @@ public class FlightManController implements Initializable, IControlledScreen {
     @FXML
     void loadTable() {
         try{
-            result.reloadFlight();
+            if(alreadyAdded){
+                result.reloadFlight();
+            }
             oCachedTable.clear();
             String dep = cbDep.getSelectionModel().getSelectedItem();
             String des = cbDes.getSelectionModel().getSelectedItem();
@@ -180,7 +187,7 @@ public class FlightManController implements Initializable, IControlledScreen {
 
     }
 
-    private void validationFields() throws NoMatchException{
+    private void validationFields() throws NoMatchException,NumberFormatException{
             Matcher matcher = VALID_NUM2_REGEX.matcher(hDep.getText());
             if (!matcher.find() && Integer.parseInt(hDep.getText()) <= 23) {
                 throw new NoMatchException("Not Matched filed 1!\n");

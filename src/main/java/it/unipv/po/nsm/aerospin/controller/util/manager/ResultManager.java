@@ -35,7 +35,7 @@ public class ResultManager {
     private final FlightService service = new FlightService();
     private final PassengerService passengerService = new PassengerService();
     private final BookingService bookingService = new BookingService();
-    private final List<Flight> results = CachedFlights.getInstance().findAll();
+    private List<Flight> results = CachedFlights.getInstance().findAll();
 
     private static final Pattern VALID_NAME_REGEX =
             Pattern.compile("^([a-zA-Z]){2,15}(?:[\\s]+[a-zA-Z]+)*$");
@@ -65,7 +65,7 @@ public class ResultManager {
     }
     public void reloadFlight(){
         CachedFlights.getInstance().clearCache();
-        CachedFlights.getInstance().findAll();
+        results = CachedFlights.getInstance().findAll();
     }
 
     /**
