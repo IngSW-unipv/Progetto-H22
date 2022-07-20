@@ -119,6 +119,7 @@ public class FlightManController implements Initializable, IControlledScreen {
             newFlight.setSeats(Integer.parseInt(seats.getText()));
             newFlight.setFlightNumber("AES" + flightNumber.getText());
             flightService.persist(newFlight);
+
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("New Flight Confirmation");
             alert.setHeaderText("Nuovo volo aggiunto correttamente!");
@@ -129,7 +130,8 @@ public class FlightManController implements Initializable, IControlledScreen {
         } catch (NoMatchException e ){
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Validate Fields");
-            alert.setContentText("Controllare l'inserimento corretto dei parametri!");
+            alert.setHeaderText("Controllare il corretto inserimento dei parametri!");
+            alert.setContentText(e.getMessage());
             alert.showAndWait();
         } catch (NumberFormatException e){
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -153,9 +155,7 @@ public class FlightManController implements Initializable, IControlledScreen {
         table.setItems(oCachedTable);
     }
     @Override
-    public void setScreenParent(ScreenContainer screenParent) {
-        ScreenContainer myContainer = screenParent;
-    }
+    public void setScreenParent(ScreenContainer screenParent) {}
 
     @FXML
     void findArrivals(ActionEvent event) {
@@ -190,35 +190,35 @@ public class FlightManController implements Initializable, IControlledScreen {
     private void validationFields() throws NoMatchException,NumberFormatException{
             Matcher matcher = VALID_NUM2_REGEX.matcher(hDep.getText());
             if (!matcher.find() && Integer.parseInt(hDep.getText()) <= 22 && Integer.parseInt(hDep.getText()) >= 6) {
-                throw new NoMatchException("Not Matched filed 1!\n");
+                throw new NoMatchException("Not Matched filed hDep!\n");
             }
             matcher = VALID_NUM2_REGEX.matcher(mDep.getText());
             if (!matcher.find() && Integer.parseInt(mDep.getText()) <= 59) {
-                throw new NoMatchException("Not Matched filed 2!\n");
+                throw new NoMatchException("Not Matched filed mDep!\n");
             }
             matcher = VALID_NUM2_REGEX.matcher(hArr.getText());
             if (!matcher.find() && Integer.parseInt(hArr.getText()) <= 22 && Integer.parseInt(hArr.getText()) >= 6) {
-                throw new NoMatchException("Not Matched filed 3!\n");
+                throw new NoMatchException("Not Matched filed hArr!\n");
             }
             matcher = VALID_NUM2_REGEX.matcher(mArr.getText());
             if (!matcher.find() && Integer.parseInt(mArr.getText()) <= 59) {
-                throw new NoMatchException("Not Matched filed 4!\n");
+                throw new NoMatchException("Not Matched filed mArr!\n");
             }
             matcher = VALID_NUM_REGEX.matcher(unPrice.getText());
             if (!matcher.find() && Integer.parseInt(unPrice.getText()) <= 10000) {
-                throw new NoMatchException("Not Matched filed 5!\n");
+                throw new NoMatchException("Not Matched filed unPrice!\n");
             }
             matcher = VALID_NUM2_REGEX.matcher(centPrice.getText());
             if (!matcher.find() && Integer.parseInt(centPrice.getText()) <= 99) {
-                throw new NoMatchException("Not Matched filed 6!\n");
+                throw new NoMatchException("Not Matched filed centPrice!\n");
             }
             matcher = VALID_NUM_REGEX.matcher(seats.getText());
             if (!matcher.find() && Integer.parseInt(seats.getText()) <= 10000) {
-                throw new NoMatchException("Not Matched filed 7!\n");
+                throw new NoMatchException("Not Matched filed seats!\n");
             }
             matcher = VALID_NUM_REGEX.matcher(flightNumber.getText());
             if (!matcher.find() && Integer.parseInt(seats.getText()) <= 9999) {
-                throw new NoMatchException("Not Matched filed 7!\n");
+                throw new NoMatchException("Not Matched filed flightNumber!\n");
             }
     }
 }

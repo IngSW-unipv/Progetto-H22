@@ -23,13 +23,11 @@ import view.ScreenContainer;
 
 public class AdminController implements Initializable, IControlledScreen {
 
-    private ScreenContainer myContainer;
-    private final Session session = Session.getInstance();
     private final UserService service = new UserService();
     private final UserManager manager = new UserManager();
     private final Encryption encryption = new Encryption();
     private List<User> cachedUsers;
-    ObservableList<User> oUsersLoaded = FXCollections.observableArrayList();
+    private ObservableList<User> oUsersLoaded = FXCollections.observableArrayList();
 
 
     @FXML
@@ -64,7 +62,7 @@ public class AdminController implements Initializable, IControlledScreen {
 
     @Override
     public void setScreenParent(ScreenContainer screenParent) {
-        myContainer = screenParent;
+
     }
 
     @Override

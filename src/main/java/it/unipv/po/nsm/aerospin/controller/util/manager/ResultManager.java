@@ -2,13 +2,16 @@ package controller.util.manager;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
 import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.util.Callback;
+import model.Factory;
 import model.Session;
 import model.booking.Fares;
 import model.booking.ticket.Ticket;
 import model.booking.ticket.TicketMail;
+import model.exception.DBException;
 import model.exception.NoMatchException;
 import model.persistence.CachedFlights;
 import model.persistence.entity.Booking;
@@ -22,6 +25,7 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -64,8 +68,17 @@ public class ResultManager {
         }
     }
     public void reloadFlight(){
-        CachedFlights.getInstance().clearCache();
-        results = CachedFlights.getInstance().findAll();
+        Task<Void> task = new Task<>() {
+            @Override
+            public Void call(){
+                CachedFlights.getInstance().clearCache();
+                results = CachedFlights.getInstance().findAll();
+                return null;
+            }
+        };
+
+        new Thread(task).start();
+
     }
 
     /**
